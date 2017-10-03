@@ -1,16 +1,15 @@
 <?php
 
-	require_once("classes.php");
-
-	$db = new db();
+	require_once("classlib.php");
 	
 	if (isset($_POST['valid'])) {
 
-		$user = new auth($db);
+		//$user = new auth($db);
+		$current = new current();
 		$email = $_POST['email'];
         $password = $_POST['password'];
         
-        $result = $user->login($email, $password);
+        $result = $current->login($email, $password);
 
 		switch ($result) {
 			case "ok":

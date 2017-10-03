@@ -22,7 +22,7 @@ if(!isset($_SESSION['user_id']))
 
 $current = new current;
 
-$member = $current->getMember($rms);
+$member = $current->getContactById($rms);
 
 
 

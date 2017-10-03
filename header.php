@@ -32,10 +32,10 @@ if(!isset($_SESSION['user_id']))
 
 } else {
 
- $row = $user -> getUser($_SESSION['user_id']);
- $contact = $current -> getContactById($row['rms_id']);
+// $row = $user -> getUser($_SESSION['user_id']);
+ $contact = $current -> getContactById($_SESSION['user_id']);
 
-  $user = $row['user_name'];
+  $user = $contact['member']['name'];
 
 
 $clientname = str_replace(" ", "%20", $contact['member']['name']);

@@ -9,6 +9,29 @@ class current {
     'Content-Type: application/json'
 	];
 
+	public function __construct()
+	{
+		$this->siteKey =' site key here';
+		
+	}
+
+	private function randomString($length = 50)
+	{
+		$characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$string ='';
+
+		for ($p=0; $p<$length; $p++) {
+			$string .= $characters[mt_rand(0,strlen($characters)-1)];
+		}
+
+		return $string;
+	}
+
+	protected function hashData($data)
+	{
+		return hash_hmac('sha512',$data,$this->siteKey);
+	}
+
 	public function getProduct($id) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://api.current-rms.com/api/v1/products/".$id);
@@ -117,7 +140,7 @@ class current {
 
 		return $result;
 	}
-
+/*
 	public function getMember($id) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,"https://api.current-rms.com/api/v1/members/".$id);
@@ -133,7 +156,7 @@ class current {
 
 		return $result;
 	}
-
+*/
 	public function createContact($data) {
 
 		$ch = curl_init('https://api.current-rms.com/api/v1/members');
@@ -254,5 +277,47 @@ class current {
 
 		return $result;
 	}
+
+	public function login($email, $password)
+		{
+			$type = "work_email_address_or_identity_email_cont";
+			$contact = $this->getContact($email, $type);
+
+			//Salt and hash password for checking
+
+			$password = $contact['members'][0]['custom_fields']['user_salt'] . $password;
+			$password = $this->hashData($password);
+
+			//Check email and password hash match
+
+			$match = false;
+
+			if ($password == $contact['members'][0]['custom_fields']['web_login_password']) {
+				$match = true;
+			}
+
+			if($match == true) {
+
+			//Email/Password combination exists, set sessions
+			//First, generate a random string.
+
+				$random = $this->randomString();
+			//Build the token
+				$token = $_SERVER['HTTP_USER_AGENT'] . $random;
+				$token = $this->hashData($token);
+						
+			//Setup sessions vars
+				session_start();
+				$_SESSION['token'] = $token;
+				$_SESSION['user_id'] = $contact['members'][0]['id'];
+
+				return "ok";
+
+			} else {
+			//No match, reject
+				return 4;
+			}
+
+		}	
 }
 ?>
