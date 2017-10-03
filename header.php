@@ -166,4 +166,4 @@ $old = array_reverse($archive['opportunities']);
 				</div>
 				<!-- /.container -->
 			</nav>  
-		</div>	
+		</div>
