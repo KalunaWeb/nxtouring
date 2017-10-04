@@ -1,11 +1,10 @@
 <?php
 
 require 'classlib.php';
-require 'classes.php';
+
 
 $current = new current;
-$db = new db();
-$user = new Auth($db);
+
 $characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $password ='';
 

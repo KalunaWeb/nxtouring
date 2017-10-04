@@ -481,50 +481,24 @@ $( ".van2" ).click(function(e) {
 <!-- //login modal -->
 
 <!-- New Client Modal -->
-  <div class="modal container fade" tabindex="-1" role="dialog" id="newCliModal">
-    <div id="newCli-modal" role="document">
+  <div class="modal fade" tabindex="-1" role="dialog" id="newCliModal">
+    <div class="modal-dialog" id="result-modal" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title">New Client Details</h5>
+          <h5 class="modal-title">New Client Booking Form</h5>
         </div>
         <div class="modal-body" id="">
  
 <form class="form" id="clientForm">
-  <div class="row">
-<div class="col-md-3">
-        <div id = "searchBox3">
-          <h2>Artist Details</h2>
-
 
           <div class="form-group has-feedback">
             <label for="artist" class="control-label">Artist Name</label>
             <input type="text" class="form-control" id="artist" name="artist"/>
             <span class="form-control-feedback glyphicon glyphicon-ok"></span>
           </div>
-          <div class="form-group has-feedback">
-            <label for="website" class="control-label">Website</label>
-            <input type="url" class="form-control" id="website" name="website" placeholder="http://www."/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="fbook" class="control-label">Facebook</label>
-            <input type="text" class="form-control" id="fbook" name="fbook"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="twitter" class="control-label">Twitter</label>
-            <input type="text" class="form-control" id="twitter" name="twitter"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
 
-        </div>
-</div>
-<div class="col-md-6">
-
-    <div id = "searchBox2">
-    <div class="col-sm-6"> 
-         <h2>Client Details</h2>
+         <h4>Client Details</h4>
 
           <div class="form-group has-feedback">
             <label for="name" class="control-label">Client Name</label>
@@ -548,10 +522,6 @@ $( ".van2" ).click(function(e) {
             <span class="form-control-feedback glyphicon glyphicon-ok"></span>
           </div>
 
-
-        </div>
-
-    <div class="col-sm-6">
         <div id="clienttwo">
           <div class="form-group has-feedback">
             <label for="primary_address[street]" class="control-label">Address</label>
@@ -657,14 +627,10 @@ $( ".van2" ).click(function(e) {
         <input name="days" type="hidden" id="days" value=""/>
         <input name="price" type="hidden" id="price" value=""/>
         <input name="product_type" type="hidden" id="prod_type" value=""/>
-          </div>
 
-        </div>
-</div>
 
-<div class="col-md-3">
         <div id = "searchBox3">
-          <h2>Booking Details</h2>
+          <h4>Booking Details</h4>
           <div class="form-group has-feedback">
             <label for="" class="control-label">Vehicle Type</label>
             <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
@@ -680,8 +646,8 @@ $( ".van2" ).click(function(e) {
       <span class="small">Hire period finishes at 10am on the return date</span>
            <button class="contact-form__button btn confirmbtn" type="submit_button" id="submit_button">Confirm Booking</button>
         </div>
-      </div>
-    </div>
+ 
+
     </form>
 </div>
           

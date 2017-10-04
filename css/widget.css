@@ -24,7 +24,7 @@
 
 	}
 
-	#searchBox2 {
+	/*#searchBox2 {
 
 		max-width: 650px;
 		margin: 5px auto 5px auto;
@@ -50,16 +50,16 @@
     	box-shadow: 1px 2px 4px grey;
     	height: 425px;
 
-	}
+	}*/
 
 	#searchBtn {
 		float:right;
 		margin-right: 20px;
 	}
 
-	#clienttwo {
+	/*#clienttwo {
 		margin-top: 62px;
-	}
+	}*/
 
 	.resultsBox {
 		border: 1px solid black;
