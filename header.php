@@ -4,10 +4,9 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);    
 
-require_once("classes.php");
+
 require_once("classlib.php");
-$database = new db();
-$user = new Auth($database);
+
 $current = new current();
 
 $arr = $current -> getProductList();

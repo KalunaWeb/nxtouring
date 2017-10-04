@@ -1,8 +1,7 @@
 <?php
 	session_start();
-	require_once("classes.php");
-	$db = new db();
-	$user = new Auth($db);
+	require_once("classlib.php");
+	$user = new current();
 
 	$user->logout();
 
