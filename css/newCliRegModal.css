@@ -36,3 +36,9 @@ form.register label{
     margin-top:2px;
 }
 
+form.register input{
+    width: 140px;
+    color: #505050;
+    float: left;
+    margin-right: 5px;
+}
