@@ -1,5 +1,5 @@
 <!-- About modal -->
-  <div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
+<!--  <div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header"> 
@@ -14,8 +14,59 @@
         </div>
       </div>
     </div>
+  </div>-->
+  <!-- //About modal -->
+
+<!-- About modal -->
+  <div class="modal about-modal fade" id="myModal" class="clientBooking" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header"> 
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+            <h1 class="modal-title">New Client Booking Form</h1>
+        </div> 
+        <div class="modal-body">
+          <div class="agileits-nxlayouts-info">
+            <form action="" class="register">
+            <div class="row">
+            <fieldset class="row1">
+                <legend>Hire Details
+                </legend>
+                <div class="col-md-4">
+                    <label>Vehicle Type
+                    </label>
+                    <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
+                </div>
+                <div class="col-md-4">
+                    <label>Start Date
+                    </label>
+                    <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
+                </div>
+                <div class="col-md-4">
+                </div>
+                    <label>End Date
+                    </label>
+                    <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
+                </div>
+
+                <p>
+                    <label class="obinfo">* obligatory fields
+                    </label>
+                </p>
+            </fieldset>
+        </div>
+      </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- //About modal -->
+
+
+
+
+
 
 <!-- Van Detail Modals -->
 
