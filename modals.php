@@ -29,21 +29,21 @@
           <div class="agileits-nxlayouts-info">
             <form action="" class="register">
             <div class="row">
-            <fieldset class="row1">
+            <fieldset class=" form-group row1">
                 <legend>Hire Details
                 </legend>
                 <div class="col-md-4">
-                    <label>Vehicle Type
+                    <label for="name" class="control-label">Vehicle Type
                     </label>
                     <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
                 </div>
                 <div class="col-md-4">
+
                     <label>Start Date
                     </label>
                     <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
                 </div>
                 <div class="col-md-4">
-                </div>
                     <label>End Date
                     </label>
                     <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
