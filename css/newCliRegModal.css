@@ -9,6 +9,20 @@ h1.modal-title {
     font-size:1.5em;
 
 }
+
+.form-control {
+      border-radius: 0;
+      padding: 0px;
+      font-size: 1em;
+}
+
+form.register .form-group{
+	margin-bottom: 0px;
+}
+p {
+    padding: 2px 0 5px 0;
+
+}
 form.register fieldset.row1
 {
 
@@ -34,31 +48,95 @@ form.register legend
 }
 form.register label{
     color:#444;
+
+	font-weight: 400;
+	font-size: .8em;
+
+    margin-top:2px;
+}
+form.register label.booking_form_main{
+    color:#444;
     width:98px;
 	font-weight: 400;
 	font-size: .8em;
     float: left;
-    text-align: right;
-    margin-right: 6px;
     margin-top:2px;
 }
-
-form.register input{
-    width: 140px;
+form.register textarea{
+    width: 11.2em;
     color: #505050;
-    float: left;
-    margin-right: 5px;
+
+}
+form.register input{
+    width: 14em;
+    color: #505050;
+
+}
+form.register input[type=checkbox]{
+	width: 0em;
+	padding-right: 5px;
 }
 form.register input[type=text]
 {
     border: 1px solid #E1E1E1;
     height: 18px;
+    font-size: 0.8em;
 }
 form.register input[type=password]
 {
     border: 1px solid #E1E1E1;
     height: 18px;
 }
-input:focus, select:focus{
-    background-color: #efffe0;
+input:focus, select:focus, textarea:focus{
+    background-color: #E6FFFD;
+}
+
+
+.details {
+	margin-left: 1,8em;
+	padding: 2px 0 5px 0;
+}
+
+form.register fieldset.row4
+{
+    border-top:1px solid #F1F1F1;
+
+    padding:5px;
+    float:left;
+    clear:both;
+    width:100%;
+}
+p.agreement{
+    margin-left:15px;
+}
+p.agreement label{
+    width:390px;
+    text-align:left;
+    margin-top:6px;
+}
+.button
+{
+    padding: 8px 10px 8px;
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    cursor: pointer;
+    margin:10px;
+    float: right;
+}
+form.register .infobox{
+    float:right;
+    margin-top:20px;
+    border: 1px solid #F1F1F1;
+    background: #F2FEFE;
+    padding: 2px 5px;
+    font-size: 0.8em;
+}
+form.register label.obinfo{
+    float:right;
+    padding:3px;
+    font-style:italic;
 }

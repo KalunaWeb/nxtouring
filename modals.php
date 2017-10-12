@@ -26,37 +26,104 @@
             <h1 class="modal-title">New Client Booking Form</h1>
         </div> 
         <div class="modal-body">
-          <div class="agileits-nxlayouts-info">
             <form action="" class="register">
             <div class="row">
-            <fieldset class=" form-group row1">
-                <legend>Hire Details
+              <div class="col-md-12">
+              <div class="col-md-4">
+              <fieldset class="form-group">
+                <legend>Company Details
                 </legend>
-                <div class="col-md-4">
-                    <label for="name" class="control-label">Vehicle Type
-                    </label>
-                    <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main">Name *</label>
+                    <input class="form-control" type="text" id="name" name="name"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
                 </div>
-                <div class="col-md-4">
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="emails[][address]">Email *</label>
+                    <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="phones[][number]">Telephone *</label>
+                    <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="links[][address]">Website *</label>
+                    <input class="form-control" type="text" id="links[][address]" name="links[][address]" value="http://"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+              </fieldset>
+              </div>
+              <div class="col-md-4">
+              <fieldset class="form-group">
+                <legend>Company Address</legend>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[street]">Address *</label>
+                    <textarea rows="" class="form-control" type="text" id="primary_address[street]" name="primary_address[street]"></textarea>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[city]">City *</label>
+                    <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[county]">County *</label>
+                    <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[postcode]">PostCode *</label>
+                    <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+              </fieldset>
+              </div>
+              <div class="col-md-4">
+            <fieldset class=" form-group">
+                <legend>Hire Details</legend>
+                <div class="form-group details">
+                  <label class="booking_form_main" for="" class="control-label">Vehicle Type</label>
+                  <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
+                </div>
+                <div class="form-group details">
+                  <label class="booking_form_main" for="startDate" class="control-label">Collection Date</label>
+                  <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
+                </div>
+                <div class="form-group details">
+                  <label class="booking_form_main" for="endDate" class="control-label">Return Date</label>
+                  <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
+                </div>
+            </fieldset>
 
-                    <label>Start Date
-                    </label>
-                    <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
+            <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset class="row4">
+                <legend>Terms and Mailing
+                </legend>
+                <div class="agreement">
+                    <input type="checkbox" value=""/>
+                    <label>*  I accept the <a href="#">Terms and Conditions</a></label>
                 </div>
-                <div class="col-md-4">
-                    <label>End Date
-                    </label>
-                    <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
+                <div class="agreement">
+                    <input type="checkbox" value=""/>
+                    <label>I want to receive news and offers from NX Touring</label>
                 </div>
-
-                <p>
+                <div>
                     <label class="obinfo">* obligatory fields
                     </label>
-                </p>
+                </div>
             </fieldset>
+            <div><button class="button">Book Now &raquo;</button></div>
+          </div>
         </div>
       </form>
-          </div>
+
         </div>
       </div>
     </div>
