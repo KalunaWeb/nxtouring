@@ -43,7 +43,7 @@ form.register legend
     padding:2px;
     margin-left: ;
     font-weight:bold;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight:400;
 }
 form.register label{
@@ -58,7 +58,7 @@ form.register label.booking_form_main{
     color:#444;
     width:98px;
 	font-weight: 400;
-	font-size: .8em;
+	font-size: .9em;
     float: left;
     margin-top:2px;
 }
@@ -72,9 +72,17 @@ form.register input{
     color: #505050;
 
 }
+form.register select{
+    width: 14em;
+    color: #505050;
+    height: 18px;
+    font-size: 0.8em;
+
+}
 form.register input[type=checkbox]{
-	width: 0em;
-	padding-right: 5px;
+	width: 1em;
+	padding-right: 10px;
+    float: left;
 }
 form.register input[type=text]
 {
@@ -139,4 +147,8 @@ form.register label.obinfo{
 
     padding:3px;
     font-style:italic;
+}
+
+form.register span{
+    margin-top: -31px;
 }

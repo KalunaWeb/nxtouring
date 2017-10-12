@@ -1,5 +1,5 @@
 <!-- About modal -->
-<!--  <div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header"> 
@@ -14,125 +14,8 @@
         </div>
       </div>
     </div>
-  </div>-->
-  <!-- //About modal -->
-
-<!-- About modal -->
-  <div class="modal about-modal fade" id="myModal" class="clientBooking" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header"> 
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
-            <h1 class="modal-title">New Client Booking Form</h1>
-        </div> 
-        <div class="modal-body">
-            <form action="" class="register">
-            <div class="row">
-              <div class="col-md-12">
-              <div class="col-md-4">
-              <fieldset class="form-group">
-                <legend>Company Details
-                </legend>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main">Name *</label>
-                    <input class="form-control" type="text" id="name" name="name"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="emails[][address]">Email *</label>
-                    <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="phones[][number]">Telephone *</label>
-                    <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="links[][address]">Website *</label>
-                    <input class="form-control" type="text" id="links[][address]" name="links[][address]" value="http://"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-              </fieldset>
-              </div>
-              <div class="col-md-4">
-              <fieldset class="form-group">
-                <legend>Company Address</legend>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="primary_address[street]">Address *</label>
-                    <textarea rows="" class="form-control" type="text" id="primary_address[street]" name="primary_address[street]"></textarea>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="primary_address[city]">City *</label>
-                    <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="primary_address[county]">County *</label>
-                    <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-                <div class="form-group has-feedback details">
-                    <label class="booking_form_main" for="primary_address[postcode]">PostCode *</label>
-                    <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
-                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-                </div>
-              </fieldset>
-              </div>
-              <div class="col-md-4">
-            <fieldset class=" form-group">
-                <legend>Hire Details</legend>
-                <div class="form-group details">
-                  <label class="booking_form_main" for="" class="control-label">Vehicle Type</label>
-                  <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
-                </div>
-                <div class="form-group details">
-                  <label class="booking_form_main" for="startDate" class="control-label">Collection Date</label>
-                  <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
-                </div>
-                <div class="form-group details">
-                  <label class="booking_form_main" for="endDate" class="control-label">Return Date</label>
-                  <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
-                </div>
-            </fieldset>
-
-            <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
-            </div>
-        </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset class="row4">
-                <legend>Terms and Mailing
-                </legend>
-                <div class="agreement">
-                    <input type="checkbox" value=""/>
-                    <label>*  I accept the <a href="#">Terms and Conditions</a></label>
-                </div>
-                <div class="agreement">
-                    <input type="checkbox" value=""/>
-                    <label>I want to receive news and offers from NX Touring</label>
-                </div>
-                <div>
-                    <label class="obinfo">* obligatory fields
-                    </label>
-                </div>
-            </fieldset>
-            <div><button class="button">Book Now &raquo;</button></div>
-          </div>
-        </div>
-      </form>
-
-        </div>
-      </div>
-    </div>
   </div>
   <!-- //About modal -->
-
-
-
-
 
 
 <!-- Van Detail Modals -->
@@ -379,14 +262,17 @@ $( ".van2" ).click(function(e) {
         <?php if (isset($contact)) {echo '
         <div class="modal-header"> 
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
-            <h4 class="modal-title">< '.$contact['member']['name'] . '</h4>
+            <h4 class="modal-title">'.$contact['member']['name'] . '</h4>
         </div> 
         <div class="modal-body">
-         <div id="main">
-            <div id="profile-content">
-              <div class="profile profileBox">
-                <form id="details">
-                  <table>
+            <form id="details" class="register">
+            <div class="row">
+              <div class="col-md-12 profileBox">
+              <div class="col-md-4">
+              <fieldset class="form-group">
+                <legend>Company Details
+                </legend>
+                <table>
                     <tr>
                       <td></td>
                       <td class="editableId" id="name">'.$contact['member']['name'].'</td>
@@ -438,8 +324,12 @@ $( ".van2" ).click(function(e) {
 
  echo '<td></td>
         </table>
-      </form>
+        </fieldset>
+        </div>
+      </div>
     </div>
+  </form>
+
   </div><!-- Content Div End -->
 </div>
 </div>
@@ -448,9 +338,9 @@ $( ".van2" ).click(function(e) {
     <button type="button" class="btn btn-default cancel">Cancel</button>
     <button type="button" class="btn btn-default cls" data-dismiss="modal">Close</button>
   </div>';}?> 
-</div> <!-- /.modal-content -->     
-</div> <!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div>     
+</div> 
+</div>
 <!-- //Profile Modal -->
 
 <!-- Current bookings Modal -->
@@ -598,140 +488,116 @@ $( ".van2" ).click(function(e) {
 </div><!-- /.modal -->  
 <!-- //login modal -->
 
-<!-- New Client Modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="newCliModal">
-    <div class="modal-dialog" id="result-modal" role="document">
+<!-- New Client Modal-->
+  <div class="modal about-modal fade" id="newCliModal" class="clientBooking" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h5 class="modal-title">New Client Booking Form</h5>
+        <div class="modal-header"> 
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
+            <h1 class="modal-title">New Client Booking Form</h1>
+        </div> 
+        <div class="modal-body">
+            <form id="clientForm" class="register">
+            <div class="row">
+              <div class="col-md-12">
+              <div class="col-md-4">
+              <fieldset class="form-group">
+                <legend>Company Details
+                </legend>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main">Name *</label>
+                    <input class="form-control" type="text" id="name" name="name"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="emails[][address]">Email *</label>
+                    <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="phones[][number]">Telephone *</label>
+                    <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="links[][address]">Website *</label>
+                    <input class="form-control" type="text" id="links[][address]" name="links[][address]" value="http://"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main">Artist Name *</label>
+                    <input class="form-control" type="text" id="artist" name="artist"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+              </fieldset>
+              </div>
+              <div class="col-md-4">
+              <fieldset class="form-group">
+                <legend>Company Address</legend>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[street]">Address *</label>
+                    <textarea rows="" class="form-control" type="text" id="primary_address[street]" name="primary_address[street]"></textarea>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[city]">City *</label>
+                    <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[county]">County *</label>
+                    <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="form-group has-feedback details">
+                    <label class="booking_form_main" for="primary_address[postcode]">PostCode *</label>
+                    <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+              </fieldset>
+              </div>
+              <div class="col-md-4">
+            <fieldset class=" form-group">
+                <legend>Hire Details</legend>
+                <div class="form-group details">
+                  <label class="booking_form_main" for="" class="control-label">Vehicle Type</label>
+                  <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
+                </div>
+                <div class="form-group details">
+                  <label class="booking_form_main" for="startDate" class="control-label">Collection Date</label>
+                  <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
+                </div>
+                <div class="form-group details">
+                  <label class="booking_form_main" for="endDate" class="control-label">Return Date</label>
+                  <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
+                </div>
+            </fieldset>
+            <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
+            </div>
         </div>
-        <div class="modal-body" id="">
- 
-<form class="form" id="clientForm">
-
-          <div class="form-group has-feedback">
-            <label for="artist" class="control-label">Artist Name</label>
-            <input type="text" class="form-control" id="artist" name="artist"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-
-         <h4>Client Details</h4>
-
-          <div class="form-group has-feedback">
-            <label for="name" class="control-label">Client Name</label>
-            <input type="text" class="form-control" id="name" name="name"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>  
-
-          <div class="form-group has-feedback">
-            <label for="emails[][address]" class="control-label">Email</label>
-            <input type="text" class="form-control" id="emails[][address]" name="emails[][address]" placeholder="abc@example.com"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>  
-          <div class="form-group has-feedback phoneUK">
-            <label for="phones[][number]" class="control-label">Telephone</label>
-            <input type="text" class="form-control" id="phones[][number]" name="phones[][number]"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="links[][address]" class="control-label">Website</label>
-            <input type="url" class="form-control" id="links[][address]" name="links[][address]" placeholder="http://www."/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-
-        <div id="clienttwo">
-          <div class="form-group has-feedback">
-            <label for="primary_address[street]" class="control-label">Address</label>
-            <textarea rows="" type="text" class="form-control" id="primary_address[street]" name="primary_address[street]"></textarea>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="primary_address[city]" class="control-label">City</label>
-            <input type="text" class="form-control" id="primary_address[city]" name="primary_address[city]"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="primary_address[county]">County</label>
-            <select class="form-control" id="primary_address[county]" name="primary_address[county]">
-        <option>Avon</option>
-        <option>Bedfordshire</option>
-        <option>Berkshire</option>
-        <option>Borders</option>
-        <option>Buckinghamshire</option>
-        <option>Cambridgeshire</option>
-        <option>Central</option>
-        <option>Cheshire</option>
-        <option>Cleveland</option>
-        <option>Clwyd</option>
-        <option>Cornwall</option>
-        <option>County Antrim</option>
-        <option>County Armagh</option>
-        <option>County Down</option>
-        <option>County Fermanagh</option>
-        <option>County Londonderry</option>
-        <option>County Tyrone</option>
-        <option>Cumbria</option>
-        <option>Derbyshire</option>
-        <option>Devon</option>
-        <option>Dorset</option>
-        <option>Dumfries and Galloway</option>
-        <option>Durham</option>
-        <option>Dyfed</option>
-        <option>East Sussex</option>
-        <option>Essex</option>
-        <option>Fife</option>
-        <option>Gloucestershire</option>
-        <option>Grampian</option>
-        <option>Greater Manchester</option>
-        <option>Gwent</option>
-        <option>Gwynedd County</option>
-        <option>Hampshire</option>
-        <option>Herefordshire</option>
-        <option>Hertfordshire</option>
-        <option>Highlands and Islands</option>
-        <option>Humberside</option>
-        <option>Isle of Wight</option>
-        <option>Kent</option>
-        <option>Lancashire</option>
-        <option>Leicestershire</option>
-        <option>Lincolnshire</option>
-        <option>Lothian</option>
-        <option>Merseyside</option>
-        <option>Mid Glamorgan</option>
-        <option>Norfolk</option>
-        <option>North Yorkshire</option>
-        <option>Northamptonshire</option>
-        <option>Northumberland</option>
-        <option>Nottinghamshire</option>
-        <option>Oxfordshire</option>
-        <option>Powys</option>
-        <option>Rutland</option>
-        <option>Shropshire</option>
-        <option>Somerset</option>
-        <option>South Glamorgan</option>
-        <option>South Yorkshire</option>
-        <option>Staffordshire</option>
-        <option>Strathclyde</option>
-        <option>Suffolk</option>
-        <option>Surrey</option>
-        <option>Tayside</option>
-        <option>Tyne and Wear</option>
-        <option>Warwickshire</option>
-        <option>West Glamorgan</option>
-        <option>West Midlands</option>
-        <option>West Sussex</option>
-        <option>West Yorkshire</option>
-        <option>Wiltshire</option>
-        <option>Worcestershire</option>
-            </select>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
- 
-          <div class="form-group has-feedback postcodeUK">
-            <label for="primary_address[postcode]" class="control-label">Postcode</label>
-            <input type="text" class="form-control" id="primary_address[postcode]" name="primary_address[postcode]"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset class="row4">
+                <legend>Terms and Mailing
+                </legend>
+                <div class="col-md-5">
+                <div class="form-group has-feedback agreement">
+                  <label>*  I accept the <a href="#">Terms and Conditions</a></label>
+                    <input type="checkbox" id="tcs" title="Please read our Terms and Conditions" name="tcs" />
+                    <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                </div>
+                <div class="agreement">
+                  <label>I want to receive news and offers from NX Touring</label>
+                    <input type="checkbox"/>
+                </div>
+                <div>
+                    <label class="obinfo">* obligatory fields
+                    </label>
+                </div>
+                </div>
+            </fieldset>
+            <div><button class="contact-form__button btn confirmbtn button" type="submit_button" id="submit_button">Book Now &raquo;</button></div>
           </div>
         </div>
         <input name="primary_address[country_id]" type="hidden" value="1"/>
@@ -745,45 +611,12 @@ $( ".van2" ).click(function(e) {
         <input name="days" type="hidden" id="days" value=""/>
         <input name="price" type="hidden" id="price" value=""/>
         <input name="product_type" type="hidden" id="prod_type" value=""/>
-
-
-        <div id = "searchBox3">
-          <h4>Booking Details</h4>
-          <div class="form-group has-feedback">
-            <label for="" class="control-label">Vehicle Type</label>
-            <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
-          </div>
-          <div class="form-group has-feedback">
-            <label for="startDate" class="control-label">Collection Date</label>
-            <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
-          </div>
-          <div class="form-group has-feedback">
-            <label for="endDate" class="control-label">Return Date</label>
-            <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
-          </div>
-      <span class="small">Hire period finishes at 10am on the return date</span>
-           <button class="contact-form__button btn confirmbtn" type="submit_button" id="submit_button">Confirm Booking</button>
+      </form>
         </div>
- 
-
-    </form>
-</div>
-          
-<div id="error"></div>
-
-        <div class="modal-footer">
-        <div class="col-xs-10">
-          <span class="small" id="modal-footer">Pictures are for indication only and not necessarily the vehicle booked</span>
-        </div>
-    <div class="col-xs-2">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-      </div> <!-- /.modal-content -->     
-    </div> <!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</div>
-  <!-- //new Client modal -->
+      </div>
+    </div>
+  </div>
+  <!--//new Client modal -->
 <script>
 
 jQuery.validator.addMethod('phoneUK', function(phone_number, element) {
@@ -851,9 +684,16 @@ $(document).ready(function () {
               required: true,
 
             },
+            "primary_address[county]": {
+              required: true,
+
+            },
             "primary_address[postcode]": {
               required: true,
               postcodeUK: true
+            },
+            tcs: {
+              required: true
             }
         },
         messages: {
