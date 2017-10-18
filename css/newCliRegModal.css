@@ -11,13 +11,13 @@ h1.modal-title {
 }
 
 .form-control {
-      border-radius: 0;
-      padding: 0px;
-      font-size: 1em;
+    border-radius: 0;
+    padding: 0;
+    font-size: 1em;
 }
 
 form.register .form-group{
-	margin-bottom: 0px;
+    margin-bottom: 0;
 }
 p {
     padding: 2px 0 5px 0;
@@ -41,24 +41,22 @@ form.register legend
 {
     color: #00aaff;
     padding:2px;
-    margin-left: ;
-    font-weight:bold;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight:400;
 }
 form.register label{
     color:#444;
 
-	font-weight: 400;
-	font-size: .8em;
+    font-weight: 400;
+    font-size: .8em;
 
     margin-top:2px;
 }
 form.register label.booking_form_main{
     color:#444;
     width:98px;
-	font-weight: 400;
-	font-size: .9em;
+    font-weight: 400;
+    font-size: .8em;
     float: left;
     margin-top:2px;
 }
@@ -72,17 +70,9 @@ form.register input{
     color: #505050;
 
 }
-form.register select{
-    width: 14em;
-    color: #505050;
-    height: 18px;
-    font-size: 0.8em;
-
-}
 form.register input[type=checkbox]{
-	width: 1em;
-	padding-right: 10px;
-    float: left;
+    width: 0;
+    padding-right: 5px;
 }
 form.register input[type=text]
 {
@@ -101,8 +91,8 @@ input:focus, select:focus, textarea:focus{
 
 
 .details {
-	margin-left: 1,8em;
-	padding: 2px 0 5px 0;
+    margin-left: 1.8em;
+    padding: 2px 0 5px 0;
 }
 
 form.register fieldset.row4
@@ -114,13 +104,14 @@ form.register fieldset.row4
     clear:both;
     width:100%;
 }
-p.agreement{
+.agreement{
     margin-left:15px;
 }
-p.agreement label{
-    width:390px;
+.agreement label{
+    width:250px;
     text-align:left;
     margin-top:6px;
+    float: right;
 }
 .button
 {
@@ -149,6 +140,6 @@ form.register label.obinfo{
     font-style:italic;
 }
 
-form.register span{
-    margin-top: -31px;
+form.register .feedback {
+    margin-top:-2.1em;
 }
