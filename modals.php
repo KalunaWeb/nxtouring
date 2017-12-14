@@ -93,14 +93,22 @@ while ($i <= $arr['meta']['total_row_count']) {
 
 <script>
     $('.startModal').daterangepicker({
-        singleDatePicker: true,
-        autoApply: true,
+  /*      "singleDatePicker": true,
+        "autoApply": true,
+        "timePicker": true,
+        "timePickerIncrement": 60,
 
-        minDate : moment(),
-        startDate: moment(),
-        locale: {
-            format: 'DD-MM-YYYY',
+        "minDate" : moment(),
+        "startDate": moment(),
+        "locale": {
+            format: 'HH:mm A DD-MM-YYYY',
             firstDay: 1
+        }*/
+
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY h:mm A'
         }
     });
 
@@ -134,7 +142,7 @@ while ($i <= $arr['meta']['total_row_count']) {
 
     });
 
-    $( ".van2" ).click(function(e) {
+    $( '.van2' ).click(function(e) {
         e.preventDefault();
         var string = "#vanCheck"+$(this).attr('id');
         var form = $(string).serializeJSON();
