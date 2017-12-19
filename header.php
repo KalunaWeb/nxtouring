@@ -46,7 +46,6 @@ $old = array_reverse($archive['opportunities']);
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
