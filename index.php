@@ -7,6 +7,14 @@ require_once 'modals.php';
 		<div class="slider">
 			<div class="callbacks_container">
 				<ul class="rslides callbacks callbacks1" id="slider4">
+                    <li>
+                        <div>
+                            <?php echo'<img src="'.$url[1].'" alt="" class="img-responsive"/>'?>
+                            <div class="agileits-banner-info jarallax">
+                                <h3 class="agile-title">Testing.</h3>
+                            </div>
+                        </div>
+                    </li>
 					<li>
 						<div class="nxlayouts-banner-top">
 							<div class="container">
@@ -273,43 +281,53 @@ while ($i <= $arr['meta']['total_row_count']) {
 
 <script>
 	$('#start').daterangepicker({
-  singleDatePicker: true,
-  autoApply: true,
 
-  minDate : moment(),
-  startDate: moment(),
-  locale: {
-    format: 'DD-MM-YYYY',
-    firstDay: 1
-  }
+        "autoApply": true,
+        "singleDatePicker": true,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "timePickerIncrement": 60,
+        minDate: moment(dateNow).hours(8).minutes(0).seconds(0).milliseconds(0),
+        startDate: moment(dateNow).hours(9).minutes(0).seconds(0).milliseconds(0),
+        locale: {
+            format: "DD MMMM YYYY    h:mm a",
+            firstDay: 1
+        }
 });
 
 $('#end').daterangepicker({
-  singleDatePicker: true,
-  autoApply: true,
 
-  minDate: moment(),
-  startDate: moment().add(1, 'days'),
-  locale: {
-    format: 'DD-MM-YYYY',
-    firstDay: 1
+    "autoApply": true,
+    "singleDatePicker": true,
+    "timePicker": true,
+    "timePicker24Hour": true,
+    "timePickerIncrement": 60,
+    minDate: moment(dateNow).hours(9).minutes(0).seconds(0).milliseconds(0),
+    startDate: moment(dateNow).hours(10).minutes(0).seconds(0).milliseconds(0).add(1,'days'),
+    locale: {
+        format: "DD MMMM YYYY    h:mm a",
+        firstDay: 1
   }
 });
 
 $('#start').on('apply.daterangepicker', function(ev, picker) {
 
-    var new_start =  picker.startDate.clone().add(1, 'days');
 
+    var new_min =  picker.startDate.clone().add(1, 'days');
+    var new_start = new_min.hours(10);
     $('#end').daterangepicker({
-      singleDatePicker: true,
-      autoApply: true,
 
-      minDate: new_start,
-      startDate: new_start,
-      locale: {
-        format: 'DD-MM-YYYY',
-        firstDay: 1
-      }
+        "autoApply": true,
+        "singleDatePicker": true,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "timePickerIncrement": 60,
+        minDate: new_min,
+        startDate: new_start,
+        locale: {
+            format: "DD MMMM YYYY    h:mm a",
+            firstDay: 1
+        }
     });
 
 });
@@ -318,6 +336,7 @@ $('#searchModal').on('shown.bs.modal', function() {
   $("#searchResults").html("Loading...");
   var form = $('#searchForm').serializeJSON();
   var jdata = JSON.stringify(form);
+  console.log(jdata);
   $.ajax({
     url: 'searchBox.php',
     method: 'post',
@@ -614,16 +633,14 @@ $('#searchModal').on('shown.bs.modal', function() {
   </script>
 <!-- //FlexSlider -->
 
-</script><!-- //js -->
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>
 <!-- here starts scrolling icon -->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$().UItoTop({ easingType: 'easeOutQuart' });
-									
-				});
-		</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+</script>
 
 <!-- start-smoth-scrolling -->
 		<script type="text/javascript" src="js/move-top.js"></script>
@@ -632,7 +649,8 @@ $('#searchModal').on('shown.bs.modal', function() {
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
 					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top - $('#nav-header').outerHeight()},1000);
+					console.log($('#nav-header').outerHeight());
+					$('html,body').animate({scrollTop:$(this.hash).offset().top - 88},1000);
 				});
 			});
 		</script>
@@ -667,6 +685,12 @@ $("#logout").submit(function() {
            }
          });
 });
+
+    $(document).on('click','.navbar-collapse.in',function(e) {
+        if( $(e.target).is('a:not(".dropdown-toggle")') ) {
+            $(this).collapse('hide');
+        }
+    });
 </script>
 
 

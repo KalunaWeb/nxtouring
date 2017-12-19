@@ -15,9 +15,10 @@ $multiplier = [0,1,2,3,4,4,4,4,5,6,7,8,8,8,8,9,10,11,12,12,12,12,13,14,15,16,16,
 $request = file_get_contents("php://input"); // gets the requested dates and location from index
 $params = json_decode($request,true); // true for return as array
 
-$date1 = date("d-m-Y",strtotime($params["startDate"]));
+//$date1 = date("l-d-F-Y",strtotime($params["startDate"]));
+$date1 = date("Y-m-d H:i",strtotime($params["startDate"]));
 
-$date2 = date("d-m-Y",strtotime($params["endDate"]));
+$date2 = date("Y-m-d H:i",strtotime($params["endDate"]));
 
 $diff = abs(strtotime($date2) - strtotime($date1));
 $rtnHour = date("H",strtotime($params["endDate"]));
@@ -26,7 +27,7 @@ $years   = floor($diff / (365*60*60*24));
 $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
 $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 $hours = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24)/ (60*60));
-$minuts  = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);  
+$minuts  = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
 $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minuts*60)); 
 
 if ($rtnHour > 10) {
@@ -36,9 +37,7 @@ if ($rtnHour > 10) {
 $data2 = '{
   "product_availability_view_options": {
     "product_group_id": 8, 
-    "store_ids": [
-      '.$params["location"].'
-    ],
+    "store_ids": ['.$params["location"].'],
     "starts_at": "'.$params["startDate"].'",
     "days_period": '.$days.',
  

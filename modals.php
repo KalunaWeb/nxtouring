@@ -92,50 +92,56 @@ while ($i <= $arr['meta']['total_row_count']) {
 };?>
 
 <script>
+    var dateNow = new Date();
     $('.startModal').daterangepicker({
-  /*      "singleDatePicker": true,
+
+        "sideBySide": true,
+        "singleDatePicker": true,
         "autoApply": true,
         "timePicker": true,
+        "timePicker24Hour": true,
         "timePickerIncrement": 60,
-
-        "minDate" : moment(),
-        "startDate": moment(),
         "locale": {
-            format: 'HH:mm A DD-MM-YYYY',
-            firstDay: 1
-        }*/
+            "format": "MMMM Do YYYY [at] h:[00] a ",
+            "separator": " - ",
 
-        timePicker: true,
-        timePickerIncrement: 30,
-        locale: {
-            format: 'MM/DD/YYYY h:mm A'
-        }
+            "firstDay": 1
+        },
+        "startDate": moment().add(1, 'hours'),
+        "minDate": moment()
     });
 
     $('.endModal').daterangepicker({
+
         singleDatePicker: true,
         autoApply: true,
-
+        "singleDatePicker": true,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "timePickerIncrement": 60,
         minDate: moment(),
-        startDate: moment().add(1, 'days'),
+        startDate: moment(dateNow).add(1,'days').hours(10).minutes(0).seconds(0).milliseconds(0),
         locale: {
-            format: 'DD-MM-YYYY',
+            format: "MMMM Do YYYY [at 10:00 am]",
             firstDay: 1
         }
     });
 
     $('.startModal').on('apply.daterangepicker', function(ev, picker) {
 
-        var new_start =  picker.startDate.clone().add(1, 'days');
-
+        var new_min =  picker.startDate.clone().add(1, 'days');
+        var new_start = new_min.hours(10);
         $('.endModal').daterangepicker({
-            singleDatePicker: true,
-            autoApply: true,
 
-            minDate: new_start,
+            autoApply: true,
+            "singleDatePicker": true,
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "timePickerIncrement": 60,
+            minDate: new_min,
             startDate: new_start,
             locale: {
-                format: 'DD-MM-YYYY',
+                format: "MMMM Do YYYY [at] h:mm a",
                 firstDay: 1
             }
         });
