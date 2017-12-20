@@ -1,3 +1,4 @@
+
 /*--
 Author: nxlayouts
 Author URL: http://nxlayouts.com
@@ -363,6 +364,8 @@ h3.agile-title {
     color: #fff;
     text-transform: uppercase;
     font-size: 5em;
+    background-color: #1793d1;
+    opacity: 0.5;
 }
 /*-- //header --*/ 
 /*-- about --*/
@@ -630,10 +633,11 @@ a.button.but3 {
     color: #fff;
     width: 100px;
     height: 100px;
-    left: 37%;
+    left: 20%;
     border-radius: 50%;
-    top: -12%;
+    top: 20%;
     padding: 1em;
+    text-align: center
 }
 span.sicon {
     font-size: 1.8em;
@@ -1826,7 +1830,7 @@ input.name {
 		width: 100px;
 		height: 100px;
 		left: 28%;
-		top: -12%;
+		top: 30%;
 		padding: 1em;
 	}
 	span.sicon {

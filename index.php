@@ -2,20 +2,24 @@
 
 require_once 'header.php';
 require_once 'modals.php';
+
 ?>
 	<div class="banner-top">
 		<div class="slider">
 			<div class="callbacks_container">
 				<ul class="rslides callbacks callbacks1" id="slider4">
                     <li>
-                        <div>
-                            <?php echo'<img src="'.$url[1].'" alt="" class="img-responsive"/>'?>
+                        <div class="nxlayouts-banner-top" style="<?php echo 'background: url('.$url[1].') no-repeat center; background-size: cover;';?>">
+                            <div class="container">
+                                <div class="nxl-price"><span class="sicon">£<?php echo $price[1];?></span><p>+ vat / day</p></div>
+
                             <div class="agileits-banner-info jarallax">
-                                <h3 class="agile-title">Testing.</h3>
+                                <h3 class="agile-title"><?php echo $name[1];?></h3>
+                            </div>
                             </div>
                         </div>
                     </li>
-					<li>
+				<!--	<li>
 						<div class="nxlayouts-banner-top">
 							<div class="container">
 								<div class="agileits-banner-info jarallax">
@@ -50,7 +54,7 @@ require_once 'modals.php';
 								</div>
 							</div>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
