@@ -45,30 +45,14 @@ while ($i <= $arr['meta']['total_row_count']) {
             <img src="'.$url[$i].'" alt="" />
           </div>
           <div class="col-md-4">
-          <div class="">
-            <form class="form" id="vanCheck'.$i.'">
-            <div class="form-group fg'.$i.'">
-              <label for="startDate" control-label">Collection Date</label>
-              <input type="text" class="form-control startModal" name="startDate">
-            </div>
-            <div class="form-group fg'.$i.'">
-              <label for="endDate" control-label">Return Date</label>
-              <input type="text" class="form-control endModal" name="endDate">
-            </div> 
-          <div class="form-group fg'.$i.'">
-            <label for="location">Location</label>
-            <select class="form-control" id="locationModal" name="location">
-              <option value="1">Bedford</option>
-                    <option value="2">Stoke on Trent</option>
-                    <option value="3">Maidstone</option>
-                </select>
-            </div>
-          <input type="hidden" name="name" value="'.$name[$i].'"/>
-          <input type="hidden" name="product_id" value="'.$id[$i].'"/>
-          <input type="hidden" name="loop_id" value="'.$i.'" />
-          <input type="hidden" name="thumb" value="'.$thumb_url[$i].'"/>
-        </form>
-           <button class="btn btn-default van2" id='.$i.'>Check Availability</button>
+          <div class="price-bottom">
+            <ul>
+				<li><span><img src="/images/seats.png" style="height: 35px; width:35px;"></span>'.$desc1[$i].'</li>
+				<li><span><img src="/images/door.png" style="height: 35px; width:35px;"></span>'.$desc2[$i].'</li>
+				<li><span><img src="/images/gears.png" style="height: 35px; width:35px;"></span>'.$desc3[$i].'</li>
+				<li><span><img src="/images/fuel.png" style="height: 35px; width:35px;"></span>'.$desc4[$i].'</li>
+				<li><span><img src="/images/steering_wheel.png" style="height: 35px; width:35px;"></span>'.$desc4[$i].'</li>
+			</ul>
         </div>
           </div>
           </div>

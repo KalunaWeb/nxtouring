@@ -8,17 +8,28 @@ require_once 'modals.php';
 		<div class="slider">
 			<div class="callbacks_container">
 				<ul class="rslides callbacks callbacks1" id="slider4">
+                    <?php
+
+                    $i= 1;
+                    while ($i <= $arr['meta']['total_row_count']) {
+
+                        echo'
                     <li>
-                        <div class="nxlayouts-banner-top" style="<?php echo 'background: url('.$url[1].') no-repeat center; background-size: cover;';?>">
+                        <div class="nxlayouts-banner-top" style="background: url('.$url[$i].') no-repeat center; background-size: cover;">
                             <div class="container">
-                                <div class="nxl-price"><span class="sicon">£<?php echo $price[1];?></span><p>+ vat / day</p></div>
+                                <div class="nxl-price"><p></p><span class="sicon">£'.$price[$i].'</span><p>+ vat / day</p></div>
 
                             <div class="agileits-banner-info jarallax">
-                                <h3 class="agile-title"><?php echo $name[1];?></h3>
+                                <h3 class="agile-title">'.$name[$i].'</h3>
+                            </div>
+                            <div class="nx-service nxl-button">
+                                <a class="vanClick" href="#" data-toggle="modal" data-target="#vanModal'.$i.'">view details</a>
                             </div>
                             </div>
                         </div>
-                    </li>
+                    </li>';
+                        $i++;
+                    };?>
 				<!--	<li>
 						<div class="nxlayouts-banner-top">
 							<div class="container">

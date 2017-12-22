@@ -406,7 +406,9 @@ h3.agile-title {
 	margin:1em 0 0 0;
 }
 .nxl-button {
-    margin: 2em 0 1em 0;
+    position: absolute;
+    left:74%;
+    top: 55%;
 }
 .nxl-button a {
     color: #333333;
@@ -597,8 +599,8 @@ i.nx-agile-share{
 .price-bottom ul li {
     font-size: 1em;
     line-height: 1.8em;
-    color: #fff;
-    padding: .5em 0;
+    color: #333;
+    padding: .5em 1em;
 }
 .price-bottom b {
     font-weight: 600;
@@ -610,7 +612,6 @@ i.nx-agile-share{
 }
 .price-bottom {
     padding: 1em 0 2em;
-    background: rgba(51, 51, 51, 0.53);
     text-transform: uppercase;
 }
 a.button.but1 {
@@ -627,17 +628,22 @@ a.button.but3 {
     left: 40%;
     color: #fff;
 }
+.about-modal .modal-body{
+    background-color: rgba(51,51,51,0.53);
+}
 .nxl-price {
     position: absolute;
+    top: 38%;
+    left: 15%;
     background: rgba(51, 51, 51, 0.82);
     color: #fff;
     width: 100px;
     height: 100px;
-    left: 20%;
     border-radius: 50%;
-    top: 20%;
     padding: 1em;
-    text-align: center
+    text-align: center;
+    z-index: 2;
+    line-height: 0.9em;
 }
 span.sicon {
     font-size: 1.8em;
@@ -1473,6 +1479,16 @@ input.name {
 	.wthree-footer-left h5 {
 		font-size: 1.32em;
 	}
+    .nxl-price {
+        position: absolute;
+        left: 4%;
+        top: 28%;
+    }
+    .nxl-button {
+        position: absolute;
+        left:74%;
+        top: 55%;
+    }
 }
 @media screen and (max-width: 1024px){
 	.wthreelocationsaits figure.effect-zoe h4 {
@@ -1482,6 +1498,16 @@ input.name {
 	.wthreelocationsaits figure.effect-zoe h4 {
 		margin-top: 3.3em;
 	}
+    .nxl-price {
+        left: 5%;
+        top: 28%;
+    }
+    .nxl-button {
+        position: absolute;
+        left:73%;
+        top: 68%;
+    }
+
 }
 @media screen and (max-width: 991px){
 	.agileits-banner-info, .agileits-banner-info1, .agileits-banner-info2, .agileits-banner-info3, .agileits-banner-info4 {
@@ -1508,8 +1534,14 @@ input.name {
 		width: 84%;
 	}
 	.nxl-price {
-		left: 32%;
-	}
+        left: 6%;
+        top: 33%;
+    }
+    .nxl-button {
+        position: absolute;
+        left:74%;
+        top: 67%;
+    }
     .price-top h3 {
 		font-size: 1.2em;
 		top: 27%;
@@ -1687,9 +1719,17 @@ input.name {
 	.agileits-banner-info, .agileits-banner-info1, .agileits-banner-info2, .agileits-banner-info3, .agileits-banner-info4 {
 		padding: 13em 0;
 	}
-	.nxl-price {
-		left: 27%;
-	}
+    .nxl-price {
+        left: 4%;
+        top: 28%;
+        z-index: 0;
+    }
+    .nxl-button {
+        position: absolute;
+        left:74%;
+        top: 60%;
+    }
+
 	.price-top h3 {
 		font-size: 1em;
 		padding: 0.5em;
@@ -1829,10 +1869,16 @@ input.name {
 	.nxl-price {
 		width: 100px;
 		height: 100px;
-		left: 28%;
+		left: 37%;
 		top: 30%;
 		padding: 1em;
+        z-index: 0;
 	}
+    .nxl-button {
+        position: absolute;
+        left:34%;
+        top: 65%;
+    }
 	span.sicon {
 		font-size: 1.8em;
 	}
@@ -1932,9 +1978,14 @@ input.name {
 		width: 100%;
 	}
 	.nxl-price {
-		left: 34%;
+		left: 37%;
 		font-size: 1em;
 	}
+    .nxl-button {
+        position: absolute;
+        left:34%;
+        top: 75%;
+    }
 	.price-top h3{
 		padding:1em;
 	}
