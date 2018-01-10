@@ -597,10 +597,10 @@ i.nx-agile-share{
 	margin-bottom: .8em;
 }
 .price-bottom ul li {
-    font-size: 1em;
-    line-height: 1.8em;
+    font-size: 0.8em;
+    line-height: 0.2em;
     color: #333;
-    padding: .5em 1em;
+    /*padding: .5em 1em;*/
 }
 .price-bottom b {
     font-weight: 600;
@@ -611,7 +611,7 @@ i.nx-agile-share{
     margin-right: 0;
 }
 .price-bottom {
-    padding: 1em 0 2em;
+    padding:  0;
     text-transform: uppercase;
 }
 a.button.but1 {
@@ -630,6 +630,12 @@ a.button.but3 {
 }
 .about-modal .modal-body{
     background-color: rgba(51,51,51,0.53);
+}
+
+.infoPic {
+    height: 35px;
+    width: 35px !important;
+    padding-right: 5px;
 }
 .nxl-price {
     position: absolute;
@@ -1729,7 +1735,9 @@ input.name {
         left:74%;
         top: 60%;
     }
-
+    .price-bottom {
+        padding-top: 2em;
+    }
 	.price-top h3 {
 		font-size: 1em;
 		padding: 0.5em;
@@ -1837,7 +1845,7 @@ input.name {
 		font-size: 0.85em;
 	}
 	.price-bottom ul li {
-		font-size: 1em;
+		font-size: 0.8em;
 	}
 	.agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
 		width: 48.7%;
@@ -1949,9 +1957,7 @@ input.name {
 	.nx_agileits-footer .navbar-header.page-scroll {
 		margin: 0 5em;
 	}
-	.price-bottom ul li {
-		padding: .5em 1em;
-	}
+
 	.footer-nav li {
 		padding: 0.3em;
 	}
