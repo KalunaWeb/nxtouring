@@ -47,11 +47,11 @@ while ($i <= $arr['meta']['total_row_count']) {
           <div class="col-md-6">
           <div class="price-bottom">
             <ul>
-				<li><span><img class="infoPic" src="/images/seats.png"></span>'.$desc1[$i].'</li>
-				<li><span><img class="infoPic" src="/images/door.png"></span>'.$desc2[$i].'</li>
-				<li><span><img class="infoPic" src="/images/steering_wheel.png"></span>'.$desc3[$i].'</li>
-				<li><span><img class="infoPic" src="/images/fuel.png"></span>'.$desc4[$i].'</li>
-				<li><span><img class="infoPic" src="/images/money.png"></span>'.$desc4[$i].'</li>
+				<li><span><img class="infoPic" src="/images/seats.png"></span>'.$seats[$i].'</li>
+				<li><span><img class="infoPic" src="/images/weight.png"></span>'.$weight[$i].'</li>
+				<li><span><img class="infoPic" src="/images/tape.png"></span>'.$size[$i].'</li>
+				<li><span><img class="infoPic" src="/images/licence.png"></span>'.$licence[$i].'</li>
+				<li><span><img class="infoPic" src="/images/money.png"></span>'.$deposit[$i].'</li>
 			</ul>
         </div>
           </div>

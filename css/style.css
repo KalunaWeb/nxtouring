@@ -268,7 +268,6 @@ nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse {
     font-size: 0;
     font-family: FontAwesome;
     visibility: visible;
-    display: block;
     height: 10px;
     width: 10px;
     display: inline-block;
@@ -405,29 +404,34 @@ h3.agile-title {
 	display:block;
 	margin:1em 0 0 0;
 }
+.more-button {
+    position: absolute;
+    left: 75%;
+    top: 90%;
+}
 .nxl-button {
     position: absolute;
     left:74%;
     top: 55%;
 }
-.nxl-button a {
-    color: #333333;
+.nxl-button, .more-button a {
     font-size: .9em;
     text-decoration: none;
     padding: .5em 2em;
-    background:#1793d1;
+    background: rgba(51, 51, 51, 0.82);
+    color: #fff;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
     text-align: center;
     border: solid 1px #333333;
 }
-.nxl-button a:hover {
-    background: #fff;
+/*.nxl-button, .more-button a:hover {
+    background: rgba(51, 51, 51, 0.82);
     border: solid 1px #1793d1;
-    color: #1793d1;
+    color: #1793d1;*/
 }
-.nxl-button a:focus{
+.nxl-button, .more-button a:focus{
 	outline:none;
 }
 /*-- about --*/
@@ -462,10 +466,10 @@ h3.agile-title {
 /*-- //modal --*/
 /*-- blog --*/
 h3.nxl-head.text-center {
-    color: #1793d1;
+    color: #fff;
     text-transform: uppercase;
     margin-bottom: 1.5em;
-    font-size: 2em;
+    font-size: 1em;
 }
 li{
 	list-style-type:none;
@@ -1540,13 +1544,13 @@ input.name {
 		width: 84%;
 	}
 	.nxl-price {
-        left: 6%;
-        top: 33%;
+        left: 10%;
+        top: 30%;
     }
     .nxl-button {
         position: absolute;
-        left:74%;
-        top: 67%;
+        left: 69%;
+        top: 60%;
     }
     .price-top h3 {
 		font-size: 1.2em;
@@ -1884,8 +1888,14 @@ input.name {
 	}
     .nxl-button {
         position: absolute;
-        left:34%;
+        left:28%;
         top: 65%;
+    }
+
+    .more-button{
+        position: absolute;
+        left: 60%;
+        top: 98%;
     }
 	span.sicon {
 		font-size: 1.8em;
@@ -1964,6 +1974,11 @@ input.name {
     .hireButtonBox {
         float: left;
     }
+    .more-button{
+        position: absolute;
+        left: 60%;
+        top: 92%;
+    }
 
 }
 @media screen and (max-width: 384px){
@@ -1989,8 +2004,13 @@ input.name {
 	}
     .nxl-button {
         position: absolute;
-        left:34%;
+        left:25%;
         top: 75%;
+    }
+    .more-button{
+        position: absolute;
+        left: 60%;
+        top: 98%;
     }
 	.price-top h3{
 		padding:1em;
