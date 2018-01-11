@@ -31,7 +31,22 @@ class current {
 	{
 		return hash_hmac('sha512',$data,$this->siteKey);
 	}
+	public function getDocuments() {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.current-rms.com/api/v1/products/49/prepare_document.pdf?document_id=25");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+
+        $result = (json_decode($server_output, true));
+
+        return $result;
+		
+	}
 	public function getProduct($id) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://api.current-rms.com/api/v1/products/".$id);

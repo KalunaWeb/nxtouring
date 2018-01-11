@@ -213,10 +213,10 @@ while ($i <= $arr['meta']['total_row_count']) {
 
             </div>
             <div class="modal-footer">
-                <div class="col-xs-10">
+                <div class="col-md-10 col-xs-9">
                     <span class="small" id="modal-footer">Pictures are for indication only and not necessarily the vehicle booked</span>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2 col-xs-2">
                     <?php if ($user == "Guest") {
                         echo '<button  type="submit" class="btn" id="searchBtnModal" data-target="#searchModal2" role="button" data-toggle="modal">Check</button>';
                     } else {
@@ -243,10 +243,10 @@ while ($i <= $arr['meta']['total_row_count']) {
                 <p>One fine body&hellip;</p>
             </div>
             <div class="modal-footer">
-                <div class="col-xs-10">
+                <div class="col-md-10 col-xs-9">
                     <span class="small" id="modal-footer">Pictures are for indication only and not necessarily the vehicle booked</span>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2 col-xs-2">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

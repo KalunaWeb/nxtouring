@@ -635,7 +635,23 @@ a.button.but3 {
 .about-modal .modal-body{
     background-color: rgba(51,51,51,0.53);
 }
+.descBox {
 
+    margin: 5px;
+    padding: 0 0 2px 5px;
+}
+.download_icon {
+    width: 53px;
+    height: auto;
+    padding: 5px;
+}
+.download_text {
+    margin-top: 13px;
+    line-height: 2.0em;
+    float: right;
+    color: #333;
+
+}
 .infoPic {
     height: 35px;
     width: 35px !important;
@@ -2044,6 +2060,13 @@ input.name {
 	}
     .hireButtonBox {
         float: left;
+        padding: 0;
+        margin: 20px 0 0 4px;
+    }
+    .descBox {
+
+        padding: 0;
+        margin: 0;
     }
 
 }

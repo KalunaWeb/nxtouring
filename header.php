@@ -9,6 +9,7 @@ require_once("classlib.php");
 
 $current = new current();
 
+
 $arr = $current -> getProductList();
 
 foreach ($arr['products'] as $value=>$key) {
@@ -133,7 +134,7 @@ $old = array_reverse($archive['opportunities']);
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h2><a class="navbar-brand nx-logo" href="index.html">NX Touring</a></h2>
+						<h2><a class="navbar-brand nx-logo" href="index.php">NX Touring</a></h2>
 						<P>Luxury Vehicle Hire</P>
 					</div> 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -144,7 +145,6 @@ $old = array_reverse($archive['opportunities']);
 							<li><a class="page-scroll scroll" href="#home">Home</a></li>
 							<li><a class="page-scroll scroll" href="#about">About</a></li>
 							<li><a class="page-scroll scroll" href="#vans">Vans</a></li>
-							<li><a class="page-scroll scroll" href="#gallery">Quote</a></li>			
 							<li><a class="page-scroll scroll" href="#downloads">Downloads</a></li>
 							<li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>
 							<li><a class="page-scroll scroll" href="#contact">Contact</a></li>

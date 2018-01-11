@@ -89,8 +89,8 @@ $response = '<div class="container resbox">';
 $i= 1;
 while ($i <= $count) {
 if ($val[$i] == 1) {
-$response .= '<div class="resultsBox col-md-10">
-<div class="row"><div class="col-md-3 col-xs-3">
+$response .= '<div class="resultsBox col-md-10 col-xs-10">
+<div class="row"><div class="col-md-3 col-xs-4">
 <div class="pictureBox"><img src='.$thumb_url[$i].'></div>
 </div>
 <div class="col-md-5 col-xs-5 descBox"><h5>'.$name[$i].'</h5></br>£ '.$hirefee[$i].'.00<span class="xtraSmall"> + Vat</span></div>

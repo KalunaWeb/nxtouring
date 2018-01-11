@@ -22,10 +22,6 @@ require_once 'modals.php';
                             <div class="agileits-banner-info jarallax">
                                 <h3 class="agile-title">'.$name[$i].'</h3>
                             </div>
-                            <div class="nx-service nxl-button">
-                                <a href="#" data-toggle="modal" data-target="#vanModal'.$i.'">view details</a>
-                            </div>
-
                             </div>
                             
                         </div>
@@ -256,7 +252,7 @@ require_once 'modals.php';
         $("#searchResults").html("Loading...");
         var form = $('#searchForm').serializeJSON();
         var jdata = JSON.stringify(form);
-        console.log(jdata);
+
         $.ajax({
             url: 'searchBox.php',
             method: 'post',
@@ -329,7 +325,7 @@ require_once 'modals.php';
 	<!-- vans -->	
 <div class="vans jarallax" id="vans">
 	<div class="container">
-			<h3 class="nxl-head text-center">Vans</h3>
+			<h1 class="nxl-head text-center">Vans</h1>
 			<div class="nx-package-grids">
 
 <?php 
@@ -340,9 +336,8 @@ while ($i <= $arr['meta']['total_row_count']) {
 	echo '<div class="col-md-4 col-sm-4 col-xs-6 text-center pricing">
 		  
 		  <div class="price-top">
-			<img src="'.$url[$i].'" alt="" class="img-responsive"/>
-			<h3>'.$name[$i].'</h3>
-		  </div>
+			<a href="#" data-toggle="modal" data-target="#vanModal'.$i.'"><img src="'.$url[$i].'" alt="" class="img-responsive"/>
+			<h3>'.$name[$i].'</h3></div></a>
 		  </div>';
 	$i++;
 };?>
@@ -371,12 +366,6 @@ while ($i <= $arr['meta']['total_row_count']) {
 	</div>
 	<!-- //modal -->
 
-<!-- Locations -->
-<div class="wthreelocationsaits" id="gallery">
-
-</form>
-</div>
-
 <div class="container" id="searchContainer"></div>
 
 
@@ -384,45 +373,70 @@ while ($i <= $arr['meta']['total_row_count']) {
 		<div class="container">
 			<h3 class="text-center">Downloads</h3>
 			<div class="nx_services_grids">
-				<div class="col-md-3 col-sm-3 col-xs-6 nxls_downloads_grid">
-					<h4>Terms and Conditions</h4>
-					<div class="nxls_downloads_grid1 hover15">
-						<figure>
-							<a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="img-responsive"></a>
-						</figure>
-					</div>
-					
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-6 nxls_downloads_grid">
-					<h4>Splitter Hire Agreement</h4>
-					<div class="nxls_downloads_grid1 hover15">
-						<figure>
-							<a href="pdf-display.php?file=Splitter Hire Agreement Form&path=pdf/"><img src="images/a.jpg" alt=" " class="img-responsive"></a>
-						</figure>
-					</div>
-					
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-6 nxls_downloads_grid">
-					<h4>Deposit Form</h4>
-					<div class="nxls_downloads_grid1 hover15">
-						<figure>
-							<a href="pdf-display.php?file=Confirmation Deposit Form&path=pdf/"><img src="images/a.jpg" alt=" " class="img-responsive"></a>
-						</figure>
-					</div>
-					
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-6 nxls_downloads_grid">
-					<h4>Other</h4>
-					<div class="nxls_downloads_grid1 hover15">
-						<figure>
-							<a href="pdf-display.php?file=&path=pdf/"><img src="images/a.jpg" alt=" " class="img-responsive"></a>
-						</figure>
 
-					</div>
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
+                <div class="col-md-offset-1 col-md-3">
+                    <ul>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Terms and Conditions</h4></a></span>
+                        </li>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Splitter Hire Agreement Form&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Hire Agreement</h4></a></span>
+                        </li>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Confirmation Deposit Form&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Credit Card Deposit Form</h4></a></span>
+                        </li>
+                         <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Damage Form</h4></a></span>
+                        </li>
+                         <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Hirers Responsibilities</h4></a></span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-offset-4 col-md-3">
+                    <ul>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Mini Splitter Van Spec</h4></a></span>
+                        </li>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Splitter Hire Agreement Form&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Standard Splitter Van Spec</h4></a></span>
+                        </li>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Confirmation Deposit Form&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Luxury Splitter Van Spec</h4></a></span>
+                        </li>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Large Splitter Van Spec</h4></a></span>
+                        </li>
+                        <li>
+                            <span class="">
+                                <a href="pdf-display.php?file=Terms and Conditions of Hire&path=pdf/"><img src="images/a.jpg" alt=" " class="download_icon">
+                            <h4 class="download_text">Gear Van Spec</h4></a></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
 		</div>
 	</div>
 <!-- //downloads -->
@@ -492,11 +506,11 @@ while ($i <= $arr['meta']['total_row_count']) {
 						<span class="fa fa-phone icon" aria-hidden="true"></span>
 						<h6>Phone:</h6><p>07771 767367</p>
 					</div>
-					<form action="contact.php" method="post" id="contactForm">
+					<form id="contactForm">
 						<input type="text" class="name" name="cont_name" placeholder="Name" required="">
 						<input type="email" class="mail" name="cont_mail" placeholder="Email" required="">
 						<textarea placeholder="Your Message" required="" name="con_msg"></textarea>
-						<input type="submit" value="SEND">
+                        <button class="button" name="send" id="send">SEND</button>
 					</form>	
 				</div>
 				<div class="col-md-6 col-sm-12  agileits_nxlayouts-map">
@@ -505,7 +519,31 @@ while ($i <= $arr['meta']['total_row_count']) {
 				<div class="clearfix"></div>
 			</div>
 		</div>
-</div>		
+</div>
+<script>
+
+
+    $("#contactForm").submit(function(e){
+        e.preventDefault(e);
+    });
+
+    $ ('#send').click(function(){
+        var formdata = $('#contactForm').serializeJSON();
+        var jdata = JSON.stringify(formdata);
+
+        $.ajax({
+            url: 'contact.php',
+            method: 'post',
+            dataType: 'json',
+            data: jdata,
+
+            success: function(response) {
+                    console.log(response);
+
+            }
+        });
+    })
+</script>
 <!-- //contact -->
 <script src="js/owl.carousel.js"></script>  
 	<script>
@@ -551,7 +589,6 @@ while ($i <= $arr['meta']['total_row_count']) {
 					<li><a class="page-scroll scroll" href="#home">Home</a></li>
 					<li><a class="page-scroll scroll" href="#about">About</a></li>
 					<li><a class="page-scroll scroll" href="#vans">vans</a></li>
-					<li><a class="page-scroll scroll" href="#gallery">Quote</a></li>
 					<li><a class="page-scroll scroll" href="#downloads">Downloads</a></li>
 					<li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>				<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
 					
@@ -623,7 +660,7 @@ while ($i <= $arr['meta']['total_row_count']) {
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
 					event.preventDefault();
-					console.log($('#nav-header').outerHeight());
+
 					$('html,body').animate({scrollTop:$(this.hash).offset().top - 88},1000);
 				});
 			});
