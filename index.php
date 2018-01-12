@@ -152,23 +152,17 @@ require_once 'modals.php';
                             echo '<div>';
                         }
                         ?>
-                        <div class="form-group">
-                            <label for="clientName" control-label">Client</label>
-                            <input type="text" class="form-control" id="clientName" name="clientName" <?php if (isset($contact['member']['name'])) {echo'value="'.$contact['member']['name'].'"';}?> readonly="readonly">
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label for="artistName" control-label">Artist Name</label>
-                            <input type="text" class="form-control" id="artistName" name="artistName" required>
-                            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                        <div>
+                            <input type="hidden" class="form-control" id="clientName" name="clientName" <?php if (isset($contact['member']['name'])) {echo'value="'.$contact['member']['name'].'"';}?> readonly="readonly">
                         </div>
                     </div>
                     <div class="">
                         <div class="form-group">
-                            <label for="startDate" control-label">Collection Date <span class="small">(From 9 a.m.)</span></label>
+                            <label for="startDate">Collection Date <span class="small">(From 9 a.m.)</span></label>
                             <input type="text" class="form-control" id="start" name="startDate">
                         </div>
                         <div class="form-group">
-                            <label for="endDate" control-label">Return Date <span class="small">(Before 10 a.m.)</span></label>
+                            <label for="endDate">Return Date <span class="small">(Before 10 a.m.)</span></label>
                             <input type="text" class="form-control" id="end" name="endDate">
                         </div>
                         <div class="form-group">
@@ -179,13 +173,7 @@ require_once 'modals.php';
                                 <option value="3">Maidstone</option>
                             </select>
                         </div>
-                        <?php if ($user == "Guest") {
-                            echo '<button  type="submit" class="btn" id="searchBtn" data-target="#searchModal" role="button" data-toggle="modal">Search</button>';
-                        } else {
-                            echo '<button type="submit" class="contact-form__button btn confirmbtn" id="searchBtn">Search</button>';
-                        }
-                        ?>
-
+                            <button type="submit" class="btn" id="searchBtn" data-target="#searchModal" role="button" data-toggle="modal">Search</button>
                     </div>
                 </form>
             </div>
@@ -291,7 +279,7 @@ require_once 'modals.php';
         e.preventDefault(e);
     });
 
-    $('#searchForm').validate({
+   $('#searchForm').validate({
         rules: {
             artistName: {
                 required: true,
