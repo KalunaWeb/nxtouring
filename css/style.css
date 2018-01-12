@@ -181,7 +181,7 @@ nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse {
     text-decoration: none;
     width: 62px;
     height: 62px;
-    background: transparent url(../images/arrows1.png) no-repeat left top;
+    background: transparent url(../images/top-arrow.png) no-repeat left top;
 }
 .callbacks_nav.next {
 	left: auto;
@@ -429,8 +429,8 @@ h3.agile-title {
 /*.nxl-button, .more-button a:hover {
     background: rgba(51, 51, 51, 0.82);
     border: solid 1px #1793d1;
-    color: #1793d1;*/
-}
+    color: #1793d1;
+}*/
 .nxl-button, .more-button a:focus{
 	outline:none;
 }
@@ -511,7 +511,7 @@ li.nxls-icon-left,li.nxls-icon-left a {
     color: #bdbdbd;
 }
 .nx-blog.nxl-button {
-    margin: 0em 0 0em 0;
+    margin: 0;
     display: inline-block;
 }
 i.nx-agile-share{
@@ -544,7 +544,6 @@ i.nx-agile-share{
     text-transform: capitalize;
     font-weight: 400;
     font-family: 'Ubuntu', sans-serif;
-    text-transform: uppercase;
     background: #fff;
     padding: 0.5em 1em;
 }
@@ -671,6 +670,17 @@ a.button.but3 {
     z-index: 2;
     line-height: 0.9em;
 }
+#newcli-container{
+    background-image: url("/images/e.jpg");
+    margin-top: 88px;
+}
+.newcli-form {
+    background-color: #fff;
+    min-height: 360px;
+    margin: 6em 2em;
+    padding: 1.6em;
+    border-radius: 4px;
+}
 span.sicon {
     font-size: 1.8em;
 }
@@ -713,7 +723,7 @@ span.sicon p{
 	cursor: pointer;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-	-khtml-user-select: none;
+	-html-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 }
@@ -1029,7 +1039,7 @@ span.sicon p{
 }
 .nxls_downloads_grid1_pos{
 	position:absolute;
-	right:0%;
+	right:0;
 	bottom:-5%;
 	background: none;
 }
@@ -1283,7 +1293,7 @@ ul.social-icons li {
     padding: 0.5em 0.5em 0;
 }
 .agileinfo-contact-left {
-    padding: 0em 3em 3em;
+    padding: 0 3em 3em;
 }
 .col-md-6.agileinfo-contact-left form {
     margin-top: 2em;
@@ -1464,7 +1474,7 @@ input.name {
 	height: 35px;
 	border: none;
 	text-indent: 100%;
-	background: url(../images/top-arrow.png) no-repeat 0px 0px;
+	background: url(../images/top-arrow.png) no-repeat 0 0;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-o-border-radius: 50%;
@@ -1627,7 +1637,7 @@ input.name {
 }
 @media screen and (max-width: 800px){
 	.navbar-default .navbar-nav > li > a {
-      letter-spacing: 0px;
+      letter-spacing: 0;
 	}
 	.nav > li > a {
 		padding: 10px;
@@ -1675,7 +1685,7 @@ input.name {
 		min-height: 350px;
 	}
 	.navbar-right {
-		margin: 0.7em 0em 0 0em;
+		margin: 0.7em 0 0 0;
 	}
 	.agileits-banner-info, .agileits-banner-info1, .agileits-banner-info2, .agileits-banner-info3, .agileits-banner-info4 {
 		padding: 21em 0 13em;
@@ -2056,7 +2066,7 @@ input.name {
 		max-width: 300px;
 	}
 	.agileinfo-contact-left {
-		padding: 0em 0em 3em;
+		padding: 0 0 3em;
 	}
     .hireButtonBox {
         float: left;
@@ -2149,7 +2159,7 @@ input.name {
 .form-signin input[type="text"],
 .form-signin input[type="password"],
 .form-signin input[type="email"],
-.form-search input[type="text"],
+.form-search input[type="text"]
 {
     font-size: 16px;
     height: 45px;

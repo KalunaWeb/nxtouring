@@ -4,207 +4,160 @@ require_once 'header.php';
 
 ?>
 
-<div id="loading">
-  <button class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
-</div>
+<div id="newcli-container">
+    <div class="container">
+        <div class="newcli-form">
+        <form id="clientForm" class="register">
+            <div class="row">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h1 class="modal-title">New Client Booking Form</h1>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <fieldset class="form-group">
+                            <legend>Company Details
+                            </legend>
+                            <div class="form-group has-feedback details">
+                                <label for="name" class="booking_form_main">Name *</label>
+                                <input class="form-control" type="text" id="name" name="name"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="emails[][address]">Email *</label>
+                                <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="phones[][number]">Telephone *</label>
+                                <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="links[][address]">Website *</label>
+                                <input class="form-control" type="text" id="links[][address]" name="links[][address]" value="http://"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4">
+                        <fieldset class="form-group">
+                            <legend>Company Address</legend>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="primary_address[street]">Address *</label>
+                                <textarea rows="" class="form-control" id="primary_address[street]" name="primary_address[street]"></textarea>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="primary_address[city]">City *</label>
+                                <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="primary_address[county]">County *</label>
+                                <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="primary_address[postcode]">PostCode *</label>
+                                <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4">
+                        <fieldset class=" form-group">
+                            <legend>Hire Details</legend>
+                            <div class="form-group details">
+                                <label class="booking_form_main control-label" for="type_id">Vehicle Type</label>
+                                <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
+                            </div>
+                            <div class="form-group details">
+                                <label class="booking_form_main control-label" for="startDate">Collection Date</label>
+                                <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
+                            </div>
+                            <div class="form-group details">
+                                <label class="booking_form_main control-label" for="endDate">Return Date</label>
+                                <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
+                            </div>
+                        </fieldset>
 
-<div id="enquiry-form-top">
-<form class="form" id="searchForm">
-<div class="col-md-3">
-        <div id = "searchBox3">
-          <h2>Artist Details</h2>
+                        <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <fieldset class="row4">
+                            <legend>Terms and Mailing
+                            </legend>
+                            <div class="agreement">
+                                <label for="terms">*  I accept the <a href="#">Terms and Conditions</a></label>
+                                <input class="checkbox" type="checkbox" id="terms" name="terms"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="agreement">
+                                <label for="agree">I want to receive news and offers from NX Touring</label>
+                                <input class="checkbox" type="checkbox" id="agree" name="agree"/>
 
-
-          <div class="form-group has-feedback">
-            <label for="artist" class="control-label">Artist Name</label>
-            <input type="text" class="form-control" id="artist" name="artist"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="website" class="control-label">Website</label>
-            <input type="url" class="form-control" id="website" name="website" placeholder="http://www."/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="fbook" class="control-label">Facebook</label>
-            <input type="text" class="form-control" id="fbook" name="fbook"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="twitter" class="control-label">Twitter</label>
-            <input type="text" class="form-control" id="twitter" name="twitter"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-
+                            </div>
+                            <div>
+                                <label class="obinfo">* obligatory fields
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div><button class="button">Book Now &raquo;</button></div>
+                </div>
+            </div>
+        </form>
         </div>
-</div>
-<div class="col-md-6">
-
-    <div id = "searchBox2">
- 		<div class="col-sm-6"> 
-         <h2>Client Details</h2>
-
-          <div class="form-group has-feedback">
-            <label for="name" class="control-label">Client Name</label>
-            <input type="text" class="form-control" id="name" name="name"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>  
-
-          <div class="form-group has-feedback">
-            <label for="emails[][address]" class="control-label">Email</label>
-            <input type="text" class="form-control" id="emails[][address]" name="emails[][address]" placeholder="abc@example.com"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>  
-          <div class="form-group has-feedback phoneUK">
-            <label for="phones[][number]" class="control-label">Telephone</label>
-            <input type="text" class="form-control" id="phones[][number]" name="phones[][number]"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="links[][address]" class="control-label">Website</label>
-            <input type="url" class="form-control" id="links[][address]" name="links[][address]" placeholder="http://www."/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-
-
+    </div>
         </div>
-
-		<div class="col-sm-6">
-        <div id="clienttwo">
-          <div class="form-group has-feedback">
-            <label for="primary_address[street]" class="control-label">Address</label>
-            <textarea rows="" type="text" class="form-control" id="primary_address[street]" name="primary_address[street]"></textarea>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="primary_address[city]" class="control-label">City</label>
-            <input type="text" class="form-control" id="primary_address[city]" name="primary_address[city]"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="primary_address[county]">County</label>
-            <select class="form-control" id="primary_address[county]" name="primary_address[county]">
-			  <option>Avon</option>
-			  <option>Bedfordshire</option>
-			  <option>Berkshire</option>
-			  <option>Borders</option>
-			  <option>Buckinghamshire</option>
-			  <option>Cambridgeshire</option>
-			  <option>Central</option>
-			  <option>Cheshire</option>
-			  <option>Cleveland</option>
-			  <option>Clwyd</option>
-			  <option>Cornwall</option>
-			  <option>County Antrim</option>
-			  <option>County Armagh</option>
-			  <option>County Down</option>
-			  <option>County Fermanagh</option>
-			  <option>County Londonderry</option>
-			  <option>County Tyrone</option>
-			  <option>Cumbria</option>
-			  <option>Derbyshire</option>
-			  <option>Devon</option>
-			  <option>Dorset</option>
-			  <option>Dumfries and Galloway</option>
-			  <option>Durham</option>
-			  <option>Dyfed</option>
-			  <option>East Sussex</option>
-			  <option>Essex</option>
-			  <option>Fife</option>
-			  <option>Gloucestershire</option>
-			  <option>Grampian</option>
-			  <option>Greater Manchester</option>
-			  <option>Gwent</option>
-			  <option>Gwynedd County</option>
-			  <option>Hampshire</option>
-			  <option>Herefordshire</option>
-			  <option>Hertfordshire</option>
-			  <option>Highlands and Islands</option>
-			  <option>Humberside</option>
-			  <option>Isle of Wight</option>
-			  <option>Kent</option>
-			  <option>Lancashire</option>
-			  <option>Leicestershire</option>
-			  <option>Lincolnshire</option>
-			  <option>Lothian</option>
-			  <option>Merseyside</option>
-			  <option>Mid Glamorgan</option>
-			  <option>Norfolk</option>
-			  <option>North Yorkshire</option>
-			  <option>Northamptonshire</option>
-			  <option>Northumberland</option>
-			  <option>Nottinghamshire</option>
-			  <option>Oxfordshire</option>
-			  <option>Powys</option>
-			  <option>Rutland</option>
-			  <option>Shropshire</option>
-			  <option>Somerset</option>
-			  <option>South Glamorgan</option>
-			  <option>South Yorkshire</option>
-			  <option>Staffordshire</option>
-			  <option>Strathclyde</option>
-			  <option>Suffolk</option>
-			  <option>Surrey</option>
-			  <option>Tayside</option>
-			  <option>Tyne and Wear</option>
-			  <option>Warwickshire</option>
-			  <option>West Glamorgan</option>
-			  <option>West Midlands</option>
-			  <option>West Sussex</option>
-			  <option>West Yorkshire</option>
-			  <option>Wiltshire</option>
-			  <option>Worcestershire</option>
-            </select>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
- 
-          <div class="form-group has-feedback postcodeUK">
-            <label for="primary_address[postcode]" class="control-label">Postcode</label>
-            <input type="text" class="form-control" id="primary_address[postcode]" name="primary_address[postcode]"/>
-            <span class="form-control-feedback glyphicon glyphicon-ok"></span>
-          </div>
-        </div>
-        <input name="primary_address[country_id]" type="hidden" value="1"/>
-        <input name="description" type="hidden" value=""/>
-        <input name="active" type="hidden" value=true>
-        <input name="locale" type="hidden" value="en-GB"/>
-        <input name="membership_type" type="hidden" value="Organisation"/>
-        <input name="tag_list" type="hidden" value=[]>
-        <input name="store_ids" type="hidden" value="<?php echo $_GET['store_ids']; ?>"/>
-        <input name="product_id" type="hidden" value="<?php echo $_GET['id']; ?>"/>
-        <input name="days" type="hidden" value="<?php echo $_GET['period']; ?>"/>
-        <input name="price" type="hidden" value="<?php echo $_GET['price']; ?>"/>
-        <input name="product_type" type="hidden" value="<?php echo $_GET['type']; ?>"/>
-          </div>
-
-        </div>
-</div>
-</div>
-<div class="col-md-3">
-        <div id = "searchBox3">
-          <h2>Booking Details</h2>
-          <div class="form-group has-feedback">
-            <label for="<? echo $_GET['id'];?>" class="control-label">Vehicle Type</label>
-            <input type="text" class="form-control" id="<? echo $_GET['id'];?>" name="<? echo $_GET['id'];?>" value="<?php echo $_GET['type']?>" readonly="readonly">
-          </div>
-          <div class="form-group has-feedback">
-            <label for="startDate" class="control-label">Collection Date</label>
-            <input type="text" class="form-control" id="startDate" name="startDate" value="<?php echo $_GET['start_date'];?>" readonly="readonly">
-          </div>
-          <div class="form-group has-feedback">
-            <label for="endDate" class="control-label">Return Date</label>
-            <input type="text" class="form-control" id="endDate" name="endDate" value="<?php echo $_GET['end_date'];?>" readonly="readonly">
-          </div>
-			<span class="small">Hire period finishes at 10am on the return date</span>
-           <button class="contact-form__button btn confirmbtn" type="submit_button" id="submit_button">Confirm Booking</button>
-
-          </form>
-        </div>
-</div>
-</div>
 
 <div id="error"></div>
 
+<!-- footer -->
+<div class="nx_agileits-footer">
+    <div class="container">
+        <div class="col-md-9 col-sm-12 wthree-footer-left">
+            <div class="navbar-header page-scroll">
+                <h2><a class="navbar-brand" href="index.php">NX Touring</a></h2>
+                <P id="footer-line">Luxury Vehicle Hire</P>
+            </div>
+            <div class="list-footer">
+                <ul class="footer-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
+                    <li><a class="page-scroll scroll" href="#home">Home</a></li>
+                    <li><a class="page-scroll scroll" href="#about">About</a></li>
+                    <li><a class="page-scroll scroll" href="#vans">vans</a></li>
+                    <li><a class="page-scroll scroll" href="#downloads">Downloads</a></li>
+                    <li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>				<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 wthree-footer-right">
+            <div class="agile-social-icons">
+                <ul>
+                    <li><a href="#" class="fa fa-instagram" aria-hidden="true"></a></li>
+                    <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+                    <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+                    <li><a href="#" class="fa fa-share-square" aria-hidden="true"></a></li>
+                </ul>
+            </div>
+            <div class="nx-mail">
+                <ul>
+                    <li><span class="fa fa-envelope icon" aria-hidden="true"></span><a href="mailto:info@nxtouring.co.uk">info@nxtouring.co.uk</a></li>
+                    <li><span class="fa fa-phone" aria-hidden="true"></span><p>07771 767367</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
 
 
 <script>
@@ -229,7 +182,7 @@ $(document).ready(function () {
             artist: {
                 required: true,
                 minlength: 2,
-                maxlength: 40,
+                maxlength: 40
             },
 
             website: {
@@ -242,12 +195,12 @@ $(document).ready(function () {
                 minlength: 3,
                 remote: {
                     url: "test-val.php",
-                    type: "post",
+                    type: "post"
                   }
             },
             "emails[][address]": {
                 required: true,
-                email: true,
+                email: true
                 //remote: {
                   //  url: "test-val.php",
                     //type: "post",
@@ -269,7 +222,7 @@ $(document).ready(function () {
             	maxlength: 100
             },
             "primary_address[city]": {
-            	required: true,
+            	required: true
 
             },
             "primary_address[postcode]": {
@@ -305,7 +258,7 @@ $(document).ready(function () {
             },
             "primary_address[postcode]": {
             	required: "Please enter your postcode"
-            },
+            }
         },
         highlight: function(element, errorClass, validClass) { 
           $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');

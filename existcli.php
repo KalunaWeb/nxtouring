@@ -6,12 +6,9 @@ require 'classes.php';
 
 $current = new current;
 
-$db = new db();
-$user = new Auth($db);
-
 if(isset($_SESSION['user_id'])) {
 
-	$row = $user -> getUser($_SESSION['user_id']);
+	$row = $current -> getContactById($_SESSION['user_id']);
 //Retrive Insurance Excess Waiver Object
 
 $deposit = $current->getService("40");
