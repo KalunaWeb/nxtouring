@@ -65,10 +65,10 @@ require_once 'modals.php';
 					<div id="slider" class="flexslider">
 					  <ul class="slides">
 						<li>
-							<img src="images/8.jpg" alt="" />
+							<img src="images/10.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/9.jpg" alt="" />
+							<img src="images/8.jpg" alt="" />
 						</li>
 						<li>
 							<img src="images/7.jpg" alt="" />
