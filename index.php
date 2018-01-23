@@ -587,7 +587,7 @@ while ($i <= $arr['meta']['total_row_count']) {
 			<div class="agile-social-icons">
 				<ul>
 					<li><a href="#" class="fa fa-instagram" aria-hidden="true"></a></li>
-					<li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+					<li><a href="https://www.facebook.com/nxtoursupport" class="fa fa-facebook" aria-hidden="true"></a></li>
 					<li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
 					<li><a href="#" class="fa fa-share-square" aria-hidden="true"></a></li>
 				</ul>

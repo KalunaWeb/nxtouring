@@ -41,10 +41,10 @@ while ($i <= $arr['meta']['total_row_count']) {
         <div class="modal-body">
         <div class="row">
           <div class="agileits-nxlayouts-info">
-          <div class="col-md-6">
+          <div class="col-md-6 col-xs-5">
             <img src="'.$url[$i].'" alt="" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-xs-7">
           <div class="price-bottom">
             <ul>
 				<li><span><img class="infoPic" src="/images/seats.png"></span>'.$seats[$i].'</li>
