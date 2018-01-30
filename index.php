@@ -68,16 +68,10 @@ require_once 'modals.php';
 							<img src="images/10.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/8.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/7.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/8.jpg" alt="" />
-						</li>
-						<li>
 							<img src="images/9.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/8.jpg" alt="" />
 						</li>
 						<li>
 							<img src="images/7.jpg" alt="" />
@@ -86,32 +80,32 @@ require_once 'modals.php';
 							<img src="images/6.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/7.jpg" alt="" />
+							<img src="images/5.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/8.jpg" alt="" />
+							<img src="images/4.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/9.jpg" alt="" />
+							<img src="images/3.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/2.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/1.jpg" alt="" />
 						</li>
 					  </ul>
 					</div>
 					<div id="carousel" class="flexslider">
 					  <ul class="slides">
 						<li>
-							<img src="images/8.jpg" alt="" />
+							<img src="images/10.jpg" alt="" />
 						</li>
 						<li>
 							<img src="images/9.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/7.jpg" alt="" />
-						</li>
-						<li>
 							<img src="images/8.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/9.jpg" alt="" />
 						</li>
 						<li>
 							<img src="images/7.jpg" alt="" />
@@ -120,13 +114,19 @@ require_once 'modals.php';
 							<img src="images/6.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/7.jpg" alt="" />
+							<img src="images/5.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/8.jpg" alt="" />
+							<img src="images/4.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/9.jpg" alt="" />
+							<img src="images/3.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/2.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/1.jpg" alt="" />
 						</li>
 					  </ul>
 					</div>
@@ -158,11 +158,11 @@ require_once 'modals.php';
                     </div>
                     <div class="">
                         <div class="form-group">
-                            <label for="startDate">Collection Date <span class="small">(From 9 a.m.)</span></label>
+                            <label for="start">Collection Date <span class="small">(From 9 a.m.)</span></label>
                             <input type="text" class="form-control" id="start" name="startDate">
                         </div>
                         <div class="form-group">
-                            <label for="endDate">Return Date <span class="small">(Before 10 a.m.)</span></label>
+                            <label for="end">Return Date <span class="small">(Before 10 a.m.)</span></label>
                             <input type="text" class="form-control" id="end" name="endDate">
                         </div>
                         <div class="form-group">
@@ -284,14 +284,14 @@ require_once 'modals.php';
             artistName: {
                 required: true,
                 minlength: 2,
-                maxlength: 40,
-            },
+                maxlength: 40
+            }
         },
         messages: {
             artistName: {
                 required: "Please enter a the Artists Name",
                 minlength: "Artist Name must be at least {0} characters long"
-            },
+            }
         },
         highlight: function(element, errorClass, validClass) {
             $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
@@ -548,7 +548,7 @@ while ($i <= $arr['meta']['total_row_count']) {
 					//remove class active
 					this
 					.$owlItems
-					.removeClass('active')
+					.removeClass('active');
 					//add class active
 					this
 					.$owlItems //owl internal $ object containing items
@@ -567,7 +567,7 @@ while ($i <= $arr['meta']['total_row_count']) {
 	<div class="container">
 		<div class="col-md-9 col-sm-12 wthree-footer-left">
 			<div class="navbar-header page-scroll">
-				<h2><a class="navbar-brand" href="index.html">NX Touring</a></h2>
+				<h2><a class="navbar-brand" href="index.php">NX Touring</a></h2>
 				<P id="footer-line">Luxury Vehicle Hire</P>
 			</div> 
 			<div class="list-footer">
