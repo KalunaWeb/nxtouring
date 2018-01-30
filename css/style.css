@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 body{
 	margin:0;
 	font-family: 'Roboto', sans-serif;
-	background: #fff;  
+	background: #1793d1;
 }
 body a{
 	transition: 0.5s all;
@@ -441,7 +441,7 @@ h3.agile-title {
 }
 .modal-header h4 {
     color: #212121;
-    font-size: 2em;
+    font-size: 1.7em;
     margin: 0;
     text-transform: uppercase;
     font-weight: 700;
@@ -671,7 +671,11 @@ a.button.but3 {
     line-height: 0.9em;
 }
 #newcli-container{
-    background-image: url("/images/e.jpg");
+    background: url(/images/e.jpg) no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     margin-top: 88px;
 }
 .newcli-form {
@@ -1875,7 +1879,7 @@ input.name {
 		font-size: 0.85em;
 	}
 	.price-bottom ul li {
-		font-size: 0.8em;
+		font-size: 0.6em;
 	}
 	.agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
 		width: 48.7%;
@@ -1958,6 +1962,17 @@ input.name {
 	}
     .hireButtonBox {
         float: left;
+    }
+    .infoPic {
+        display: none;
+    }
+
+    .price-bottom {
+        padding: 0;
+    }
+    .price-bottom ul li{
+        padding: 1em 0;
+        font-size: 0.6em;
     }
 
 }
