@@ -80,9 +80,24 @@ require_once 'header.php';
                                 <label class="booking_form_main control-label" for="endDate">Return Date</label>
                                 <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
                             </div>
+                            <div class="form-group details">
+                                <label class="booking_form_main control-label" for="options">Deposit Scheme</label>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary active">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked> £10 per day
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option2" autocomplete="off"> £600 Refundable
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group details">
+                                <label class="booking_form_main control-label" for="endDate">Hire Price</label>
+                                <input type="text" class="form-control" id="price" name="price" value="" readonly="readonly">
+                            </div>
                         </fieldset>
 
-                        <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
                     </div>
                 </div>
             </div>
@@ -108,6 +123,8 @@ require_once 'header.php';
                             </div>
                         </fieldset>
                     </div>
+                    <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
+
                     <div><button class="button">Book Now &raquo;</button></div>
                 </div>
             </div>

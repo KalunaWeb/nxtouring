@@ -99,7 +99,9 @@ $response .= '<div class="resultsBox col-md-10 col-xs-10">
 if(!isset($_SESSION['user_id'])) // Is user logged in
 {
  // No - create new user in booking
-  $response .= '<button id="van" class="btn vanSelect" data-toggle="modal" data-van-id="'.$id[$i].'" data-van-start="'.$date1.'" data-van-end="'.$date2.'" data-van-period="'.$days.'" data-van-name="'.$name[$i].'" data-van-store="'.$params["location"].'" data-van-price="'.$price[$i].'" href="#newCliModal">Book</button>';
+  //$response .= '<button id="van" class="btn vanSelect" data-toggle="modal" data-van-id="'.$id[$i].'" data-van-start="'.$date1.'" data-van-end="'.$date2.'" data-van-period="'.$days.'" data-van-name="'.$name[$i].'" data-van-store="'.$params["location"].'" data-van-price="'.$price[$i].'" href="#newCliModal">Book</button>';
+    //$response .= '<a class="btn btn-default btn-responsive" href="newcli.php?id='.$id[$i].'&start_date='.$date1.'&end_date='.$date2.'&period='.$days.'&type='.$name[$i].'&store_ids='.$params["location"].'&price='.$price[$i].'">Book</a>';
+    $response .= '<a class="btn vanSelect" data-van-id="'.$id[$i].'" data-van-start="'.$date1.'" data-van-end="'.$date2.'" data-van-period="'.$days.'" data-van-name="'.$name[$i].'" data-van-store="'.$params["location"].'" data-van-price="'.$price[$i].'" href="newcli.php">Book</a>';
 
 } else {
 // Yes, pass Users RMS id to booking
