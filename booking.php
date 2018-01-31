@@ -20,24 +20,24 @@ $params = json_decode($request,true); // true for return as array
 
 // build the client array
 
-$client["name"] = $params["name"];
-$client["emails"] = $params["emails"];
 $client["phones"] = $params["phones"];
+$client["emails"] = $params["emails"];
 $client["links"] = $params["links"];
 $client["primary_address"] = $params["primary_address"];
 $client["description"] = $params["description"];
-$client["active"] = $params["active"];
-$client["locale"] = $params["locale"];
-$client["membership_type"] = $params["membership_type"];
+$client["name"] = $params["name"];
+$client["active"] = true;
+$client["locale"] = "en-GB";
+$client["membership_type"] = "organisation";
 $client["membership"]["owned_by"] = $params["store_ids"];
 
 $new = json_encode($client);
 
 $data = '{"member":'.$new.'}';   
 
-//Retrive Insurance Excess Waiver Object
+//Retrieve Insurance Excess Waiver Object
 
-$deposit = $current->getService("40");
+$deposit = $current->getService($params['options']);
 
 // Send JSON encoded details to Current to Create new contact 
 
@@ -45,10 +45,10 @@ $result = $current->createContact($data);
 
 // Take the JSON result from current and turn it into a PHP accessable array so that we can access the ID #
 
-$client = json_decode($result,true);
+$newclient = json_decode($result,true);
 
 	$opportunity["store_id"] = $params["store_ids"];
-	$opportunity["member_id"] = $client["member"]["id"];
+	$opportunity["member_id"] = $newclient["member"]["id"];
 	$opportunity["tax_class_id"] = 1;
 	$opportunity["subject"] = $params["artist"];
 	$opportunity["starts_at"] = $params["startDate"];
@@ -64,7 +64,7 @@ $client = json_decode($result,true);
     $opportunity["owned_by"] = 1;
 
     $vehicle["opportunity_id"] = 5;
-    $vehicle["item_id"] = $params["product_id"];
+    $vehicle["item_id"] = $params["type_id"];
     $vehicle["item_type"] = "Product";
     $vehicle["opportunity_item_type"] = 0;
     $vehicle["transaction_type"] = 1;  // 1 = Rental, 2 = Sale, 3 = Service
@@ -84,9 +84,14 @@ $client = json_decode($result,true);
     $vehicle["description"] = "";  
     $vehicle["replacement_charge"] = "0.0";
 
+    if ($params['options'] == 40) {
+        $depositVal = $deposit["service"]["day_price"];
+    } else {
+        $depositVal = $deposit["service"]["flat_rate"];
+    }
 
     $IEW["opportunity_id"] = 5;
-    $IEW["item_id"] = 40; // Insurance excess waiver ID
+    $IEW["item_id"] = $params['options']; // Insurance excess waiver ID
     $IEW["item_type"] = "Service";
     $IEW["opportunity_item_type"] = 0;
     $IEW["transaction_type"] = 3; // 1 = Rental, 2 = Sale, 3 = Service
@@ -95,7 +100,7 @@ $client = json_decode($result,true);
     $IEW["quantity"] = 1;
     $IEW["revenue_group_id"] = null; // must be Null
     $IEW["rate_definition_id"] = 60;
-    $IEW["price"] = $deposit["service"]["day_price"];
+    $IEW["price"] = $depositVal;
     $IEW["discount_percent"] = "0.0";
     $IEW["starts_at"] = $params["startDate"];
     $IEW["ends_at"] = $params["endDate"];
@@ -113,10 +118,10 @@ $client = json_decode($result,true);
 
 // And send the data to Current to create the opportunity and populate it
 
-	$result= $current->createOpportunity($data); 
+	$result= $current->createOpportunity($data);
 
 // Create User in NX database
-
+/*
     $user -> createUser($params['name'], $params['emails'][0]['address'], $password, $result["opportunity"]["member_id"]);
 
     $client1["member_id"] = 1; // Current User ID
@@ -146,4 +151,7 @@ $client = json_decode($result,true);
     $response = $user -> login($params['emails'][0]['address'], $password); // Log new user in
 
     echo json_encode($response);
+*/
+
+echo json_encode($result);
 ?>

@@ -65,68 +65,68 @@ require_once 'modals.php';
 					<div id="slider" class="flexslider">
 					  <ul class="slides">
 						<li>
-							<img src="images/10.jpg" alt="" />
+							<img src="images/2a.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/9.jpg" alt="" />
+							<img src="images/1a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/4a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/6a.jpg" alt="" />
 						</li>
 						<li>
 							<img src="images/8.jpg" alt="" />
 						</li>
 						<li>
+							<img src="images/4a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/5a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/7a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/3a.jpg" alt="" />
+						</li>
+						<li>
 							<img src="images/7.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/6.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/5.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/4.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/3.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/2.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/1.jpg" alt="" />
 						</li>
 					  </ul>
 					</div>
 					<div id="carousel" class="flexslider">
 					  <ul class="slides">
 						<li>
-							<img src="images/10.jpg" alt="" />
+							<img src="images/2a.jpg" alt="" />
 						</li>
 						<li>
-							<img src="images/9.jpg" alt="" />
+							<img src="images/1a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/4a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/6a.jpg" alt="" />
 						</li>
 						<li>
 							<img src="images/8.jpg" alt="" />
 						</li>
 						<li>
+							<img src="images/4a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/5a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/7a.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/3a.jpg" alt="" />
+						</li>
+						<li>
 							<img src="images/7.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/6.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/5.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/4.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/3.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/2.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/1.jpg" alt="" />
 						</li>
 					  </ul>
 					</div>
@@ -184,6 +184,7 @@ require_once 'modals.php';
 
 
 <script>
+    var dateNow = new Date();
     $('#start').daterangepicker({
 
         "autoApply": true,
@@ -253,27 +254,52 @@ require_once 'modals.php';
     });
 
     $('#searchModal').on('click', '.vanSelect', function() {
-        var $el = $(this);
-        var $id = $el.data('van-id');
-        var $start = $el.data('van-start');
-        var $end = $el.data('van-end');
-        var $period = $el.data('van-period');
-        var $store = $el.data('van-store');
-        var $name = $el.data('van-name');
-        var $price = $el.data('van-price');
+        // pull data from the button clicked
 
-        $('#type_id').attr('name', $id);
-        $('#type_id').val($name);
-        $('#startDate').val($start);
-        $('#endDate').val($end);
-        $('#store').val($store);
-        $('#product').val($id);
-        $('#days').val($period);
-        $('#price').val($price);
-        $('#prod_type').val($name);
-    });
+        var el = $(this);
+        var vanurl = el.data('van-url');
+        var id = el.data('van-id');
+        var start = el.data('van-start');
+        var end = el.data('van-end');
+        var period = el.data('van-period');
+        var store = el.data('van-store');
+        var name = el.data('van-name');
+        var price = el.data('van-price');
+        var days = el.data('van-days');
+        var hirefee = el.data('van-hirefee');
 
+        // Create Form and append it to the body
 
+        var $form = $("<form/>").attr("id", "searchForm")
+            .attr("action", vanurl)
+            .attr("method", "post");
+        $("body").append($form);
+
+        // Add values to be sent
+
+        AddParameter($form, "prod_type", name);
+        AddParameter($form, "startDate",start);
+        AddParameter($form, "type_id",id);
+        AddParameter($form, "endDate", end);
+        AddParameter($form, "days", period);
+        AddParameter($form, "price", price);
+        AddParameter($form, "store", store);
+        AddParameter($form, "cdays", days);
+        AddParameter($form, "hirefee", hirefee);
+        // Send the form
+
+        $form[0].submit();
+
+  });
+
+function AddParameter(form, name, value) {
+    var input = $("<input />").attr("type", "hidden")
+        .attr("name", name)
+        .attr("value", value);
+
+    form.append(input);
+
+}
 
     $("#searchForm").submit(function(e){
         e.preventDefault(e);

@@ -1,17 +1,24 @@
 <?php
 
 require_once 'header.php';
+if (isset($_POST['startDate'])){
+    $start = DateTime::createFromFormat('Y-m-d H:i', $_POST['startDate']);
+    $newStart = $start->format('d-m-Y g:i A');
+}
+if (isset($_POST['endDate'])) {
+    $end = DateTime::createFromFormat('Y-m-d H:i', $_POST['endDate']);
+    $newEnd = $end->format('d-m-Y g:i A');
+}
 
 ?>
 
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
-        <form id="clientForm" class="register">
+        <form id="newCliForm" class="register">
             <div class="row">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h1 class="modal-title">New Client Booking Form</h1>
+                     <h1 class="modal-title">New Client Booking Form</h1>
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-4">
@@ -19,8 +26,13 @@ require_once 'header.php';
                             <legend>Company Details
                             </legend>
                             <div class="form-group has-feedback details">
-                                <label for="name" class="booking_form_main">Name *</label>
+                                <label for="name" class="booking_form_main">Invoice Name *</label>
                                 <input class="form-control" type="text" id="name" name="name"/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <label class="booking_form_main" for="artist">Artist *</label>
+                                <input class="form-control" type="text" id="artist" name="artist"/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
@@ -70,31 +82,35 @@ require_once 'header.php';
                             <legend>Hire Details</legend>
                             <div class="form-group details">
                                 <label class="booking_form_main control-label" for="type_id">Vehicle Type</label>
-                                <input type="text" class="form-control" id="type_id" name="" value="" readonly="readonly">
+                                <input type="text" class="form-control" id="type_id" name="" value="<?php echo $_POST["prod_type"];?>" readonly="readonly">
                             </div>
                             <div class="form-group details">
                                 <label class="booking_form_main control-label" for="startDate">Collection Date</label>
-                                <input type="text" class="form-control" id="startDate" name="startDate" value="" readonly="readonly">
+                                <input type="text" class="form-control" id="startDate" name="startDate" value="<?php echo $newStart;?>" readonly="readonly">
                             </div>
                             <div class="form-group details">
                                 <label class="booking_form_main control-label" for="endDate">Return Date</label>
-                                <input type="text" class="form-control" id="endDate" name="endDate" value="" readonly="readonly">
+                                <input type="text" class="form-control" id="endDate" name="endDate" value="<?php echo $newEnd;?>" readonly="readonly">
+                            </div>
+                            <div class="form-group details">
+                                <label class="booking_form_main control-label" for="price">Hire Price</label>
+                                <input type="text" class="form-control" id="hireprice" name="hireprice" value="<?php echo $_POST["hirefee"].'.00'?>" readonly="readonly">
                             </div>
                             <div class="form-group details">
                                 <label class="booking_form_main control-label" for="options">Deposit Scheme</label>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary active">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" checked> £10 per day
+                                        <input type="radio" name="options" id="option1" autocomplete="off" value="40" checked> £10 per day
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> £600 Refundable
+                                        <input type="radio" name="options" id="option2" autocomplete="off" value="41"> £600 Refundable
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group details">
-                                <label class="booking_form_main control-label" for="endDate">Hire Price</label>
-                                <input type="text" class="form-control" id="price" name="price" value="" readonly="readonly">
+                                <label class="booking_form_main control-label" for="price">Total Price</label>
+                                <input type="text" class="form-control" id="totprice" name="totprice" value="<?php echo ($_POST["hirefee"]+($_POST["cdays"]*10)).'.00 + vat'?>" readonly="readonly">
                             </div>
                         </fieldset>
 
@@ -115,8 +131,12 @@ require_once 'header.php';
                             <div class="agreement">
                                 <label for="agree">I want to receive news and offers from NX Touring</label>
                                 <input class="checkbox" type="checkbox" id="agree" name="agree"/>
-
                             </div>
+                            <input type="hidden" name="type_id" id="type_id" value="<?php echo $_POST['type_id'];?>"/>
+                            <input type="hidden" name="days" id="days" value="<?php echo $_POST['days'];?>"/>
+                            <input type="hidden" name="store_ids" id="store_ids" value="<?php echo $_POST['store'];?>"/>
+                            <input type="hidden" name="primary_address[country_id]" id="primary_address[country_id]" value="1"/>
+                            <input type="hidden" name="price" id="price" value="<?php echo $_POST['price'];?>"/>
                             <div>
                                 <label class="obinfo">* obligatory fields
                                 </label>
@@ -125,13 +145,13 @@ require_once 'header.php';
                     </div>
                     <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
 
-                    <div><button class="button">Book Now &raquo;</button></div>
+                    <div><button id="newCliFormBtn" class="button">Book Now &raquo;</button></div>
                 </div>
             </div>
         </form>
         </div>
     </div>
-        </div>
+</div>
 
 <div id="error"></div>
 
@@ -151,7 +171,8 @@ require_once 'header.php';
                     <li><a class="page-scroll scroll" href="#about">About</a></li>
                     <li><a class="page-scroll scroll" href="#vans">vans</a></li>
                     <li><a class="page-scroll scroll" href="#downloads">Downloads</a></li>
-                    <li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>				<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
+                    <li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>
+                    <li><a class="page-scroll scroll" href="#contact">Contact</a></li>
 
                 </ul>
             </div>
@@ -179,140 +200,161 @@ require_once 'header.php';
 
 <script>
 
-jQuery.validator.addMethod('phoneUK', function(phone_number, element) {
-return this.optional(element) || phone_number.length > 9 &&
-phone_number.match(/^(((\+44)? ?(\(0\))? ?)|(0))( ?[0-9]{3,4}){3}$/);
-}, 'Please specify a valid phone number');
+    jQuery.validator.addMethod('phoneUK', function(phone_number, element) {
+        return this.optional(element) || phone_number.length > 9 &&
+            phone_number.match(/^(((\+44)? ?(\(0\))? ?)|(0))( ?[0-9]{3,4}){3}$/);
+    }, 'Please specify a valid phone number');
 
-jQuery.validator.addMethod("postcodeUK", function(value, element) {
-return this.optional(element) || /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i.test(value);
-}, "Please specify a valid Postcode");
+    jQuery.validator.addMethod("postcodeUK", function(value, element) {
+        return this.optional(element) || /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i.test(value);
+    }, "Please specify a valid Postcode");
 
 
-$(document).ready(function () {
-    $("#searchForm").submit(function(e){
-          e.preventDefault(e);
-            });
+    $(document).ready(function () {
 
-    $("#searchForm").validate({
-        rules: {
-            artist: {
-                required: true,
-                minlength: 2,
-                maxlength: 40
-            },
+        $("#newCliForm").submit(function(e){
+            e.preventDefault();
+        });
 
-            website: {
-            	required: false,
-            	url: true
+        $('input:radio[name=options]').change(function() {
+            if (this.value == 40) {
+                var total = parseInt('<?php echo $_POST["hirefee"]?>') + (parseInt('<?php echo $_POST["cdays"]?>')*10);
+                total = total + ".00 + vat";
+                $("#totprice").val(total);
+            }
+            if (this.value == 41) {
+                var total = parseInt('<?php echo $_POST["hirefee"]?>') + 600;
+                total = total + ".00 + vat";
+                $("#totprice").val(total);
+            }
+        });
 
-            },
-            name: {
-                required: true,
-                minlength: 3,
-                remote: {
-                    url: "test-val.php",
-                    type: "post"
-                  }
-            },
-            "emails[][address]": {
-                required: true,
-                email: true
-                //remote: {
-                  //  url: "test-val.php",
+        $("#newCliForm").validate({
+            rules: {
+                artist: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 40
+                },
+
+                name: {
+                    required: true,
+                    minlength: 3,
+                    remote: {
+                        url: "test-val.php",
+                        type: "post"
+                    }
+                },
+                "emails[][address]": {
+                    required: true,
+                    email: true
+                    //remote: {
+                    //  url: "test-val.php",
                     //type: "post",
-                  //}
-            },
-            "phones[][number]": {
-            	required: true,
-            	phoneUK: true,
-            	minlength: 10,
-              maxlength: 12
-            },
-            "links[][address]": {
-            	required: true,
-            	url: true
-            },
-            "primary_address[street]": {
-            	required: true,
-            	minlength: 8,
-            	maxlength: 100
-            },
-            "primary_address[city]": {
-            	required: true
+                    //}
+                },
+                "phones[][number]": {
+                    required: true,
+                    phoneUK: true,
+                    minlength: 10,
+                    maxlength: 12
+                },
+                "links[][address]": {
+                    required: true,
+                    url: true
+                },
+                "primary_address[street]": {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 100
+                },
+                "primary_address[city]": {
+                    required: true
 
+                },
+                "primary_address[county]": {
+                    required: true
+                },
+                "primary_address[postcode]": {
+                    required: true,
+                    postcodeUK: true
+                },
+                terms: {
+                    required: true
+                }
             },
-            "primary_address[postcode]": {
-            	required: true,
-              postcodeUK: true
+            messages: {
+                artist: {
+                    required: "Please enter a the Artists Name",
+                    minlength: "Artist Name must be at least {0} characters long"
+                },
+                website: {
+                    url: "Please enter a valid URL (include the http:// part)"
+
+                },
+                name: {
+                    required: "Please enter your name / company name",
+                    minlength: "Please enter at least 3 characters"
+                },
+                "emails[][address]": {
+                    required: "Please input your email address",
+                    email: "Please input a valid email address"
+                },
+                "links[][address]": {
+                    url: "Please enter a valid URL (include the http:// part)"
+                },
+                "primary_address[street]": {
+                    required: "Please enter your address"
+                },
+                "primary_address[city]": {
+                    required: "Please enter your city"
+                },
+                "primary_address[county]": {
+                    required: "Please enter your county"
+                },
+                "primary_address[postcode]": {
+                    required: "Please enter your postcode"
+                },
+                terms:{
+                    required: "Please read and agree to our terms and conditions"
+                }
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                $(element).addClass(errorClass).removeClass(validClass);
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function(element) {
+                $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-remove').addClass('glyphicon-ok');
+                element.closest('.form-group').removeClass('has-error').addClass('has-success');
+                $(element).remove();
+            },
+            onkeyup: false, //turn off auto validate whilst typing
+            submitHandler: function (form) {
+
+                var formdata = $('#newCliForm').serializeJSON();
+                var jdata = JSON.stringify(formdata);
+
+                $.ajax({
+                    url: 'booking.php',
+                    method: 'post',
+                    dataType: 'json',
+                    data: jdata,
+                    beforeSend: function(){
+                        $("#loading").show();
+                    },
+                    success: function(response) {
+                        if (response == 'ok') {
+                            alert ("Thank you for your business, You will receive a confirmation email shortly");
+                            window.location.href = "index.php";
+                        } else {
+                            alert ("There was an error, please try later or contact our office");
+                        }
+
+                    }
+                });
             }
-        },
-        messages: {
-            artist: {
-                required: "Please enter a the Artists Name",
-                minlength: "Password must be at least {0} characters long"
-            },
-            website: {
-            	url: "Please enter a valid URL (include the http:// part)"
+        });
+    });
 
-            },
-            name: {
-                required: "Please enter your name / company name",
-                minlength: "Please enter at least 3 characters"
-            },
-            "emails[][address]": {
-              required: "Please input your email address",
-              email: "Please input a valid email address"
-            },
-            "links[][address]": {
-            	url: "Please enter a valid URL (include the http:// part)"
-            },
-            "primary_address[street]": {
-            	required: "Please enter your address"
-            },
-            "primary_address[city]": {
-            	required: "Please enter your city"
-            },
-            "primary_address[postcode]": {
-            	required: "Please enter your postcode"
-            }
-        },
-        highlight: function(element, errorClass, validClass) { 
-          $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
-          $(element).addClass(errorClass).removeClass(validClass);
-          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-        },
-        success: function(element) {
-          $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-remove').addClass('glyphicon-ok');
-          element.closest('.form-group').removeClass('has-error').addClass('has-success');
-          $(element).remove();
-        },
-        onkeyup: false, //turn off auto validate whilst typing
-        submitHandler: function (form) {
-
-			 	var formdata = $('#searchForm').serializeJSON();
-  			var jdata = JSON.stringify(formdata);
-
-			 	$.ajax({
-    			url: 'booking.php',
-    			method: 'post',
-    			dataType: 'json',
-    			data: jdata,
-          beforeSend: function(){
-            $("#loading").show();
-          },
-    			success: function(response) {
-            if (response == 'ok') {
-              alert ("Thank you for your business, You will receive a confirmation email shortly");
-            window.location.href = "index.php";
-          } else {
-            alert ("There was an error, please try later or contact our office");
-          }
-
-    			}     				
-  		});
-    }
-  });
-});
 </script>
-
