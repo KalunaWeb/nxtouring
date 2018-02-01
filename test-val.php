@@ -1,9 +1,12 @@
 <?php
+session_start();
+require_once("classlib.php");
 
+if(isset($_SESSION['user_id'])) {
+    echo json_encode("true");
+} else {
 
-include 'classlib.php';
-
-$current = new current;
+    $current = new current;
 
 // If Name is set, send name to Current
 
@@ -15,14 +18,14 @@ $current = new current;
 
 // If there is a result then name already exists
 
-    if ($name['meta']['total_row_count'] != 0 ){
+    if ($name['meta']['total_row_count'] != 0) {
 
-      echo json_encode("Name already exists. Please Log In");
+        echo json_encode("Name already exists. Please Log In");
 
     } else {
-      echo json_encode("true");
-  }
-
+        echo json_encode("true");
+    }
+}
 
 
 ?>

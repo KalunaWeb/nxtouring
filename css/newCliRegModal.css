@@ -61,9 +61,9 @@ form.register label.booking_form_main{
     margin-top:2px;
 }
 form.register textarea{
-    width: 11.2em;
+    width: 14.0em;
     color: #505050;
-
+    font-size: 0.8em;
 }
 form.register input{
     width: 14em;
@@ -79,6 +79,7 @@ form.register input[type=text]
     border: 1px solid #E1E1E1;
     height: 18px;
     font-size: 0.8em;
+    padding: 0;
 }
 form.register input[type=password]
 {
@@ -92,7 +93,8 @@ input:focus, select:focus, textarea:focus{
 
 .details {
     margin-left: 1.8em;
-    padding: 2px 0 5px 0;
+    padding: 2px 0 2px 0;
+    float: left;
 }
 
 form.register fieldset.row4
@@ -113,6 +115,10 @@ form.register fieldset.row4
     margin-top:6px;
     float: right;
 }
+.misc {
+    width: 150px;
+    padding-left: 25px;
+}
 .button
 {
     padding: 8px 10px 8px;
@@ -128,14 +134,14 @@ form.register fieldset.row4
 }
 form.register .infobox{
     float:right;
-    margin-top:20px;
+    margin-top:35px;
     border: 1px solid #F1F1F1;
     background: #F2FEFE;
     padding: 2px 5px;
     font-size: 0.8em;
 }
 form.register label.obinfo{
-
+    margin-top: 30px;
     padding:3px;
     font-style:italic;
 }

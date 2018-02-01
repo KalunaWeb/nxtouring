@@ -1,11 +1,9 @@
 <?php
 
 require 'classlib.php';
-require 'classes.php';
+
 session_start();
 $rms = "";
-$database = new db();
-$user = new Auth($database);
 
 $current = new current();
 
@@ -15,12 +13,12 @@ $multiplier = [0,1,2,3,4,4,4,4,5,6,7,8,8,8,8,9,10,11,12,12,12,12,13,14,15,16,16,
 $request = file_get_contents("php://input"); // gets the requested dates and location from index
 $params = json_decode($request,true); // true for return as array
 
-//$date1 = date("l-d-F-Y",strtotime($params["startDate"]));
 $date1 = date("Y-m-d H:i",strtotime($params["startDate"]));
 
 $date2 = date("Y-m-d H:i",strtotime($params["endDate"]));
 
 $diff = abs(strtotime($date2) - strtotime($date1));
+$collectionHour = date("H", strtotime($params["startDate"]));
 $rtnHour = date("H",strtotime($params["endDate"]));
 
 $years   = floor($diff / (365*60*60*24));  
@@ -32,6 +30,9 @@ $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60
 
 if ($rtnHour > 10) {
 	$days++;
+}
+if ($rtnHour < $collectionHour) {
+    $days++;
 }
 
 $data2 = '{
@@ -94,27 +95,9 @@ $response .= '<div class="resultsBox col-md-10 col-xs-10">
 <div class="pictureBox"><img src='.$thumb_url[$i].'></div>
 </div>
 <div class="col-md-5 col-xs-5 descBox"><h5>'.$name[$i].'</h5></br>£ '.$hirefee[$i].'.00<span class="xtraSmall"> + Vat</span></div>
-<div class="col-md-2 col-xs-1 hireButtonBox">';
-
-if(!isset($_SESSION['user_id'])) // Is user logged in
-{
- // No - create new user in booking
-  //$response .= '<button id="van" class="btn vanSelect" data-toggle="modal" data-van-id="'.$id[$i].'" data-van-start="'.$date1.'" data-van-end="'.$date2.'" data-van-period="'.$days.'" data-van-name="'.$name[$i].'" data-van-store="'.$params["location"].'" data-van-price="'.$price[$i].'" href="#newCliModal">Book</button>';
-    //$response .= '<a class="btn btn-default btn-responsive" href="newcli.php?id='.$id[$i].'&start_date='.$date1.'&end_date='.$date2.'&period='.$days.'&type='.$name[$i].'&store_ids='.$params["location"].'&price='.$price[$i].'">Book</a>';
-    $response .= '<button class="btn btn-default btn-responsive vanSelect" data-van-url="newcli.php" data-van-id="'.$id[$i].'" data-van-start="'.$date1.'" data-van-end="'.$date2.'" data-van-period="'.$days.'"  data-van-days="'.$multiplier[$days].'"data-van-name="'.$name[$i].'" data-van-store="'.$params["location"].'" data-van-price="'.$price[$i].'" data-van-hirefee="'.$hirefee[$i].'">Book</button>';
-
-} else {
-// Yes, pass Users RMS id to booking
-  $row = $current -> getContactById($_SESSION['user_id']);
-
-
-  $rms = $row['rms_id'];
-
-  $response .= '<a class="btn btn-default btn-responsive" href="existcli.php?id='.$id[$i].'&start_date='.$date1.'&end_date='.$date2.'&period='.$days.'&type='.$name[$i].'&store_ids='.$params["location"].'&price='.$price[$i].'&rms_id='.$rms.'&artist='.$params["artistName"].'">Book</a>';
-
-}
-
-$response .= '</div><div class="clearfix"></div>
+<div class="col-md-2 col-xs-1 hireButtonBox">
+<button class="btn btn-default btn-responsive vanSelect" data-van-url="newcli.php" data-van-id="'.$id[$i].'" data-van-start="'.$date1.'" data-van-end="'.$date2.'" data-van-period="'.$days.'"  data-van-days="'.$multiplier[$days].'"data-van-name="'.$name[$i].'" data-van-store="'.$params["location"].'" data-van-price="'.$price[$i].'" data-van-hirefee="'.$hirefee[$i].'">Book</button>
+</div><div class="clearfix"></div>
 </div></div>';
 }
 $i ++;

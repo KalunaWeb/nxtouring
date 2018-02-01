@@ -1,6 +1,20 @@
 <?php
 
+require_once("classlib.php");
+
+if(isset($_SESSION['user_id'])) {
+
+   $current = new current();
+
+   $contact = $current -> getContactById($_SESSION['user_id']);
+
+   $user = $contact['member']['name'];
+
+}
+
 require_once 'header.php';
+
+
 if (isset($_POST['startDate'])){
     $start = DateTime::createFromFormat('Y-m-d H:i', $_POST['startDate']);
     $newStart = $start->format('d-m-Y g:i A');
@@ -27,7 +41,9 @@ if (isset($_POST['endDate'])) {
                             </legend>
                             <div class="form-group has-feedback details">
                                 <label for="name" class="booking_form_main">Invoice Name *</label>
-                                <input class="form-control" type="text" id="name" name="name"/>
+                                <input class="form-control" type="text" id="name" name="name"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['name'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
@@ -37,17 +53,26 @@ if (isset($_POST['endDate'])) {
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="emails[][address]">Email *</label>
-                                <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"/>
+                                <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['emails'][0]['address'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="phones[][number]">Telephone *</label>
-                                <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"/>
+                                <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['phones'][0]['number'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="links[][address]">Website *</label>
-                                <input class="form-control" type="text" id="links[][address]" name="links[][address]" value="http://"/>
+                                <input class="form-control" type="text" id="links[][address]" name="links[][address]"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="http://'.$contact['member']['links'][0]['address'].'" readonly="readonly"';}
+                                        else {
+                                        echo 'value="http://"';
+                                        }?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                         </fieldset>
@@ -57,32 +82,46 @@ if (isset($_POST['endDate'])) {
                             <legend>Company Address</legend>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="primary_address[street]">Address *</label>
-                                <textarea rows="" class="form-control" id="primary_address[street]" name="primary_address[street]"></textarea>
+                                <textarea rows="" class="form-control" id="primary_address[street]" name="primary_address[street]"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo ' readonly="readonly"';}?>
+                                >
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo $contact['member']['primary_address']['street'];
+                                    }?>
+                                </textarea>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="primary_address[city]">City *</label>
-                                <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
+                                <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['primary_address']['city'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="primary_address[county]">County *</label>
-                                <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
+                                <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['primary_address']['county'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="primary_address[postcode]">PostCode *</label>
-                                <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
+                                <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['primary_address']['postcode'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
+
                         </fieldset>
                     </div>
                     <div class="col-md-4">
                         <fieldset class=" form-group">
                             <legend>Hire Details</legend>
                             <div class="form-group details">
-                                <label class="booking_form_main control-label" for="type_id">Vehicle Type</label>
-                                <input type="text" class="form-control" id="type_id" name="" value="<?php echo $_POST["prod_type"];?>" readonly="readonly">
+                                <label class="booking_form_main control-label" for="prod_type">Vehicle Type</label>
+                                <input type="text" class="form-control" id="prod_type" name="prod_type" value="<?php echo $_POST["prod_type"];?>" readonly="readonly">
                             </div>
                             <div class="form-group details">
                                 <label class="booking_form_main control-label" for="startDate">Collection Date</label>
@@ -120,6 +159,34 @@ if (isset($_POST['endDate'])) {
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-4">
+                        <fieldset class="">
+                            <legend>Misc.
+                            </legend>
+                        <div class="form-group details drivers">
+                            <label class="booking_form_main" for="drivers">Number of Drivers</label>
+                            <select class="form-control" id="drivers" name="drivers">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                            </select>
+                        </div>
+                            <div class="misc">
+                                <label for="collection">Customer Collecting</label>
+                                <input class="checkbox pull-right" type="checkbox" id="collection" name="collection" checked/>
+                            </div>
+                            <div class="misc">
+                                <label for="delivery">Customer Returning</label>
+                                <input class="checkbox pull-right" type="checkbox" id="delivery" name="delivery" checked/>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4">
                         <fieldset class="row4">
                             <legend>Terms and Mailing
                             </legend>
@@ -137,15 +204,17 @@ if (isset($_POST['endDate'])) {
                             <input type="hidden" name="store_ids" id="store_ids" value="<?php echo $_POST['store'];?>"/>
                             <input type="hidden" name="primary_address[country_id]" id="primary_address[country_id]" value="1"/>
                             <input type="hidden" name="price" id="price" value="<?php echo $_POST['price'];?>"/>
-                            <div>
-                                <label class="obinfo">* obligatory fields
-                                </label>
-                            </div>
+
                         </fieldset>
                     </div>
-                    <div class="infobox"><p>Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</p></div>
-
-                    <div><button id="newCliFormBtn" class="button">Book Now &raquo;</button></div>
+                    <div class="col-md-4">
+ <!--                       <div class="infobox">Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</div>-->
+                        <div>
+                            <label class="obinfo">* obligatory fields
+                            </label>
+                        </div>
+                        <div><button id="newCliFormBtn" class="button">Book Now &raquo;</button></div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -167,12 +236,12 @@ if (isset($_POST['endDate'])) {
                 <ul class="footer-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
-                    <li><a class="page-scroll scroll" href="#home">Home</a></li>
-                    <li><a class="page-scroll scroll" href="#about">About</a></li>
-                    <li><a class="page-scroll scroll" href="#vans">vans</a></li>
-                    <li><a class="page-scroll scroll" href="#downloads">Downloads</a></li>
-                    <li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>
-                    <li><a class="page-scroll scroll" href="#contact">Contact</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#home">Home</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#about">About</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#vans">vans</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#downloads">Downloads</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#testimonials">Testimonials</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#contact">Contact</a></li>
 
                 </ul>
             </div>
@@ -236,7 +305,6 @@ if (isset($_POST['endDate'])) {
                     minlength: 2,
                     maxlength: 40
                 },
-
                 name: {
                     required: true,
                     minlength: 3,
@@ -288,6 +356,7 @@ if (isset($_POST['endDate'])) {
                     required: "Please enter a the Artists Name",
                     minlength: "Artist Name must be at least {0} characters long"
                 },
+
                 website: {
                     url: "Please enter a valid URL (include the http:// part)"
 

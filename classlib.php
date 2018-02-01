@@ -31,6 +31,30 @@ class current {
 	{
 		return hash_hmac('sha512',$data,$this->siteKey);
 	}
+    public function createClientData()
+    {
+        // Generate Password
+        $characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $user["password"]='';
+
+        for ($p=0; $p<8; $p++) {
+            $user["password"].= $characters[mt_rand(0,strlen($characters)-1)];
+        }
+
+        //Generate user salt
+        $user["user_salt"] = $this->randomString();
+
+        //Salt and Hash the password
+        $password = $user["user_salt"] . $user["password"];
+        $user["salted_password"] = $this->hashData($password);
+
+        //Create verification code
+        $user["verification_code"] = $this->randomString();
+
+        return $user;
+
+
+    }
 	public function getDocuments() {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://api.current-rms.com/api/v1/products/49/prepare_document.pdf?document_id=25");
@@ -322,7 +346,7 @@ class current {
 				$token = $this->hashData($token);
 						
 			//Setup sessions vars
-				session_start();
+				//session_start();
 				$_SESSION['token'] = $token;
 				$_SESSION['user_id'] = $contact['members'][0]['id'];
 

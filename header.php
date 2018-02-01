@@ -142,12 +142,12 @@ $old = array_reverse($archive['opportunities']);
 						<ul class="nav navbar-nav navbar-right">
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 							<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
-							<li><a class="page-scroll scroll" href="#home">Home</a></li>
-							<li><a class="page-scroll scroll" href="#about">About</a></li>
-							<li><a class="page-scroll scroll" href="#vans">Vans</a></li>
-							<li><a class="page-scroll scroll" href="#downloads">Downloads</a></li>
-							<li><a class="page-scroll scroll" href="#testimonials">Testimonials</a></li>
-							<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
+							<li><a class="page-scroll scroll" href="index.php#home">Home</a></li>
+							<li><a class="page-scroll scroll" href="index.php#about">About</a></li>
+							<li><a class="page-scroll scroll" href="index.php#vans">Vans</a></li>
+							<li><a class="page-scroll scroll" href="index.php#downloads">Downloads</a></li>
+							<li><a class="page-scroll scroll" href="index.php#testimonials">Testimonials</a></li>
+							<li><a class="page-scroll scroll" href="index.php#contact">Contact</a></li>
 
 <?php if ($user == "Guest") {
     	echo '<li><a class="page-scroll scroll" data-toggle="modal" href="#modalLogIn">Log in</a></li>';

@@ -434,6 +434,22 @@ h3.agile-title {
 .nxl-button, .more-button a:focus{
 	outline:none;
 }
+
+.form-group label {
+    float: left;
+    text-align: left;
+    font-weight: normal;
+}
+
+.drivers select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    font-size: 0.8em;
+    height: auto;
+    padding: 0 5px;
+
+}
 /*-- about --*/
 /*-- modal --*/
 .agileits-nxlayouts-info img{
