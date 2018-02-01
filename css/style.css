@@ -75,6 +75,11 @@ i.nx-logo {
 	padding: 0 0.1em 0 0;
 	font-size:1em;
 	color:#1793d1;
+
+}
+
+.nx-logo {
+    margin-top: 10px;
 }
 i.fa.fa-fighter-jet.nx-logo {
     padding-left: 0.1em;
@@ -239,6 +244,7 @@ nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse {
   float: left;
 }
 .rslides img {
+    width: 50%;
   height: auto;
   border: 0;
   }

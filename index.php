@@ -60,7 +60,7 @@ require_once 'modals.php';
 <div class="nxlayouts-about" id="about">
 	<div class="container">
 		<div class="nx-about-grids">
-			<div class="col-md-4 nx-about-left">
+			<div class="col-md-3 col-lg-4 nx-about-left">
 				  <section class="slider">
 					<div id="slider" class="flexslider">
 					  <ul class="slides">
@@ -140,7 +140,7 @@ require_once 'modals.php';
 					<a href="#" data-toggle="modal" data-target="#myModal">More</a>
 				</div>
 			</div>
-            <div class="col-md-3 nx-about-left">
+            <div class="col-md-4 col-lg-3 nx-about-left">
                 <form class="form" id="searchForm">
                     <div id="searchBox">
                         <h3 class="nxl-head text-center">Check Availability</h3>
@@ -152,9 +152,9 @@ require_once 'modals.php';
                             echo '<div>';
                         }
                         ?>
-                        <div>
-                            <input type="hidden" class="form-control" id="clientName" name="clientName" <?php if (isset($contact['member']['name'])) {echo'value="'.$contact['member']['name'].'"';}?> readonly="readonly">
-                        </div>
+                      <!--  <div>
+                            <input type="hidden" class="form-control" id="clientName" name="clientName" <?php //if (isset($contact['member']['name'])) {echo'value="'.$contact['member']['name'].'"';}?> readonly="readonly">
+                        </div>-->
                     </div>
                     <div class="">
                         <div class="form-group">
