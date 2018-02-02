@@ -1324,15 +1324,16 @@ ul.social-icons li {
 .col-md-6.agileinfo-contact-left form {
     margin-top: 2em;
 }
-.agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
+.agileinfo-contact-left input[type="text"] {
     font-size: 1em;
     border: 1px dashed #333333;
     background: #fff;
     outline: none;
     padding: 0.7em;
-    width: 48.7%;
+    /*width: 48.7%;*/
     margin-bottom: 1em;
     color: #000;
+    float: left;
 }
 .agileinfo-contact-left textarea{
 	width:100%;
@@ -1391,7 +1392,12 @@ ul.social-icons li {
 input.name {
     margin-right: 0.5em;
 }
-
+#cont_name {
+    float: left;
+}
+#cont_mail {
+    float: right;
+}
 /*-- //contact --*/
 /*--footer --*/
 .nx_agileits-footer {

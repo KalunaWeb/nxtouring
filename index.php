@@ -388,7 +388,7 @@ while ($i <= $arr['meta']['total_row_count']) {
 			<h3 class="text-center">Downloads</h3>
 			<div class="nx_services_grids">
 
-                <div class="col-md-offset-1 col-md-3">
+                <div class="col-md-offset-1 col-md-4">
                     <ul>
                         <li>
                             <span class="">
@@ -419,7 +419,7 @@ while ($i <= $arr['meta']['total_row_count']) {
                 </div>
 
 
-                <div class="col-md-offset-4 col-md-3">
+                <div class="col-md-offset-2 col-md-4">
                     <ul>
                         <li>
                             <span class="">
@@ -521,9 +521,18 @@ while ($i <= $arr['meta']['total_row_count']) {
 						<h6>Phone:</h6><p>07771 767367</p>
 					</div>
 					<form id="contactForm">
-						<input type="text" class="name" name="cont_name" placeholder="Name" required="">
-						<input type="email" class="mail" name="cont_mail" placeholder="Email" required="">
-						<textarea placeholder="Your Message" required="" name="con_msg"></textarea>
+                        <div class="form-group has-feedback" id="cont_name">
+						<input type="text" class="name" name="cont_name" placeholder="Name">
+                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                        </div>
+                        <div class="form-group has-feedback" id="cont_mail">
+						<input type="text" class="mail" name="cont_mail" placeholder="Email">
+                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+						<textarea placeholder="Your Message" name="con_msg"></textarea>
+                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                        </div>
                         <button class="button" name="send" id="send">SEND</button>
 					</form>	
 				</div>
@@ -536,12 +545,39 @@ while ($i <= $arr['meta']['total_row_count']) {
 </div>
 <script>
 
-
+    $(document).ready(function () {
     $("#contactForm").submit(function(e){
         e.preventDefault(e);
     });
 
-    $ ('#send').click(function(){
+    $("#contactForm").validate({
+        rules: {
+            cont_name: {
+                required: true,
+                minlength: 2,
+                maxlength: 40
+            },
+            cont_email: {
+                required: true,
+                email: true
+            },
+            con_msg: {
+            required: true
+            }
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
+            $(element).addClass(errorClass).removeClass(validClass);
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function(element) {
+            $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-remove').addClass('glyphicon-ok');
+            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+            $(element).remove();
+        },
+        onkeyup: false, //turn off auto validate whilst typing
+        submitHandler: function (form) {
+
         var formdata = $('#contactForm').serializeJSON();
         var jdata = JSON.stringify(formdata);
 
@@ -556,7 +592,9 @@ while ($i <= $arr['meta']['total_row_count']) {
 
             }
         });
-    })
+    }
+    });
+    });
 </script>
 <!-- //contact -->
 <script src="js/owl.carousel.js"></script>  
