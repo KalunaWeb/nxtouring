@@ -1,7 +1,7 @@
 <?php
 
 require_once 'header.php';
-require_once 'modals.php';
+
 
 ?>
 	<div class="banner-top">
@@ -522,11 +522,11 @@ while ($i <= $arr['meta']['total_row_count']) {
 					</div>
 					<form id="contactForm">
                         <div class="form-group has-feedback" id="cont_name">
-						<input type="text" class="name" name="cont_name" placeholder="Name">
+						<input type="text" class="name" name="cont_name" placeholder="Name"/>
                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                         </div>
                         <div class="form-group has-feedback" id="cont_mail">
-						<input type="text" class="mail" name="cont_mail" placeholder="Email">
+						<input type="text" class="mail" name="cont_mail" placeholder="Email"/>
                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                         </div>
                         <div class="form-group has-feedback">
@@ -557,7 +557,7 @@ while ($i <= $arr['meta']['total_row_count']) {
                 minlength: 2,
                 maxlength: 40
             },
-            cont_email: {
+            cont_mail: {
                 required: true,
                 email: true
             },
@@ -581,7 +581,7 @@ while ($i <= $arr['meta']['total_row_count']) {
         var formdata = $('#contactForm').serializeJSON();
         var jdata = JSON.stringify(formdata);
 
-        $.ajax({
+        /*$.ajax({
             url: 'contact.php',
             method: 'post',
             dataType: 'json',
@@ -591,7 +591,7 @@ while ($i <= $arr['meta']['total_row_count']) {
                     console.log(response);
 
             }
-        });
+        });*/
     }
     });
     });

@@ -149,3 +149,9 @@ form.register label.obinfo{
 form.register .feedback {
     margin-top:-2.1em;
 }
+form.register .feedback2 {
+    color: darkred;
+    position: relative;
+    left: 250px;
+    top: -20px;
+}

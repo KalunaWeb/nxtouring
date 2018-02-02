@@ -32,7 +32,7 @@ if (isset($_POST['endDate'])) {
         <form id="newCliForm" class="register">
             <div class="row">
                 <div class="modal-header">
-                     <h1 class="modal-title">New Client Booking Form</h1>
+                     <h1 class="modal-title">Vehicle Hire Form</h1>
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-4">
@@ -85,11 +85,9 @@ if (isset($_POST['endDate'])) {
                                 <textarea rows="" class="form-control" id="primary_address[street]" name="primary_address[street]"
                                     <?php if (isset($_SESSION['user_id'])){
                                         echo ' readonly="readonly"';}?>
-                                >
-                                    <?php if (isset($_SESSION['user_id'])){
+                                ><?php if (isset($_SESSION['user_id'])){
                                         echo $contact['member']['primary_address']['street'];
-                                    }?>
-                                </textarea>
+                                    }?></textarea>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
@@ -193,7 +191,7 @@ if (isset($_POST['endDate'])) {
                             <div class="agreement">
                                 <label for="terms">*  I accept the <a href="#">Terms and Conditions</a></label>
                                 <input class="checkbox" type="checkbox" id="terms" name="terms"/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                <span class="feedback2 form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="agreement">
                                 <label for="agree">I want to receive news and offers from NX Touring</label>

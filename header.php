@@ -91,6 +91,7 @@ $old = array_reverse($archive['opportunities']);
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/widget.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/newCliRegModal.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" media="all" />
 <!--// css -->
 <!-- font-awesome icons -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
@@ -167,3 +168,6 @@ $old = array_reverse($archive['opportunities']);
 				<!-- /.container -->
 			</nav>  
 		</div>
+<?php
+require_once 'modals.php';
+?>

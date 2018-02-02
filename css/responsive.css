@@ -472,6 +472,22 @@
     .details {
         margin-left: 0.5em;
     }
+    form.register input
+    {
+        width: 119%;
+    }
+    form.register textarea {
+        width: 100%;
+    }
+  .newcli-form {
+        margin: 3em 0;
+    }
+    form.register legend {
+        margin-top: 1em;
+    }
+    #login-modal{
+        width: 95%;
+    }
 }
 @media screen and (max-width: 414px){
     .agileits-banner-info, .agileits-banner-info1, .agileits-banner-info2, .agileits-banner-info3, .agileits-banner-info4 {
@@ -590,7 +606,14 @@
         padding: 0;
         margin: 0;
     }
-
+    form.register input
+    {
+        width: 107%;
+    }
+    form.register textarea
+    {
+        width: 93%;
+    }
 }
 @media screen and (max-width: 375px){
     .nxls_team_grid{
@@ -599,6 +622,7 @@
     .nx_agileits-footer .navbar-header.page-scroll {
         margin: 0 3em;
     }
+
 }
 @media screen and (max-width: 320px){
 
@@ -626,129 +650,15 @@
     #vanResult {
         padding-left: 1em;
     }
+    form.register input
+    {
+        width: 100%;
+    }
+    form.register textarea
+    {
+        width: 100%;
+    }
 
 }
 /* -- //Responsive code -- */
 
-/* -- Login / out modal -- */
-
-#title {
-    margin-top: 150px;
-    background-color: black;
-    opacity: 0.6;
-    z-index: 10;
-    min-height: 300px;
-    border-radius: 30px;
-    border: 1px solid white;
-}
-#login-modal{
-    width: 450px;
-}
-.form-signin {
-    box-sizing: border-box;
-    max-width: 400px;
-    padding: 19px 29px 29px;
-    margin: 0 auto;
-    /*margin-top:90px;*/
-    background-color: #fff;
-
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);
-
-    font-family:Tahoma, Geneva, sans-serif;
-    color:#990000;
-    font-weight:lighter;
-}
-
-.form-signin .form-signin-heading {
-    color:#00A2D1;
-}
-.form-signin input[type="text"],
-.form-signin input[type="password"],
-.form-signin input[type="email"],
-.form-search input[type="text"]
-{
-    font-size: 16px;
-    height: 45px;
-    padding: 7px 9px;
-}
-
-.signin-form, .body-container
-{
-//border:solid red 1px;
-    margin-top:110px;
-}
-
-.glyphicon-refresh-animate {
-    -animation: spin .7s infinite linear;
-    -webkit-animation: spin2 .7s infinite linear;
-}
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
-
-.form-control-feedback{
-    display: none;
-}
-.profile {
-
-    margin: 5px auto 5px auto;
-    padding: 2px 10px 10px 10px;
-    background-color: lightblue;
-    border: 1px solid darkblue;
-    border-radius: 25px;
-    -moz-box-shadow: 1px 2px 4px grey;
-    -webkit-box-shadow: 1px 2px 4px grey;
-    box-shadow: 1px 2px 4px grey;
-
-    opacity: 0.8;
-}
-.profileBox td th {
-    padding-top: 5px;
-}
-.editableId  {
-    display: none;
-}
-
-.cancel {
-    display: none;
-}
-
-.profileBox input {
-    width: 80%;
-}
-
-.profileBox table {
-    width: 100%;
-}
-#van-modal-footer {
-    float:left;
-}
-
-#van2 {
-    float:right;
-}
-
-.vanModBody {
-    height: 15em;
-}
-.result {
-    position: relative !important;
-}
-.vanAvailResult {
-    display: none;
-    margin-top: 1em;
-    padding-left: 1.6em;
-}
