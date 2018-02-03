@@ -69,10 +69,7 @@ if (isset($_POST['endDate'])) {
                                 <label class="booking_form_main" for="links[][address]">Website *</label>
                                 <input class="form-control" type="text" id="links[][address]" name="links[][address]"
                                     <?php if (isset($_SESSION['user_id'])){
-                                        echo 'value="http://'.$contact['member']['links'][0]['address'].'" readonly="readonly"';}
-                                        else {
-                                        echo 'value="http://"';
-                                        }?>/>
+                                        echo 'value="http://'.$contact['member']['links'][0]['address'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                         </fieldset>
@@ -327,7 +324,21 @@ if (isset($_POST['endDate'])) {
                 },
                 "links[][address]": {
                     required: true,
-                    url: true
+                    url: true,
+                    normalizer: function( value ) {
+                        var url = value;
+
+                        // Check if it doesn't start with http:// or https:// or ftp://
+                        if ( url && url.substr( 0, 7 ) !== "http://"
+                            && url.substr( 0, 8 ) !== "https://"
+                            && url.substr( 0, 6 ) !== "ftp://" ) {
+                            // then prefix with http://
+                            url = "http://" + url;
+                        }
+
+                        // Return the new url
+                        return url;
+                    }
                 },
                 "primary_address[street]": {
                     required: true,

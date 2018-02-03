@@ -94,7 +94,6 @@ input:focus, select:focus, textarea:focus{
 .details {
     margin-left: 1.8em;
     padding: 2px 0 2px 0;
-    float: left;
 }
 
 form.register fieldset.row4

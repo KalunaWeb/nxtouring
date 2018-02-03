@@ -118,6 +118,7 @@ $old = array_reverse($archive['opportunities']);
 <!-- Supportive-JavaScript -->
 <script src="js/modernizr.js"></script>
 <!-- //Supportive-JavaScript -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head> 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="90"> 
 

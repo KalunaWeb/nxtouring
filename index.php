@@ -144,18 +144,6 @@ require_once 'header.php';
                 <form class="form" id="searchForm">
                     <div id="searchBox">
                         <h3 class="nxl-head text-center">Check Availability</h3>
-
-
-                        <?php if ($user == "Guest") {
-                            echo '<div class="hidden">';
-                        } else {
-                            echo '<div>';
-                        }
-                        ?>
-                      <!--  <div>
-                            <input type="hidden" class="form-control" id="clientName" name="clientName" <?php //if (isset($contact['member']['name'])) {echo'value="'.$contact['member']['name'].'"';}?> readonly="readonly">
-                        </div>-->
-                    </div>
                     <div class="">
                         <div class="form-group">
                             <label for="start">Collection Date <span class="small">(From 9 a.m.)</span></label>
@@ -180,6 +168,7 @@ require_once 'header.php';
 			<div class="clearfix"> </div>
 		</div>
 	</div>
+</div>
 </div>
 
 
@@ -503,6 +492,10 @@ while ($i <= $arr['meta']['total_row_count']) {
 <!-- //testimonials -->
 
 <!--contact -->
+<?php
+$a = rand(0,9);
+$b = rand(0,9);
+?>
 <div class="contact jarallax" id="contact">
 		<div class="container">
 			<h3 class="nxl-head text-center">contact us</h3>
@@ -521,17 +514,24 @@ while ($i <= $arr['meta']['total_row_count']) {
 						<h6>Phone:</h6><p>07771 767367</p>
 					</div>
 					<form id="contactForm">
-                        <div class="form-group has-feedback" id="cont_name">
-						<input type="text" class="name" name="cont_name" placeholder="Name"/>
-                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                        <div class="form-group has-feedback col-md-6 front">
+                            <input class="form-control" type="text" id="cont_name" name="cont_name" placeholder="Name"/>
+                            <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
                         </div>
-                        <div class="form-group has-feedback" id="cont_mail">
-						<input type="text" class="mail" name="cont_mail" placeholder="Email"/>
-                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                        <div class="form-group has-feedback col-md-6 front">
+                            <input class="form-control" type="text" id="cont_mail" name="cont_mail" placeholder="Email"/>
+                            <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
                         </div>
-                        <div class="form-group has-feedback">
+                        <div class="form-group has-feedback col-md-12 front">
 						<textarea placeholder="Your Message" name="con_msg"></textarea>
-                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                            <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
+                        </div>
+                        <div class="form-group has-feedback col-md-4 front captcha">
+                            <div class="captcha_numbers"><?php echo $a ." + " . $b ?> =</div>
+                            <div class="captcha_answer">
+                                <input class="form-control" type="text" id="cont_val" name="cont_val"/>
+                                <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
+                            </div>
                         </div>
                         <button class="button" name="send" id="send">SEND</button>
 					</form>	
@@ -544,11 +544,13 @@ while ($i <= $arr['meta']['total_row_count']) {
 		</div>
 </div>
 <script>
+var a = <?php echo $a;?>;
+var b = <?php echo $b;?>;
 
     $(document).ready(function () {
-    $("#contactForm").submit(function(e){
+    /*$("#contactForm").submit(function(e){
         e.preventDefault(e);
-    });
+    });*/
 
     $("#contactForm").validate({
         rules: {
@@ -563,6 +565,20 @@ while ($i <= $arr['meta']['total_row_count']) {
             },
             con_msg: {
             required: true
+            },
+            cont_val: {
+                required: true,
+                minlength: 1,
+                maxlength: 2,
+                number: true,
+                remote: {
+                   url: "cont-val.php",
+                    type: "post",
+                    data: {
+                       number_one: <?php echo $a;?>,
+                        number_two: <?php echo $b;?>
+                    }
+                }
             }
         },
         highlight: function(element, errorClass, validClass) {
@@ -575,13 +591,13 @@ while ($i <= $arr['meta']['total_row_count']) {
             element.closest('.form-group').removeClass('has-error').addClass('has-success');
             $(element).remove();
         },
-        onkeyup: false, //turn off auto validate whilst typing
+        //onkeyup: false, //turn off auto validate whilst typing
         submitHandler: function (form) {
 
         var formdata = $('#contactForm').serializeJSON();
         var jdata = JSON.stringify(formdata);
 
-        /*$.ajax({
+        $.ajax({
             url: 'contact.php',
             method: 'post',
             dataType: 'json',
@@ -591,7 +607,7 @@ while ($i <= $arr['meta']['total_row_count']) {
                     console.log(response);
 
             }
-        });*/
+        });
     }
     });
     });
