@@ -7,6 +7,8 @@
  */
 if (isset($_POST) && $_POST['cont_val'] == $_POST['number_one'] + $_POST['number_two']) {
     echo json_encode("true");
+} else {
+    echo json_encode("Incorrect Answer");
 }
 
 ?>

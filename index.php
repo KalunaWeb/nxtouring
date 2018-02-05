@@ -60,79 +60,8 @@ require_once 'header.php';
 <div class="nxlayouts-about" id="about">
 	<div class="container">
 		<div class="nx-about-grids">
-			<div class="col-md-3 col-lg-4 nx-about-left">
-				  <section class="slider">
-					<div id="slider" class="flexslider">
-					  <ul class="slides">
-						<li>
-							<img src="images/2a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/1a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/4a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/6a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/8.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/4a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/5a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/7a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/3a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/7.jpg" alt="" />
-						</li>
-					  </ul>
-					</div>
-					<div id="carousel" class="flexslider">
-					  <ul class="slides">
-						<li>
-							<img src="images/2a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/1a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/4a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/6a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/8.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/4a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/5a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/7a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/3a.jpg" alt="" />
-						</li>
-						<li>
-							<img src="images/7.jpg" alt="" />
-						</li>
-					  </ul>
-					</div>
-				  </section>
-			</div>
-			<div class="col-md-5 nx-about-left">
+
+			<div class="col-md-5 col-md-push-4 nx-about-left">
 				<h1>Welcome to NX Touring Ltd</h1>
 				<h5>Luxury tour vehicle hire.</h5>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisl nunc, feugiat a nulla euismod, porta vehicula nisi. Praesent molestie, elit at mattis euismod, risus augue lacinia sem, vel elementum dui sem eu nisi. Morbi eu condimentum nibh. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <span>Donec leo orci, tempus ac porta sit amet, pulvinar ac ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque in mauris vel lectus aliquet imperdiet at in metus. Sed tristique, ante quis varius rhoncus, turpis nisl suscipit neque, id sollicitudin tellus purus a augue. Integer urna ex, vehicula eget tincidunt et, scelerisque non massa. Nulla convallis sodales diam, non laoreet purus.<br><br></span></p>
@@ -140,7 +69,7 @@ require_once 'header.php';
 					<a href="#" data-toggle="modal" data-target="#myModal">More</a>
 				</div>
 			</div>
-            <div class="col-md-4 col-lg-3 nx-about-left">
+            <div class="col-md-4 col-lg-3 col-md-push-4 nx-about-left">
                 <form class="form" id="searchForm">
                     <div id="searchBox">
                         <h3 class="nxl-head text-center">Check Availability</h3>
@@ -165,8 +94,82 @@ require_once 'header.php';
                     </div>
                 </form>
             </div>
-			<div class="clearfix"> </div>
-		</div>
+        </div>
+
+            <div class="col-md-3 col-lg-4 col-md-pull-8 nx-about-left">
+                <section class="slider">
+                    <div id="slider" class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="images/2a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/1a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/4a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/6a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/8.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/4a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/5a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/7a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/3a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/7.jpg" alt="" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="images/2a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/1a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/4a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/6a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/8.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/4a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/5a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/7a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/3a.jpg" alt="" />
+                            </li>
+                            <li>
+                                <img src="images/7.jpg" alt="" />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        <div class="clearfix"> </div>
+
 	</div>
 </div>
 </div>
@@ -523,15 +526,19 @@ $b = rand(0,9);
                             <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
                         </div>
                         <div class="form-group has-feedback col-md-12 front">
-						<textarea placeholder="Your Message" name="con_msg"></textarea>
+						<textarea placeholder="Your Message" name="con_msg" id="con_msg"></textarea>
                             <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
                         </div>
-                        <div class="form-group has-feedback col-md-4 front captcha">
-                            <div class="captcha_numbers"><?php echo $a ." + " . $b ?> =</div>
-                            <div class="captcha_answer">
-                                <input class="form-control" type="text" id="cont_val" name="cont_val"/>
-                                <span class="feedback form-control-feedback captcha-feedback glyphicon glyphicon-ok"></span>
+
+                        <div class="form-group col-xs-8 front">
+                            <div class="input-group">
+                                <div class="input-group-addon">What is <?php echo $a ." + " . $b ?> ?</div>
+                                <input class="form-control" type="text" id="cont_val" name="cont_val" maxlength="2"/>
+                                <span class="feedback2 form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
+
+
+
                         </div>
                         <button class="button" name="send" id="send">SEND</button>
 					</form>	
@@ -604,7 +611,10 @@ var b = <?php echo $b;?>;
             data: jdata,
 
             success: function(response) {
-                    console.log(response);
+                    alert ("Thank you for your enquiry, a member of the team will contact you shortly");
+                $("input:text").val("");
+                $("#con_msg").val("");
+                $(".form-control-feedback").hide().addClass('glyphicon-remove');
 
             }
         });

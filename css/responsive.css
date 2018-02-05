@@ -1,4 +1,4 @@
-* -- Responsive code -- */
+/* -- Responsive code -- */
 @media screen and (max-width: 1600px){}
 @media screen and (max-width: 1440px){}
 @media screen and (max-width: 1366px){}
@@ -8,9 +8,9 @@
     .wthreelocationsaits .grid figure {
         width: 32.2%;
     }
-    .agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
+    /*.agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
         width: 48.5%;
-    }
+    }*/
     .wthree-footer-left h5 {
         font-size: 1.32em;
     }
@@ -159,6 +159,12 @@
     }
     .team .container {
         width: 98%;
+    }
+    .form-group {
+        margin-bottom: 0;
+    }
+    #cont_mail {
+        margin-bottom: 10px;
     }
 }
 @media screen and (max-width: 768px){
@@ -500,8 +506,15 @@
     .navbar-header.page-scroll p {
         width: 60%;
     }
-    .agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
+    input#cont_mail.form-control {
+        margin: 10px 0 10px 0;
+    }
+    .agileinfo-contact-left {
+        margin-bottom: 3em;
+    }
+    .agileinfo-contact-left input[type="text"] {
         width: 100%;
+
     }
     .agileits-blog-bottom {
         padding: 1em;
@@ -595,6 +608,7 @@
     }
     .agileinfo-contact-left {
         padding: 0 0 3em;
+        margin-bottom: 3em;
     }
     .hireButtonBox {
         float: left;

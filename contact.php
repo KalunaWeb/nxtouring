@@ -25,5 +25,6 @@ $query = '{"discussion":'.json_encode($discussion).'}';// Create discussion
 
 $result = $current->creatediscussion($query);
 
+
 echo json_encode($result);
 ?>

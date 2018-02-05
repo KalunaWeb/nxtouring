@@ -71,7 +71,6 @@ form.register input{
 
 }
 form.register input[type=checkbox]{
-    width: 0;
     padding-right: 5px;
 }
 form.register input[type=text]
@@ -109,10 +108,10 @@ form.register fieldset.row4
     margin-left:15px;
 }
 .agreement label{
-    width:250px;
+
     text-align:left;
     margin-top:6px;
-    float: right;
+    float: left;
 }
 .misc {
     width: 150px;

@@ -172,12 +172,15 @@ if (isset($_POST['endDate'])) {
                             </select>
                         </div>
                             <div class="misc">
-                                <label for="collection">Customer Collecting</label>
-                                <input class="checkbox pull-right" type="checkbox" id="collection" name="collection" checked/>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="collection" name="collection" checked/>Customer Collecting
+                                </label>
                             </div>
                             <div class="misc">
-                                <label for="delivery">Customer Returning</label>
-                                <input class="checkbox pull-right" type="checkbox" id="delivery" name="delivery" checked/>
+                                <label class="checkbox-inline">
+                                    <input class="checkbox" type="checkbox" id="delivery" name="delivery" checked/>Customer Returning
+                                </label>
+
                             </div>
                         </fieldset>
                     </div>
@@ -186,13 +189,18 @@ if (isset($_POST['endDate'])) {
                             <legend>Terms and Mailing
                             </legend>
                             <div class="agreement">
-                                <label for="terms">*  I accept the <a href="#">Terms and Conditions</a></label>
-                                <input class="checkbox" type="checkbox" id="terms" name="terms"/>
+                                <label class="checkbox-inline">
+                                    <input class="checkbox" type="checkbox" id="terms" name="terms"/>
+                                    *  I accept the <a href="#">Terms and Conditions</a>
+                                </label>
                                 <span class="feedback2 form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="agreement">
-                                <label for="agree">I want to receive news and offers from NX Touring</label>
-                                <input class="checkbox" type="checkbox" id="agree" name="agree"/>
+                                <label class="checkbox-inline">
+                                    <input class="checkbox" type="checkbox" id="collection" name="collection" checked/>
+                                    I want to receive news and offers from NX Touring
+                                </label>
+
                             </div>
                             <input type="hidden" name="type_id" id="type_id" value="<?php echo $_POST['type_id'];?>"/>
                             <input type="hidden" name="days" id="days" value="<?php echo $_POST['days'];?>"/>

@@ -51,6 +51,34 @@ if (!isset($_SESSION['user_id'])) {
 // Take the JSON result from current and turn it into a PHP accessable array so that we can access the ID #
 
     $client = json_decode($result, true);
+
+    // Create discussion to confirm email details and initial booking
+
+    $client1["member_id"] = 1; // NX User ID
+    $client1["mute"] = true;
+    $client2["member_id"] = $client['member']['id']; // New client ID
+    $client2["mute"] = false;
+    $discussion["discussable_id"] = $client['member']['id']; // id of the opportunity
+    $discussion["discussable_type"] = "Member";
+    $discussion["subject"] = "New User Registration";
+    $discussion["first_comment"]["remark"] = "Thank you for registering with us.
+    
+    You can login to your account using the details as follows;
+    email - ".$params['emails'][0]['address']."
+    Password - ".$user['password']."
+    from there you can add or remove Drivers details, review previous hires and your current bookings
+    
+    Regards,
+    
+    NX Touring Ltd";
+
+    $discussion["participants"] = [$client1, $client2];
+
+    $query = '{"discussion":'.json_encode($discussion).'}';// Create discussion to notify booking
+
+    $result = $current->creatediscussion($query);
+
+
 } else {
     $client = $current -> getContactById($_SESSION['user_id']);
 }
@@ -163,13 +191,7 @@ if (!isset($_SESSION['user_id'])) {
     End Date - ".$params["endDate"]."
     Vehicle Type - ".$params['prod_type']."
     Total Hire Cost - ".$params['totprice'];
-    if (!isset($_SESSION['user_id'])){
-        $discussion["first_comment"]["remark"] .= "
-    
-    You can login to your account using the details as follows;
-    email - ".$params['emails'][0]['address']."
-    Password - ".$user['password']."
-    from there you can add Driver details, review previous hires and your current bookings";}
+
 
     $discussion["participants"] = [$client1, $client2];
 
