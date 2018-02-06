@@ -11,6 +11,12 @@
     /*.agileinfo-contact-left input[type="text"], .agileinfo-contact-left input[type="email"] {
         width: 48.5%;
     }*/
+    #postcode_lookup {
+        margin-left: 25px;
+    }
+    #news, #terms {
+        left: 185px;
+    }
     .wthree-footer-left h5 {
         font-size: 1.32em;
     }
@@ -480,7 +486,7 @@
     }
     form.register input
     {
-        width: 119%;
+        width: 100%;
     }
     form.register textarea {
         width: 100%;
@@ -493,6 +499,28 @@
     }
     #login-modal{
         width: 95%;
+    }
+    .searchBtn {
+        margin-bottom: 10px;
+    }
+    #postcode_lookup {
+        margin-left: 7px;
+    }
+    #collection, #delivery {
+        padding-left: 4px;
+    }
+    .agreement {
+        margin-left: 0;
+    }
+    #delivery label, #collection label {
+        padding-left: 4px !important;
+    }
+    #news {
+        left: 143px;
+    }
+    #location {
+
+        margin-bottom: 10px;
     }
 }
 @media screen and (max-width: 414px){
@@ -545,6 +573,21 @@
         position: absolute;
         left: 60%;
         top: 92%;
+    }
+    .checkbox-inline {
+        padding-left: 4px !important;
+    }
+    #news {
+        left: 175px;
+        z-index: 5;
+    }
+    #terms {
+        left: 222px;
+        z-index: 5;
+    }
+    #location {
+
+        margin-bottom: 10px;
     }
 
 }
@@ -628,6 +671,9 @@
     {
         width: 93%;
     }
+    #news {
+        left: 143px;
+    }
 }
 @media screen and (max-width: 375px){
     .nxls_team_grid{
@@ -671,6 +717,14 @@
     form.register textarea
     {
         width: 100%;
+    }
+    #news {
+        left: 131px;
+        z-index: 5;
+    }
+    #terms {
+        left: 143px;
+        z-index: 5;
     }
 
 }

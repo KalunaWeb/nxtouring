@@ -109,7 +109,10 @@ if (isset($_POST['endDate'])) {
                                         echo 'value="'.$contact['member']['primary_address']['postcode'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
-                            <div id="postcode_lookup"></div>
+                            <?php if (!isset($_SESSION['user_id'])) {
+                                echo '<div id="postcode_lookup"></div>';
+                            }?>
+
                             <!--<div class="clearfix"></div>-->
                         </fieldset>
                     </div>
@@ -175,7 +178,7 @@ if (isset($_POST['endDate'])) {
                         </div>
                             <div class="misc">
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" id="news" name="news" checked/>Customer Collecting
+                                    <input type="checkbox" id="collection" name="collection" checked/>Customer Collecting
                                 </label>
                             </div>
                             <div class="misc">
@@ -193,14 +196,14 @@ if (isset($_POST['endDate'])) {
                             <div class="agreement">
                                 <label class="checkbox-inline">
                                     <input class="checkbox" type="checkbox" id="terms" name="terms"/>
-                                    *  I accept the <a href="#">Terms and Conditions</a>
+                                    I accept the <a href="#">Terms and Conditions</a>  *
                                 </label>
                                 <span class="feedback2 form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="agreement">
                                 <label class="checkbox-inline">
                                     <input class="checkbox" type="checkbox" id="news" name="news"/>
-                                    I want to receive news and offers from NX Touring
+                                    I want to receive collection and offers from NX Touring
                                 </label>
 
                             </div>
@@ -289,7 +292,6 @@ if (isset($_POST['endDate'])) {
 
         $('#postcode_lookup').getAddress({
             api_key: 'yn2CSzTYFUmrb5KshUq0EA12157',
-            // Or use your own endpoint - api_endpoint:https://your-web-site.com/getAddress,
             output_fields: {
                 line_1: '#line1',
                 line_2: '#line2',
@@ -298,15 +300,8 @@ if (isset($_POST['endDate'])) {
                 county: '#county',
                 postcode: '#postcode'
             },
-            <!--  Optionally register callbacks at specific stages -->
-            onLookupSuccess: function (data) {
-                console.log(data)
-            },
-            onLookupError: function () {/* Your custom code */
-            },
-            onAddressSelected: function (elem, index) {
-                var array = elem.split(',');
-                console.log(array);
+            onAddressSelected: function () {
+                $('#getaddress_dropdown').hide();
             }
 
     });

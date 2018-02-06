@@ -1,7 +1,5 @@
 <?php
 
-require_once("classes.php");
-
 include 'header.php';
 
 ?>
@@ -15,7 +13,7 @@ $name = str_replace(" ", "%20", $contact['member']['name']);
 $live = $current->getOpportunity($name, "live");
 $archive = $current->getOpportunity($name, "all");
 $old = array_reverse($archive['opportunities']);
-print_r ($old);
+print_r ($contact);
 
 ?>
 
