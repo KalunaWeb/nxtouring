@@ -173,7 +173,7 @@ if (isset($_POST['endDate'])) {
                         </div>
                             <div class="misc">
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" id="collection" name="collection" checked/>Customer Collecting
+                                    <input type="checkbox" id="news" name="news" checked/>Customer Collecting
                                 </label>
                             </div>
                             <div class="misc">
@@ -197,7 +197,7 @@ if (isset($_POST['endDate'])) {
                             </div>
                             <div class="agreement">
                                 <label class="checkbox-inline">
-                                    <input class="checkbox" type="checkbox" id="collection" name="collection" checked/>
+                                    <input class="checkbox" type="checkbox" id="news" name="news"/>
                                     I want to receive news and offers from NX Touring
                                 </label>
 
@@ -211,7 +211,7 @@ if (isset($_POST['endDate'])) {
                         </fieldset>
                     </div>
                     <div class="col-md-4">
- <!--                       <div class="infobox">Hire Commences at 9am on the date of collection and finishes at 10am on the day of return.</div>-->
+
                         <div>
                             <label class="obinfo">* obligatory fields
                             </label>

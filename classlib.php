@@ -349,8 +349,9 @@ class current {
 				//session_start();
 				$_SESSION['token'] = $token;
 				$_SESSION['user_id'] = $contact['members'][0]['id'];
-
+                session_write_close();
 				return "ok";
+				die();
 
 			} else {
 			//No match, reject

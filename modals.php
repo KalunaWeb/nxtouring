@@ -378,4 +378,36 @@ while ($i <= $arr['meta']['total_row_count']) {
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script>
+    $("#modalLogIn").submit(function(e) {
+        $.ajax({
+            type: "POST",
+            url: 'login_process.php',
+            data: $("#loginform").serialize(), // serializes the form's elements.
+            success: function(data) {
+                if (data == "ok") {
+                    window.location.href = "index.php";
+                } else {
+                    $('#error').html(data);
+                    $('#modalLogIn').modal('show');
+
+                }
+            }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+
+
+    $("#logout").submit(function() {
+        $.ajax({
+            type: "POST",
+            url: 'logout.php',
+            success: function()
+            {
+                window.location.href = "index.php";
+            }
+        });
+    });
+
+</script>
 <!-- //login modal -->
