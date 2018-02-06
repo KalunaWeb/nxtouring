@@ -77,8 +77,7 @@ if (isset($_POST['endDate'])) {
                     <div class="col-md-4">
                         <fieldset class="form-group">
                             <legend>Company Address</legend>
-                            <div id="postcode_lookup"></div>
-                            <div class="clearfix"></div>
+
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="line1">Address *</label>
                                 <textarea rows="" class="form-control" id="line1" name="line1"
@@ -110,7 +109,8 @@ if (isset($_POST['endDate'])) {
                                         echo 'value="'.$contact['member']['primary_address']['postcode'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
-
+                            <div id="postcode_lookup"></div>
+                            <!--<div class="clearfix"></div>-->
                         </fieldset>
                     </div>
                     <div class="col-md-4">
