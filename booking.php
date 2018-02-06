@@ -9,6 +9,12 @@ $current = new current;
 
 $request = file_get_contents("php://input"); // gets the raw data.
 $params = json_decode($request,true); // true for return as array
+$params["primary_address"]["primary_address[street]"] = $params['line1']."
+".$params['line2']."
+".$params['line3'];
+$params["primary_address"]["primary_address[city]"] = $params['town'];
+$params["primary_address"]['primary_address[county]'] = $params['county'];
+$params["primary_address"]['primary_address[postcode]'] = $params['postcode'];
 
 
 if (!isset($params["collection"])) {

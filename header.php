@@ -113,7 +113,8 @@ $old = array_reverse($archive['opportunities']);
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>-->
+    <script src="https://getaddress.io/js/jquery.getAddress-2.0.7.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>-->
 
 <!-- Supportive-JavaScript -->
 <script src="js/modernizr.js"></script>

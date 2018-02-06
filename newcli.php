@@ -40,15 +40,15 @@ if (isset($_POST['endDate'])) {
                             <legend>Company Details
                             </legend>
                             <div class="form-group has-feedback details">
-                                <label for="name" class="booking_form_main">Invoice Name *</label>
-                                <input class="form-control" type="text" id="name" name="name"
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        echo 'value="'.$contact['member']['name'].'" readonly="readonly"';}?>/>
+                                <label class="booking_form_main" for="artist">Artist / Job Name *</label>
+                                <input class="form-control" type="text" id="artist" name="artist"/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="artist">Artist *</label>
-                                <input class="form-control" type="text" id="artist" name="artist"/>
+                                <label for="name" class="booking_form_main">Company Name *</label>
+                                <input class="form-control" type="text" id="name" name="name"
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        echo 'value="'.$contact['member']['name'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
@@ -77,9 +77,11 @@ if (isset($_POST['endDate'])) {
                     <div class="col-md-4">
                         <fieldset class="form-group">
                             <legend>Company Address</legend>
+                            <div id="postcode_lookup"></div>
+                            <div class="clearfix"></div>
                             <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="primary_address[street]">Address *</label>
-                                <textarea rows="" class="form-control" id="primary_address[street]" name="primary_address[street]"
+                                <label class="booking_form_main" for="line1">Address *</label>
+                                <textarea rows="" class="form-control" id="line1" name="line1"
                                     <?php if (isset($_SESSION['user_id'])){
                                         echo ' readonly="readonly"';}?>
                                 ><?php if (isset($_SESSION['user_id'])){
@@ -88,22 +90,22 @@ if (isset($_POST['endDate'])) {
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="primary_address[city]">City *</label>
-                                <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"
+                                <label class="booking_form_main" for="town">City *</label>
+                                <input class="form-control" type="text" id="town" name="town"
                                     <?php if (isset($_SESSION['user_id'])){
                                         echo 'value="'.$contact['member']['primary_address']['city'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="primary_address[county]">County *</label>
-                                <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"
+                                <label class="booking_form_main" for="county">County *</label>
+                                <input class="form-control" type="text" id="county" name="county"
                                     <?php if (isset($_SESSION['user_id'])){
                                         echo 'value="'.$contact['member']['primary_address']['county'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="primary_address[postcode]">PostCode *</label>
-                                <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"
+                                <label class="booking_form_main" for="postcode">PostCode *</label>
+                                <input class="form-control" type="text" id="postcode" name="postcode"
                                     <?php if (isset($_SESSION['user_id'])){
                                         echo 'value="'.$contact['member']['primary_address']['postcode'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
@@ -127,7 +129,7 @@ if (isset($_POST['endDate'])) {
                                 <input type="text" class="form-control" id="endDate" name="endDate" value="<?php echo $newEnd;?>" readonly="readonly">
                             </div>
                             <div class="form-group details">
-                                <label class="booking_form_main control-label" for="price">Hire Price</label>
+                                <label class="booking_form_main control-label" for="hireprice">Hire Price</label>
                                 <input type="text" class="form-control" id="hireprice" name="hireprice" value="<?php echo $_POST["hirefee"].'.00'?>" readonly="readonly">
                             </div>
                             <div class="form-group details">
@@ -143,7 +145,7 @@ if (isset($_POST['endDate'])) {
                             </div>
 
                             <div class="form-group details">
-                                <label class="booking_form_main control-label" for="price">Total Price</label>
+                                <label class="booking_form_main control-label" for="totprice">Total Price</label>
                                 <input type="text" class="form-control" id="totprice" name="totprice" value="<?php echo ($_POST["hirefee"]+($_POST["cdays"]*10)).'.00 + vat'?>" readonly="readonly">
                             </div>
                         </fieldset>
@@ -207,7 +209,8 @@ if (isset($_POST['endDate'])) {
                             <input type="hidden" name="store_ids" id="store_ids" value="<?php echo $_POST['store'];?>"/>
                             <input type="hidden" name="primary_address[country_id]" id="primary_address[country_id]" value="1"/>
                             <input type="hidden" name="price" id="price" value="<?php echo $_POST['price'];?>"/>
-
+                            <input type="hidden" name="line2" id="line2"/>
+                            <input type="hidden" name="line3" id="line3"/>
                         </fieldset>
                     </div>
                     <div class="col-md-4">
@@ -284,6 +287,30 @@ if (isset($_POST['endDate'])) {
 
     $(document).ready(function () {
 
+        $('#postcode_lookup').getAddress({
+            api_key: 'yn2CSzTYFUmrb5KshUq0EA12157',
+            // Or use your own endpoint - api_endpoint:https://your-web-site.com/getAddress,
+            output_fields: {
+                line_1: '#line1',
+                line_2: '#line2',
+                line_3: '#line3',
+                post_town: '#town',
+                county: '#county',
+                postcode: '#postcode'
+            },
+            <!--  Optionally register callbacks at specific stages -->
+            onLookupSuccess: function (data) {
+                console.log(data)
+            },
+            onLookupError: function () {/* Your custom code */
+            },
+            onAddressSelected: function (elem, index) {
+                var array = elem.split(',');
+                console.log(array);
+            }
+
+    });
+
         $("#newCliForm").submit(function(e){
             e.preventDefault();
         });
@@ -348,19 +375,19 @@ if (isset($_POST['endDate'])) {
                         return url;
                     }
                 },
-                "primary_address[street]": {
+                "line1": {
                     required: true,
                     minlength: 8,
                     maxlength: 100
                 },
-                "primary_address[city]": {
+                "town": {
                     required: true
 
                 },
-                "primary_address[county]": {
+                "county": {
                     required: true
                 },
-                "primary_address[postcode]": {
+                "postcode": {
                     required: true,
                     postcodeUK: true
                 },
@@ -389,16 +416,16 @@ if (isset($_POST['endDate'])) {
                 "links[][address]": {
                     url: "Please enter a valid URL (include the http:// part)"
                 },
-                "primary_address[street]": {
+                "line1": {
                     required: "Please enter your address"
                 },
-                "primary_address[city]": {
+                "town": {
                     required: "Please enter your city"
                 },
-                "primary_address[county]": {
+                "county": {
                     required: "Please enter your county"
                 },
-                "primary_address[postcode]": {
+                "postcode": {
                     required: "Please enter your postcode"
                 },
                 terms:{
