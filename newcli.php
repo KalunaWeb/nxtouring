@@ -68,7 +68,7 @@ if (isset($_POST['endDate'])) {
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="links[][address]">Website *</label>
                                 <input class="form-control" type="text" id="links[][address]" name="links[][address]"
-                                    <?php if (isset($_SESSION['user_id'])){
+                                    <?php if (isset($_SESSION['user_id']) && isset($contact['member']['links'][0]['address'])){
                                         echo 'value="http://'.$contact['member']['links'][0]['address'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
@@ -110,7 +110,7 @@ if (isset($_POST['endDate'])) {
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <?php if (!isset($_SESSION['user_id'])) {
-                                echo '<div id="postcode_lookup"></div>';
+                                echo '<div id="postcode_lookup" class="form-group"></div>';
                             }?>
 
                             <!--<div class="clearfix"></div>-->
@@ -299,6 +299,13 @@ if (isset($_POST['endDate'])) {
                 post_town: '#town',
                 county: '#county',
                 postcode: '#postcode'
+            },
+            onLookupSuccess: function(){
+                $('#getaddress_dropdown').addClass("selectpicker").addClass("form-control");
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+                    $('.selectpicker').selectpicker('mobile');
+                }
+
             },
             onAddressSelected: function () {
                 $('#getaddress_dropdown').hide();

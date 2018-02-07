@@ -1,6 +1,6 @@
 <?php
 session_start();
-//$_SESSION['user_id']=28;
+$_SESSION['user_id']=28;
 error_reporting(E_ALL);
 ini_set('display_errors', 1);    
 
@@ -8,7 +8,6 @@ ini_set('display_errors', 1);
 require_once("classlib.php");
 
 $current = new current();
-
 
 $arr = $current -> getProductList();
 
@@ -36,13 +35,6 @@ if(!isset($_SESSION['user_id']))
  $contact = $current -> getContactById($_SESSION['user_id']);
 
   $user = $contact['member']['name'];
-
-
-$clientname = str_replace(" ", "%20", $contact['member']['name']);
-
-$live = $current->getOpportunity($clientname, "live");
-$archive = $current->getOpportunity($clientname, "all");
-$old = array_reverse($archive['opportunities']);
 
 }
 ?>
@@ -97,7 +89,7 @@ $old = array_reverse($archive['opportunities']);
 <link href="//fonts.googleapis.com/css?family=Aladin" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 <!-- //font-awesome icons -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 <!-- Include Required Prerequisites -->
  
 <!-- Include Date Range Picker -->

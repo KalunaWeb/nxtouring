@@ -1673,3 +1673,31 @@ input.name {
     margin-top: 1em;
     padding-left: 1.6em;
 }
+
+/* Profile Page CSS */
+
+.booking_form_main {
+    color: #444;
+    width: 98px;
+    font-weight: 400;
+    font-size: .8em;
+    float: left;
+    margin-top: 2px;
+}
+.profile_main {
+    color: #444;
+    width: 95px;
+    font-weight: 400;
+    font-size: .8em;
+    float: left;
+    margin-top: 2px;
+}
+.auth {
+    color: green;
+    padding-left: 20px;
+}
+.notauth {
+    font-size: 0.8em;
+    padding-left: 7px;
+}
+

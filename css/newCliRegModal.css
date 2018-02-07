@@ -91,14 +91,11 @@ input:focus, select:focus, textarea:focus{
 .misc input[type=checkbox]{
     left: 90px;
 }
-#terms{
-    left: 160px;
+#terms, #news {
+    left: 230px;
     top: -3px;
 }
-#news {
-    left: 250px;
-    top: -3px;
-}
+
 .details {
     margin-left: 1.8em;
     padding: 2px 0 2px 0;
@@ -197,4 +194,5 @@ form.register .feedback2 {
     font-size: 0.8em;
     margin: 0 0 10px 0;
     border: 1px solid #E1E1E1;
+    z-index: 999;
 }

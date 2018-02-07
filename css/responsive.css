@@ -123,7 +123,13 @@
     .wthree-footer-right {
         margin-top: 1em;
     }
-
+    #news, #terms {
+        left: 254px;
+        z-index: 10;
+    }
+    .agreement label {
+        margin-right: 100px;
+    }
 }
 @media screen and (max-width: 900px){
     nav.navbar.navbar-default.navbar-fixed-top .container {
@@ -582,7 +588,7 @@
         z-index: 5;
     }
     #terms {
-        left: 222px;
+        left: 184px;
         z-index: 5;
     }
     #location {
@@ -671,9 +677,12 @@
     {
         width: 93%;
     }
-    #news {
-        left: 143px;
+
+    #news, #terms {
+        left: 142px;
+        z-index: 10;
     }
+
 }
 @media screen and (max-width: 375px){
     .nxls_team_grid{
@@ -718,12 +727,8 @@
     {
         width: 100%;
     }
-    #news {
+    #news, #terms {
         left: 131px;
-        z-index: 5;
-    }
-    #terms {
-        left: 143px;
         z-index: 5;
     }
 
