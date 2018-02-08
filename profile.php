@@ -24,7 +24,7 @@ for ($i=0; $i<$count; $i++) {
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
-            <form id="existcli_form" class="register">
+            <form id="existcli_form" class="profileForm">
                 <div class="row">
                     <div class="modal-header">
                         <h1 class="modal-title">
@@ -32,147 +32,110 @@ for ($i=0; $i<$count; $i++) {
                         </h1>
                     </div>
                     <div class="col-md-12">
-                        <div class="col-md-4">
-                            <fieldset class="form-group">
-                                <legend>Company Details
-                                </legend>
-                                <div class="form-group has-feedback details">
-                                    <span class="profile_main">Address </span>
-                                    <span class="editable" id="line1">
-                                        <?php echo $contact['member']['primary_address']['street']?>
-                                    </span>
+                        <fieldset class="form-group">
+                            <legend>Basic Information
+                            </legend>
+                            <div class="form-group has-feedback upload-details">
+                                <div class="col-md-3 profile_main">Profile Image</div>
+                                <div class="col-md-4" id="preview"><img src="images/avatar.png">
+                                    <a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Upload Image</a></div>
+                            </div>
+                            <div class="section"></div>
+                            <div class="form-group has-feedback update-address">
+                                <div class="col-md-3 profile_main">Address</div>
+                                <div class="col-md-4">
+                                    <div class="form-group has-feedback">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">Street</span>
+                                        <textarea rows="" class="form-control" id="line1" name="line1"><?php if (isset($_SESSION['user_id'])){echo $contact['member']['primary_address']['street'];}?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">Town</span>
+                                            <input class="form-control" type="text" id="town" name="town" placeholder="Town"
+                                                <?php if (isset($_SESSION['user_id'])){
+                                                    echo 'value="'.$contact['member']['primary_address']['city'].'"';
+                                                }?>/>
+                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">County</span>
+                                            <input class="form-control" type="text" id="county" name="county" placeholder="County"
+                                                <?php if (isset($_SESSION['user_id'])){
+                                                    echo 'value="'.$contact['member']['primary_address']['county'].'"';
+                                                }?>/>
+                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">Postcode</span>
+                                            <input class="form-control" type="text" id="postcode" name="postcode" placeholder="Postcode"
+                                                <?php if (isset($_SESSION['user_id'])){
+                                                    echo 'value="'.$contact['member']['primary_address']['postcode'].'"';
+                                                }?>/>
+                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group has-feedback details">
-                                    <span class="profile_main">Town/City </span>
-                                    <span class="editable" id="town">
-                                        <?php echo $contact['member']['primary_address']['city']?>
-                                    </span>
-                                </div>
-                                <div class="form-group has-feedback details">
-                                    <span class="profile_main">County </span>
-                                    <span class="editable" id="county">
-                                        <?php echo $contact['member']['primary_address']['county']?>
-                                    </span>
-                                </div>
-                                <div class="form-group has-feedback details">
-                                    <span class="profile_main">Postcode </span>
-                                    <span class="editable" id="postcode">
-                                        <?php echo $contact['member']['primary_address']['postcode']?>
-                                    </span>
-                                </div>
-                                <div class="form-group has-feedback details">
+                            </div>
+                            <div class="section"></div>
+                            <div class="form-group has-feedback update-address">
+                                <div class="col-md-3 profile_main">Contact Details</div>
+                                <div class="col-md-4">
+                                <div class="form-group has-feedback">
+                                <div class="input-group">
                                     <?php if (isset($_SESSION['user_id'])){
-                                        foreach ($contact['member']['emails'] as $key => $value)
-                                        {
-                                            $id_address = "emails[".$i."][address]";
-                                            $id_id = "emails[".$i."][id]";
-                                            echo "<span class='profile_main'>".$value['email_type_name']." Email</span><span class='editable' id='".$id_address."'>".$value['address']."</span><span class='editableId' id='".$id_id."'>".$value['id']."</span>";
+                                        $i=0;
+                                        foreach ($contact['member']['emails'] as $key => $value) {
+                                            $id_address = "emails[" . $i . "][address]";
+                                            $id_id = "emails[" . $i . "][id]";
+                                            echo '<span class="input-group-addon profile-label">'.$value['email_type_name'].' Email</span><input type="text" class="form-control" id="'.$id_address.'" value="' . $value['address'] . '"/>';
                                             $i++;
                                         }
-                                        }?>
-                                </div>
-                                <div class="form-group has-feedback details">
-                                    <?php
-                                    foreach ($contact['member']['phones'] as $key => $value)
-                                    {
-                                        $id_number = "phones[".$i."][number]";
-                                        $id_id = "phones[".$i."][id]";
-                                        echo "<span class='profile_main'>".$value['phone_type_name']." Phone </span><span class='editable' id='".$id_number."'>".$value['number']."<span><span class='editableId' id='".$id_id."'>".$value['id']."</span>";
-                                        $i++;
                                     }?>
                                 </div>
-                                <div class="form-group has-feedback details">
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <?php if (isset($_SESSION['user_id'])){
+                                        $i=0;
+                                        foreach ($contact['member']['phones'] as $key => $value) {
+                                            $id_number = "phones[".$i."][number]";
+                                            $id_id = "phones[".$i."][id]";
+                                            echo '<span class="input-group-addon profile-label">'.$value['phone_type_name'].' Phone</span><input type="text" class="form-control" id="'.$id_number.'" value="' . $value['number'] . '"/>';
+                                            $i++;
+                                        }
+                                    }?>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
                                     <?php if (!empty($contact['member']['links'])) {
-                                    foreach ($contact['member']['links'] as $key => $value)
-                                    {
-                                        $id_link = "links[".$i."][address]";
-                                        $id_id = "links[".$i."][id]";
-                                        echo "<span class='profile_main'>".$value['link_type_name']." link </span><span class='editable' id='".$id_link."'>".$value['address']."</span><span class='editableId' id='".$id_id."'>".$value['id']."</span>";
-                                        $i++;
-                                    }
-                                    } else {
-                                        echo "<span class='profile_main'>Website </span><span class='editable' id='links[][address]'></span>";
-                                    }?>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col-md-4">
-                            <fieldset class="form-group">
-                                <legend>Associated Drivers</legend>
-                                <div class="form-group has-feedback details">
-                                    <div>
-                                    <span class="profile_main">Driver</span>
-                                    <span class="profile_main">Licence Number</span>
-                                    <span class="profile_main">Authorised</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <?php
-                                    if (count($contact['member']['child_members']) != 0) {
-                                        foreach ($driver as $value=>$key)
-                                        {
-                                            echo "<div><span class='profile_main'>".$key['member']['name']."</span>
-                                                    <span class='profile_main'>******".substr($key['member']['custom_fields']['drivers_licence_number'], -8)."</span>";
-                                            if ($key['member']['active']){
-                                                echo "<span class='auth glyphicon glyphicon-ok'></span>";
-                                            } else {
-                                                echo "<span class='notauth'>Pending</span>";
-                                            }
-                                            echo "</div><div class='clearfix'></div>";
+                                        $i=0;
+                                        foreach ($contact['member']['links'] as $key => $value) {
+                                            $id_link = "links[".$i."][address]";
+                                            $id_id = "links[".$i."][id]";
+                                            echo '<span class="input-group-addon profile-label">'.$value['link_type_name'].' Email</span><input type="text" class="form-control" id="'.$id_link.'" value="' . $value['address'] . '"/>';
+                                            $i++;
                                         }
                                     } else {
-                                        echo "No drivers to display";
-                                    }
-                                    ?>
-
+                                        echo "<span class='input-group-addon'>Website</span><input type='text' id='links[][address]' class='form-control'/>";
+                                    }?>
                                 </div>
-                            </fieldset>
-                        </div>
-                        <div class="col-md-4">
-                            <fieldset class=" form-group">
-                                <legend>Hire Details</legend>
-                                <div class="form-group details">
-                                    <label class="profile_main control-label" for="prod_type">Vehicle Type</label>
-                                    <input type="text" class="form-control" id="prod_type" name="prod_type" value="<?php echo $_POST["prod_type"];?>" readonly="readonly">
+                            </div>
                                 </div>
-                                <div class="form-group details">
-                                    <label class="profile_main control-label" for="startDate">Collection Date</label>
-                                    <input type="text" class="form-control" id="startDate" name="startDate" value="<?php echo $newStart;?>" readonly="readonly">
-                                </div>
-                                <div class="form-group details">
-                                    <label class="profile_main control-label" for="endDate">Return Date</label>
-                                    <input type="text" class="form-control" id="endDate" name="endDate" value="<?php echo $newEnd;?>" readonly="readonly">
-                                </div>
-                                <div class="form-group details">
-                                    <label class="profile_main control-label" for="hireprice">Hire Price</label>
-                                    <input type="text" class="form-control" id="hireprice" name="hireprice" value="<?php echo $_POST["hirefee"].'.00'?>" readonly="readonly">
-                                </div>
-                                <div class="form-group details">
-                                    <label class="profile_main control-label" for="options">Deposit Scheme</label>
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary active">
-                                            <input type="radio" name="options" id="option1" autocomplete="off" value="40" checked> £10 per day
-                                        </label>
-                                        <label class="btn btn-secondary">
-                                            <input type="radio" name="options" id="option2" autocomplete="off" value="41"> £600 Refundable
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group details">
-                                    <label class="profile_main control-label" for="totprice">Total Price</label>
-                                    <input type="text" class="form-control" id="totprice" name="totprice" value="<?php echo ($_POST["hirefee"]+($_POST["cdays"]*10)).'.00 + vat'?>" readonly="readonly">
-                                </div>
-                            </fieldset>
-
-                        </div>
+                            </div>
+                        </fieldset>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
-
 <div id="error"></div>
 
 <!-- footer -->
