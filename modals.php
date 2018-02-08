@@ -51,13 +51,20 @@
 </div>
 <script>
 $(document).ready(function (e) {
-    $("#uploadform").on('submit',(function(e) {
+
+
+    $("#button").click(function(e) {
         console.log("clicked");
         e.preventDefault();
+
+        //var formData = new FormData();
+        //formData.append('file', $('input[type=file]')[0].files[0]);
+        var form = $('form')[0]; // You need to use standard javascript object here
+        var formData = new FormData(form);
         $.ajax({
             url: "image_upload.php",
             type: "POST",
-            data:  new FormData(this),
+            data:  formData,
             contentType: false,
             cache: false,
             processData:false,
@@ -83,7 +90,7 @@ $(document).ready(function (e) {
                 $("#err").html(e).fadeIn();
             }
         });
-    }));
+    })
 });
 </script>
 <!-- //Upload Modal -->
