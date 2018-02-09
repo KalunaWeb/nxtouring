@@ -1804,6 +1804,9 @@ form.profileForm legend
     padding-left: 5px;
     -webkit-appearance: none
 }
+.contactSelect select {
+    padding-right: 0 !important;
+}
 .input-group-addon {
     min-width:93px;
     text-align:left;

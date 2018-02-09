@@ -82,12 +82,12 @@ print_r($contact);
                                     </div>
                                 </div>
                             </div>
-                            <div class="section"></div>
+                            <div class="section row"></div>
                             <div class="form-group has-feedback update-address">
                                 <div class="col-md-3 profile_main">Contact Details</div>
                                 <div class="col-md-4">
                                     <div id="phones">
-                                    <div class="form-group has-feedback"><!-- Phones Select -->
+                                    <div class="form-group contactSelect"><!-- Phones Select -->
                                         <?php if (isset($_SESSION['user_id'])) {
                                             $p = 0; // phones array index
                                             foreach ($contact['member']['phones'] as $key => $value) {
@@ -117,7 +117,7 @@ print_r($contact);
                                             </div>
                                         </div>
                                         <div class="col-md-8 typeSelect">
-                                            <div class="for-group">
+                                            <div class="for-group  has-feedback">
                                                 <input class="form-control" type="text" id="'.$number.'" name="'.$number.'" maxlength="12" ';
                                                 if (isset($_SESSION['user_id'])) {
                                                     echo 'value="' . $value['number'] . '"';
@@ -128,7 +128,7 @@ print_r($contact);
                                         }
                                         }?>
                                     </div><div class="clearfix"></div></div><div id="emails">
-                                    <div class="form-group has-feedback" id="emails"><!-- Emails Select -->
+                                    <div class="form-group contactSelect" id="emails"><!-- Emails Select -->
                                         <?php if (isset($_SESSION['user_id'])) {
                                             $e = 0; // Emails arrau index
                                             foreach ($contact['member']['emails'] as $key => $value) {
@@ -149,7 +149,7 @@ print_r($contact);
                                             </div>
                                         </div>
                                         <div class="col-md-8 typeSelect">
-                                            <div class="for-group">
+                                            <div class="for-group has-feedback">
                                                 <input class="form-control" type="text" id="'.$email.'" name="'.$email.'" ';if (isset($_SESSION['user_id'])) {
                                                     echo 'value="' .$value['address']. '"';
                                                 }; echo '/>
@@ -160,7 +160,7 @@ print_r($contact);
                                         }?>
                                     </div>
                                     <div class="clearfix"></div></div><div id="links">
-                                    <div class="form-group has-feedback" id="links"><!-- Social Media Select -->
+                                    <div class="form-group contactSelect" id="links"><!-- Social Media Select -->
 
                                         <?php if (isset($_SESSION['user_id'])) {
                                             $l = 0; // Links array index
@@ -191,7 +191,7 @@ print_r($contact);
                                             </div>
                                         </div>
                                         <div class="col-md-8 typeSelect">
-                                            <div class="form-group">
+                                            <div class="form-group has-feedback">
                                                 <input class="form-control" type="text" id="'.$link.'" name="'.$link.'" ';if (isset($_SESSION['user_id'])) {
                                                     echo 'value="' .$value['address']. '"';
                                                 }; echo '/>
@@ -243,7 +243,7 @@ print_r($contact);
         $('#addlink').click(function (e) {
             e.preventDefault();
             if (linksIndex < 6) {
-                var number = '<div class="form-group has-feedback">'+
+                var number = '<div class="form-group contactSelect">'+
                     '<div class="col-md-4 typeSelect"><div class="form-group">' +
                     '<select class="form-control" id="links['+linksIndex+'][type_id]" name="links['+linksIndex+'][type_id]"> '+
                     '<option value="5001">Website</option>' +
@@ -252,7 +252,7 @@ print_r($contact);
                     '<option value="5004">Linkedin</option>' +
                     '<option value="5005">IM</option>'+
                     '</select></div></div><div class="col-md-8 typeSelect">' +
-                    '<div class="for-group">' +
+                    '<div class="for-group has-feedback">' +
                     '<input class="form-control" type="text" id="links['+linksIndex+'][number]" name="links['+linksIndex+'][number]" maxlength="12"/>' +
                     '</div></div></div><div class="clearfix"></div>';}
 
@@ -265,13 +265,13 @@ print_r($contact);
         $('#addemail').click(function (e) {
             e.preventDefault();
             if (emailIndex < 3) {
-                var number = '<div class="form-group has-feedback">'+
+                var number = '<div class="form-group contactSelect">'+
                     '<div class="col-md-4 typeSelect"><div class="form-group">' +
                     '<select class="form-control" id="emails['+emailIndex+'][type_id]" name="emails['+emailIndex+'][type_id]"> '+
                     '<option value="4001">Work Email</option>' +
                     '<option value="4002">Home Email</option>' +
                     '</select></div></div><div class="col-md-8 typeSelect">' +
-                    '<div class="for-group">' +
+                    '<div class="for-group has-feedback">' +
                     '<input class="form-control" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12"/>' +
                     '</div></div></div><div class="clearfix"></div>';}
 
@@ -285,7 +285,7 @@ print_r($contact);
         $('#addphone').click(function (e) {
             e.preventDefault();
             if (phoneIndex < 6) {
-                var number = '<div class="form-group has-feedback">'+
+                var number = '<div class="form-group contactSelect">'+
                     '<div class="col-md-4 typeSelect"><div class="form-group">' +
                     '<select class="form-control" id="phones['+phoneIndex+'][type_id]" name="phones['+phoneIndex+'][type_id]"> '+
                     '<option value="6001">Work Phone</option>' +
@@ -294,7 +294,7 @@ print_r($contact);
                     '<option value="6004">Skype</option>' +
                     '<option value="6005">Home</option>'+
                     '</select></div></div><div class="col-md-8 typeSelect">' +
-                    '<div class="for-group">' +
+                    '<div class="for-group has-feedback">' +
                     '<input class="form-control" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12"/>' +
                     '</div></div></div><div class="clearfix"></div>';}
 
