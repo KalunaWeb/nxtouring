@@ -14,10 +14,10 @@ $live = $current->getOpportunity($name, "live");
 $archive = $current->getOpportunity($name, "all");
 $old = array_reverse($archive['opportunities']);
 $count = count($contact['member']['child_members']);
-
-for ($i=0; $i<$count; $i++) {
-    $driver[$i] = $current -> getContactById($contact['member']['child_members'][$i]['related_id']);
-}
+print_r($contact);
+//for ($i=0; $i<$count; $i++) {
+  //  $driver[$i] = $current -> getContactById($contact['member']['child_members'][$i]['related_id']);
+//}
 
 ?>
 
@@ -86,58 +86,224 @@ for ($i=0; $i<$count; $i++) {
                             <div class="form-group has-feedback update-address">
                                 <div class="col-md-3 profile_main">Contact Details</div>
                                 <div class="col-md-4">
-                                <div class="form-group has-feedback">
-                                <div class="input-group">
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        $i=0;
-                                        foreach ($contact['member']['emails'] as $key => $value) {
-                                            $id_address = "emails[" . $i . "][address]";
-                                            $id_id = "emails[" . $i . "][id]";
-                                            echo '<span class="input-group-addon profile-label">'.$value['email_type_name'].' Email</span><input type="text" class="form-control" id="'.$id_address.'" value="' . $value['address'] . '"/>';
-                                            $i++;
+                                    <div id="phones">
+                                    <div class="form-group has-feedback"><!-- Phones Select -->
+                                        <?php if (isset($_SESSION['user_id'])) {
+                                            $p = 0; // phones array index
+                                            foreach ($contact['member']['phones'] as $key => $value) {
+                                                $number = "phones[" . $p . "][number]"; // Phone Number
+                                                $id = "phones[" . $p . "][id]"; // ID of individual record for editing
+                                                $type = "phones[".$p."][type_id]"; // id of the type of number
+
+                                                echo '<div class="col-md-4 typeSelect">
+                                            <div class="form-group">
+                                                <select class="form-control" id="'.$type.'" name="'.$type.'">
+                                                    <option value="6001"';
+                                                if ($value['type_id'] == 6001) echo 'selected="selected"';
+                                                echo '>Work Phone</option>
+                                                    <option value="6002"';
+                                                if ($value['type_id'] == 6002) echo 'selected="selected"';
+                                                echo '>Mobile Phone</option>
+                                                    <option value="6003"';
+                                                if ($value['type_id'] == 6003) echo 'selected="selected"';
+                                                echo '>Fax</option>
+                                                    <option value="6004"';
+                                                if ($value['type_id'] == 6004) echo 'selected="selected"';
+                                                echo '>Skype</option>
+                                                    <option value="6005"';
+                                                if ($value['type_id'] == 6005) echo 'selected="selected"';
+                                                echo '>Home</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 typeSelect">
+                                            <div class="for-group">
+                                                <input class="form-control" type="text" id="'.$number.'" name="'.$number.'" maxlength="12" ';
+                                                if (isset($_SESSION['user_id'])) {
+                                                    echo 'value="' . $value['number'] . '"';
+                                                }; echo '/>
+                                                <input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" /> 
+                                            </div>
+                                        </div>';
                                         }
-                                    }?>
+                                        }?>
+                                    </div><div class="clearfix"></div></div><div id="emails">
+                                    <div class="form-group has-feedback" id="emails"><!-- Emails Select -->
+                                        <?php if (isset($_SESSION['user_id'])) {
+                                            $e = 0; // Emails arrau index
+                                            foreach ($contact['member']['emails'] as $key => $value) {
+                                                $email = "emails[" . $e . "][address]"; // Email Address
+                                                $id = "emails[" . $e . "][id]"; // ID of individual record for editing
+                                                $type = "emails[".$e."][type_id]"; // ID number of the email type
+
+                                                echo '<div class="col-md-4 typeSelect">
+                                            <div class="form-group">
+                                                <select class="form-control" id="'.$type.'" name="'.$type.'">
+                                                    <option value="4001"';
+                                                if ($value['type_id'] == 4001) echo 'selected="selected"';
+                                                echo '>Work Email</option>
+                                                    <option value="4002"';
+                                                if ($value['type_id'] == 4002) echo 'selected="selected"';
+                                                echo '>Home Email</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 typeSelect">
+                                            <div class="for-group">
+                                                <input class="form-control" type="text" id="'.$email.'" name="'.$email.'" ';if (isset($_SESSION['user_id'])) {
+                                                    echo 'value="' .$value['address']. '"';
+                                                }; echo '/>
+                                                <input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
+                                            </div>
+                                        </div>';
+                                            }
+                                        }?>
+                                    </div>
+                                    <div class="clearfix"></div></div><div id="links">
+                                    <div class="form-group has-feedback" id="links"><!-- Social Media Select -->
+
+                                        <?php if (isset($_SESSION['user_id'])) {
+                                            $l = 0; // Links array index
+                                            foreach ($contact['member']['links'] as $key => $value) {
+                                                $link = "links[" . $l . "][address]"; // Link Address
+                                                $id = "links[" . $l . "][id]"; // ID of individual record for editing
+                                                $type = "links[".$l."][type_id]"; // ID number of the Link type
+
+                                                echo '<div class="col-md-4 typeSelect">
+                                            <div class="form-group">
+                                                <select class="form-control" id="'.$type.'" name="'.$type.'">
+                                                    <option value="5001"';
+                                                if ($value['type_id'] == 5001) echo 'selected="selected"';
+                                                echo '>Website</option>
+                                                    <option value="5002"';
+                                                if ($value['type_id'] == 5002) echo 'selected="selected"';
+                                                echo '>Facebook</option>
+                                                    <option value="5003"';
+                                                if ($value['type_id'] == 5003) echo 'selected="selected"';
+                                                echo '>Twitter</option>
+                                                    <option value="5004"';
+                                                if ($value['type_id'] == 5004) echo 'selected="selected"';
+                                                echo '>Linkedin/option>
+                                                    <option value="5001"';
+                                                if ($value['type_id'] == 5005) echo 'selected="selected"';
+                                                echo '>IM</option>    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 typeSelect">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" id="'.$link.'" name="'.$link.'" ';if (isset($_SESSION['user_id'])) {
+                                                    echo 'value="' .$value['address']. '"';
+                                                }; echo '/>
+                                                <input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
+                                            </div>
+                                        </div>';
+                                            }
+                                        }?>
+                                            </div></div><div class="clearfix"></div>
+                                    <div class="form-group">
+                                        <button class="btn-default updateBtn" id="addemail" type="submit" value="Add">Add Email</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn-default updateBtn" id="addphone" type="submit" value="Add">Add Phone</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn-default updateBtn" id="addlink" type="submit" value="Add">Add Link</button>
+                                    </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group has-feedback">
-                                <div class="input-group">
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        $i=0;
-                                        foreach ($contact['member']['phones'] as $key => $value) {
-                                            $id_number = "phones[".$i."][number]";
-                                            $id_id = "phones[".$i."][id]";
-                                            echo '<span class="input-group-addon profile-label">'.$value['phone_type_name'].' Phone</span><input type="text" class="form-control" id="'.$id_number.'" value="' . $value['number'] . '"/>';
-                                            $i++;
-                                        }
-                                    }?>
-                                </div>
+                            <div class="section"></div>
+                <fieldset>
+                            <div class="col-md-3 profile_main"></div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                            <div class="form-group">
+                                <button class="btn-default updateBtn" id="update" type="submit" value="Update">Update</button>
                             </div>
-                            <div class="form-group has-feedback">
-                                <div class="input-group">
-                                    <?php if (!empty($contact['member']['links'])) {
-                                        $i=0;
-                                        foreach ($contact['member']['links'] as $key => $value) {
-                                            $id_link = "links[".$i."][address]";
-                                            $id_id = "links[".$i."][id]";
-                                            echo '<span class="input-group-addon profile-label">'.$value['link_type_name'].' Email</span><input type="text" class="form-control" id="'.$id_link.'" value="' . $value['address'] . '"/>';
-                                            $i++;
-                                        }
-                                    } else {
-                                        echo "<span class='input-group-addon'>Website</span><input type='text' id='links[][address]' class='form-control'/>";
-                                    }?>
-                                </div>
                             </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
+                </fieldset>
             </form>
         </div>
     </div>
 </div>
 <div id="error"></div>
+<script>
+    $(document).ready(function (e) {
+        var phoneIndex = <?php echo $p;?>;
+        var emailIndex = <?php echo $e;?>;
+        var linksIndex = <?php echo $l;?>;
+        emailIndex ++;
+        linksIndex ++;
+        phoneIndex ++;
 
+        //Add New link Section
+
+        $('#addlink').click(function (e) {
+            e.preventDefault();
+            if (linksIndex < 6) {
+                var number = '<div class="form-group has-feedback">'+
+                    '<div class="col-md-4 typeSelect"><div class="form-group">' +
+                    '<select class="form-control" id="links['+linksIndex+'][type_id]" name="links['+linksIndex+'][type_id]"> '+
+                    '<option value="5001">Website</option>' +
+                    '<option value="5002">Facebook</option>' +
+                    '<option value="5003">Twitter</option>' +
+                    '<option value="5004">Linkedin</option>' +
+                    '<option value="5005">IM</option>'+
+                    '</select></div></div><div class="col-md-8 typeSelect">' +
+                    '<div class="for-group">' +
+                    '<input class="form-control" type="text" id="links['+linksIndex+'][number]" name="links['+linksIndex+'][number]" maxlength="12"/>' +
+                    '</div></div></div><div class="clearfix"></div>';}
+
+            $('#links').append(number);
+            linksIndex++;
+        });
+
+        // Add New Email section
+
+        $('#addemail').click(function (e) {
+            e.preventDefault();
+            if (emailIndex < 3) {
+                var number = '<div class="form-group has-feedback">'+
+                    '<div class="col-md-4 typeSelect"><div class="form-group">' +
+                    '<select class="form-control" id="emails['+emailIndex+'][type_id]" name="emails['+emailIndex+'][type_id]"> '+
+                    '<option value="4001">Work Email</option>' +
+                    '<option value="4002">Home Email</option>' +
+                    '</select></div></div><div class="col-md-8 typeSelect">' +
+                    '<div class="for-group">' +
+                    '<input class="form-control" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12"/>' +
+                    '</div></div></div><div class="clearfix"></div>';}
+
+            $('#emails').append(number);
+            emailIndex++;
+        });
+
+        // Add New Links Section
+
+
+        $('#addphone').click(function (e) {
+            e.preventDefault();
+            if (phoneIndex < 6) {
+                var number = '<div class="form-group has-feedback">'+
+                    '<div class="col-md-4 typeSelect"><div class="form-group">' +
+                    '<select class="form-control" id="phones['+phoneIndex+'][type_id]" name="phones['+phoneIndex+'][type_id]"> '+
+                    '<option value="6001">Work Phone</option>' +
+                    '<option value="6002">Mobile Phone</option>' +
+                    '<option value="6003">Fax</option>\n"' +
+                    '<option value="6004">Skype</option>' +
+                    '<option value="6005">Home</option>'+
+                    '</select></div></div><div class="col-md-8 typeSelect">' +
+                    '<div class="for-group">' +
+                    '<input class="form-control" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12"/>' +
+                    '</div></div></div><div class="clearfix"></div>';}
+
+            $('#phones').append(number);
+            phoneIndex++;
+        });
+
+    });
+</script>
 <!-- footer -->
 <div class="nx_agileits-footer">
     <div class="container">

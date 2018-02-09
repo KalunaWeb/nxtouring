@@ -1735,7 +1735,7 @@ input#uploadImage.btn-default.uploadBtn {
     top: -54px;
     left: 10px;
 }
-.uploadBtn {
+.uploadBtn, .updateBtn {
     background-image: linear-gradient(#ffffff, #fafbfb 50px);
     background-color: #fafafa;
     border-color: #ccc;
@@ -1758,6 +1758,9 @@ input#uploadImage.btn-default.uploadBtn {
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6eaec));
     background: -webkit-linear-gradient(#ffffff, #e6eaec);
     background: linear-gradient(#ffffff, #e6eaec)
+}
+.updateBtn {
+    float: right;
 }
 .browseBtn {
     background-color: #fafafa;
@@ -1794,8 +1797,7 @@ form.profileForm legend
     border-width: 1px;
     border-style: solid;
     border-color: #b5b8bb #e2e4e7 #e8eaec #bdbfc3;
-    border-radius: 0;
-    height: 27px;
+    border-radius: 5px;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
@@ -1806,4 +1808,10 @@ form.profileForm legend
     min-width:93px;
     text-align:left;
     font-size: 0.8em;
+}
+
+.typeSelect {
+    font-size: 0.8em;
+    padding: 0;
+    margin-right: 0;
 }

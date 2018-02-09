@@ -54,7 +54,6 @@ $(document).ready(function (e) {
 
 
     $("#button").click(function(e) {
-        console.log("clicked");
         e.preventDefault();
 
         //var formData = new FormData();
@@ -82,7 +81,8 @@ $(document).ready(function (e) {
                 } else {
                     // view uploaded file.
                     $("#preview").html(data).fadeIn();
-                    $("#form")[0].reset();
+                    $('form')[0].reset();
+                    $('#uploadModal').modal('hide');
                 }
             },
             error: function(e)
