@@ -50,7 +50,7 @@
     </div>
 </div>
 <script>
-$(document).ready(function (e) {
+$(document).ready(function () {
 
 
     $("#button").click(function(e) {
@@ -80,7 +80,11 @@ $(document).ready(function (e) {
                     $("#err").html("Invalid File !").fadeIn();
                 } else {
                     // view uploaded file.
-                    $("#preview").html(data).fadeIn();
+                    var source = '<img src="'+data+'" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
+
+                    $("#preview").html(source).fadeIn();
+                    $("#icon").val(data);
+                    $("#thumb").val(data);
                     $('form')[0].reset();
                     $('#uploadModal').modal('hide');
                 }
@@ -118,11 +122,11 @@ while ($i <= $arr['meta']['total_row_count']) {
           <div class="col-md-6 col-xs-7">
           <div class="price-bottom">
             <ul>
-				<li><span><img class="infoPic" src="images/seats.png"></span>'.$seats[$i].'</li>
-				<li><span><img class="infoPic" src="images/weight.png"></span>'.$weight[$i].'</li>
-				<li><span><img class="infoPic" src="images/tape.png"></span>'.$size[$i].'</li>
-				<li><span><img class="infoPic" src="images/licence.png"></span>'.$licence[$i].'</li>
-				<li><span><img class="infoPic" src="images/money.png"></span>'.$deposit[$i].'</li>
+				<li><span><img class="infoPic" src="/images/seats.png"></span>'.$seats[$i].'</li>
+				<li><span><img class="infoPic" src="/images/weight.png"></span>'.$weight[$i].'</li>
+				<li><span><img class="infoPic" src="/images/tape.png"></span>'.$size[$i].'</li>
+				<li><span><img class="infoPic" src="/images/licence.png"></span>'.$licence[$i].'</li>
+				<li><span><img class="infoPic" src="/images/money.png"></span>'.$deposit[$i].'</li>
 			</ul>
         </div>
           </div>

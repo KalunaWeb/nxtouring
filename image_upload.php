@@ -57,7 +57,9 @@ if(isset($_FILES['image']))
         if(move_uploaded_file($tmp,$path))
         {
             correctImageOrientation($path);
-            echo "<img src='$path' height='140px' /><a href=\"#\" type=\"submit\" class=\"btn uploadBtn\" id=\"uploadBtn\" data-target=\"#uploadModal\" role=\"button\" data-toggle=\"modal\">Change Image</a>";
+            echo $path;
+
+            //echo "<img src='$path' height='140px' /><a href=\"#\" type=\"submit\" class=\"btn uploadBtn\" id=\"uploadBtn\" data-target=\"#uploadModal\" role=\"button\" data-toggle=\"modal\">Change Image</a>";
         }
     }
     else

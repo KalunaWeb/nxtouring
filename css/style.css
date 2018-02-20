@@ -1760,7 +1760,8 @@ input#uploadImage.btn-default.uploadBtn {
     background: linear-gradient(#ffffff, #e6eaec)
 }
 .updateBtn {
-    float: right;
+    /*float: right;*/
+    margin: 10px, 10px, 10px, 0;
 }
 .browseBtn {
     background-color: #fafafa;
@@ -1812,9 +1813,24 @@ form.profileForm legend
     text-align:left;
     font-size: 0.8em;
 }
-
+.contact-addon {
+    min-width: 0px;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
 .typeSelect {
     font-size: 0.8em;
     padding: 0;
     margin-right: 0;
+}
+#phonesWrapper, #emailsWrapper, #linksWrapper {
+    /*float: left;*/
+    width: 100%;
+
+}
+#preview img{
+    max-width: 140px;
+    max-height: 140px;
+
 }
