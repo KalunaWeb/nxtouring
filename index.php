@@ -1,7 +1,25 @@
 <?php
 
 require_once 'header.php';
+$arr = $current -> getProductList();
 
+foreach ($arr['products'] as $value=>$key) {
+    $index = $arr['products'][$value]['custom_fields']['order'];
+    $id[$index] = $arr['products'][$value]['id'];
+    $name[$index]= $arr['products'][$value]['name'];
+    $price[$index] = floor($arr['products'][$value]['rental_rate']['price']);
+    $url[$index] = $arr['products'][$value]['icon']['url'];
+    $seats[$index] = $arr['products'][$value]['custom_fields']['seats'];
+    $size[$index] = $arr['products'][$value]['custom_fields']['size'];
+    $licence[$index] = $arr['products'][$value]['custom_fields']['licence'];
+    $deposit[$index] = $arr['products'][$value]['custom_fields']['deposit'];
+    $weight[$index] = $arr['products'][$value]['custom_fields']['max_weight'];
+    $main[$index] = $arr['products'][$value]['description'];
+    $thumb_url[$index] = $arr["products"][$value]["icon"]["thumb_url"];
+
+};
+
+require_once 'modals.php';
 
 ?>
 	<div class="banner-top">

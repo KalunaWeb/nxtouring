@@ -287,7 +287,7 @@ $count = count($contact['member']['child_members']);
 
         $('#addemail').click(function (e) {
             e.preventDefault();
-            if (numOfEmails < 1) {
+            if (numOfEmails < 2) {
                 numOfEmails++;
                 emailIndex++;
                 var number = '<li id="email'+emailIndex+'"><div class="form-group contactSelect">'+

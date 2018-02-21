@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=28; // 330
+$_SESSION['user_id']=330; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);    
 
@@ -9,23 +9,7 @@ require_once("classlib.php");
 
 $current = new current();
 
-$arr = $current -> getProductList();
 
-foreach ($arr['products'] as $value=>$key) {
-	$index = $arr['products'][$value]['custom_fields']['order'];
-	$id[$index] = $arr['products'][$value]['id'];
-	$name[$index]= $arr['products'][$value]['name'];
-	$price[$index] = floor($arr['products'][$value]['rental_rate']['price']);
-	$url[$index] = $arr['products'][$value]['icon']['url'];
-	$seats[$index] = $arr['products'][$value]['custom_fields']['seats'];
-	$size[$index] = $arr['products'][$value]['custom_fields']['size'];
-	$licence[$index] = $arr['products'][$value]['custom_fields']['licence'];
-	$deposit[$index] = $arr['products'][$value]['custom_fields']['deposit'];
-	$weight[$index] = $arr['products'][$value]['custom_fields']['max_weight'];
-	$main[$index] = $arr['products'][$value]['description'];
-	$thumb_url[$index] = $arr["products"][$value]["icon"]["thumb_url"];
-
-};
 if(!isset($_SESSION['user_id']))
 {
   $user = "Guest";
@@ -163,6 +147,3 @@ if(!isset($_SESSION['user_id']))
 				<!-- /.container -->
 			</nav>  
 		</div>
-<?php
-require_once 'modals.php';
-?>

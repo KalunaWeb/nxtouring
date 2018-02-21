@@ -3,7 +3,7 @@
 require 'classlib.php';
 
 session_start();
-
+$_SESSION['user_id'] = 330;
 $current = new current;
 
 $contact = $current -> getContactById($_SESSION['user_id']);
@@ -12,9 +12,13 @@ $request = file_get_contents("php://input"); // gets the raw data
 $params = json_decode($request,true); // true for return as array
 
 
-/*if (isset($params['icon'])){
-    $client["icon"]["url"] = "http://www.darkelf.darktech.org/".$params["icon"]);
-}*/
+if (isset($params['icon'])) {
+    if ($params["icon"] != $contact["member"]["icon"]["url"]) {
+        $client["icon"]["image"] = "http://www.darkelf.darktech.org/" . $params["icon"];
+        $client["icon"]["iconable_id"] = $contact["member"]["id"];
+        $client["icon"]["iconable_type"] = $contact['member']['membership_type'];
+    }
+}
 // Check for deleted phone numbers
 
 $phone_id_array =[];
@@ -124,7 +128,7 @@ $client["tag_list"] = $contact['member']['tag_list'];
 $new = json_encode($client);
 
 $data = '{"member":'.$new.'}';
-
+print_r ($client);
 $result = $current->updateContact($data, $_SESSION['user_id']);
 
 print_r ($result);

@@ -9,11 +9,14 @@ include 'header.php';
 <?php
 
 $count = count($contact['member']['child_members']);
-for ($i=0; $i<$count; $i++) {
-  $driver[$i] = $current -> getContactById($contact['member']['child_members'][$i]['related_id']);
+if ($count != 0) {
+    for ($i=0; $i<$count; $i++) {
+        $driver[$i] = $current -> getContactById($contact['member']['child_members'][$i]['related_id']);
+    }
+
+
 }
 
-print_r($driver);
 ?>
 
     <div id="newcli-container">
@@ -32,6 +35,7 @@ print_r($driver);
                                 </legend>
                                 <ul>
                                 <?php
+                                if (isset($driver)){
 
                                 foreach($driver as $key=>$value){
                                     echo '<li>
@@ -139,6 +143,9 @@ print_r($driver);
                                 </div>
                                 <div class="section row"></div>
                                 </li>';
+                                }
+                                } else {
+                                    echo "No Drivers Set";
                                 }
                                 ?>
 
