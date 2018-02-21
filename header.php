@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=330;
+$_SESSION['user_id']=28; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);    
 
@@ -149,8 +149,9 @@ if(!isset($_SESSION['user_id']))
     	echo '<li><a href="#" data-toggle="dropdown" class="dropdown-toggle">Hello '.$user.'<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                           <!--<li><a href="#profileModal" data-target="#profileModal" data-toggle="modal">Profile</a></li>-->
-                          -<li><a href="profile.php">Profile</a></li>
-                          <li><a href="#currentModal" data-target="#currentModal" data-toggle="modal">Bookings</a></li>
+                          <li><a href="profile.php">Profile</a></li>
+                          <li><a href="drivers.php">Drivers</a></li>
+                          <li><a href="bookings.php">Bookings</a></li>
                           <li class="divider"></li>
                           <li><a href="logout.php">Log Out</a></li>
                         </ul></li>';
