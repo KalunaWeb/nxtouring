@@ -7,13 +7,15 @@ include 'header.php';
     <body id="background">
 
 <?php
-
+$id_array =[];
 $count = count($contact['member']['child_members']);
 if ($count != 0) {
-    for ($i=0; $i<$count; $i++) {
-        $driver[$i] = $current -> getContactById($contact['member']['child_members'][$i]['related_id']);
-    }
 
+
+    for ($i=0; $i<$count; $i++) {
+        $driver[$i] = $current->getContactById($contact['member']['child_members'][$i]['related_id']);
+
+    }
 
 }
 
@@ -34,113 +36,58 @@ if ($count != 0) {
                                 <legend>Drivers
                                 </legend>
                                 <ul>
+                                    <li>
+
+                                    </li>
                                 <?php
                                 if (isset($driver)){
 
                                 foreach($driver as $key=>$value){
                                     echo '<li>
-                                          <div class="form-group has-feedback update-address">
-                                          <div class="col-md-2 profile_main">'.$value["member"]["name"].'</div>
-                                          <div class="col-md-4">
-                                            <div class="form-group has-feedback">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon profile-label">Street</span>
-                                                    <input class="form-control" id="primary_address[street]" name="primary_address[street]" value="';
+                                            <div class="col-md-2 profile_main">'.$value["member"]["name"].'</div>
+                                            <div class="col-md-4 address">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Address<br><br><br><br><br>Phone<br>Email</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>
+                                                        <strong>';
                                     if(isset($value['member']['primary_address']['street'])) {
                                         echo $value["member"]["primary_address"]["street"];}
-                                        echo '"/>
-                                                    </div>
-                                                    </div>
-                                                    <div class="form-group has-feedback">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon profile-label">Town</span>
-                                                        <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]" value="';
+                                        echo '</strong><br>';
                                     if(isset($value['member']['primary_address']['city'])) {
                                         echo $value["member"]["primary_address"]["city"];}
-                                        echo '"/>
-                                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                                    </div>
-                                                    </div>
-                                                    <div class="form-group has-feedback">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon profile-label">County</span>
-                                                            <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]" value="';
+                                        echo '<br>';
                                     if(isset($value['member']['primary_address']['county'])) {
                                         echo $value["member"]["primary_address"]["county"];}
-                                        echo '"/>
-                                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group has-feedback">
-                                            <div class="input-group">
-                                                <span class="input-group-addon profile-label">Postcode</span>
-                                                <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode] value="';
+                                        echo '<br>';
                                     if(isset($value['member']['primary_address']['postcode'])) {
                                         echo $value["member"]["primary_address"]["postcode"];}
-                                        echo '"/>
-                                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group has-feedback">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon profile-label">Email</span>
-                                                            <input class="form-control" type="text" id="emails[][address]" name="primary_address[county]" value="';
-                                    if(isset($value['member']['emails'][0]['address'])) {
-                                        echo $value["member"]["emails"][0]["address"];}
-                                        echo '"/>
-                                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group has-feedback">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon profile-label">Phone</span>
-                                                            <input class="form-control" type="text" id="phones[][number]" name="primary_address[county]" value="';
+                                        echo '<br><br><abbr title="Phone">Phone:</abbr> ';
                                     if(isset($value['member']['phones'][0]['number'])) {
                                         echo $value["member"]["phones"][0]["number"];}
-                                        echo '"/>
-                                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                            <div class="form-group has-feedback">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon profile-label">Drivers Licence</span>
-                                                    <input class="form-control" id="custom_fields[drivers_licence_number]" name="primary_address[street]" value="';
+                                        echo '</address>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-4 address">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Licence Number<br><br>Date of Birth<br><br>Date of Test<br><br>Status</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
                                     if(isset($value['member']['custom_fields']['drivers_licence_number'])) {
-                                        echo $value["member"]["custom_fields"]["drivers_licence_number"];}
-                                        echo '"/>
-                                                    </div>
-                                                    </div>
-                                                    <div class="form-group has-feedback">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon profile-label">Date Of Birth</span>
-                                                        <input class="form-control" type="text" id="custom_fields[date_of_birth]" name="primary_address[city]" value="';
+                                        echo '********'.substr($value["member"]["custom_fields"]["drivers_licence_number"], -8);}
+                                        echo '<br><br>';
                                     if(isset($value['member']['custom_fields']['date_of_birth'])) {
-                                        echo $value["member"]["custom_fields"]["date_of_birth"];}
-                                        echo '"/>
-                                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                                    </div>
-                                                    </div>
-                                                    <div class="form-group has-feedback">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon profile-label">Date of Test</span>
-                                                            <input class="form-control" type="text" id="custom_fields[date_of_test]" name="primary_address[county]" value="';
+                                        echo date("jS F Y", strtotime($value["member"]["custom_fields"]["date_of_birth"]));}
+                                        echo '<br><br>';
                                     if(isset($value['member']['custom_fields']['date_of_test'])) {
-                                        echo $value["member"]["custom_fields"]["date_of_test"];}
-                                        echo '"/>
-                                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group has-feedback">
-                                            <div class="input-group">
-                                                <span class="input-group-addon profile-label">N.I. Number</span>
-                                                <input class="form-control" type="text" id="custom_fields[national_insurance_number]" name="primary_address[postcode] value="'.$value['member']['custom_fields']['national_insurance_number'].'"/>
-                                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        echo date("jS F Y", strtotime($value["member"]["custom_fields"]["date_of_test"]));}
+                                        echo '</address>
+                                                </div>
+                                                </div>
+                                                
+
                                 <div class="section row"></div>
                                 </li>';
                                 }

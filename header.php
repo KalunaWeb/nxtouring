@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=330; // 330
+$_SESSION['user_id']=28; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);    
 

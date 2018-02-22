@@ -317,6 +317,7 @@ class current {
 		return $result;
 	}
 
+
 	public function login($email, $password)
 		{
 			$type = "work_email_address_or_identity_email_cont";
