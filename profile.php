@@ -20,7 +20,87 @@ $count = count($contact['member']['child_members']);
 //}
 
 ?>
+<!-- Upload Modal -->
+<div class="modal upload-modal fade" id="uploadModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Upload Image</h3>
+            </div>
+            <div class="modal-body">
+                <div class="agileits-nxlayouts-info">
+                    <div>User images are 140px by 140px - for best results upload a square photo that can be scaled to this size. Use a jpg, png, or gif image, under 1MB.
 
+                    </div>
+                    <p>Choose an image to upload</p>
+                    <form id="uploadform" action="image_upload.php" method="post" enctype="multipart/form-data">
+                        <input class="btn-default browseBtn" id="uploadImage" type="file" accept="image/*" name="image" />
+
+                    </form>
+                    <div id="err"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-10 col-xs-9">
+                    <input class="btn-default uploadBtn" id="button" type="submit" value="Upload">
+                </div>
+                <div class="col-md-2 col-xs-2">
+                    <button type="button" class="btn-default uploadBtn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function () {
+
+
+    $("#button").click(function(e) {
+        e.preventDefault();
+
+        //var formData = new FormData();
+        //formData.append('file', $('input[type=file]')[0].files[0]);
+        var form = $('form')[0]; // You need to use standard javascript object here
+        var formData = new FormData(form);
+        $.ajax({
+            url: "image_upload.php",
+            type: "POST",
+            data:  formData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend : function()
+            {
+                //$("#preview").fadeOut();
+                $("#err").fadeOut();
+                },
+            success: function(data)
+            {
+                if(data=='invalid file')
+                {
+                    // invalid file format.
+                    $("#err").html("Invalid File !").fadeIn();
+                } else {
+                    // view uploaded file.
+                    var source = '<img src="'+data+'" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
+
+                    $("#preview").html(source).fadeIn();
+                    $("#icon").val(data);
+                    $("#thumb").val(data);
+                    $('form')[0].reset();
+                    $('#uploadModal').modal('hide');
+                }
+            },
+            error: function(e)
+            {
+                $("#err").html(e).fadeIn();
+            }
+        });
+    })
+});
+</script>
+<!-- //Upload Modal -->
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">

@@ -24,7 +24,6 @@ if ($count != 0) {
     <div id="newcli-container">
         <div class="container">
             <div class="newcli-form">
-                <form id="profile" class="profileForm">
                     <div class="row">
                         <div class="modal-header">
                             <h1 class="modal-title">
@@ -32,13 +31,8 @@ if ($count != 0) {
                             </h1>
                         </div>
                         <div class="col-md-12">
-                            <fieldset class="form-group">
-                                <legend>Drivers
-                                </legend>
-                                <ul>
-                                    <li>
-
-                                    </li>
+                                <legend>Drivers</legend>
+                                <ul id="driversList">
                                 <?php
                                 if (isset($driver)){
 
@@ -46,8 +40,9 @@ if ($count != 0) {
                                     echo '<li>
                                             <div class="col-md-2 profile_main">'.$value["member"]["name"].'</div>
                                             <div class="col-md-4 address">
+                                            <div class="row">
                                                 <div class="col-xs-4">
-                                                    <div class="address_label">Address<br><br><br><br><br>Phone<br>Email</div>
+                                                    <div class="address_label first">Address</div>
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>
@@ -63,28 +58,79 @@ if ($count != 0) {
                                         echo '<br>';
                                     if(isset($value['member']['primary_address']['postcode'])) {
                                         echo $value["member"]["primary_address"]["postcode"];}
-                                        echo '<br><br><abbr title="Phone">Phone:</abbr> ';
+                                        echo '</address>
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Phone</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
                                     if(isset($value['member']['phones'][0]['number'])) {
                                         echo $value["member"]["phones"][0]["number"];}
                                         echo '</address>
                                                 </div>
                                                 </div>
-                                                <div class="col-md-4 address">
+                                                <div class="row">
                                                 <div class="col-xs-4">
-                                                    <div class="address_label">Licence Number<br><br>Date of Birth<br><br>Date of Test<br><br>Status</div>
+                                                    <div class="address_label">Email</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                    if(isset($value['member']['emails'][0]['address'])) {
+                                        echo $value["member"]["emails"][0]["address"];}
+                                        echo '</address>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-4 address">
+                                                <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Licence Number</div>
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
                                     if(isset($value['member']['custom_fields']['drivers_licence_number'])) {
                                         echo '********'.substr($value["member"]["custom_fields"]["drivers_licence_number"], -8);}
-                                        echo '<br><br>';
+                                        echo '</address>
+                                                </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="row">
+                                                   <div class="col-xs-4">
+                                                    <div class="address_label">Date of Birth</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
                                     if(isset($value['member']['custom_fields']['date_of_birth'])) {
                                         echo date("jS F Y", strtotime($value["member"]["custom_fields"]["date_of_birth"]));}
-                                        echo '<br><br>';
+                                        echo '</address>
+                                                </div></div>
+                                                <div class="clearfix"></div>
+                                                <div class="row">
+                                                   <div class="col-xs-4">
+                                                    <div class="address_label">Date of Test</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
                                     if(isset($value['member']['custom_fields']['date_of_test'])) {
                                         echo date("jS F Y", strtotime($value["member"]["custom_fields"]["date_of_test"]));}
                                         echo '</address>
+                                                </div></div>
+                                                <div class="clearfix"></div>
+                                                <div class="row">
+                                                   <div class="col-xs-4">
+                                                    <div class="address_label status">Status</div>
                                                 </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                    if(isset($value['member']["active"]) && $value['member']['active'] == 1) {
+                                        echo '<span class="alert alert-success">Authorised</span>';} else {
+                                        echo '<span class="alert alert-danger">Pending Authorisation</span>';}
+                                        echo '</address>
+                                                </div></div>
+                                                <div class="clearfix"></div>
                                                 </div>
                                                 
 
@@ -97,20 +143,15 @@ if ($count != 0) {
                                 ?>
 
                             </ul>
-                                <div class="section row"></div>
                         </div>
                     </div>
-                    <div class="section"></div>
-                    <fieldset>
-                        <div class="col-md-3 profile_main"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <button class="btn-default updateBtn" id="update" value="Update">Update</button>
-                            </div>
+                <div class="col-md-2 col-md-push-9">
+                    <form action="newdriver.php">
+                        <div class="form-group">
+                            <button class="btn-default updateBtn" id="addDriver">Add New Driver</button>
                         </div>
-                    </fieldset>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

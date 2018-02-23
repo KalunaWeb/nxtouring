@@ -252,7 +252,10 @@
     .hireButtonBox {
         float: left;
     }
+    .address {
+        width: 100%
 
+    }
 
 
 }
