@@ -42,52 +42,48 @@ include 'header.php';
     </div>
 </div>
 <script>
-$(document).ready(function () {
-
-
-    $("#button").click(function(e) {
-        e.preventDefault();
-
-        //var formData = new FormData();
-        //formData.append('file', $('input[type=file]')[0].files[0]);
-        var form = $('form')[0]; // You need to use standard javascript object here
-        var formData = new FormData(form);
-        $.ajax({
-            url: "image_upload.php",
-            type: "POST",
-            data:  formData,
-            contentType: false,
-            cache: false,
-            processData:false,
-            beforeSend : function()
-            {
-                //$("#preview").fadeOut();
-                $("#err").fadeOut();
-                },
-            success: function(data)
-            {
-                if(data=='invalid file')
+    $(document).ready(function () {
+        $("#button").click(function(e) {
+            e.preventDefault();
+            //var formData = new FormData();
+            //formData.append('file', $('input[type=file]')[0].files[0]);
+            var form = $('form')[0]; // You need to use standard javascript object here
+            var formData = new FormData(form);
+            $.ajax({
+                url: "image_upload.php",
+                type: "POST",
+                data:  formData,
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function()
                 {
-                    // invalid file format.
-                    $("#err").html("Invalid File !").fadeIn();
-                } else {
-                    // view uploaded file.
-                    var source = '<img src="'+data+'" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
-
-                    $("#preview").html(source).fadeIn();
-                    $("#icon").val(data);
-                    $("#thumb").val(data);
-                    $('form')[0].reset();
-                    $('#uploadModal').modal('hide');
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data)
+                {
+                    if(data=='invalid file')
+                    {
+                        // invalid file format.
+                        $("#err").html("Invalid File !").fadeIn();
+                    } else {
+                        // view uploaded file.
+                        var source = '<img src="'+data+'" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
+                        $("#preview").html(source).fadeIn();
+                        $("#icon").val(data);
+                        $("#thumb").val(data);
+                        $('form')[0].reset();
+                        $('#uploadModal').modal('hide');
+                    }
+                },
+                error: function(e)
+                {
+                    $("#err").html(e).fadeIn();
                 }
-            },
-            error: function(e)
-            {
-                $("#err").html(e).fadeIn();
-            }
-        });
-    })
-});
+            });
+        })
+    });
 </script>
 <!-- //Upload Modal -->
 <div id="newcli-container">
@@ -108,11 +104,27 @@ $(document).ready(function () {
                             </legend>
                             <div class="form-group has-feedback upload-details">
                                 <div class="col-md-3 profile_main">Images</div>
-                                <div class="col-md-4" id="preview">'<img src="images/avatar.png">
+                                <div class="col-md-4" id="preview1"><!--<img src="images/avatar.png">
                                     <input type="hidden" id="icon" name="icon"/>
-                                    <a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Upload Image</a>
+                                    <a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Upload Image</a>-->
+                                    <p>Choose an Profile image to upload</p>
+                                    <form id="profile-upload-form" action="image_upload.php" method="post" enctype="multipart/form-data">
+                                         <input class="btn-default browseBtn" id="profileUp" type="file" accept="image/*" name="image" />
+
+                                     </form>
+                                     <p>Driving Licence Front Scan</p>
+                                     <form id="front-licence-upload-form" action="image_upload.php" method="post" enctype="multipart/form-data">
+                                         <input class="btn-default browseBtn" id="frontUp" type="file" accept="image/*" name="image" />
+                                     </form>
+                                     <p>Driving Licence Rear Scan</p>
+                                     <form id="rear-licence-upload-form" action="image_upload.php" method="post" enctype="multipart/form-data">
+                                         <input class="btn-default browseBtn" id="rearUp" type="file" accept="image/*" name="image" />
+                                     </form>
                                 </div>
-                            </div>
+
+                            <div class="col-md-3">
+                                <input class="btn-default uploadBtn" id="button1" type="submit" value="Upload">
+                            </div></div>
                             <div class="section"></div>
                             <div class="form-group has-feedback name-details">
                                 <div class="col-md-3 profile_main">Name</div>
@@ -128,7 +140,7 @@ $(document).ready(function () {
                                         <ul id="emails">
                                             <li id="email0">
                                                 <div class="form-group contactSelect">
-                                                    <div class="col-md-4 typeSelect">
+                                                    <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
                                                             <select class="form-control" id="emails[][type_id]" name="emails[][type_id]">
                                                                 <option value="4001">Work</option>
@@ -136,7 +148,7 @@ $(document).ready(function () {
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-8 typeSelect">
+                                                    <div class="col-xs-8 typeSelect">
                                                         <div class="form-group has-feedback input-group">
                                                             <input class="form-control" type="text" id="emails[][address]" name="emails[][address]" placeholder="Email"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
@@ -191,7 +203,7 @@ $(document).ready(function () {
                             <div class="section row"></div>
                             <div class="form-group has-feedback">
                                 <div class="col-md-3 profile_main">Contact Details</div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 left">
                                     <div id="phonesWrapper">
                                         <ul id="phones">
                                             <li id="phone0">
@@ -222,7 +234,7 @@ $(document).ready(function () {
                                         <ul id="links">
                                             <li id="link0">
                                                 <div class="form-group contactSelect">
-                                                    <div class="col-md-4 typeSelect">
+                                                    <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
                                                             <select class="form-control" id="links[][type_id]" name="links[][type_id]">
                                                                  <option value="5001">Website</option>
@@ -233,7 +245,7 @@ $(document).ready(function () {
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-8 typeSelect">
+                                                    <div class="col-xs-8 typeSelect">
                                                         <div class="form-group has-feedback input-group">
                                                             <input class="form-control" type="text" id="links[][address]" name="links[][address]" placeholder="Weblink / Social Media"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
@@ -365,11 +377,10 @@ $(document).ready(function () {
 
         $('#dob').daterangepicker({
             "autoApply": true,
-            "autoUpdateInput": false,
+            "autoUpdateInput": true,
             "singleDatePicker": true,
             "showDropdowns": true,
             locale: {
-                cancelLabel: 'Clear',
                 format: "DD MMMM YYYY",
                 firstDay: 1
             }
@@ -386,137 +397,177 @@ $(document).ready(function () {
         });
 
 
+        $('#profile-upload-form').on('submit', (function (e) {
+                e.preventDefault();
+                console.log("clicked");
+                var formData = new FormData(this);
+
+                //$("#button1").click(function(e) {
+                //e.preventDefault();
+                //var formData = new FormData();
+                //formData.append('file', $('input[type=file]')[0].files[0]);
+                //var form = $('form')[0]; // You need to use standard javascript object here
+                //var formData = new FormData(form);
+                $.ajax({
+                    url: "image_upload.php",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    beforeSend: function () {
+                        //$("#preview").fadeOut();
+                        $("#err").fadeOut();
+                    },
+                    success: function (data) {
+                        if (data == 'invalid file') {
+                            // invalid file format.
+                            $("#err").html("Invalid File !").fadeIn();
+                        } else {
+                            // view uploaded file.
+                            var source = '<img src="' + data + '" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
+
+                            $("#preview").html(source).fadeIn();
+                            $("#icon").val(data);
+                            $("#thumb").val(data);
+                            $('form')[0].reset();
+                            $('#uploadModal').modal('hide');
+                        }
+                    },
+                    error: function (e) {
+                        $("#err").html(e).fadeIn();
+                    }
+                });
+            })
+        );
 
 
-        $("#newDriver").submit(function(e){
+        $("#newDriver").submit(function (e) {
             e.preventDefault();
         });
 
-            $('#newDriver').validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        remote: {
-                            url: "test-val.php",
-                            type: "post"
-                        }
-                    },
-                    "emails[][address]": {
-                        required: true,
-                        email: true,
-                        remote: {
-                            url: "check-email.php",
-                            type: "post",
-                            data: {
-                                name: function() {
-                                    return $( "#name" ).val();
-                                }
+        $('#newDriver').validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                "emails[][address]": {
+                    required: true,
+                    email: true,
+                    remote: {
+                        url: "check-email.php",
+                        type: "post",
+                        data: {
+                            name: function () {
+                                return $("#name").val();
                             }
                         }
-                    },
-                    "phones[][number]": {
-                        phoneUK: true,
-                        minlength: 10,
-                        maxlength: 12
-                    },
-                    "links[][address]": {
-                        url: true,
-                        normalizer: function (value) {
-                            var url = value;
+                    }
+                },
+                "phones[][number]": {
+                    phoneUK: true,
+                    minlength: 10,
+                    maxlength: 12
+                },
+                "links[][address]": {
+                    url: true,
+                    normalizer: function (value) {
+                        var url = value;
 
-                            // Check if it doesn't start with http:// or https:// or ftp://
-                            if (url && url.substr(0, 7) !== "http://"
-                                && url.substr(0, 8) !== "https://"
-                                && url.substr(0, 6) !== "ftp://") {
-                                // then prefix with http://
-                                url = "http://" + url;
-                            }
-
-                            // Return the new url
-                            return url;
+                        // Check if it doesn't start with http:// or https:// or ftp://
+                        if (url && url.substr(0, 7) !== "http://"
+                            && url.substr(0, 8) !== "https://"
+                            && url.substr(0, 6) !== "ftp://") {
+                            // then prefix with http://
+                            url = "http://" + url;
                         }
-                    },
-                    "primary_address[street]": {
 
-                        minlength: 8,
-                        maxlength: 100
-                    },
-                    "primary_address[city]": {
-                        minlength: 8,
-                        maxlength: 100
-
-                    },
-                    "primary_address[county]": {
-                        minlength: 3,
-                    },
-
-                    "primary_address[postcode]": {
-                        postcodeUK: true
-                    },
-                    "custom_fields[national_insurance_number]": {
-                        require_from_group: [1, ".code-group"]
-                    },
-                    "custom_fields[dvla_code]": {
-                        require_from_group: [1, ".code-group"]
-                    }
-
-                },
-                messages: {
-
-                    website: {
-                        url: "Please enter a valid URL (include the http:// part)"
-
-                    },
-                    name: {
-                        required: "Please enter your drivers name",
-                        minlength: "Please enter at least 3 characters"
-                    },
-                    "emails[][address]": {
-                        required: "Please input your email address",
-                        email: "Please input a valid email address"
-                    },
-                    "links[][address]": {
-                        url: "Please enter a valid URL (include the http:// part)"
+                        // Return the new url
+                        return url;
                     }
                 },
-                highlight: function (element, errorClass, validClass) {
-                    $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
-                    $(element).addClass(errorClass).removeClass(validClass);
-                    $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                },
-                success: function (element) {
-                    $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-remove').addClass('glyphicon-ok');
-                    element.closest('.form-group').removeClass('has-error').addClass('has-success');
-                    $(element).remove();
-                },
-                onkeyup: false, //turn off auto validate whilst typing
-                submitHandler: function (form) {
+                "primary_address[street]": {
 
-                    var formdata = $('#newDriver').serializeJSON();
-                    var jdata = JSON.stringify(formdata);
-                    console.log(jdata);
-                    if (jdata != "{}") {
-                        $.ajax({
-                            url: 'newdriver-process.php',
-                            method: 'post',
-                            dataType: 'json',
-                            data: jdata,
-                            beforeSend: function () {
-                                $("#loading").show();
-                            },
-                            success: function (response) {
-                                if (response == 'ok') {
-                                    alert("Thank you for your business, You will receive a confirmation email shortly");
-                                    window.location.href = "index.php";
-                                } else {
-                                    alert("There was an error, please try later or contact our office");
-                                }
+                    minlength: 3,
+                    maxlength: 100
+                },
+                "primary_address[city]": {
+                    minlength: 3,
+                    maxlength: 100
 
-                            }
-                        });
-                    }
+                },
+                "primary_address[county]": {
+                    minlength: 3,
+                },
+
+                "primary_address[postcode]": {
+                    postcodeUK: true
+                },
+                "custom_fields[national_insurance_number]": {
+                    require_from_group: [1, ".code-group"]
+                },
+                "custom_fields[dvla_code]": {
+                    require_from_group: [1, ".code-group"]
                 }
-            });
-        })
+
+            },
+            messages: {
+
+                website: {
+                    url: "Please enter a valid URL (include the http:// part)"
+
+                },
+                name: {
+                    required: "Please enter your drivers name",
+                    minlength: "Please enter at least 3 characters"
+                },
+                "emails[][address]": {
+                    required: "Please input your email address",
+                    email: "Please input a valid email address"
+                },
+                "links[][address]": {
+                    url: "Please enter a valid URL (include the http:// part)"
+                }
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                $(element).addClass(errorClass).removeClass(validClass);
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-remove').addClass('glyphicon-ok');
+                element.closest('.form-group').removeClass('has-error').addClass('has-success');
+                $(element).remove();
+            },
+            onkeyup: false, //turn off auto validate whilst typing
+            submitHandler: function (form) {
+
+                var formdata = $('#newDriver').serializeJSON();
+                var jdata = JSON.stringify(formdata);
+                console.log(jdata);
+                if (jdata != "{}") {
+                    $.ajax({
+                        url: 'newdriver-process.php',
+                        method: 'post',
+                        dataType: 'json',
+                        data: jdata,
+                        beforeSend: function () {
+                            $("#loading").show();
+                        },
+                        success: function (response) {
+                            if (response == 'ok') {
+                                alert("Thank you for your business, You will receive a confirmation email shortly");
+                                window.location.href = "index.php";
+                            } else {
+                                alert("There was an error, please try later or contact our office");
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
+    })
+
 </script>

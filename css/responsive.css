@@ -173,11 +173,22 @@
         width: 98%;
     }
     .form-group {
-        margin-bottom: 0;
+        margin-bottom: 5px;
     }
     #cont_mail {
         margin-bottom: 10px;
     }
+    #phonesWrapper, #emailsWrapper, #linksWrapper {
+        float:left;
+    }
+    .update-address {
+        height: auto;
+    }
+    .input-group-addon {
+        min-width: 60px;
+    }
+
+
 }
 @media screen and (max-width: 768px){
     h3.agile-title {
@@ -733,6 +744,14 @@
     #news, #terms {
         left: 131px;
         z-index: 5;
+    }
+    #uploadBtn {
+        top: -35px;
+    }
+    #preview img {
+        width: 100px;
+        height: 100px;
+
     }
 
 }

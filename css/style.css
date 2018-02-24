@@ -1713,7 +1713,7 @@ input.name {
     color: #444;
     font-weight: 400;
     font-size: 0.9em;
-    float: left;
+    /*float: left;*/
     margin-top: 2px;
 }
 .auth {
@@ -1781,7 +1781,7 @@ input#uploadImage.btn-default.uploadBtn {
 }
 .upload-details {
     padding: 2px 0 2px 0;
-    height: 165px;
+    height: 180px;
 }
 form.profileForm legend
 {
@@ -1885,4 +1885,10 @@ ul#driversList .profile_main {
 }
 #dvla {
     margin: 8px 0 8px 0;
+}
+#profileUp, #frontUp, #rearUp {
+    margin-bottom: 15px;
+}
+#preview1 p {
+    color: grey;
 }

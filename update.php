@@ -16,7 +16,7 @@ if (isset($params['icon'])) {
     if ($params["icon"] != $contact["member"]["icon"]["url"]) {
         $client["icon"]["image"] = "http://www.darkelf.darktech.org/" . $params["icon"];
         $client["icon"]["iconable_id"] = $contact["member"]["id"];
-        $client["icon"]["iconable_type"] = $contact['member']['membership_type'];
+        $client["icon"]["iconable_type"] = "Member";
     }
 }
 // Check for deleted phone numbers
@@ -128,7 +128,7 @@ $client["tag_list"] = $contact['member']['tag_list'];
 $new = json_encode($client);
 
 $data = '{"member":'.$new.'}';
-print_r ($client);
+print_r ($data);
 $result = $current->updateContact($data, $_SESSION['user_id']);
 
 print_r ($result);

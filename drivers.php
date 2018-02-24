@@ -7,15 +7,19 @@ include 'header.php';
     <body id="background">
 
 <?php
-$id_array =[];
+$query ="";
+$t = 1;
 $count = count($contact['member']['child_members']);
 if ($count != 0) {
-
-
-    for ($i=0; $i<$count; $i++) {
-        $driver[$i] = $current->getContactById($contact['member']['child_members'][$i]['related_id']);
-
+foreach ($contact['member']['child_members'] as $key=>$value) {
+    $query .= "q[id_in][]=".$value['related_id'];
+    if ($t < $count ) {
+        $query .= "&";
     }
+    $t++;
+
+}
+$driver = $current->getMultipleContactsById($query);
 
 }
 
@@ -36,9 +40,9 @@ if ($count != 0) {
                                 <?php
                                 if (isset($driver)){
 
-                                foreach($driver as $key=>$value){
+                                foreach($driver['members'] as $key=>$value){
                                     echo '<li>
-                                            <div class="col-md-2 profile_main">'.$value["member"]["name"].'</div>
+                                            <div class="col-md-2 profile_main">'.$value["name"].'</div>
                                             <div class="col-md-4 address">
                                             <div class="row">
                                                 <div class="col-xs-4">
@@ -47,17 +51,17 @@ if ($count != 0) {
                                                 <div class="col-xs-8 address_detail">
                                                     <address>
                                                         <strong>';
-                                    if(isset($value['member']['primary_address']['street'])) {
-                                        echo $value["member"]["primary_address"]["street"];}
+                                    if(isset($value['primary_address']['street'])) {
+                                        echo $value["primary_address"]["street"];}
                                         echo '</strong><br>';
-                                    if(isset($value['member']['primary_address']['city'])) {
-                                        echo $value["member"]["primary_address"]["city"];}
+                                    if(isset($value['primary_address']['city'])) {
+                                        echo $value["primary_address"]["city"];}
                                         echo '<br>';
-                                    if(isset($value['member']['primary_address']['county'])) {
-                                        echo $value["member"]["primary_address"]["county"];}
+                                    if(isset($value['primary_address']['county'])) {
+                                        echo $value["primary_address"]["county"];}
                                         echo '<br>';
-                                    if(isset($value['member']['primary_address']['postcode'])) {
-                                        echo $value["member"]["primary_address"]["postcode"];}
+                                    if(isset($value['primary_address']['postcode'])) {
+                                        echo $value["primary_address"]["postcode"];}
                                         echo '</address>
                                                 </div>
                                                 </div>
@@ -67,8 +71,8 @@ if ($count != 0) {
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
-                                    if(isset($value['member']['phones'][0]['number'])) {
-                                        echo $value["member"]["phones"][0]["number"];}
+                                    if(isset($value['phones'][0]['number'])) {
+                                        echo $value["phones"][0]["number"];}
                                         echo '</address>
                                                 </div>
                                                 </div>
@@ -78,8 +82,8 @@ if ($count != 0) {
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
-                                    if(isset($value['member']['emails'][0]['address'])) {
-                                        echo $value["member"]["emails"][0]["address"];}
+                                    if(isset($value['emails'][0]['address'])) {
+                                        echo $value["emails"][0]["address"];}
                                         echo '</address>
                                                 </div>
                                                 </div>
@@ -91,8 +95,8 @@ if ($count != 0) {
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
-                                    if(isset($value['member']['custom_fields']['drivers_licence_number'])) {
-                                        echo '********'.substr($value["member"]["custom_fields"]["drivers_licence_number"], -8);}
+                                    if(isset($value['custom_fields']['drivers_licence_number'])) {
+                                        echo '********'.substr($value["custom_fields"]["drivers_licence_number"], -8);}
                                         echo '</address>
                                                 </div>
                                                 </div>
@@ -103,8 +107,8 @@ if ($count != 0) {
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
-                                    if(isset($value['member']['custom_fields']['date_of_birth'])) {
-                                        echo date("jS F Y", strtotime($value["member"]["custom_fields"]["date_of_birth"]));}
+                                    if(isset($value['custom_fields']['date_of_birth'])) {
+                                        echo date("jS F Y", strtotime($value["custom_fields"]["date_of_birth"]));}
                                         echo '</address>
                                                 </div></div>
                                                 <div class="clearfix"></div>
@@ -114,8 +118,8 @@ if ($count != 0) {
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
-                                    if(isset($value['member']['custom_fields']['date_of_test'])) {
-                                        echo date("jS F Y", strtotime($value["member"]["custom_fields"]["date_of_test"]));}
+                                    if(isset($value['custom_fields']['date_of_test'])) {
+                                        echo date("jS F Y", strtotime($value["custom_fields"]["date_of_test"]));}
                                         echo '</address>
                                                 </div></div>
                                                 <div class="clearfix"></div>
@@ -125,7 +129,7 @@ if ($count != 0) {
                                                 </div>
                                                 <div class="col-xs-8 address_detail">
                                                     <address>';
-                                    if(isset($value['member']["active"]) && $value['member']['active'] == 1) {
+                                    if(isset($value["active"]) && $value['active'] == 1) {
                                         echo '<span class="alert alert-success">Authorised</span>';} else {
                                         echo '<span class="alert alert-danger">Pending Authorisation</span>';}
                                         echo '</address>
