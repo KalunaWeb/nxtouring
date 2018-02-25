@@ -1,9 +1,11 @@
 <?php
 session_start();
-$_SESSION['user_id']=330;//28; // 330
+$_SESSION['user_id']=28;//28; // 330
 error_reporting(E_ALL);
-ini_set('display_errors', 1);    
-
+ini_set('display_errors', 1);
+if ( !is_writable(session_save_path()) ) {
+    echo 'Session save path "'.session_save_path().'" is not writable!';
+}
 
 require_once("classlib.php");
 

@@ -13,6 +13,7 @@ $count = count($contact['member']['child_members']);
 if ($count != 0) {
 foreach ($contact['member']['child_members'] as $key=>$value) {
     $query .= "q[id_in][]=".$value['related_id'];
+
     if ($t < $count ) {
         $query .= "&";
     }
