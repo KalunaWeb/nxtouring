@@ -17,6 +17,7 @@ if(!isset($_SESSION['user_id']))
 } else {
 
  $contact = $current -> getContactById($_SESSION['user_id']);
+print_r ($contact);
 
   $user = $contact['member']['name'];
 

@@ -42,7 +42,7 @@ include 'header.php';
     </div>
 </div>
 <script>
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $("#button").click(function(e) {
             e.preventDefault();
             //var formData = new FormData();
@@ -83,13 +83,13 @@ include 'header.php';
                 }
             });
         })
-    });
+    });*/
 </script>
 <!-- //Upload Modal -->
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
-            <form id="newDriver" class="profileForm">
+            <form id="newDriver" class="profileForm" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="modal-header">
                         <h1 class="modal-title">
@@ -108,23 +108,13 @@ include 'header.php';
                                     <input type="hidden" id="icon" name="icon"/>
                                     <a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Upload Image</a>-->
                                     <p>Choose an Profile image to upload</p>
-                                    <form id="profile-upload-form" action="image_upload.php" method="post" enctype="multipart/form-data">
-                                         <input class="btn-default browseBtn" id="profileUp" type="file" accept="image/*" name="image" />
-
-                                     </form>
-                                     <p>Driving Licence Front Scan</p>
-                                     <form id="front-licence-upload-form" action="image_upload.php" method="post" enctype="multipart/form-data">
-                                         <input class="btn-default browseBtn" id="frontUp" type="file" accept="image/*" name="image" />
-                                     </form>
-                                     <p>Driving Licence Rear Scan</p>
-                                     <form id="rear-licence-upload-form" action="image_upload.php" method="post" enctype="multipart/form-data">
-                                         <input class="btn-default browseBtn" id="rearUp" type="file" accept="image/*" name="image" />
-                                     </form>
+                                    <input class="btn-default browseBtn" id="profileUp" type="file" accept="image/*" name="profile" />
+                                    <p>Driving Licence Front Scan</p>
+                                    <input class="btn-default browseBtn" id="frontUp" type="file" accept="image/*" name="front" />
+                                    <p>Driving Licence Rear Scan</p>
+                                    <input class="btn-default browseBtn" id="rearUp" type="file" accept="image/*" name="rear" />
                                 </div>
-
-                            <div class="col-md-3">
-                                <input class="btn-default uploadBtn" id="button1" type="submit" value="Upload">
-                            </div></div>
+                            </div>
                             <div class="section"></div>
                             <div class="form-group has-feedback name-details">
                                 <div class="col-md-3 profile_main">Name</div>
@@ -142,7 +132,7 @@ include 'header.php';
                                                 <div class="form-group contactSelect">
                                                     <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
-                                                            <select class="form-control" id="emails[][type_id]" name="emails[][type_id]">
+                                                            <select class="form-control" id="emails[0][type_id]" name="emails[0][type_id]">
                                                                 <option value="4001">Work</option>
                                                                 <option value="4002">Home</option>
                                                             </select>
@@ -150,7 +140,7 @@ include 'header.php';
                                                     </div>
                                                     <div class="col-xs-8 typeSelect">
                                                         <div class="form-group has-feedback input-group">
-                                                            <input class="form-control" type="text" id="emails[][address]" name="emails[][address]" placeholder="Email"/>
+                                                            <input class="form-control" type="text" id="emails[0][address]" name="emails[0][address]" placeholder="Email"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                                         </div>
                                                     </div>
@@ -210,7 +200,7 @@ include 'header.php';
                                                 <div class="form-group contactSelect">
                                                     <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
-                                                            <select class="form-control" id="'phones[][type_id]" name="phones[][type_id]">
+                                                            <select class="form-control" id="'phones[0][type_id]" name="phones[0][type_id]">
                                                                 <option value="6001">Work</option>
                                                                 <option value="6002 selected">Mobile</option>
                                                                 <option value="6003">Fax</option>
@@ -221,7 +211,7 @@ include 'header.php';
                                                     </div>
                                                     <div class="col-xs-8 typeSelect">
                                                         <div class="form-group has-feedback input-group">
-                                                            <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="12" placeholder="Telephone"/>
+                                                            <input class="form-control" type="text" id="phones[0][number]" name="phones[0][number]" maxlength="12" placeholder="Telephone"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                                         </div>
                                                     </div>
@@ -236,7 +226,7 @@ include 'header.php';
                                                 <div class="form-group contactSelect">
                                                     <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
-                                                            <select class="form-control" id="links[][type_id]" name="links[][type_id]">
+                                                            <select class="form-control" id="links[0][type_id]" name="links[0][type_id]">
                                                                  <option value="5001">Website</option>
                                                                  <option value="5002" selected>Facebook</option>
                                                                  <option value="5003">Twitter</option>
@@ -247,7 +237,7 @@ include 'header.php';
                                                     </div>
                                                     <div class="col-xs-8 typeSelect">
                                                         <div class="form-group has-feedback input-group">
-                                                            <input class="form-control" type="text" id="links[][address]" name="links[][address]" placeholder="Weblink / Social Media"/>
+                                                            <input class="form-control" type="text" id="links[0][address]" name="links[0][address]" placeholder="Weblink / Social Media"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                                         </div>
                                                     </div>
@@ -297,7 +287,8 @@ include 'header.php';
                                         </div>
                                         <span>The DVLA code can be obtained from <a target="_blank" href="https://www.gov.uk/view-driving-licence#before-you-start">here</a>.</span>
                                     </div>
-                                    <input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_SESSION['user_id'];?>">
+                                    <input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_SESSION['user_id'];?>"/>
+                                    <input type="hidden" id="store_ids" name="store_ids" value="<?php echo $contact['member']['membership']['owned_by'];?>"/>
                                 </div>
                             </div>
                         </fieldset>
@@ -396,63 +387,25 @@ include 'header.php';
             }
         });
 
+var driverForm = $('form#newDriver');
 
-        $('#profile-upload-form').on('submit', (function (e) {
-                e.preventDefault();
-                console.log("clicked");
-                var formData = new FormData(this);
-
-                //$("#button1").click(function(e) {
-                //e.preventDefault();
-                //var formData = new FormData();
-                //formData.append('file', $('input[type=file]')[0].files[0]);
-                //var form = $('form')[0]; // You need to use standard javascript object here
-                //var formData = new FormData(form);
-                $.ajax({
-                    url: "image_upload.php",
-                    type: "POST",
-                    data: formData,
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    beforeSend: function () {
-                        //$("#preview").fadeOut();
-                        $("#err").fadeOut();
-                    },
-                    success: function (data) {
-                        if (data == 'invalid file') {
-                            // invalid file format.
-                            $("#err").html("Invalid File !").fadeIn();
-                        } else {
-                            // view uploaded file.
-                            var source = '<img src="' + data + '" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
-
-                            $("#preview").html(source).fadeIn();
-                            $("#icon").val(data);
-                            $("#thumb").val(data);
-                            $('form')[0].reset();
-                            $('#uploadModal').modal('hide');
-                        }
-                    },
-                    error: function (e) {
-                        $("#err").html(e).fadeIn();
-                    }
-                });
-            })
-        );
-
-
-        $("#newDriver").submit(function (e) {
+        driverForm.submit(function (e) {
             e.preventDefault();
-        });
+            formData = new FormData(this);
+        })
 
-        $('#newDriver').validate({
+
+        driverForm.validate({
             rules: {
                 name: {
                     required: true,
                     minlength: 3
                 },
-                "emails[][address]": {
+                "profileUP": {
+                    accept: "jpg|jpe?g|gif",
+                    filesize: 1048576
+                },
+                "emails[0][address]": {
                     required: true,
                     email: true,
                     remote: {
@@ -465,12 +418,12 @@ include 'header.php';
                         }
                     }
                 },
-                "phones[][number]": {
+                "phones[0][number]": {
                     phoneUK: true,
                     minlength: 10,
                     maxlength: 12
                 },
-                "links[][address]": {
+                "links[0][address]": {
                     url: true,
                     normalizer: function (value) {
                         var url = value;
@@ -522,13 +475,14 @@ include 'header.php';
                     required: "Please enter your drivers name",
                     minlength: "Please enter at least 3 characters"
                 },
-                "emails[][address]": {
+                "emails[0][address]": {
                     required: "Please input your email address",
                     email: "Please input a valid email address"
                 },
-                "links[][address]": {
+                "links[0][address]": {
                     url: "Please enter a valid URL (include the http:// part)"
-                }
+                },
+                "profileUp": "File must be JPG, GIF or PNG, less than 1MB"
             },
             highlight: function (element, errorClass, validClass) {
                 $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
@@ -543,31 +497,22 @@ include 'header.php';
             onkeyup: false, //turn off auto validate whilst typing
             submitHandler: function (form) {
 
-                var formdata = $('#newDriver').serializeJSON();
-                var jdata = JSON.stringify(formdata);
-                console.log(jdata);
-                if (jdata != "{}") {
+                if (formData !== "{}") {
                     $.ajax({
                         url: 'newdriver-process.php',
-                        method: 'post',
-                        dataType: 'json',
-                        data: jdata,
-                        beforeSend: function () {
-                            $("#loading").show();
+                        type: 'POST',
+                        //dataType: 'json',
+                        data: formData,
+                        success: function (data) {
+                            alert(data)
                         },
-                        success: function (response) {
-                            if (response == 'ok') {
-                                alert("Thank you for your business, You will receive a confirmation email shortly");
-                                window.location.href = "index.php";
-                            } else {
-                                alert("There was an error, please try later or contact our office");
-                            }
-
-                        }
+                        cache: false,
+                        contentType: false,
+                        processData: false
                     });
                 }
             }
-        });
+        })
     })
 
 </script>
