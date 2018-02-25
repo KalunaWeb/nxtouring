@@ -3,9 +3,6 @@ session_start();
 $_SESSION['user_id']=28;//28; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-if ( !is_writable(session_save_path()) ) {
-    echo 'Session save path "'.session_save_path().'" is not writable!';
-}
 
 require_once("classlib.php");
 
@@ -19,7 +16,6 @@ if(!isset($_SESSION['user_id']))
 } else {
 
  $contact = $current -> getContactById($_SESSION['user_id']);
-print_r ($contact);
 
   $user = $contact['member']['name'];
 

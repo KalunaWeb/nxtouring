@@ -1892,3 +1892,16 @@ ul#driversList .profile_main {
 #preview1 p {
     color: grey;
 }
+.strip0 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-image: linear-gradient(#ffffff, #fafbfb 50px);
+}
+.strip1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #eee;
+}
+.stripe {
+    margin: 0px;
+}

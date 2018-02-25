@@ -48,7 +48,7 @@ if (isset($_POST["primary_address"])){
 
 //if (isset($profileImage)){
 
-    $client["icon"]["image"] = "https://s3.amazonaws.com/current-rms/4c45bed0-e393-0133-e219-125c65feeb4d/icons/75/original/IMG_2819.JPG";//$profileImage;
+    $client["icon"]["image"] = $profileImage;//$profileImage;
 //}
 $client["bookable"] = true;
 $client["active"] = true;

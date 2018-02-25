@@ -3,7 +3,7 @@
 require 'classlib.php';
 
 session_start();
-$_SESSION['user_id'] = 330;
+
 $current = new current;
 
 $contact = $current -> getContactById($_SESSION['user_id']);

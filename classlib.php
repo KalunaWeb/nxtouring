@@ -389,7 +389,7 @@ class current {
 
 class image {
 	private $valid_extensions = array('jpeg', 'jpg'); // valid extensions
-	private $path = 'www.darkelf.darktech.org/uploads/'; // upload directory
+	private $path = 'uploads/'; // upload directory
 
     public function correctImageOrientation($filename)
 	{
