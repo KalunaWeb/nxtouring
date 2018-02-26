@@ -15,16 +15,8 @@ if(isset($_FILES['profile']))
     $profileImage = $image->uploadImage($_FILES['profile']);
 
 }
-if(isset($_FILES['front']))
-{
-    $frontImage = $image->uploadImage($_FILES['profile']);
 
-}
-if(isset($_FILES['rear']))
-{
-    $rearImage = $image->uploadImage($_FILES['profile']);
 
-}
 
 $user = $current->createClientData();
 
@@ -48,10 +40,10 @@ if (isset($_POST["primary_address"])){
 
 //if (isset($profileImage)){
 
-    $client["icon"]["image"] = $profileImage;//$profileImage;
+    //$client["icon"]["image"] = $profileImage;//$profileImage;
 //}
 $client["bookable"] = true;
-$client["active"] = true;
+$client["active"] = false;
 $client["locale"] = "en-GB";
 $client["membership_type"] = "Contact";
 $client["membership"]["owned_by"] = $_POST["store_ids"];
@@ -64,28 +56,26 @@ $client["custom_fields"]["drivers_licence_number"] = $_POST["custom_fields"]["dr
 //$client["custom_fields"]["date_of_birth"] = $_POST["custom_fields"]["date_of_birth"];
 //$client["custom_fields"]["date_of_test"] = $_POST["custom_fields"]["date_of_test"];
 
-//$client["service_stock_levels"]["item_id"] = 42;
-//$client["service_stock_levels"]["item_type"] = "Client Drivers";
-//$client["service_stock_levels"]["stock_type"] = 3;
-//$client["service_stock_levels"]["stock_type_name"] = "Service";
-//$client["service_stock_levels"]["stock_category"] = 60;
-//$client["service_stock_levels"]["stock_category_name"] = "Resource";
-//$client["parent_members"]["id"] = 110;
-//$client["parent_members"]["relatable_id"] = $_POST["parent_id"];
-//$client["parent_members"]["relatable_type"] = "Member";
+$client["service_stock_levels"][0]["item_id"] = 42;
+$client["service_stock_levels"][0]["store_id"] = 1;
+$client["service_stock_levels"][0]["starts_at"] = "";
+$client["service_stock_levels"][0]["ends_at"] = "";
+
+$client["parent_members"][0]["relatable_id"] = $_POST["parent_id"];
+$client["parent_members"][0]["relatable_type"] = "Member";
 //$client["parent_members"]["relatable_membership_type"] = "Organisation";
 
 $new = json_encode($client);
-print_r($client);
+
 $data = '{"member":' . $new . '}';
 
 // Send JSON encoded details to Current to Create new contact
 
 $result = $current->createContact($data);
-print_r ($result);
+
 // Take the JSON result from current and turn it into a PHP accessable array so that we can access the ID #
 
-/*$client = json_decode($result, true);
+$client = json_decode($result, true);
 
 // Create discussion to confirm email details and initial booking
 
@@ -96,12 +86,16 @@ $client2["mute"] = false;
 $discussion["discussable_id"] = $client['member']['id']; // id of the opportunity
 $discussion["discussable_type"] = "Member";
 $discussion["subject"] = "New User Registration";
-$discussion["first_comment"]["remark"] = "Thank you for registering with us.
+$discussion["first_comment"]["remark"] = "Hi ".$client['member']['name'].",
+    You have been registered by ".$contact['member']['name']." as a driver on their account.
+    
+    Please login to your profile here - www.nxtouring.co.uk and check through / amend your details.
+    
+    We will need a scan of the front and rear of your driving licence, your DVLA code or NI Number as well as your usual contact details in order to get you approved as a driver.
     
     You can login to your account using the details as follows;
-    email - ".$params['emails'][0]['address']."
+    email - ".$client['member']['emails'][0]['address']."
     Password - ".$user['password']."
-    from there you can add or remove Drivers details, review previous hires and your current bookings
     
     Regards,
     
@@ -113,5 +107,42 @@ $query = '{"discussion":'.json_encode($discussion).'}';// Create discussion to n
 
 $result = $current->creatediscussion($query);
 
-*/}
+// Add licences to the New drivers profile
+    if(isset($_FILES['front']))
+    {
+        $frontImage = $image->uploadImage($_FILES['front']);
+        $attachment2['attachable_id'] = $client['member']['id'];
+        $attachment2['attachable_type'] = "Member";
+        $attachment2['name'] = "Drivers Licence Front Scan";
+        $attachment2['description'] = "";
+        $attachment2['attachment_link_url'] = $main_url . $frontImage;
+        $attachment2['attachment'] = "";
+
+        $term = json_encode($attachment2, JSON_UNESCAPED_SLASHES);
+
+        $data = '{"attachment":' . $term . '}';
+        $attach = $current->createAttachment($data);
+
+    }
+
+    if(isset($_FILES['rear']))
+    {
+        $rearImage = $image->uploadImage($_FILES['rear']);
+        $attachment1['attachable_id'] = $client['member']['id'];
+        $attachment1['attachable_type'] = "Member";
+        $attachment1['name'] = "Drivers Licence Rear Scan";
+        $attachment1['description'] = "";
+        $attachment1['attachment_link_url'] = $main_url . $rearImage;
+        $attachment1['attachment'] = "";
+
+        $term = json_encode($attachment1, JSON_UNESCAPED_SLASHES);
+
+        $data = '{"attachment":' . $term . '}';
+        $attach = $current->createAttachment($data);
+
+        print_r($attach);
+
+    }
+}
 ?>
+

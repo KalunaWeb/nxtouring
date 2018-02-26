@@ -20,6 +20,8 @@ foreach ($contact['member']['child_members'] as $key=>$value) {
     $t++;
 
 }
+$query = $query . "&filtermode=all";
+
 $driver = $current->getMultipleContactsById($query);
 
 }

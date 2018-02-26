@@ -202,7 +202,7 @@ include 'header.php';
                                                         <div class="form-group">
                                                             <select class="form-control" id="'phones[0][type_id]" name="phones[0][type_id]">
                                                                 <option value="6001">Work</option>
-                                                                <option value="6002 selected">Mobile</option>
+                                                                <option value="6002">Mobile</option>
                                                                 <option value="6003">Fax</option>
                                                                 <option value="6004">Skype</option>
                                                                 <option value="6005">Home</option>
@@ -228,7 +228,7 @@ include 'header.php';
                                                         <div class="form-group">
                                                             <select class="form-control" id="links[0][type_id]" name="links[0][type_id]">
                                                                  <option value="5001">Website</option>
-                                                                 <option value="5002" selected>Facebook</option>
+                                                                 <option value="5002">Facebook</option>
                                                                  <option value="5003">Twitter</option>
                                                                  <option value="5004">Linkedin</option>
                                                                  <option value="5001">IM</option>
@@ -392,7 +392,8 @@ var driverForm = $('form#newDriver');
         driverForm.submit(function (e) {
             e.preventDefault();
             formData = new FormData(this);
-        })
+
+        });
 
 
         driverForm.validate({

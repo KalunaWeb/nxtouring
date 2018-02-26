@@ -332,6 +332,18 @@ class current {
 
         return $result;
     }
+    public function createAttachment($data) {
+
+        $ch = curl_init('https://api.current-rms.com/api/v1/attachments');
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+
+        $result = curl_exec($ch);
+
+        return $result;
+    }
 
 
 	public function login($email, $password)

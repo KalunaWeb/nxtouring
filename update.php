@@ -14,9 +14,10 @@ $params = json_decode($request,true); // true for return as array
 
 if (isset($params['icon'])) {
     if ($params["icon"] != $contact["member"]["icon"]["url"]) {
-        $client["icon"]["image"] = "http://www.darkelf.darktech.org/" . $params["icon"];
         $client["icon"]["iconable_id"] = $contact["member"]["id"];
         $client["icon"]["iconable_type"] = "Member";
+        $client["icon"]["image"] = "http://www.darkelf.darktech.org/" . $params["icon"];
+
     }
 }
 // Check for deleted phone numbers

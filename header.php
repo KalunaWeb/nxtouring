@@ -1,9 +1,9 @@
 <?php
 session_start();
-$_SESSION['user_id']=28;//28; // 330
+$_SESSION['user_id']=330;//28; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+$main_url = "http://www.darkelf.darktech.org/";
 require_once("classlib.php");
 
 $current = new current();
@@ -18,7 +18,7 @@ if(!isset($_SESSION['user_id']))
  $contact = $current -> getContactById($_SESSION['user_id']);
 
   $user = $contact['member']['name'];
-
+//print_r($contact);
 }
 ?>
 
