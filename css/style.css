@@ -1911,8 +1911,9 @@ ul#driversList .profile_main {
 }
 .jobinfo {
     text-align: right;
+    padding-bottom: 10px;
 }
-#jobsModal ul {
+#jobsModal ul.itemList {
     color: grey;
     font-size: 0.9em;
 }
@@ -1926,4 +1927,33 @@ ul#driversList .profile_main {
 }
 .jobTotal {
     padding-top: 15px;
+}
+.driverBtn {
+    background-image: linear-gradient(#ffffff, #fafbfb 50px);
+    background-color: #fafafa;
+    border-color: #ccc;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: rgba(255, 255, 255, 0.3) 0 0 0 1px inset;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 11px;
+    text-align: center;
+    -webkit-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
+    white-space: nowrap;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6eaec));
+    background: -webkit-linear-gradient(#ffffff, #e6eaec);
+    background: linear-gradient(#ffffff, #e6eaec);
+    margin-top: 70px;
+}
+
+.drivers {
+
+    margin-bottom: 5px;
 }

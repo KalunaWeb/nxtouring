@@ -32,6 +32,22 @@ $client = json_encode($contact);
     </div>
 </div>
 <!-- //jobs modal -->
+<!-- Drivers modal -->
+<div class="modal about-modal fade" id="driversModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="driverName">Name</h4>
+            </div>
+            <div class="modal-body" id="driverBody">
+One fine body list
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+<!-- //Drivers modal -->
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
@@ -80,22 +96,22 @@ $client = json_encode($contact);
                                 echo "<li class='mobile-show'>
                             <div class='row stripe'>
                             <div class='col-md-4 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>Job Name</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".$key['subject']."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='new'><div class='col-xs-6'>".$key['subject']."</div></a></div>
                             </div>
                             <div class='col-md-3 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>Start Date</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['starts_at']))."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='new'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['starts_at']))."</div></a></div>
                             </div>
                             <div class='col-md-3 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>End Date</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['ends_at']))."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='new'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['ends_at']))."</div></a></div>
                             </div>
                             <div class='col-md-2 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>Status</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".$key['state_name']."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='new'><div class='col-xs-6'>".$key['state_name']."</div></a></div>
                             </div></div>
                         </li>
                         <li class='mobile-hidden'>
                                     <div class='row stripe'>
                                     <div class='col-md-4 strip".$x."'>
-                                        <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><span>".$key['subject']."</span>
+                                        <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='new'><span>".$key['subject']."</span>
                                     </div>
                                     <div class='col-md-3 strip".$x."'>
                                         <span>".date("d-m-Y",strtotime($key['starts_at']))."</span>
@@ -151,22 +167,22 @@ $client = json_encode($contact);
                                 echo "<li class='mobile-show'>
                             <div class='row stripe'>
                             <div class='col-md-4 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>Job Name</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".$key['subject']."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='old'><div class='col-xs-6'>".$key['subject']."</div></a></div>
                             </div>
                             <div class='col-md-3 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>Start Date</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['starts_at']))."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='old'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['starts_at']))."</div></a></div>
                             </div>
                             <div class='col-md-3 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>End Date</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['ends_at']))."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='old'><div class='col-xs-6'>".date("d-m-Y",strtotime($key['ends_at']))."</div></a></div>
                             </div>
                             <div class='col-md-2 strip".$x."'><div class='row mobile-show mobile-bookings'><div class='col-xs-6'>Status</div>
-                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><div class='col-xs-6'>".$key['state_name']."</div></a></div>
+                                <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='old'><div class='col-xs-6'>".$key['state_name']."</div></a></div>
                             </div></div>
                         </li>
                         <li class='mobile-hidden'>
                                     <div class='row stripe'>
                                     <div class='col-md-4 strip".$x."'>
-                                        <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."'><span>".$key['subject']."</span>
+                                        <a class='link' href='#jobsModal' data-target='#jobsModal' data-toggle='modal' data-items='".$items."' data-opp='".$opportunity."' data-client='".$client."' data-age='old'><span>".$key['subject']."</span>
                                     </div>
                                     <div class='col-md-3 strip".$x."'>
                                         <span>".date("d-m-Y",strtotime($key['starts_at']))."</span>
@@ -222,13 +238,14 @@ $client = json_encode($contact);
             var items = el.data('items');
             var opp = el.data('opp');
             var contact = el.data('client');
+            var age = el.data('age');
             var name = opp['subject'];
             var number = opp['id'];
             var date = $.date(opp['created_at']);
             var invoiceSub = parseFloat(opp['charge_total']).toFixed(2);
             var invoiceTotal = parseFloat(opp['charge_including_tax_total']).toFixed(2);
             var vat = parseFloat(invoiceTotal-invoiceSub).toFixed(2);
-            var driverHtml = "<div class='row'><div class='col-md-6'><span><strong>Authorised Drivers</strong></span><br>";
+            var driverHtml = "<div class='row'><div class='col-md-6'><ul><li><div class='row drivers'><div class='col-xs-12'><span><strong>Assigned Drivers</strong></span></div></div></li>";
             var html = "<div class='agileits-nxlayouts-info'><ul class='itemList'><li><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'>Job Number: " + number;
             html += "</div></div><div class='row jobdate'><div class='col-md-3 col-md-push-9 jobinfo'>Date: "+date;
             html += "</div></div></li><li><div class='row'><div class='col-xs-6'><strong>Product</strong></div><div class='col-xs-3'><strong>Duration</strong></div><div class='col-xs-3'><strong>Cost</strong></div></div></li>";
@@ -238,20 +255,32 @@ $client = json_encode($contact);
 
 
             console.log(items);
+            console.log(opp);
             $.each(items['opportunity_items'],function(ref, index){
 
-                    if (index['item_id'] != null && index['item_id'] !== 42){
-                        html+= "<li><div class='row'><div class='col-xs-6'>"+index['name']+" </div><div class='col-xs-3'> "+parseInt(index['chargeable_days'])+" days</div><div class='col-xs-3'> £"+parseFloat(index['charge_amount']).toFixed(2) + "</div></div></li>"
-                    }
-                    if (index['item_id'] != null && index['item_id'] === 42){
-                        $.each(index['item_assets'], function(array, driver){
-                            if (driver['stock_level_asset_number'] !== "Group Booking") {
-                                driverHtml += "<div>"+driver['stock_level_asset_number']+"<br></div>";
-                            } else {
-                                driverHtml += "<div>No drivers have been assigned<br></div>";
-                            }
-                        })
-                    }
+                //if there are items that are not client drivers
+                if (index['item_id'] != null && index['item_id'] !== 42){
+                    html+= "<li><div class='row'><div class='col-xs-6'>"+index['name']+" </div><div class='col-xs-3'> "+parseInt(index['chargeable_days'])+" days</div><div class='col-xs-3'> £"+parseFloat(index['charge_amount']).toFixed(2) + "</div></div></li>"
+                }
+
+                if (index['item_id'] != null && index['item_id'] === 42){
+
+                    var allocated =0;
+                    $.each(index['item_assets'], function(array, driver){
+
+                        total = parseInt(index['quantity']);
+
+                        if (driver['stock_level_asset_number'] !== "Group Booking") {
+                            driverHtml += "<li><div class='col-xs-8 driverName drivers'><span>"+driver['stock_level_asset_number']+"</span></div></li>";
+
+                        } else {
+                            driverHtml += "<div>No drivers have been assigned<br></div>";
+                        }
+                        allocated++;
+                    })
+                    driverHtml += "</ul></div><div class='col-md-6'><div class='info'>There are " + allocated;
+                    driverHtml += " of "+ total +" drivers allocated to this job.</div><div class='col-xs-6 col-xs-push-4 info'><button class='btn driverBtn' data-target='#driversModal' data-toggle='modal' >Add / Remove Drivers</button></div></div>";
+                }
 
 
             });
@@ -260,9 +289,12 @@ $client = json_encode($contact);
                 html += "</div></div><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'><strong>Total: "+invoiceTotal+"</strong>";
                 html += "</div></div></li><div class='section'></div>";
 
-                html += driverHtml+"</div></ul>";
+                html += driverHtml+"</ul>";
                 $('#jobBody').html(html);
                 console.log(contact);
+                if (age === "old") {
+                    $('.info').hide();
+                }
         }
         )
     </script>
