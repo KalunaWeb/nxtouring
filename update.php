@@ -21,7 +21,7 @@ if (isset($params['icon'])) {
     }
 }
 // Check for deleted phone numbers
-
+if (isset($params["phones"]) && $params["phones"] != "") {;
 $phone_id_array =[];
 
 foreach ($params["phones"] as $key=>$value) {
@@ -46,61 +46,63 @@ foreach ($contact["member"]["phones"] as $key=>$value){
         $params["phones"][$key]["_destroy"] = 1;
     }
 }
-
+}
 // Check for deleted emails
+if (isset($params["emails"]) && $params["emails"] != "") {
+    ;
+    $email_id_array = [];
 
-$email_id_array =[];
+    foreach ($params["emails"] as $key => $value) {
 
-foreach ($params["emails"] as $key=>$value) {
+        array_push($email_id_array, $value["id"]);
+    }
 
-    array_push($email_id_array,$value["id"]);
-}
-
-$arrNum = count($email_id_array);
+    $arrNum = count($email_id_array);
 // Take each current email id and see if it's in the updated array
-foreach ($contact["member"]["emails"] as $key=>$value){
+    foreach ($contact["member"]["emails"] as $key => $value) {
 
-    $flag = 0;
-    for ($i=0; $i<$arrNum; $i++) {                  //loop through the array of id numbers
-        if ($value["id"] == $email_id_array[$i]){   //is the member id in the array
+        $flag = 0;
+        for ($i = 0; $i < $arrNum; $i++) {                  //loop through the array of id numbers
+            if ($value["id"] == $email_id_array[$i]) {   //is the member id in the array
 
-            $flag = 1;                              //If it is, flag the id to remain
+                $flag = 1;                              //If it is, flag the id to remain
+            }
+        }
+        if ($flag != 1) {                               //If the id is no longer in the update, set conditions
+            $params["emails"][$key]["id"] = $value["id"];
+            $params["emails"][$key]["number"] = null;
+            $params["emails"][$key]["_destroy"] = 1;
         }
     }
-    if ($flag != 1) {                               //If the id is no longer in the update, set conditions
-        $params["emails"][$key]["id"] = $value["id"];
-        $params["emails"][$key]["number"] = null;
-        $params["emails"][$key]["_destroy"] = 1;
-    }
 }
-
 // Check for deleted web link addresses
+if (isset($params["links"]) && $params["links"] != "") {
+    ;
+    $link_id_array = [];
 
-$link_id_array =[];
+    foreach ($params["links"] as $key => $value) {
 
-foreach ($params["links"] as $key=>$value) {
+        array_push($link_id_array, $value["id"]);
+    }
 
-    array_push($link_id_array,$value["id"]);
-}
-
-$arrNum = count($link_id_array);
+    $arrNum = count($link_id_array);
 // Take each current link id and see if it's in the updated array
-foreach ($contact["member"]["links"] as $key=>$value){
+    foreach ($contact["member"]["links"] as $key => $value) {
 
-    $flag = 0;
-    for ($i=0; $i<$arrNum; $i++) {                  //loop through the array of id numbers
-        if ($value["id"] == $link_id_array[$i]){   //is the member id in the array
+        $flag = 0;
+        for ($i = 0; $i < $arrNum; $i++) {                  //loop through the array of id numbers
+            if ($value["id"] == $link_id_array[$i]) {   //is the member id in the array
 
-            $flag = 1;                              //If it is, flag the id to remain
+                $flag = 1;                              //If it is, flag the id to remain
+            }
+        }
+        if ($flag != 1) {                               //If the id is no longer in the update, set conditions
+            $params["links"][$key]["id"] = $value["id"];
+            $params["links"][$key]["number"] = null;
+            $params["links"][$key]["_destroy"] = 1;
         }
     }
-    if ($flag != 1) {                               //If the id is no longer in the update, set conditions
-        $params["links"][$key]["id"] = $value["id"];
-        $params["links"][$key]["number"] = null;
-        $params["links"][$key]["_destroy"] = 1;
-    }
 }
-
 
 //address = $member['member']['primary_address'];
 /*
@@ -112,10 +114,19 @@ $address['county'] = $params['primary_address']['county'];
 $address['country_code'] = 1;*/
 
 $client["name"] = $contact["member"]["name"];
-$client["emails"] = $params["emails"];
-$client["phones"] = $params["phones"];
-$client["links"] = $params["links"];
-$client["primary_address"] = $params["primary_address"];
+if (isset($params["emails"])) {
+    $client["emails"] = $params["emails"];
+}
+if (isset($params["phones"])) {
+    $client["phones"] = $params["phones"];
+}
+if (isset($params["links"])) {
+    $client["links"] = $params["links"];
+}
+if (isset($params["primary_address"])) {
+    $client["primary_address"] = $params["primary_address"];
+}
+
 $client["description"] = $contact['member']['description'];
 $client["active"] = $contact['member']['active'];
 $client["bookable"] = $contact['member']['bookable'];
@@ -126,7 +137,7 @@ $client["membership"]["owned_by"] = $contact['member']['membership']['owned_by']
 $client["tag_list"] = $contact['member']['tag_list'];
 
 
-$new = json_encode($client);
+$new = json_encode($client, JSON_UNESCAPED_SLASHES);
 
 $data = '{"member":'.$new.'}';
 print_r ($data);

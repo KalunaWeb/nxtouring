@@ -148,17 +148,21 @@ $driver = $current->getMultipleContactsById($query);
                                     echo "No Drivers Set";
                                 }
                                 ?>
-
+                                    <li>
+                                        <div class="col-md-2 col-md-push-9">
+                                            <form action="newdriver.php">
+                                                <div class="form-group">
+                                                    <button class="btn-default updateBtn" id="addDriver">Add New Driver</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
                             </ul>
                         </div>
                     </div>
-                <div class="col-md-2 col-md-push-9">
-                    <form action="newdriver.php">
-                        <div class="form-group">
-                            <button class="btn-default updateBtn" id="addDriver">Add New Driver</button>
-                        </div>
-                    </form>
-                </div>
+
+
+
             </div>
         </div>
     </div>

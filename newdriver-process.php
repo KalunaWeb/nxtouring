@@ -7,7 +7,7 @@ session_start();
 $current = new current;
 $image = new image;
 $contact = $current -> getContactById($_SESSION['user_id']);
-
+$main_url = "http://darkelf.darktech.org/";
 
 
 if(isset($_FILES['profile']))

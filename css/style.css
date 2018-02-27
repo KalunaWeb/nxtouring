@@ -652,18 +652,16 @@ a.button.but3 {
     left: 40%;
     color: #fff;
 }
-.about-modal .modal-body{
+/*.about-modal .modal-body{
     background-color: rgba(51,51,51,0.53);
-}
+}*/
 .upload-modal .modal-dialog {
     width: 400px;
 }
 .upload-modal .modal-body{
     background-color: #FBFBFB;
     border: 1px solid #E5E5E5;
-    border-width: 1px 0;
     padding: 15px;
-
 }
 .descBox {
 
@@ -1835,14 +1833,16 @@ form.profileForm legend
     max-height: 140px;
 
 }
-
+.mobile-show {
+    display:none;
+}
 .address {
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
     border-color: #b5b8bb #e2e4e7 #e8eaec #bdbfc3;
     border-radius: 5px;
-    padding: 0;
+    padding: 2px 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
     -webkit-appearance: none;
@@ -1904,4 +1904,26 @@ ul#driversList .profile_main {
 }
 .stripe {
     margin: 0px;
+}
+
+.jobdate {
+    padding-bottom: 15px;
+}
+.jobinfo {
+    text-align: right;
+}
+#jobsModal ul {
+    color: grey;
+    font-size: 0.9em;
+}
+#jobsModal .modal-header{
+    background-color: lightblue;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3F4245 #dadcdc #a9abad #bdbfc3;
+    border-radius: 5px;
+}
+.jobTotal {
+    padding-top: 15px;
 }

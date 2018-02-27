@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=330;//28; // 330
+$_SESSION['user_id']=22; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $main_url = "http://www.darkelf.darktech.org/";
@@ -18,7 +18,7 @@ if(!isset($_SESSION['user_id']))
  $contact = $current -> getContactById($_SESSION['user_id']);
 
   $user = $contact['member']['name'];
-//print_r($contact);
+
 }
 ?>
 
@@ -94,6 +94,7 @@ if(!isset($_SESSION['user_id']))
 <script src="js/modernizr.js"></script>
 <!-- //Supportive-JavaScript -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head> 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="90"> 
 

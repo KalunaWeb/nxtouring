@@ -130,6 +130,30 @@
     .agreement label {
         margin-right: 100px;
     }
+    .mobile-hidden {
+        display: none;
+    }
+    .mobile-show {
+        display: inline;
+    }
+    .mobile-bookings {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .stripe {
+        box-sizing: border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #b5b8bb #e2e4e7 #e8eaec #bdbfc3;
+        border-radius: 5px;
+        padding: 2px 0;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        -webkit-appearance: none;
+    }
+    .address {
+        border: none;
+    }
 }
 @media screen and (max-width: 900px){
     nav.navbar.navbar-default.navbar-fixed-top .container {
