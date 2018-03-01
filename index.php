@@ -94,11 +94,11 @@ require_once 'modals.php';
                     <div class="">
                         <div class="form-group">
                             <label for="start">Collection Date <span class="small">(From 9 a.m.)</span></label>
-                            <input type="text" class="form-control" id="start" name="startDate">
+                            <input type="text" class="form-control" id="start" name="startDate" readonly="true"/>
                         </div>
                         <div class="form-group">
                             <label for="end">Return Date <span class="small">(Before 10 a.m.)</span></label>
-                            <input type="text" class="form-control" id="end" name="endDate">
+                            <input type="text" class="form-control" id="end" name="endDate" readonly="true"/>
                         </div>
                         <div class="form-group">
                             <label for="location">Location</label>
@@ -196,7 +196,8 @@ require_once 'modals.php';
 <script>
     var dateNow = new Date();
     $('#start').daterangepicker({
-
+        ignoreReadonly: true,
+        allowInputToggle: true,
         "autoApply": true,
         "singleDatePicker": true,
         "timePicker": true,
@@ -211,7 +212,8 @@ require_once 'modals.php';
     });
 
     $('#end').daterangepicker({
-
+        ignoreReadonly: true,
+        allowInputToggle: true,
         "autoApply": true,
         "singleDatePicker": true,
         "timePicker": true,
@@ -231,7 +233,8 @@ require_once 'modals.php';
         var new_min =  picker.startDate.clone().add(1, 'days');
         var new_start = new_min.hours(10);
         $('#end').daterangepicker({
-
+            ignoreReadonly: true,
+            allowInputToggle: true,
             "autoApply": true,
             "singleDatePicker": true,
             "timePicker": true,
