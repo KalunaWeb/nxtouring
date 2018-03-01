@@ -25,7 +25,35 @@ $client = json_encode($contact);
                 <h4 class="modal-title" id="jobName"></h4>
             </div>
             <div class="modal-body" id="jobBody">
-
+                <div class='agileits-nxlayouts-info'>
+                    <div id="itemList"></div>
+                    <div class='section'></div>
+                    <div class='row'>
+                        <div class='col-md-6'>
+                            <div id="driverList"></div>
+                        </div>
+                        <div class='col-md-6'>
+                            <div class='info'>There are <span id="allocated"></span> of <span id="total"></span> drivers allocated to this job.</div>
+                            <div class='col-xs-8 col-xs-push-4 info'>
+                                <button class='btn driverBtn' data-target='#driversModal' data-toggle='modal' >Add / Remove Drivers</button>
+                                <div id="driverSelect">
+                                    <div class="form-check">
+                                        <input class="form-check-input driver" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Default checkbox
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input driver" type="checkbox" value="" id="defaultCheck2" disabled>
+                                        <label class="form-check-label" for="defaultCheck2">
+                                            Disabled checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer"></div>
         </div>
@@ -86,8 +114,28 @@ One fine body list
                             $i =0;
                             foreach ($live['opportunities'] as $value=>$key) {
 
-                                $items = json_encode($current -> getListItems($key['id']), JSON_UNESCAPED_SLASHES);
-                                $opportunity = json_encode($live['opportunities'][$i]);
+                                $items=[];
+                                $opportunity =[];
+
+                                $totalitems = $current -> getListItems($key['id']);
+
+                                foreach ($totalitems['opportunity_items'] as $x=>$oppItems) {
+
+                                    $items['opportunity_items'][$x]['item_id'] = $oppItems['item_id'];
+                                    $items['opportunity_items'][$x]['name'] = $oppItems['name'];
+                                    $items['opportunity_items'][$x]['chargeable_days'] = $oppItems['chargeable_days'];
+                                    $items['opportunity_items'][$x]['charge_amount'] = $oppItems['charge_amount'];
+                                    $items['opportunity_items'][$x]['item_assets'] = $oppItems['item_assets'];
+                                    $items['opportunity_items'][$x]['quantity'] = $oppItems['quantity'];
+                                }
+                                $items = json_encode($items, JSON_UNESCAPED_SLASHES);
+
+                                $opportunity['subject'] = $live['opportunities'][$i]['subject'];
+                                $opportunity['id'] = $live['opportunities'][$i]['id'];
+                                $opportunity['created_at'] = $live['opportunities'][$i]['created_at'];
+                                $opportunity['charge_total'] = $live['opportunities'][$i]['charge_total'];
+                                $opportunity['charge_including_tax_total'] = $live['opportunities'][$i]['charge_including_tax_total'];
+                                $opportunity = json_encode($opportunity);
                                 if ($x == 0) {
                                     $x =1;
                                 } else {
@@ -155,10 +203,31 @@ One fine body list
                         <?php
                         if ($archive['meta']['total_row_count'] != 0) {
                             $i=0;
-                            foreach ($old as $value=>$key) {
 
-                                $items = json_encode($current -> getListItems($key['id']), JSON_UNESCAPED_SLASHES);
-                                $opportunity = json_encode($old[$i]);
+                            foreach ($old as $value=>$key) {
+                                $items=[];
+                                $opportunity =[];
+
+                                $totalitems = $current -> getListItems($key['id']);
+
+                                foreach ($totalitems['opportunity_items'] as $x=>$oppItems) {
+
+                                $items['opportunity_items'][$x]['item_id'] = $oppItems['item_id'];
+                                $items['opportunity_items'][$x]['name'] = $oppItems['name'];
+                                $items['opportunity_items'][$x]['chargeable_days'] = $oppItems['chargeable_days'];
+                                $items['opportunity_items'][$x]['charge_amount'] = $oppItems['charge_amount'];
+                                $items['opportunity_items'][$x]['item_assets'] = $oppItems['item_assets'];
+                                $items['opportunity_items'][$x]['quantity'] = $oppItems['quantity'];
+                                }
+                                $items = json_encode($items, JSON_UNESCAPED_SLASHES);
+
+                                $opportunity['subject'] = $old[$i]['subject'];
+                                $opportunity['id'] = $old[$i]['id'];
+                                $opportunity['created_at'] = $old[$i]['created_at'];
+                                $opportunity['charge_total'] = $old[$i]['charge_total'];
+                                $opportunity['charge_including_tax_total'] = $old[$i]['charge_including_tax_total'];
+                                $opportunity = json_encode($opportunity);
+
                                 if ($x == 0) {
                                 $x =1;
                                 } else {
@@ -244,18 +313,16 @@ One fine body list
             var date = $.date(opp['created_at']);
             var invoiceSub = parseFloat(opp['charge_total']).toFixed(2);
             var invoiceTotal = parseFloat(opp['charge_including_tax_total']).toFixed(2);
+
             var vat = parseFloat(invoiceTotal-invoiceSub).toFixed(2);
-            var driverHtml = "<div class='row'><div class='col-md-6'><ul><li><div class='row drivers'><div class='col-xs-12'><span><strong>Assigned Drivers</strong></span></div></div></li>";
-            var html = "<div class='agileits-nxlayouts-info'><ul class='itemList'><li><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'>Job Number: " + number;
-            html += "</div></div><div class='row jobdate'><div class='col-md-3 col-md-push-9 jobinfo'>Date: "+date;
+            var html = "<ul><li><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'>Job Number: <span>" + number;
+            html += "</span></div></div><div class='row jobdate'><div class='col-md-3 col-md-push-9 jobinfo'>Date: "+date;
             html += "</div></div></li><li><div class='row'><div class='col-xs-6'><strong>Product</strong></div><div class='col-xs-3'><strong>Duration</strong></div><div class='col-xs-3'><strong>Cost</strong></div></div></li>";
 
+            var driverHtml = "<ul><li><div class='row drivers'><div class='col-xs-12'><span><strong>Assigned Drivers</strong></span></div></div></li>";
 
             $('#jobName').html(name);
 
-
-            console.log(items);
-            console.log(opp);
             $.each(items['opportunity_items'],function(ref, index){
 
                 //if there are items that are not client drivers
@@ -264,11 +331,9 @@ One fine body list
                 }
 
                 if (index['item_id'] != null && index['item_id'] === 42){
-
+                    var total = parseInt(index['quantity']);
                     var allocated =0;
                     $.each(index['item_assets'], function(array, driver){
-
-                        total = parseInt(index['quantity']);
 
                         if (driver['stock_level_asset_number'] !== "Group Booking") {
                             driverHtml += "<li><div class='col-xs-8 driverName drivers'><span>"+driver['stock_level_asset_number']+"</span></div></li>";
@@ -278,23 +343,21 @@ One fine body list
                         }
                         allocated++;
                     })
-                    driverHtml += "</ul></div><div class='col-md-6'><div class='info'>There are " + allocated;
-                    driverHtml += " of "+ total +" drivers allocated to this job.</div><div class='col-xs-6 col-xs-push-4 info'><button class='btn driverBtn' data-target='#driversModal' data-toggle='modal' >Add / Remove Drivers</button></div></div>";
+                    driverHtml += "</ul>";
+                    $('#allocated').html(allocated);
+                    $('#total').html(total);
                 }
-
-
             });
                 html += "<li><div class='row jobTotal'><div class='col-md-3 col-md-push-9 jobinfo'>Sub-Total: " + invoiceSub;
                 html += "</div></div><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'>Vat: "+vat;
                 html += "</div></div><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'><strong>Total: "+invoiceTotal+"</strong>";
-                html += "</div></div></li><div class='section'></div>";
+                html += "</div></div></li></ul>";
+                //html += driverHtml+"</ul>";
+                $('#itemList').html(html);
+                $('#driverList').html(driverHtml);
 
-                html += driverHtml+"</ul>";
-                $('#jobBody').html(html);
-                console.log(contact);
                 if (age === "old") {
                     $('.info').hide();
                 }
-        }
-        )
+        })
     </script>
