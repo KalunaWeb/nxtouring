@@ -15,6 +15,7 @@ $archive = $current->getOpportunity($name, "inactive");
 $old = array_reverse($archive['opportunities']);
 $count = count($contact['member']['child_members']);
 $client = json_encode($contact);
+
 ?>
 <!-- jobs modal -->
 <div class="modal about-modal fade" id="jobsModal" tabindex="-1" role="dialog">
@@ -29,49 +30,84 @@ $client = json_encode($contact);
                     <div id="itemList"></div>
                     <div class='section'></div>
                     <div class='row'>
-                        <div class='col-md-6'>
+                        <div class='col-xs-7'>
                             <div id="driverList"></div>
+                            <div id='nodriver'>No drivers have been assigned</div>
                         </div>
-                        <div class='col-md-6'>
-                            <div class='info'>There are <span id="allocated"></span> of <span id="total"></span> drivers allocated to this job.</div>
-                            <div class='col-xs-8 col-xs-push-4 info'>
-                                <button class='btn driverBtn' data-target='#driversModal' data-toggle='modal' >Add / Remove Drivers</button>
-                                <div id="driverSelect">
-                                    <div class="form-check">
-                                        <input class="form-check-input driver" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Default checkbox
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input driver" type="checkbox" value="" id="defaultCheck2" disabled>
-                                        <label class="form-check-label" for="defaultCheck2">
-                                            Disabled checkbox
-                                        </label>
-                                    </div>
-                                </div>
+                        <div class='col-xs-5'>
+                            <!--<div class="info">There are <span id="allocated"></span> of <span id="total"></span> drivers allocated to this job.</div>-->
+                            <div class='info'>
+                                <button class='btn driverBtn' id="driverBtn" data-toggle="modal" href="#driversModal">Add / Remove Drivers</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer"></div>
+            <div class="modal-footer">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Close</span></button>
+            </div>
         </div>
     </div>
 </div>
 <!-- //jobs modal -->
 <!-- Drivers modal -->
 <div class="modal about-modal fade" id="driversModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="driverName">Name</h4>
+
+                <h5 class="modal-title">There are <span id="allocated"></span> drivers allocated to this job.<br>Maximum of <span id="total"></span> driver<span id="s"></span>.</h5>
             </div>
             <div class="modal-body" id="driverBody">
-One fine body list
+                <div id="driverSelect">
+                    <div class="list-group">
+                        <?php
+                        if ($contact['member']['child_members']!= []) {
+
+                        $driveList = [];
+                        $query ="";
+                        $t = 1;
+                        foreach ($contact['member']['child_members'] as $key=>$value) {
+                            $driveList[$t]['related_id'] = $value['related_id'];
+                            $driveList[$t]['related_name'] = $value['related_name'];
+                            $query .= "q[id_in][]=".$value['related_id'];
+                            if ($t < $count ) {$query .= "&";}
+                            $t++;
+                        }
+                        $query = $query . "&filtermode=all";
+
+                        $driver = $current->getMultipleContactsById($query); /// if inactive make disabled
+
+                        foreach ($driver['members'] as $key => $value) {
+                            if (isset($value['icon']['thumb_url'])) {
+                                $icon = $value['icon']['thumb_url'];
+                            } else {
+                                $icon = "images/avatar.png";
+                            }
+                            if ($value['active'] == null){
+                                $active = " disabled";
+                            } else {
+                                $active ="";
+                            }
+                            echo "<div class='row'>
+                                    <div class='col-xs-2'><img src='".$icon."' height='42px' width='42px'></div>
+                                    <div class='col-xs-10'><button type='button' class='list-group-item list-group-item-action name".$active."' id='" . $value['id'] . "'>" . $value['name'] . "</button>
+                                    <span class='glyphicon glyphicon-check check' id='check" . $value['id'] . "'></span></div>
+                                  </div>";
+                        }} else {
+                            echo "<div class='row'>
+                                    <div class='col-xs-12'><button type='button' class='list-group-item list-group-item-action name' id='redirect'>No Drivers Available.<br>Click to add drivers.</button>
+                                    </div>
+                                  </div>";
+                        }
+                        ?>
+                    </div>
+                </div>
+
             </div>
-            <div class="modal-footer"></div>
+            <div class="modal-footer">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Close</span></button>
+            </div>
         </div>
     </div>
 </div>
@@ -135,6 +171,7 @@ One fine body list
                                 $opportunity['created_at'] = $live['opportunities'][$i]['created_at'];
                                 $opportunity['charge_total'] = $live['opportunities'][$i]['charge_total'];
                                 $opportunity['charge_including_tax_total'] = $live['opportunities'][$i]['charge_including_tax_total'];
+                                $opportunity['state'] = $live['opportunities'][$i]['state'];
                                 $opportunity = json_encode($opportunity);
                                 if ($x == 0) {
                                     $x =1;
@@ -281,6 +318,29 @@ One fine body list
 </div>
 
     <script>
+        $(document).ready(function () {
+
+            $(document).on('show.bs.modal', '.modal', function (event) {
+                var zIndex = 1040 + (10 * $('.modal:visible').length);
+                $(this).css('z-index', zIndex);
+                setTimeout(function() {
+                    $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+                }, 0);
+            });
+
+        var allocated=0;
+        var total =0;
+        var ids = [];
+        var s="";
+        // Get the ids of each driver from the drop down
+
+        $(function(){
+            $('.name').each(function(){
+                ids[ids.length] = $(this).attr('id');
+            })
+        });
+
+        // Sort Out the date format
 
         $.date = function(dateObject) {
             var d = new Date(dateObject);
@@ -298,11 +358,21 @@ One fine body list
             return date;
         };
 
+        $('#redirect').click(function(){
+            window.location.href = "newdriver.php";
+        })
 
+        // check for click on the opportunity list
 
         $('a.link').on('click', function() {
-            // pull data from the button clicked
 
+            // Clean the drop down menu in case its not the first use
+            $.each(ids, function(index, value){
+                $('#'+ value).removeClass("list-group-item-info")
+                $('#check'+ value).hide();
+            });
+
+            // pull data from the button clicked
             var el = $(this);
             var items = el.data('items');
             var opp = el.data('opp');
@@ -315,13 +385,19 @@ One fine body list
             var invoiceTotal = parseFloat(opp['charge_including_tax_total']).toFixed(2);
 
             var vat = parseFloat(invoiceTotal-invoiceSub).toFixed(2);
+
+            // add the opportunity id to the drivers in the drop down
+            $('.name').attr('data-id', number);
+
             var html = "<ul><li><div class='row'><div class='col-md-3 col-md-push-9 jobinfo'>Job Number: <span>" + number;
             html += "</span></div></div><div class='row jobdate'><div class='col-md-3 col-md-push-9 jobinfo'>Date: "+date;
             html += "</div></div></li><li><div class='row'><div class='col-xs-6'><strong>Product</strong></div><div class='col-xs-3'><strong>Duration</strong></div><div class='col-xs-3'><strong>Cost</strong></div></div></li>";
 
-            var driverHtml = "<ul><li><div class='row drivers'><div class='col-xs-12'><span><strong>Assigned Drivers</strong></span></div></div></li>";
+            var driverHtml = "<ul id='dlist'><li><div class='row drivers'><div class='col-xs-12'><span><strong>Assigned Drivers</strong></span></div></div></li>";
 
             $('#jobName').html(name);
+
+            // Go through each item on the opportunity
 
             $.each(items['opportunity_items'],function(ref, index){
 
@@ -330,22 +406,35 @@ One fine body list
                     html+= "<li><div class='row'><div class='col-xs-6'>"+index['name']+" </div><div class='col-xs-3'> "+parseInt(index['chargeable_days'])+" days</div><div class='col-xs-3'> £"+parseFloat(index['charge_amount']).toFixed(2) + "</div></div></li>"
                 }
 
+                // if there are items that are client drivers
                 if (index['item_id'] != null && index['item_id'] === 42){
-                    var total = parseInt(index['quantity']);
-                    var allocated =0;
+                    total = parseInt(index['quantity']);
+                    if (total !== 1){
+                        s = "s";
+                    }
+                    allocated =0;
+
                     $.each(index['item_assets'], function(array, driver){
 
                         if (driver['stock_level_asset_number'] !== "Group Booking") {
-                            driverHtml += "<li><div class='col-xs-8 driverName drivers'><span>"+driver['stock_level_asset_number']+"</span></div></li>";
+                            $.each(ids, function(index, value){
 
-                        } else {
-                            driverHtml += "<div>No drivers have been assigned<br></div>";
+                                // if the driver is already allocated, change button colour
+                               if (value == driver['stock_level_member_id']){
+                                   $('#'+ value).addClass("list-group-item-info")
+                                   $('#check'+ value).show();
+                               }
+                            });
+                            $('#nodriver').hide();
+                            driverHtml += "<li id='id"+driver['stock_level_member_id']+"'><div class='driverName drivers'><span>"+driver['stock_level_asset_number']+"</span></div></li>";
+                            allocated++;
                         }
-                        allocated++;
-                    })
+
+                    });
                     driverHtml += "</ul>";
                     $('#allocated').html(allocated);
                     $('#total').html(total);
+                    $('#s').html(s);
                 }
             });
                 html += "<li><div class='row jobTotal'><div class='col-md-3 col-md-push-9 jobinfo'>Sub-Total: " + invoiceSub;
@@ -356,8 +445,59 @@ One fine body list
                 $('#itemList').html(html);
                 $('#driverList').html(driverHtml);
 
-                if (age === "old") {
+                if (age === "old" || opp['state'] !== 3) {
                     $('.info').hide();
                 }
         })
+
+        // Add / Remove Drivers
+
+
+        $('.name').click(function(){
+            var el = $(this);
+            var driverId = $(el).attr('id');
+            var oppId = el.data('id');
+            var status ="";
+            var driver = $('#'+driverId);
+
+
+
+            if (driver.hasClass("list-group-item-info"))
+            {
+                driver.removeClass("list-group-item-info");
+                $('#check'+driverId).hide();
+                status = "remove";
+            } else {
+                if (allocated < total) {
+                    driver.addClass("list-group-item-info");
+                    $('#check'+driverId).show();
+                    status = "add";
+                }
+            }
+
+            $.ajax({
+                url: 'add-remove-driver.php',
+                method: 'post',
+                data: {opp_id:oppId, id:driverId, status:status},
+                success: function(data) {
+                    var data = $.parseJSON(data);
+                    console.log(data);
+                    if (data.status==="added") {
+                        $('#nodriver').hide();
+                        $('ul#dlist').append("<li id=id"+data.id+"><div class='col-xs-8 driverName drivers'><span>"+data.name+"</span></div></li>");
+                        allocated++;
+                    }
+                    if (data.status==="deleted") {
+
+                        $('li#id'+data.id).remove();
+                        allocated--;
+                        if (allocated == 0) {
+                            $('#nodriver').show();
+                        }
+                    }
+                    $('#allocated').html(allocated);
+                }
+            });
+        })
+        });
     </script>

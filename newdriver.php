@@ -9,83 +9,7 @@ include 'header.php';
 <?php
 
 ?>
-<!-- Upload Modal -->
-<div class="modal upload-modal fade" id="uploadModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Upload Image</h3>
-            </div>
-            <div class="modal-body">
-                <div class="agileits-nxlayouts-info">
-                    <div>User images are 140px by 140px - for best results upload a square photo that can be scaled to this size. Use a jpg, png, or gif image, under 1MB.
 
-                    </div>
-                    <p>Choose an image to upload</p>
-                    <form id="uploadform" action="image_upload.php" method="post" enctype="multipart/form-data">
-                        <input class="btn-default browseBtn" id="uploadImage" type="file" accept="image/*" name="image" />
-
-                    </form>
-                    <div id="err"></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="col-md-10 col-xs-9">
-                    <input class="btn-default uploadBtn" id="button" type="submit" value="Upload">
-                </div>
-                <div class="col-md-2 col-xs-2">
-                    <button type="button" class="btn-default uploadBtn" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    /*$(document).ready(function () {
-        $("#button").click(function(e) {
-            e.preventDefault();
-            //var formData = new FormData();
-            //formData.append('file', $('input[type=file]')[0].files[0]);
-            var form = $('form')[0]; // You need to use standard javascript object here
-            var formData = new FormData(form);
-            $.ajax({
-                url: "image_upload.php",
-                type: "POST",
-                data:  formData,
-                contentType: false,
-                cache: false,
-                processData:false,
-                beforeSend : function()
-                {
-                    //$("#preview").fadeOut();
-                    $("#err").fadeOut();
-                },
-                success: function(data)
-                {
-                    if(data=='invalid file')
-                    {
-                        // invalid file format.
-                        $("#err").html("Invalid File !").fadeIn();
-                    } else {
-                        // view uploaded file.
-                        var source = '<img src="'+data+'" height="140px" /><a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Change Image</a>';
-                        $("#preview").html(source).fadeIn();
-                        $("#icon").val(data);
-                        $("#thumb").val(data);
-                        $('form')[0].reset();
-                        $('#uploadModal').modal('hide');
-                    }
-                },
-                error: function(e)
-                {
-                    $("#err").html(e).fadeIn();
-                }
-            });
-        })
-    });*/
-</script>
-<!-- //Upload Modal -->
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
@@ -102,20 +26,7 @@ include 'header.php';
                                 A login will be created and sent to your driver for them to complete their details.<br>
                                 All details will be required before a driver can be approved.
                             </legend>
-                            <div class="form-group has-feedback upload-details">
-                                <div class="col-md-3 profile_main">Images</div>
-                                <div class="col-md-4" id="preview1"><!--<img src="images/avatar.png">
-                                    <input type="hidden" id="icon" name="icon"/>
-                                    <a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Upload Image</a>-->
-                                    <p>Choose an Profile image to upload</p>
-                                    <input class="btn-default browseBtn" id="profileUp" type="file" accept="image/*" name="profile" />
-                                    <p>Driving Licence Front Scan</p>
-                                    <input class="btn-default browseBtn" id="frontUp" type="file" accept="image/*" name="front" />
-                                    <p>Driving Licence Rear Scan</p>
-                                    <input class="btn-default browseBtn" id="rearUp" type="file" accept="image/*" name="rear" />
-                                </div>
-                            </div>
-                            <div class="section"></div>
+
                             <div class="form-group has-feedback name-details">
                                 <div class="col-md-3 profile_main">Name</div>
                                 <div class="col-md-4">
@@ -149,10 +60,8 @@ include 'header.php';
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <button class="btn-default updateBtn addNewDriver" value="submit">Add Driver</button>
-                                    </div>
+                                <div class="form-group">
+                                    <button class="btn-default updateBtn addNewDriver" value="submit">Add Driver</button>
                                 </div>
                             </div>
 
@@ -200,7 +109,7 @@ include 'header.php';
                                                 <div class="form-group contactSelect">
                                                     <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
-                                                            <select class="form-control" id="'phones[0][type_id]" name="phones[0][type_id]">
+                                                            <select class="form-control" id="phones[0][type_id]" name="phones[0][type_id]">
                                                                 <option value="6001">Work</option>
                                                                 <option value="6002">Mobile</option>
                                                                 <option value="6003">Fax</option>
@@ -287,10 +196,26 @@ include 'header.php';
                                         </div>
                                         <span>The DVLA code can be obtained from <a target="_blank" href="https://www.gov.uk/view-driving-licence#before-you-start">here</a>.</span>
                                     </div>
+                                </div>
+                                    <div class="section"></div>
+                                    <div class="form-group has-feedback upload-details">
+                                        <div class="col-md-3 profile_main">Images</div>
+                                        <div class="col-md-4" id="preview1"><!--<img src="images/avatar.png">
+                                    <input type="hidden" id="icon" name="icon"/>
+                                    <a href="#" type="submit" class="btn uploadBtn" id="uploadBtn" data-target="#uploadModal" role="button" data-toggle="modal">Upload Image</a>-->
+                                            <p>Choose an Profile image to upload</p>
+                                            <input class="btn-default browseBtn" id="profileUp" type="file" accept="image/*" name="profile" />
+                                            <p>Driving Licence Front Scan</p>
+                                            <input class="btn-default browseBtn" id="frontUp" type="file" accept="image/*" name="front" />
+                                            <p>Driving Licence Rear Scan</p>
+                                            <input class="btn-default browseBtn" id="rearUp" type="file" accept="image/*" name="rear" />
+                                        </div>
+                                    </div>
+
                                     <input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_SESSION['user_id'];?>"/>
                                     <input type="hidden" id="store_ids" name="store_ids" value="<?php echo $contact['member']['membership']['owned_by'];?>"/>
                                 </div>
-                            </div>
+
                         </fieldset>
                     </div>
                 </div>
@@ -307,7 +232,7 @@ include 'header.php';
             </form>
         </div>
     </div>
-</div>
+
 <div id="error"></div>
 
 <!-- footer -->
@@ -506,6 +431,7 @@ var driverForm = $('form#newDriver');
                         data: formData,
                         success: function (data) {
                             alert(data)
+                            window.history.go(-1)
                         },
                         cache: false,
                         contentType: false,

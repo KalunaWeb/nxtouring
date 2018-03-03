@@ -255,6 +255,24 @@ class current {
 
 		return $result;
 	}
+
+    public function getOpportunityItems($opp) {
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,"https://api.current-rms.com/api/v1/opportunities/".$opp."/opportunity_items");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+
+        $result = (json_decode($server_output, true));
+
+        return $result;
+	}
+
 	public function convertToOrder($id) {
 
 		$ch = curl_init();
@@ -357,6 +375,30 @@ class current {
         curl_close ($ch);
 
         $result = (json_decode($server_output, true));
+
+        return $result;
+    }
+    public function allocateResource($data, $opp, $id) {
+
+        $ch = curl_init('https://api.current-rms.com/api/v1//opportunities/'.$opp.'/opportunity_items/'.$id.'/allocate_resource');
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+
+        $result = curl_exec($ch);
+
+        return $result;
+    }
+    public function deallocateResource($data, $opp, $id) {
+
+        $ch = curl_init('https://api.current-rms.com/api/v1//opportunities/'.$opp.'/opportunity_items/'.$id.'/deallocate_resource');
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+
+        $result = curl_exec($ch);
 
         return $result;
     }

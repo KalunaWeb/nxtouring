@@ -633,6 +633,9 @@
 
         margin-bottom: 10px;
     }
+    #jobsModal .info{
+        margin-left: -20px;
+    }
 
 }
 @media screen and (max-width: 384px){
@@ -777,7 +780,7 @@
         height: 100px;
     }
     .driverBtn {
-        margin-top: 0;
+        margin-top: 20px;
     }
 }
 /* -- //Responsive code -- */
