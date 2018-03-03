@@ -1,0 +1,299 @@
+<?php
+
+include 'header.php';
+
+?>
+<style>
+
+    /*span.input-group-addon.profile-label{
+        border-top: 1px solid #eee
+    }*/
+    input.form-control {
+        border: none
+    }
+    .full {
+        padding: 0;
+    }
+    .input-group-addon {
+        background-color: #fff;
+        border: none;
+        min-width: 0;
+    }
+    .profile-label {
+        min-width: 80px;
+    }
+    .col-md-3, .col-md-4, .col-md-2, .col-xs-4, .col-xs-2 {
+        padding: 0;
+    }
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .has-feedback .form-control{
+        padding-right: 0;
+    }
+    .form-control {
+        border: none;
+        -webkit-appearance: none;
+        box-shadow: none !important;
+    }
+    select, .contactSelect select{
+        background-color: #fff;
+
+
+        background-image:
+            linear-gradient(45deg, transparent 50%, gray 50%),
+            linear-gradient(135deg, gray 50%, transparent 50%);
+        background-position:
+            calc(100% - 20px) calc(1em + 2px),
+            calc(100% - 15px) calc(1em + 2px),
+            calc(100% - 2.5em) 0.5em;
+        background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    select.contactSelect:focus {
+        background-image:
+            linear-gradient(45deg, green 50%, transparent 50%),
+            linear-gradient(135deg, transparent 50%, green 50%),
+            linear-gradient(to right, #ccc, #ccc);
+        background-position:
+            calc(100% - 15px) 1em,
+            calc(100% - 20px) 1em,
+            calc(100% - 2.5em) 0.5em;
+        background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+        background-repeat: no-repeat;
+        border-color: green;
+        outline: 0;
+    }
+    .updateBtn {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .addBtn {
+        width: 33%
+    }
+
+    .address_label, .address_detail, .drive {
+        background-color: #fff;
+    }
+
+    .profile_main {
+        margin-top:15px;
+        margin-bottom: 10px;
+    }
+
+
+</style>
+
+<body id="background">
+
+<?php
+$query ="";
+$t = 1;
+$count = count($contact['member']['child_members']);
+if ($count != 0) {
+    foreach ($contact['member']['child_members'] as $key=>$value) {
+        $query .= "q[id_in][]=".$value['related_id'];
+
+        if ($t < $count ) {
+            $query .= "&";
+        }
+        $t++;
+
+    }
+    $query = $query . "&filtermode=all";
+
+    $driver = $current->getMultipleContactsById($query);
+
+}
+
+?>
+
+<div id="newcli-container">
+    <div class="container">
+        <div class="newcli-form">
+            <div class="row">
+                <div class="modal-header">
+                    <h1 class="modal-title">
+                        <?php if (isset($_SESSION['user_id'])){echo $contact['member']['name']." - ";}?>
+                        Drivers</h1>
+                </div>
+                <div class="col-md-12">
+                    <ul id="driversList">
+                        <?php
+                        if (isset($driver)){
+
+                            foreach($driver['members'] as $key=>$value){
+                                echo '<li>
+                                            <div class="col-md-2 profile_main"><h3>'.$value["name"].'</h3></div>
+                                            <div class="col-md-4 address">
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label first">Address</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>
+                                                        <strong>';
+                                if(isset($value['primary_address']['street'])) {
+                                    echo $value["primary_address"]["street"];}
+                                echo '</strong><br>';
+                                if(isset($value['primary_address']['city'])) {
+                                    echo $value["primary_address"]["city"];}
+                                echo '<br>';
+                                if(isset($value['primary_address']['county'])) {
+                                    echo $value["primary_address"]["county"];}
+                                echo '<br>';
+                                if(isset($value['primary_address']['postcode'])) {
+                                    echo $value["primary_address"]["postcode"];}
+                                echo '</address>
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Phone</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                if(isset($value['phones'][0]['number'])) {
+                                    echo $value["phones"][0]["number"];}
+                                echo '</address>
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Email</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                if(isset($value['emails'][0]['address'])) {
+                                    echo $value["emails"][0]["address"];}
+                                echo '</address>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-4 address">
+                                                <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="address_label">Licence Number</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                if(isset($value['custom_fields']['drivers_licence_number'])) {
+                                    echo '********'.substr($value["custom_fields"]["drivers_licence_number"], -8);}
+                                echo '</address>
+                                                </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="row">
+                                                   <div class="col-xs-4">
+                                                    <div class="address_label">Date of Birth</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                if(isset($value['custom_fields']['date_of_birth'])) {
+                                    echo date("jS F Y", strtotime($value["custom_fields"]["date_of_birth"]));}
+                                echo '</address>
+                                                </div></div>
+                                                <div class="clearfix"></div>
+                                                <div class="row">
+                                                   <div class="col-xs-4">
+                                                    <div class="address_label">Date of Test</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                if(isset($value['custom_fields']['date_of_test'])) {
+                                    echo date("jS F Y", strtotime($value["custom_fields"]["date_of_test"]));}
+                                echo '</address>
+                                                </div></div>
+                                                <div class="clearfix"></div>
+                                                <div class="row">
+                                                   <div class="col-xs-4">
+                                                    <div class="address_label status">Status</div>
+                                                </div>
+                                                <div class="col-xs-8 address_detail">
+                                                    <address>';
+                                if(isset($value["active"]) && $value['active'] == 1) {
+                                    echo '<span class="alert alert-success">Authorised</span>';} else {
+                                    echo '<span class="alert alert-danger">Pending Authorisation</span>';}
+                                echo '</address>
+                                                </div></div>
+                                                <div class="clearfix"></div>
+                                                </div>
+                                                
+
+                                <div class="section row drive"></div>
+                                </li>';
+                            }
+                        } else {
+                            echo "No Drivers Set";
+                        }
+                        ?>
+                        <li>
+                            <div class="col-md-2 col-md-push-9">
+                                <form action="newdriver.php">
+                                    <div class="form-group">
+                                        <button class="btn-default updateBtn" id="addDriver">Add New Driver</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<div id="error"></div>
+
+<!-- footer -->
+<div class="nx_agileits-footer">
+    <div class="container">
+        <div class="col-md-9 col-sm-12 wthree-footer-left">
+            <div class="navbar-header page-scroll">
+                <h2><a class="navbar-brand" href="index.php">NX Touring</a></h2>
+                <P id="footer-line">Luxury Vehicle Hire</P>
+            </div>
+            <div class="list-footer">
+                <ul class="footer-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
+                    <li><a class="page-scroll scroll" href="index.php#home">Home</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#about">About</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#vans">vans</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#downloads">Downloads</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#testimonials">Testimonials</a></li>
+                    <li><a class="page-scroll scroll" href="index.php#contact">Contact</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 wthree-footer-right">
+            <div class="agile-social-icons">
+                <ul>
+                    <li><a href="#" class="fa fa-instagram" aria-hidden="true"></a></li>
+                    <li><a href="#" class="fa fa-facebook" aria-hidden="true"></a></li>
+                    <li><a href="#" class="fa fa-twitter" aria-hidden="true"></a></li>
+                    <li><a href="#" class="fa fa-share-square" aria-hidden="true"></a></li>
+                </ul>
+            </div>
+            <div class="nx-mail">
+                <ul>
+                    <li><span class="fa fa-envelope icon" aria-hidden="true"></span><a href="mailto:info@nxtouring.co.uk">info@nxtouring.co.uk</a></li>
+                    <li><span class="fa fa-phone" aria-hidden="true"></span><p>07771 767367</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

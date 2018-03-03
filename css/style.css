@@ -1736,7 +1736,7 @@ input#uploadImage.btn-default.uploadBtn {
     top: -54px;
     left: 10px;
 }
-.uploadBtn, .updateBtn {
+.uploadBtn, .updateBtn, .addBtn, .button {
     background-image: linear-gradient(#ffffff, #fafbfb 50px);
     background-color: #fafafa;
     border-color: #ccc;
@@ -1760,7 +1760,7 @@ input#uploadImage.btn-default.uploadBtn {
     background: -webkit-linear-gradient(#ffffff, #e6eaec);
     background: linear-gradient(#ffffff, #e6eaec)
 }
-.updateBtn {
+.updateBtn, .addBtn {
     /*float: right;*/
     margin: 10px, 10px, 10px, 0;
 }
@@ -1972,4 +1972,8 @@ ul#driversList .profile_main {
     display: none;
     top:-29px;
     left: 180px;
+}
+
+.owl-wrapper {
+    margin: 0 auto;
 }
