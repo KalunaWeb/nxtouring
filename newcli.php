@@ -25,7 +25,126 @@ if (isset($_POST['endDate'])) {
 }
 
 ?>
+<style>
 
+    /*span.input-group-addon.profile-label{
+        border-top: 1px solid #eee
+    }*/
+    input.form-control {
+        border: none
+    }
+    .full {
+        padding: 0;
+    }
+    .input-group-addon {
+        background-color: #fff;
+        border: none;
+        min-width: 0;
+    }
+    .profile-label {
+        min-width: 80px;
+    }
+    .col-md-3, .col-md-4, .col-md-2, .col-xs-4, .col-xs-2, .col-md-12 {
+        padding: 0;
+    }
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .has-feedback .form-control{
+        padding-right: 0;
+    }
+    .form-control {
+        border: none;
+        -webkit-appearance: none;
+        box-shadow: none !important;
+    }
+    select, .contactSelect select{
+        background-color: #fff;
+
+
+        background-image:
+                linear-gradient(45deg, transparent 50%, gray 50%),
+                linear-gradient(135deg, gray 50%, transparent 50%);
+        background-position:
+                calc(100% - 20px) calc(1em + 2px),
+                calc(100% - 15px) calc(1em + 2px),
+                calc(100% - 2.5em) 0.5em;
+        background-size:
+                5px 5px,
+                5px 5px,
+                1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    select.contactSelect:focus {
+        background-image:
+                linear-gradient(45deg, green 50%, transparent 50%),
+                linear-gradient(135deg, transparent 50%, green 50%),
+                linear-gradient(to right, #ccc, #ccc);
+        background-position:
+                calc(100% - 15px) 1em,
+                calc(100% - 20px) 1em,
+                calc(100% - 2.5em) 0.5em;
+        background-size:
+                5px 5px,
+                5px 5px,
+                1px 1.5em;
+        background-repeat: no-repeat;
+        border-color: green;
+        outline: 0;
+    }
+    .updateBtn {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .addBtn {
+        width: 33%
+    }
+
+    .address_label, .address_detail, .drive {
+        background-color: #fff;
+    }
+
+    .profile_main {
+        margin-top:15px;
+        margin-bottom: 10px;
+    }
+    form.register input[type=text]{
+        border: none;
+        height: 34px;
+        font-size: 1em;
+        padding-left: 5px;
+}
+    button#newCliFormBtn.button {
+        width:100%;
+        background-image: linear-gradient(#ffffff, #fafbfb 50px);
+        background-color: #fafafa;
+        border-color: #ccc;
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: rgba(255, 255, 255, 0.3) 0 0 0 1px inset;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-size: 12px;
+        padding: 10px 12px;
+        text-align: center;
+        -webkit-transition: opacity .2s ease-out;
+        transition: opacity .2s ease-out;
+        white-space: nowrap;
+        -moz-user-select: -moz-none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6eaec));
+        background: -webkit-linear-gradient(#ffffff, #e6eaec);
+        background: linear-gradient(#ffffff, #e6eaec);
+        margin: auto;
+    }
+
+</style>
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
@@ -54,14 +173,14 @@ if (isset($_POST['endDate'])) {
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="emails[][address]">Email *</label>
                                 <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"
-                                    <?php if (isset($_SESSION['user_id'])){
+                                    <?php if (isset($_SESSION['user_id']) && isset($contact['member']['emails'][0]['address'])){
                                         echo 'value="'.$contact['member']['emails'][0]['address'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="phones[][number]">Telephone *</label>
                                 <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"
-                                    <?php if (isset($_SESSION['user_id'])){
+                                    <?php if (isset($_SESSION['user_id']) && isset($contact['member']['phones'][0]['number'])){
                                         echo 'value="'.$contact['member']['phones'][0]['number'].'" readonly="readonly"';}?>/>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
@@ -80,12 +199,16 @@ if (isset($_POST['endDate'])) {
 
                             <div class="form-group has-feedback details">
                                 <label class="booking_form_main" for="line1">Address *</label>
-                                <textarea rows="" class="form-control" id="line1" name="line1"
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        echo ' readonly="readonly"';}?>
-                                ><?php if (isset($_SESSION['user_id'])){
-                                        echo $contact['member']['primary_address']['street'];
-                                    }?></textarea>
+                                <input class="form-control" id="line1" name="line1"
+                                    <?php
+                                    if (isset($_SESSION['user_id'])){
+                                        echo ' readonly="readonly"';
+                                    }
+                                    if (isset($_SESSION['user_id'])){
+                                        echo ' value="'.$contact['member']['primary_address']['street'].'"';
+                                    }
+                                    ?>
+                                </>
                                 <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                             </div>
                             <div class="form-group has-feedback details">

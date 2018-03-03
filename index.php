@@ -653,7 +653,7 @@ var b = <?php echo $b;?>;
 			  itemsDesktop : [640,2],
 			  itemsDesktopSmall : [414,1],
 			  navigation : true,
-			  loop: true,
+			  loop: false,
 			  // THIS IS THE NEW PART
 				afterAction: function(el){
 					//remove class active
