@@ -1760,9 +1760,14 @@ input#uploadImage.btn-default.uploadBtn {
     background: -webkit-linear-gradient(#ffffff, #e6eaec);
     background: linear-gradient(#ffffff, #e6eaec)
 }
-.updateBtn, .addBtn {
-    /*float: right;*/
-    margin: 10px, 10px, 10px, 0;
+.updateBtn {
+
+    margin-left: 1px;
+}
+.addBtn {
+    width: 32%;
+    margin-left: 1px;
+    margin-bottom: 10px;
 }
 .browseBtn {
     background-color: #fafafa;
@@ -1791,8 +1796,11 @@ form.profileForm legend
     font-size: 1em;
     font-weight:400;
 }
-.update-address {
-    height: 200px;
+/*.update-address {
+    height: 220px;
+}*/
+.update-licence {
+    height: 280px;
 }
 .profileForm input, textarea {
     box-sizing: border-box;

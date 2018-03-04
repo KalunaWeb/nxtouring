@@ -21,7 +21,7 @@ if (isset($params['icon'])) {
     }
 }
 // Check for deleted phone numbers
-if (isset($params["phones"]) && $params["phones"] != "") {;
+if (isset($params["phones"]) && $params["phones"] != "") {
 $phone_id_array =[];
 
 foreach ($params["phones"] as $key=>$value) {
@@ -40,6 +40,7 @@ foreach ($contact["member"]["phones"] as $key=>$value){
             $flag = 1;                              //If it is, flag the id to remain
         }
     }
+
     if ($flag != 1) {                               //If the id is no longer in the update, set conditions
         $params["phones"][$key]["id"] = $value["id"];
         $params["phones"][$key]["number"] = null;
@@ -47,9 +48,16 @@ foreach ($contact["member"]["phones"] as $key=>$value){
     }
 }
 }
+if (!isset($params["phones"]) || $params["phones"] == "") {
+    foreach ($contact["member"]["phones"] as $key=>$value){
+        $params["phones"][$key]["id"] = $value["id"];
+        $params["phones"][$key]["number"] = null;
+        $params["phones"][$key]["_destroy"] = 1;
+    }
+}
 // Check for deleted emails
 if (isset($params["emails"]) && $params["emails"] != "") {
-    ;
+
     $email_id_array = [];
 
     foreach ($params["emails"] as $key => $value) {
@@ -75,9 +83,17 @@ if (isset($params["emails"]) && $params["emails"] != "") {
         }
     }
 }
+
+if (!isset($params["emails"]) || $params["emails"] == "") {
+    foreach ($contact["member"]["emails"] as $key => $value) {
+        $params["emails"][$key]["id"] = $value["id"];
+        $params["emails"][$key]["number"] = null;
+        $params["emails"][$key]["_destroy"] = 1;
+    }
+}
 // Check for deleted web link addresses
 if (isset($params["links"]) && $params["links"] != "") {
-    ;
+
     $link_id_array = [];
 
     foreach ($params["links"] as $key => $value) {
@@ -103,16 +119,13 @@ if (isset($params["links"]) && $params["links"] != "") {
         }
     }
 }
-
-//address = $member['member']['primary_address'];
-/*
-$address['name'] = $member['member']['primary_address']['name'];
-$address['street'] = $params['primary_address']['street'];
-$address['postcode'] = $params['primary_address']['postcode'];
-$address['city'] = $params['primary_address']['city'];
-$address['county'] = $params['primary_address']['county'];
-$address['country_code'] = 1;*/
-
+if (isset($params["links"]) && $params["links"] != "") {
+    foreach ($contact["member"]["links"] as $key => $value) {
+        $params["links"][$key]["id"] = $value["id"];
+        $params["links"][$key]["number"] = null;
+        $params["links"][$key]["_destroy"] = 1;
+    }
+}
 $client["name"] = $contact["member"]["name"];
 if (isset($params["emails"])) {
     $client["emails"] = $params["emails"];
@@ -133,16 +146,20 @@ $client["bookable"] = $contact['member']['bookable'];
 $client["location_type"] = $contact['member']['location_type'];
 $client["locale"] = $contact['member']['locale'];
 $client["membership_type"] = $contact['member']['membership_type'];
-$client["membership"]["owned_by"] = $contact['member']['membership']['owned_by'];
+if (isset($contact['member']['membership']['owned_by'])) {
+    $client["membership"]["owned_by"] = $contact['member']['membership']['owned_by'];
+} else {
+    $client["membership"]["owned_by"] = 1;
+}
 $client["tag_list"] = $contact['member']['tag_list'];
 
 
 $new = json_encode($client, JSON_UNESCAPED_SLASHES);
 
 $data = '{"member":'.$new.'}';
-print_r ($data);
+
 $result = $current->updateContact($data, $_SESSION['user_id']);
 
-print_r ($result);
+echo json_encode($result);
 
 ?>

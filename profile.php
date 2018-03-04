@@ -6,20 +6,6 @@ include 'header.php';
 
 <body id="background">
 
-<?php 
-
-$name = str_replace(" ", "%20", $contact['member']['name']);
-
-$live = $current->getOpportunity($name, "live");
-$archive = $current->getOpportunity($name, "all");
-$old = array_reverse($archive['opportunities']);
-$count = count($contact['member']['child_members']);
-//print_r($contact);
-//for ($i=0; $i<$count; $i++) {
-  //  $driver[$i] = $current -> getContactById($contact['member']['child_members'][$i]['related_id']);
-//}
-
-?>
 <!-- Upload Modal -->
 <div class="modal upload-modal fade" id="uploadModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -137,193 +123,297 @@ $(document).ready(function () {
                                     <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon profile-label">Street</span>
-                                        <textarea rows="" class="form-control" id="primary_address[street]" name="primary_address[street]"><?php if (isset($_SESSION['user_id'])){echo $contact['member']['primary_address']['street'];}?></textarea>
-                                        </div>
+                                            <input class="form-control" id="primary_address[street]" name="primary_address[street]"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['street'].'"';
+                                            }?>
+                                        </>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group">
-                                            <span class="input-group-addon profile-label">Town</span>
-                                            <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"
-                                                <?php if (isset($_SESSION['user_id'])){
-                                                    echo 'value="'.$contact['member']['primary_address']['city'].'"';
-                                                }?>/>
-                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                        </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">Town</span>
+                                        <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['city'].'"';
+                                            }?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group">
-                                            <span class="input-group-addon profile-label">County</span>
-                                            <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"
-                                                <?php if (isset($_SESSION['user_id'])){
-                                                    echo 'value="'.$contact['member']['primary_address']['county'].'"';
-                                                }?>/>
-                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                        </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">County</span>
+                                        <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['county'].'"';
+                                            }?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group">
-                                            <span class="input-group-addon profile-label">Postcode</span>
-                                            <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"
-                                                <?php if (isset($_SESSION['user_id'])){
-                                                    echo 'value="'.$contact['member']['primary_address']['postcode'].'"';
-                                                }?>/>
-                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                                        </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">Postcode</span>
+                                        <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['postcode'].'"';
+                                            }?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="section row"></div>
-                            <div class="form-group has-feedback update-address">
-                                <div class="col-md-3 profile_main">Contact Details</div>
-                                <div class="col-md-4">
-                                    <div id="phonesWrapper">
-                                        <ul id="phones">
-                                            <!-- Phones Select -->
-                                            <?php if (isset($_SESSION['user_id'])) {
-                                                $p = 0; // phones array index
-                                                foreach ($contact['member']['phones'] as $key => $value) {
-                                                    $number = "phones[" . $p . "][number]"; // Phone Number
-                                                    $id = "phones[" . $p . "][id]"; // ID of individual record for editing
-                                                    $type = "phones[".$p."][type_id]"; // id of the type of number
-                                                    echo '<li id="phone'.$p.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
+                    </div>
+                    <div class="section row"></div>
+                    <div class="form-group has-feedback update-address">
+                        <div class="col-md-3 profile_main">Contact Details</div>
+                        <div class="col-md-4">
+                            <div id="phonesWrapper">
+                                <ul id="phones">
+                                    <!-- Phones Select -->
+                                    <?php if (isset($_SESSION['user_id'])) {
+                                        $p = 0; // phones array index
+                                        foreach ($contact['member']['phones'] as $key => $value) {
+                                            $number = "phones[" . $p . "][number]"; // Phone Number
+                                            $id = "phones[" . $p . "][id]"; // ID of individual record for editing
+                                            $type = "phones[".$p."][type_id]"; // id of the type of number
+                                            echo '<li id="phone'.$p.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
                                                             <div class="form-group">
                                                             <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                             <option value="6001"';
-                                                    if ($value['type_id'] == 6001) echo 'selected="selected"';
-                                                    echo '>Work</option>
+                                            if ($value['type_id'] == 6001) echo 'selected="selected"';
+                                            echo '>Work</option>
                                                              <option value="6002"';
-                                                    if ($value['type_id'] == 6002) echo 'selected="selected"';
-                                                    echo '>Mobile</option>
+                                            if ($value['type_id'] == 6002) echo 'selected="selected"';
+                                            echo '>Mobile</option>
                                                              <option value="6003"';
-                                                    if ($value['type_id'] == 6003) echo 'selected="selected"';
-                                                    echo '>Fax</option>
+                                            if ($value['type_id'] == 6003) echo 'selected="selected"';
+                                            echo '>Fax</option>
                                                              <option value="6004"';
-                                                    if ($value['type_id'] == 6004) echo 'selected="selected"';
-                                                    echo '>Skype</option>
+                                            if ($value['type_id'] == 6004) echo 'selected="selected"';
+                                            echo '>Skype</option>
                                                              <option value="6005"';
-                                                    if ($value['type_id'] == 6005) echo 'selected="selected"';
-                                                    echo '>Home</option>
+                                            if ($value['type_id'] == 6005) echo 'selected="selected"';
+                                            echo '>Home</option>
                                                              </select>
                                                              </div>
                                                              </div>
                                                              <div class="col-xs-8 typeSelect">
                                                              <div class="form-group has-feedback input-group">
                                                              <input class="form-control" type="text" id="'.$number.'" name="'.$number.'" maxlength="12" ';
-                                                    if (isset($_SESSION['user_id'])) {
-                                                        echo 'value="' . $value['number'] . '"';
-                                                    };
-                                                    echo '/><span class="input-group-addon profile-label contact-addon"><a href="javascript:void(0);" class="remove" id="phone'.$p.'">X</a></span>
+                                            if (isset($_SESSION['user_id'])) {
+                                                echo 'value="' . $value['number'] . '"';
+                                            };
+                                            echo '/><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="phone'.$p.'">X</a></span>
                                                              <input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" /> 
                                                              </div>
                                                              </div>
                                                              </div>
                                                              </li>';
-                                                    $p++;
-                                                }
-                                            }?>
-                                        </ul>
-                                    </div>
-                                    <button class="btn-default updateBtn" id="addphone" type="submit" value="Add">Add Phone</button>
-                                    <div id="emailsWrapper">
-                                        <ul id="emails"><!-- Emails Select -->
-                                            <?php if (isset($_SESSION['user_id'])) {
-                                                $e = 0; // Emails array index
-                                                foreach ($contact['member']['emails'] as $key => $value) {
-                                                    $email = "emails[" . $e . "][address]"; // Email Address
-                                                    $id = "emails[" . $e . "][id]"; // ID of individual record for editing
-                                                    $type = "emails[".$e."][type_id]"; // ID number of the email type
-                                                    echo '<li id="email'.$e.'"><div class="form-group contactSelect"><div class="col-md-4 typeSelect">
+                                            $p++;
+                                        }
+                                    }?>
+                                </ul>
+                            </div>
+                            <div id="emailsWrapper">
+                                <ul id="emails"><!-- Emails Select -->
+                                    <?php if (isset($_SESSION['user_id'])) {
+                                        $e = 0; // Emails array index
+                                        foreach ($contact['member']['emails'] as $key => $value) {
+                                            $email = "emails[" . $e . "][address]"; // Email Address
+                                            $id = "emails[" . $e . "][id]"; // ID of individual record for editing
+                                            $type = "emails[".$e."][type_id]"; // ID number of the email type
+                                            echo '<li id="email'.$e.'"><div class="form-group contactSelect"><div class="col-md-4 typeSelect">
                                                           <div class="form-group">
                                                           <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                           <option value="4001"';
-                                                    if ($value['type_id'] == 4001) echo 'selected="selected"';
-                                                    echo '>Work</option>
+                                            if ($value['type_id'] == 4001) echo 'selected="selected"';
+                                            echo '>Work</option>
                                                           <option value="4002"';
-                                                    if ($value['type_id'] == 4002) echo 'selected="selected"';
-                                                    echo '>Home</option>
+                                            if ($value['type_id'] == 4002) echo 'selected="selected"';
+                                            echo '>Home</option>
                                                           </select>
                                                           </div>
                                                           </div>
                                                           <div class="col-md-8 typeSelect">
                                                           <div class="form-group has-feedback input-group">
                                                           <input class="form-control" type="text" id="'.$email.'" name="'.$email.'" ';
-                                                    if (isset($_SESSION['user_id'])) {
-                                                        echo 'value="' .$value['address']. '"';
-                                                    };
-                                                    echo '/><span class="input-group-addon profile-label contact-addon"><a href="javascript:void(0);" class="remove" id="email'.$e.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
+                                            if (isset($_SESSION['user_id'])) {
+                                                echo 'value="' .$value['address']. '"';
+                                            };
+                                            echo '/><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="email'.$e.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
                                                           </div>
                                                           </div>
                                                           </div>
                                                           </li>';
-                                                    $e++;
-                                                }
-                                            }?>
-                                        </ul>
-                                    </div>
-                                    <button class="btn-default updateBtn" id="addemail" type="submit" value="Add">Add Email</button>
-                                    <div id="linksWrapper">
-                                        <ul id="links"><!-- Social Media Select -->
-                                            <?php if (isset($_SESSION['user_id'])) {
-                                                $l = 0; // Links array index
-                                                foreach ($contact['member']['links'] as $key => $value) {
-                                                    $link = "links[" . $l . "][address]"; // Link Address
-                                                    $id = "links[" . $l . "][id]"; // ID of individual record for editing
-                                                    $type = "links[".$l."][type_id]"; // ID number of the Link type
-                                                    echo '<li id="link'.$l.'"><div class="form-group contactSelect"><div class="col-md-4 typeSelect">
+                                            $e++;
+                                        }
+                                    }?>
+                                </ul>
+                            </div>
+                            <div id="linksWrapper">
+                                <ul id="links"><!-- Social Media Select -->
+                                    <?php if (isset($_SESSION['user_id'])) {
+                                        $l = 0; // Links array index
+                                        foreach ($contact['member']['links'] as $key => $value) {
+                                            $link = "links[" . $l . "][address]"; // Link Address
+                                            $id = "links[" . $l . "][id]"; // ID of individual record for editing
+                                            $type = "links[".$l."][type_id]"; // ID number of the Link type
+                                            echo '<li id="link'.$l.'"><div class="form-group contactSelect"><div class="col-md-4 typeSelect">
                                                          <div class="form-group">
                                                          <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                          <option value="5001"';
-                                                    if ($value['type_id'] == 5001) echo 'selected="selected"';
-                                                    echo '>Website</option>
+                                            if ($value['type_id'] == 5001) echo 'selected="selected"';
+                                            echo '>Website</option>
                                                          <option value="5002"';
-                                                    if ($value['type_id'] == 5002) echo 'selected="selected"';
-                                                    echo '>Facebook</option>
+                                            if ($value['type_id'] == 5002) echo 'selected="selected"';
+                                            echo '>Facebook</option>
                                                          <option value="5003"';
-                                                    if ($value['type_id'] == 5003) echo 'selected="selected"';
-                                                    echo '>Twitter</option>
+                                            if ($value['type_id'] == 5003) echo 'selected="selected"';
+                                            echo '>Twitter</option>
                                                          <option value="5004"';
-                                                    if ($value['type_id'] == 5004) echo 'selected="selected"';
-                                                    echo '>Linkedin</option>
+                                            if ($value['type_id'] == 5004) echo 'selected="selected"';
+                                            echo '>Linkedin</option>
                                                          <option value="5001"';
-                                                    if ($value['type_id'] == 5005) echo 'selected="selected"';
-                                                    echo '>IM</option>    
+                                            if ($value['type_id'] == 5005) echo 'selected="selected"';
+                                            echo '>IM</option>    
                                                          </select>
                                                          </div>
                                                          </div>
                                                          <div class="col-md-8 typeSelect">
                                                          <div class="form-group has-feedback input-group">
                                                             <input class="form-control" type="text" id="'.$link.'" name="'.$link.'" ';
-                                                    if (isset($_SESSION['user_id'])) {
-                                                        echo 'value="' .$value['address']. '"';
-                                                    };
-                                                    echo '/><span class="input-group-addon profile-label contact-addon"><a href="javascript:void(0);" class="remove" id="link'.$l.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
+                                            if (isset($_SESSION['user_id'])) {
+                                                echo 'value="' .$value['address']. '"';
+                                            };
+                                            echo '/><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="link'.$l.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
                                                          </div>
                                                          </div>
                                                          </div>
                                                          </li>';
-                                                    $l++;
-                                                }
-                                            }?>
-                                        </ul>
-                                    </div>
-                                    <button class="btn-default updateBtn" id="addlink" type="submit" value="Add">Add Link</button>
-                                </div>
+                                            $l++;
+                                        }
+                                    }?>
+                                </ul>
                             </div>
-                    </div>
-                </div>
-                <div class="section"></div>
-                <fieldset>
-                    <div class="col-md-3 profile_main"></div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <button class="btn-default updateBtn" id="update" value="Update">Update</button>
+                            <button class="btn-default addBtn" id="addphone" type="submit" value="Add">Add Phone</button>
+                            <button class="btn-default addBtn" id="addemail" type="submit" value="Add">Add Email</button>
+                            <button class="btn-default addBtn" id="addlink" type="submit" value="Add">Add Link</button>
                         </div>
                     </div>
-                </fieldset>
-            </form>
+                    <div class="section row"></div>
+                    <?php
+                    if ($contact['member']['membership_type']=="Contact") {
+                    echo '<div class="form-group has-feedback update-licence">
+                        <div class="col-md-3 profile_main">Licence Details</div>
+                        <div class="col-md-4">
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Licence Number</span>
+                                    <input class="form-control" id="custom_fields[drivers_licence_number]" name="custom_fields[drivers_licence_number]"';
+                    if (isset($contact['member']['custom_fields']['drivers_licence_number'])) {
+                        echo ' value="'.$contact['member']['custom_fields']['drivers_licence_number'].'"';
+                    }
+                    echo '/>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Date of Birth</span>
+                                    <input class="form-control" type="text" id="dob" name="custom_fields[date_of_birth]"';
+                    if (isset($contact['member']['custom_fields']['date_of_birth'])) {
+                        echo ' value="'.date("d-m-Y",strtotime($contact['member']['custom_fields']['date_of_birth'])).'"';
+                    }
+                    echo '/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Date of Test</span>
+                                    <input class="form-control" type="text" id="dot" name="custom_fields[date_of_test]"';
+                    if (isset($contact['member']['custom_fields']['date_of_test'])) {
+                        echo ' value="'.date("d-m-Y",strtotime($contact['member']['custom_fields']['date_of_test'])).'"';
+                    }
+                    echo '/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">N.I. Number</span>
+                                    <input class="form-control code-group" type="text" id="custom_fields[national_insurance_number]" name="custom_fields[national_insurance_number]"';
+                    if (isset($contact['member']['custom_fields']['national_insurance_number'])) {
+                        echo ' value="'.$contact['member']['custom_fields']['national_insurance_number'].'"';
+                    }
+                    echo '/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div id="dvla" class="input-group">
+                                    <span class="input-group-addon profile-label">D.V.L.A. Code</span>
+                                    <input class="form-control code-group" type="text" id="custom_fields[dvla_code]" name="custom_fields[dvla_code]"';
+                    if (isset($contact['member']['custom_fields']['dvla_code'])) {
+                        echo ' value="'.$contact['member']['custom_fields']['dvla_code'].'"';
+                    }
+                    echo '/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div id="dvla" class="input-group">
+                                    <span class="input-group-addon profile-label">Endorsments</span>
+                                    <input class="form-control code-group" type="text" id="custom_fields[endorsements]" name="custom_fields[endorsements]"';
+                    if (isset($contact['member']['custom_fields']['endorsements'])) {
+                        echo ' value="'.$contact['member']['custom_fields']['endorsements'].'"';
+                    }
+                    echo '/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            
+                                </div>
+                            </div>
+                    <div class="section"></div>';}?>
+
+                    <div class="form-group has-feedback update-address">
+                        <div class="col-md-3 profile_main">Password</div>
+                        <div class="col-md-4">
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Password</span>
+                                    <input class="form-control" id="password1" name="password1" placeholder="New Password"/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Password</span>
+                                    <input class="form-control" id="password2" name="password2" placeholder="Repeat Password"/>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_SESSION['user_id'];?>"/>
+                    <input type="hidden" id="store_ids" name="store_ids" value="<?php if(isset($contact['member']['membership']['owned_by'])){echo $contact['member']['membership']['owned_by'];}?>"/>
+
+            <fieldset>
+                <div class="row">
+            <div class="col-md-3 profile_main"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2 col-xs-12">
+                <div class="form-group">
+                    <button class="btn-default updateBtn" id="update" value="Update">Update</button>
+                </div>
+            </div>
+                </div>
+        </fieldset>
         </div>
+        </form>
+
     </div>
+</div>
 </div>
 <div id="error"></div>
 <script>
@@ -345,17 +435,17 @@ $(document).ready(function () {
                 numOfLinks++;
                 linksIndex++;
                 var number = '<li id="link'+linksIndex+'"><div class="form-group contactSelect">'+
-                    '<div class="col-md-4 typeSelect"><div class="form-group">' +
+                    '<div class="col-xs-4 typeSelect"><div class="form-group">' +
                     '<select class="form-control" id="links['+linksIndex+'][type_id]" name="links['+linksIndex+'][type_id]"> '+
                     '<option value="5001">Website</option>' +
                     '<option value="5002">Facebook</option>' +
                     '<option value="5003">Twitter</option>' +
                     '<option value="5004">Linkedin</option>' +
                     '<option value="5005">IM</option>'+
-                    '</select></div></div><div class="col-md-8 typeSelect">' +
+                    '</select></div></div><div class="col-xs-8 typeSelect">' +
                     '<div class="for-group has-feedback input-group">' +
-                    '<input class="form-control" type="text" id="links['+linksIndex+'][address]" name="links['+linksIndex+'][address]" maxlength="12"/>'+
-                    '<span class="input-group-addon profile-label contact-addon"><a href="javascript:void(0);" class="remove" id="link'+ linksIndex +'"> X </span>' +
+                    '<input class="form-control" type="text" id="links['+linksIndex+'][address]" name="links['+linksIndex+'][address]" maxlength="12" placeholder="Web / Social Media"/>'+
+                    '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="link'+ linksIndex +'"> X </span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
 
             $('#links').append(number);
@@ -371,14 +461,14 @@ $(document).ready(function () {
                 numOfEmails++;
                 emailIndex++;
                 var number = '<li id="email'+emailIndex+'"><div class="form-group contactSelect">'+
-                    '<div class="col-md-4 typeSelect"><div class="form-group">' +
+                    '<div class="col-xs-4 typeSelect"><div class="form-group">' +
                     '<select class="form-control" id="emails['+emailIndex+'][type_id]" name="emails['+emailIndex+'][type_id]"> '+
-                    '<option value="4001">Work Email</option>' +
-                    '<option value="4002">Home Email</option>' +
-                    '</select></div></div><div class="col-md-8 typeSelect">' +
+                    '<option value="4001">Work</option>' +
+                    '<option value="4002">Home</option>' +
+                    '</select></div></div><div class="col-xs-8 typeSelect">' +
                     '<div class="for-group has-feedback input-group">' +
-                    '<input class="form-control" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12"/>'+
-                    '<span class="input-group-addon profile-label contact-addon"><a href="javascript:void(0);" class="remove" id="email'+emailIndex+'"> X </span>' +
+                    '<input class="form-control" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12" placeholder="Email"/>'+
+                    '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="email'+emailIndex+'"> X </span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
 
             $('ul#emails').append(number);
@@ -405,8 +495,8 @@ $(document).ready(function () {
                     '<option value="6005">Home</option>'+
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
                     '<div class="for-group has-feedback input-group">' +
-                    '<input class="form-control" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12"/>'+
-                    '<span class="input-group-addon profile-label contact-addon"><a href="javascript:void(0);" class="remove" id="phone'+phoneIndex+'">X</a></span>' +
+                    '<input class="form-control" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12" placeholder="Phone"/>'+
+                    '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="phone'+phoneIndex+'">X</a></span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
                 $('ul#phones').append(number);
             }
@@ -415,12 +505,10 @@ $(document).ready(function () {
 
         $(document).on("click", "a.remove" , function() {
             var section = $(this).attr('id');
-            var sectionToCut = "li#" + section
-            console.log(section.substring(0,4) + " " +numOfPhones+" "+numOfEmails+" "+numOfLinks);
+            var sectionToCut = "li#" + section;
             $(sectionToCut).remove();
             if (section.substring(0,4) == "phon") {
                 numOfPhones--;
-                console.log(numOfPhones);
             }
             if (section.substring(0,4) == "emai") {
                 numOfEmails--;
@@ -444,7 +532,7 @@ $(document).ready(function () {
                     dataType: 'json',
                     data: jdata,
                     success: function(data) {
-                        console.log(data + "success");
+                        alert (data)
                     }
                 });
             }
@@ -493,164 +581,4 @@ $(document).ready(function () {
         <div class="clearfix"></div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container" id="main">
-  <div class="row">
-    <div id="profile-content">
-        <form>
-      <div class="col-md-4 profile profileBox">
-      <form id="details">
-      <table id="tbl">
-<tr>
-<td>Name :</td>
-<td class="editable" id="name"><?php echo $contact['member']['name'];?></td>
-</tr>
-<tr>
-<td>Address:</td>
-<td class="editable" id="[primary_address][street]">
-<?php echo $contact['member']['primary_address']['street'];?>
-</td><tr>
-<td></td>
-<td class="editable" id="[primary_address][city]">
-<?php echo $contact['member']['primary_address']['city'];?>
-</td><tr><td></td>
-<td class="editable" id="[primary_address][county]">
-<?php echo $contact['member']['primary_address']['county'];?>
-</td><tr><td></td>
-<td class="editable" id="[primary_address][postcode]">
-<?php echo $contact['member']['primary_address']['postcode'];?>
-</td>
-		
-      <?php
-      $i = 0;
-      	foreach ($contact['member']['emails'] as $key => $value)
-      		{	
-      			$id_address = "emails[".$i."][address]";
-            $id_id = "emails[".$i."][id]";
-      			echo "<tr><td>".$value['email_type_name']." email: </td><td class='editable' id='".$id_address."'>".$value['address']."</td><td><input type='hidden' id='".$id_id."' value='".$value['id']."'></tr></td>";
-      			$i++;
-      		}
-      	$i = 0;
-      	foreach ($contact['member']['phones'] as $key => $value)
-      		{
-      			$id = "phones[".$i."][number]";
-      			echo "<tr><td>".$value['phone_type_name']." phone: </td><td class='editable' id='".$id."'>".$value['number']."</td></tr>";
-      			$i++;
-      		}
-      	$i = 0;
-      	foreach ($contact['member']['links'] as $key => $value)
-      		{
-      			$id = "links[".$i."][address]";
-      			echo "<tr><td>".$value['link_type_name']." link: </td><td class='editable' id='".$id."'>".$value['address']."</td></tr>";
-      			$i++;
-      		}?> 
-      		<td></td><td class="xx">Edit</td>
-      	</table>
-      </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
-	      <div class= "profile currentHire">
-	      <h4>Live Bookings</h4>
-	      <table>
-	      <tr><th>Artist</th><th>Start date</th><th>End Date</th><th>State</th></tr>
-		      <?php 
-		      foreach ($live['opportunities'] as $value=>$key)
-		      {
-
-		      	echo "<tr><td>".$key['subject']."</td><td>".date("d-m-Y",strtotime($key['starts_at']))."</td><td>".date("d-m-Y",strtotime($key['ends_at']))."</td><td>".$key['state_name']."</td></tr>";
-		      }
-		      ?>
-	      </table>
-	      </div>
-	      <div class= "profile currentHire">
-	      <h4>Archived Bookings</h4>
-	      <table id="bookings">
-		    <?php 
-		    if ($archive['meta']['total_row_count'] != 0) {
-		      	echo "<tr><th>Artist</th><th>Start date</th><th>End Date</th><th>State</th><th></th></tr>";
-			    foreach ($old as $value=>$key) {
-			      	echo "<tr><td>".$key['subject']."</td><td>".date("d-m-Y",strtotime($key['starts_at']))."</td><td>".date("d-m-Y",strtotime($key['ends_at']))."</td><td>".$key['state_name']."</td><td>".$key['status_name']."</td></tr>";
-			    }
-			} else {
-				echo "No bookings to display";
-			}
-		    ?>
-	      </table>
-	      </div>
-          <div class= "profile currentHire">
-              <h4>Drivers</h4>
-              <table id="bookings">
-                  <?php
-                  if (count($contact['member']['child_members']) != 0) {
-                      echo "<tr><th>Driver</th><th>Licence Number</th></tr>";
-                      foreach ($driver as $value=>$key) {
-                          echo "<tr><td>".$key['member']['name']."</td><td>".$key['member']['custom_fields']['drivers_licence_number']."</td></tr>";
-                      }
-                  } else {
-                      echo "No drivers to display";
-                  }
-                  ?>
-              </table>
-          </div>
-      </div>
-
-	</form>
-    </div><!-- Content Div End -->
-  </div> <!-- Row end --> 
-</div>
-
-<script>
-	$('#tbl').on('click','.xx',function() {
-		var form = $('#details').serializeJSON();
-  		var jdata = JSON.stringify(form);
-
-  		if (jdata =="{}"){
-  			console.log("empty");
-  		}else {
-  			console.log(jdata);
-		  $.ajax({
-		    url: 'update.php',
-		    method: 'post',
-		    dataType: 'json',
-		    data: jdata,
-		    success: function(data) {
-		     console.log(data + "success");
-		    }
-		  });
-		}
-  		
-
-    $(".editable").each(
-        function(){
-            // If input fields exist
-            if ($(this).find('input').length){
-            	// change to text with a value of the input filed
-                $(this).text($(this).find('input').val());
-            }
-            else {
-              // Take the vlaue of the text field
-                var t = $(this).text();
-                // Get the id of the text field
-                var name = this.id;
-                // Change the text to an input with a value of t and an id of name
-                $(this).html($('<input />',{'value' : t, 'name' : name}).val(t, name));
-            }
-        });
-});
-</script>
+</body>
