@@ -337,6 +337,8 @@ if (isset($_POST['endDate'])) {
                             <input type="hidden" name="price" id="price" value="<?php echo $_POST['price'];?>"/>
                             <input type="hidden" name="line2" id="line2"/>
                             <input type="hidden" name="line3" id="line3"/>
+                            <input type="hidden" name="child_member" id="child_member"/>
+                            <input type="hidden" name="child_name" id="child_name"/>
                         </fieldset>
                     </div>
                     <div class="col-md-4">
@@ -470,11 +472,26 @@ if (isset($_POST['endDate'])) {
                 },
                 "emails[][address]": {
                     required: true,
-                    email: true
-                    //remote: {
-                    //  url: "test-val.php",
-                    //type: "post",
-                    //}
+                    email: true,
+                    remote: {
+                      url: "test-email-val.php",
+                        type: "post",
+                        dataFilter: function(data) {
+                            var json = JSON.parse(data);
+                            console.log(json.code);
+                            if(json.status === "success") {
+                                return '"true"';
+                            }
+                            if(json.code != null) {
+                                $('#child_member').val(json.code);
+                                $('#child_name').val(json.name);
+                                return '"true"';
+                            }
+                            if(json.error != null) {
+                                return "\"" + json.error + "\"";
+                            }
+                        }
+                    }
                 },
                 "phones[][number]": {
                     required: true,

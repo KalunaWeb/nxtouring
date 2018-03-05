@@ -9,12 +9,12 @@ $current = new current;
 
 $request = file_get_contents("php://input"); // gets the raw data.
 $params = json_decode($request,true); // true for return as array
-$params["primary_address"]["primary_address[street]"] = $params['line1']."
+$params["primary_address"]["street"] = $params['line1']."
 ".$params['line2']."
 ".$params['line3'];
-$params["primary_address"]["primary_address[city]"] = $params['town'];
-$params["primary_address"]['primary_address[county]'] = $params['county'];
-$params["primary_address"]['primary_address[postcode]'] = $params['postcode'];
+$params["primary_address"]["city"] = $params['town'];
+$params["primary_address"]["county"] = $params['county'];
+$params["primary_address"]["postcode"] = $params['postcode'];
 
 
 if (!isset($params["collection"])) {
@@ -32,6 +32,8 @@ if (!isset($_SESSION['user_id'])) {
     $x ="";
     $user = $current->createClientData($x);
 
+    $child = str_replace(' ', '%20', $params['child_name']);
+
     $client = [];
     $client["phones"] = $params["phones"];
     $client["emails"] = $params["emails"];
@@ -45,16 +47,18 @@ if (!isset($_SESSION['user_id'])) {
     $client["custom_fields"]["web_login_password"] = $user["salted_password"];
     $client["custom_fields"]["user_salt"] = $user["user_salt"];
     $client["custom_fields"]["verification_code"] = $user["verification_code"];
-
+    $client["child_members"][0]["relatable_id"] = $params["child_member"];
+    $client["child_members"][0]["relatable_type"] = "Member";
+    $client["child_members"][0]["related_name"] = $params['name'];
 
     $new = json_encode($client);
 
     $data = '{"member":' . $new . '}';
-
+print_r ($new);
 // Send JSON encoded details to Current to Create new contact
 
     $result = $current->createContact($data);
-
+print_r ($result);
 // Take the JSON result from current and turn it into a PHP accessable array so that we can access the ID #
 
     $client = json_decode($result, true);
