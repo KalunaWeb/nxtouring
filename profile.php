@@ -91,17 +91,17 @@ $(document).ready(function () {
     <div class="container">
         <div class="newcli-form">
             <form id="profile" class="profileForm">
-                <div class="row">
+                <fieldset class="row">
                     <div class="modal-header">
                         <h1 class="modal-title">
                             <?php if (isset($_SESSION['user_id'])){echo $contact['member']['name'];}?>
                         </h1>
                     </div>
                     <div class="col-md-12">
-                        <fieldset class="form-group">
+                        <fieldset>
                             <legend>Basic Information
                             </legend>
-                            <div class="form-group has-feedback upload-details">
+                            <div class="upload-details">
                                 <div class="col-md-3 profile_main">Profile Image</div>
                                 <div class="col-md-4" id="preview">
                                     <?php if (isset($_SESSION['user_id']) && $contact["member"]["icon_exists?"]) {
@@ -117,7 +117,7 @@ $(document).ready(function () {
                                 />
                             </div>
                             <div class="section"></div>
-                            <div class="form-group has-feedback update-address">
+                            <div class="update-address">
                                 <div class="col-md-3 profile_main">Address</div>
                                 <div class="col-md-4">
                                     <div class="form-group has-feedback">
@@ -128,6 +128,7 @@ $(document).ready(function () {
                                                 echo 'value="'.$contact['member']['primary_address']['street'].'"';
                                             }?>
                                         </>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback">
@@ -163,7 +164,7 @@ $(document).ready(function () {
                             </div>
                     </div>
                     <div class="section row"></div>
-                    <div class="form-group has-feedback update-address">
+                    <div class="update-address">
                         <div class="col-md-3 profile_main">Contact Details</div>
                         <div class="col-md-4">
                             <div id="phonesWrapper">
@@ -198,11 +199,11 @@ $(document).ready(function () {
                                                              </div>
                                                              <div class="col-xs-8 typeSelect">
                                                              <div class="form-group has-feedback input-group">
-                                                             <input class="form-control" type="text" id="'.$number.'" name="'.$number.'" maxlength="12" ';
+                                                             <input class="form-control phonesNew" type="text" id="'.$number.'" name="'.$number.'" maxlength="12" ';
                                             if (isset($_SESSION['user_id'])) {
                                                 echo 'value="' . $value['number'] . '"';
                                             };
-                                            echo '/><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="phone'.$p.'">X</a></span>
+                                            echo '/><span class="feedback form-control-feedback glyphicon glyphicon-ok"></span><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="phone'.$p.'">X</a></span>
                                                              <input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" /> 
                                                              </div>
                                                              </div>
@@ -221,7 +222,7 @@ $(document).ready(function () {
                                             $email = "emails[" . $e . "][address]"; // Email Address
                                             $id = "emails[" . $e . "][id]"; // ID of individual record for editing
                                             $type = "emails[".$e."][type_id]"; // ID number of the email type
-                                            echo '<li id="email'.$e.'"><div class="form-group contactSelect"><div class="col-md-4 typeSelect">
+                                            echo '<li id="email'.$e.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
                                                           <div class="form-group">
                                                           <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                           <option value="4001"';
@@ -233,13 +234,13 @@ $(document).ready(function () {
                                                           </select>
                                                           </div>
                                                           </div>
-                                                          <div class="col-md-8 typeSelect">
+                                                          <div class="col-xs-8 typeSelect">
                                                           <div class="form-group has-feedback input-group">
-                                                          <input class="form-control" type="text" id="'.$email.'" name="'.$email.'" ';
+                                                          <input class="form-control emailsNew" type="text" id="'.$email.'" name="'.$email.'" ';
                                             if (isset($_SESSION['user_id'])) {
                                                 echo 'value="' .$value['address']. '"';
                                             };
-                                            echo '/><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="email'.$e.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
+                                            echo '/><span class="feedback form-control-feedback glyphicon glyphicon-ok"></span><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="email'.$e.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
                                                           </div>
                                                           </div>
                                                           </div>
@@ -257,7 +258,7 @@ $(document).ready(function () {
                                             $link = "links[" . $l . "][address]"; // Link Address
                                             $id = "links[" . $l . "][id]"; // ID of individual record for editing
                                             $type = "links[".$l."][type_id]"; // ID number of the Link type
-                                            echo '<li id="link'.$l.'"><div class="form-group contactSelect"><div class="col-md-4 typeSelect">
+                                            echo '<li id="link'.$l.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
                                                          <div class="form-group">
                                                          <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                          <option value="5001"';
@@ -278,13 +279,13 @@ $(document).ready(function () {
                                                          </select>
                                                          </div>
                                                          </div>
-                                                         <div class="col-md-8 typeSelect">
+                                                         <div class="col-xs-8 typeSelect">
                                                          <div class="form-group has-feedback input-group">
-                                                            <input class="form-control" type="text" id="'.$link.'" name="'.$link.'" ';
+                                                            <input class="form-control linksNew" type="text" id="'.$link.'" name="'.$link.'" ';
                                             if (isset($_SESSION['user_id'])) {
                                                 echo 'value="' .$value['address']. '"';
                                             };
-                                            echo '/><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="link'.$l.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
+                                            echo '/><span class="feedback form-control-feedback glyphicon glyphicon-ok"></span><span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="link'.$l.'">X</a></span><input type="hidden" id="'.$id.'" name="'.$id.'" value="'.$value['id'].'" />
                                                          </div>
                                                          </div>
                                                          </div>
@@ -302,7 +303,7 @@ $(document).ready(function () {
                     <div class="section row"></div>
                     <?php
                     if ($contact['member']['membership_type']=="Contact") {
-                    echo '<div class="form-group has-feedback update-licence">
+                    echo '<div class="update-licence">
                         <div class="col-md-3 profile_main">Licence Details</div>
                         <div class="col-md-4">
                             <div class="form-group has-feedback">
@@ -312,7 +313,7 @@ $(document).ready(function () {
                     if (isset($contact['member']['custom_fields']['drivers_licence_number'])) {
                         echo ' value="'.$contact['member']['custom_fields']['drivers_licence_number'].'"';
                     }
-                    echo '/>
+                    echo '/><span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                 </div>
                             </div>
                             <div class="form-group has-feedback">
@@ -373,9 +374,9 @@ $(document).ready(function () {
                             
                                 </div>
                             </div>
-                    <div class="section"></div>';}?>
+                    <div class="section row"></div>';}?>
 
-                    <div class="form-group has-feedback update-address">
+                    <div class="update-address">
                         <div class="col-md-3 profile_main">Password</div>
                         <div class="col-md-4">
                             <div class="form-group has-feedback">
@@ -397,28 +398,200 @@ $(document).ready(function () {
 
                     <input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_SESSION['user_id'];?>"/>
                     <input type="hidden" id="store_ids" name="store_ids" value="<?php if(isset($contact['member']['membership']['owned_by'])){echo $contact['member']['membership']['owned_by'];}?>"/>
-
+                </fieldset>
             <fieldset>
                 <div class="row">
-            <div class="col-md-3 profile_main"></div>
-            <div class="col-md-4"></div>
-            <div class="col-md-2 col-xs-12">
+            <div class="col-md-2 col-md-push-7 col-xs-12">
                 <div class="form-group">
-                    <button class="btn-default updateBtn" id="update" value="Update">Update</button>
+                    <button class="btn-default updateBtn value="submit">Update</button>
                 </div>
             </div>
                 </div>
         </fieldset>
-        </div>
-        </form>
 
+        </form>
+    </div>
     </div>
 </div>
 </div>
-<div id="error"></div>
+<div id="loading"><img src="images/loading2.gif"></div>
 <script>
 
     $(document).ready(function () {
+        var dateNow = new Date();
+        $('#dob').daterangepicker({
+            "autoApply": true,
+            "autoUpdateInput": false,
+            "singleDatePicker": true,
+            "showDropdowns": true,
+            startDate: moment(dateNow).subtract(23, 'years'),
+            maxDate: moment(dateNow).subtract(23, 'years'),
+            locale: {
+                cancelLabel: 'Clear',
+                format: "DD MMMM YYYY",
+                firstDay: 1
+            }
+        });
+        $('#dot').daterangepicker({
+            "autoApply": false,
+            "autoUpdateInput": false,
+            "singleDatePicker": true,
+            "showDropdowns": true,
+            startDate: moment(dateNow).subtract(2, 'years'),
+            maxDate: moment(dateNow).subtract(2, 'years'),
+            locale: {
+                cancelLabel: 'Clear',
+                format: "DD MMMM YYYY",
+                firstDay: 1
+            }
+        });
+
+        $('input[name="custom_fields[date_of_birth]"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
+
+        $('input[name="custom_fields[date_of_birth]"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        $('input[name="custom_fields[date_of_test]"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD MMMM YYYY'));
+        });
+
+        $('input[name="custom_fields[date_of_test]"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+
+        jQuery.validator.addMethod('phoneUK', function(phone_number, element) {
+            return this.optional(element) || phone_number.length > 9 &&
+                phone_number.match(/^(((\+44)? ?(\(0\))? ?)|(0))( ?[0-9]{3,4}){3}$/);
+        }, 'Please specify a valid phone number');
+
+        jQuery.validator.addMethod("postcodeUK", function(value, element) {
+            return this.optional(element) || /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i.test(value);
+        }, "Please specify a valid Postcode");
+
+
+        $("#update").click(function(e) {
+            e.preventDefault();
+        });
+
+
+        $("#profile").validate({
+
+            rules: {
+                "emails[0][address]": {
+                    required: true,
+                    email: true
+                },
+                "phones[0][number]": {
+                    required: true,
+                    phoneUK: true,
+                    minlength: 10,
+                    maxlength: 12
+                },
+                "links[0][address]": {
+                    required: true,
+                    url: true,
+                    normalizer: function( value ) {
+                        var url = value;
+                        // Check if it doesn't start with http:// or https:// or ftp://
+                        if ( url && url.substr( 0, 7 ) !== "http://" && url.substr( 0, 8 ) !== "https://" && url.substr( 0, 6 ) !== "ftp://" ) {
+                            // then prefix with http://
+                            url = "http://" + url;
+                        }
+
+                        // Return the new url
+                        return url;
+                    }
+                },
+                "primary_address[street]": {
+                    minlength: 8,
+                    maxlength: 100
+                },
+                "primary_address[city]": {
+                    minlength: 8,
+                    maxlength: 100
+                },
+                "primary_address[county]": {
+                    minlength: 4,
+                    maxlength: 100
+                },
+                "primary_address[postcode]": {
+                    postcodeUK: true
+                },
+                "custom_fields[drivers_licence_number]" :{
+                    minlength: 14,
+                    maxlength: 17
+                },
+                "custom_fields[date_of_birth]" : {
+                    date: true
+                },
+                "custom_fields[date_of_test]" : {
+                    date: true
+                },
+                "custom_fields[national_insurance_number]": {
+                    require_from_group: [1, ".code-group"],
+                    minlength: 8,
+                    maxlength: 11
+                },
+                "custom_fields[dvla_code]": {
+                    require_from_group: [1, ".code-group"],
+                    minlength: 8,
+                    maxlength: 11
+                },
+                "password2": {
+                    equalTo: "#password1"
+                }
+            },
+            messages: {
+                "emails[][address]": {
+                    email: "Please input a valid email address"
+                },
+                "links[][address]": {
+                    url: "Please enter a valid URL (include the http:// part)"
+                },
+                "password2":{
+                    equalTo: "Please make sure passwords match"
+                }
+            },
+            errorPlacement: function(error, element) {
+                $(element).parents('.form-group').append(error)
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                $(element).addClass(errorClass).removeClass(validClass);
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function(element) {
+                $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-remove').addClass('glyphicon-ok');
+                element.closest('.form-group').removeClass('has-error').addClass('has-success');
+                $(element).remove();
+            },
+            onkeyup: false, //turn off auto validate whilst typing
+            submitHandler: function (form) {
+
+                var form = $('#profile').serializeJSON();
+                var jdata = JSON.stringify(form);
+
+                if (jdata !="{}"){
+                    $.ajax({
+                        url: 'update.php',
+                        method: 'post',
+                        dataType: 'json',
+                        data: jdata,
+                        beforeSend: function(){
+                            $("#loading").show();
+                        },
+                        success: function(data) {
+                            $("#loading").hide();
+                            alert ("Updated!")
+                        }
+                    });
+                }
+            }
+        });
 
         var phoneIndex = <?php echo $p;?>;
         var emailIndex = <?php echo $e;?>;
@@ -444,11 +617,28 @@ $(document).ready(function () {
                     '<option value="5005">IM</option>'+
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
                     '<div class="for-group has-feedback input-group">' +
-                    '<input class="form-control" type="text" id="links['+linksIndex+'][address]" name="links['+linksIndex+'][address]" maxlength="12" placeholder="Web / Social Media"/>'+
+                    '<input class="form-control linksNew" type="text" id="links['+linksIndex+'][address]" name="links['+linksIndex+'][address]" maxlength="12" placeholder="Web / Social Media"/>'+
                     '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="link'+ linksIndex +'"> X </span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
 
             $('#links').append(number);
+                $(".linksNew").each(function(){
+                    $(this).rules("add", {
+                        required: true,
+                        url: true,
+                        normalizer: function( value ) {
+                            var url = value;
+                            // Check if it doesn't start with http:// or https:// or ftp://
+                            if ( url && url.substr( 0, 7 ) !== "http://" && url.substr( 0, 8 ) !== "https://" && url.substr( 0, 6 ) !== "ftp://" ) {
+                                // then prefix with http://
+                                url = "http://" + url;
+                            }
+
+                            // Return the new url
+                            return url;
+                        }
+                    })
+                });
             }
 
         });
@@ -467,11 +657,17 @@ $(document).ready(function () {
                     '<option value="4002">Home</option>' +
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
                     '<div class="for-group has-feedback input-group">' +
-                    '<input class="form-control" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12" placeholder="Email"/>'+
+                    '<input class="form-control emailsNew" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12" placeholder="Email"/>'+
                     '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="email'+emailIndex+'"> X </span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
 
             $('ul#emails').append(number);
+                $(".emailsNew").each(function(){
+                    $(this).rules("add", {
+                        email: true,
+                        required: true
+                    })
+                });
             }
 
         });
@@ -495,10 +691,19 @@ $(document).ready(function () {
                     '<option value="6005">Home</option>'+
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
                     '<div class="for-group has-feedback input-group">' +
-                    '<input class="form-control" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12" placeholder="Phone"/>'+
+                    '<input class="form-control phonesNew" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12" placeholder="Phone"/>'+
                     '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="phone'+phoneIndex+'">X</a></span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
                 $('ul#phones').append(number);
+
+                $(".phonesNew").each(function(){
+                    $(this).rules("add", {
+                        required: true,
+                        phoneUK: true,
+                        minlength: 10,
+                        maxlength: 12
+                    })
+                });
             }
         });
         // Remove Sections
@@ -519,25 +724,8 @@ $(document).ready(function () {
 
         });
 
-        $("#update").click(function(e) {
-            e.preventDefault();
 
-            var form = $('#profile').serializeJSON();
-            var jdata = JSON.stringify(form);
 
-            if (jdata !="{}"){
-                $.ajax({
-                    url: 'update.php',
-                    method: 'post',
-                    dataType: 'json',
-                    data: jdata,
-                    success: function(data) {
-                        alert (data)
-                    }
-                });
-            }
-
-        })
     });
 </script>
 <!-- footer -->

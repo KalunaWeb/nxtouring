@@ -139,6 +139,20 @@ if (isset($params["links"])) {
 if (isset($params["primary_address"])) {
     $client["primary_address"] = $params["primary_address"];
 }
+if (isset($params['password1']) && isset($params['password2']) && $params['password1'] === $params['password2'] && $params['password1'] !="") {
+
+    $user = $current->createClientData($params['password1']);
+
+    $client["custom_fields"]["web_login_password"] = $user["salted_password"];
+    $client["custom_fields"]["user_salt"] = $user["user_salt"];
+    $client["custom_fields"]["verification_code"] = $user["verification_code"];
+}
+$client["custom_fields"]["date_of_birth"] = $params["custom_fields"]['date_of_birth'];
+$client["custom_fields"]["date_of_test"] = $params["custom_fields"]['date_of_test'];
+$client["custom_fields"]["national_insurance_number"] = $params["custom_fields"]['national_insurance_number'];
+$client["custom_fields"]["dvla_code"] = $params["custom_fields"]['dvla_code'];
+$client["custom_fields"]["endorsements"] = $params["custom_fields"]['endorsements'];
+$client["custom_fields"]["drivers_licence_number"] = $params["custom_fields"]['drivers_licence_number'];
 
 $client["description"] = $contact['member']['description'];
 $client["active"] = $contact['member']['active'];

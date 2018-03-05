@@ -29,7 +29,8 @@ if (!isset($params["agree"])) {
 
 if (!isset($_SESSION['user_id'])) {
 // build the client array
-    $user = $current->createClientData();
+    $x ="";
+    $user = $current->createClientData($x);
 
     $client = [];
     $client["phones"] = $params["phones"];

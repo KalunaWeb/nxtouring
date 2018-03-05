@@ -1799,9 +1799,7 @@ form.profileForm legend
 /*.update-address {
     height: 220px;
 }*/
-.update-licence {
-    height: 280px;
-}
+
 .profileForm input, textarea {
     box-sizing: border-box;
     border-width: 1px;
@@ -1982,6 +1980,14 @@ ul#driversList .profile_main {
     left: 180px;
 }
 
-.owl-wrapper {
-    margin: 0 auto;
+#loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    z-index: 9999
 }
+#loading img {
+    height: 150px;
+}
+

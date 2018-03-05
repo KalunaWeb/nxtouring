@@ -2,6 +2,8 @@
 
 class current {
 
+	private $characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 	private $headers = [
     'X-SUBDOMAIN:nxav',
     'X-AUTH-TOKEN:g1Qjsw4mALkfmZgKw46x',
@@ -17,11 +19,10 @@ class current {
 
 	private function randomString($length = 50)
 	{
-		$characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$string ='';
 
 		for ($p=0; $p<$length; $p++) {
-			$string .= $characters[mt_rand(0,strlen($characters)-1)];
+			$string .= $this->characters[mt_rand(0,strlen($this->characters)-1)];
 		}
 
 		return $string;
@@ -31,16 +32,18 @@ class current {
 	{
 		return hash_hmac('sha512',$data,$this->siteKey);
 	}
-    public function createClientData()
+    public function createClientData($pword)
     {
         // Generate Password
-        $characters ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $user["password"]='';
+        if (!isset($pword) || $pword == "") {
+            $user["password"] = '';
 
-        for ($p=0; $p<8; $p++) {
-            $user["password"].= $characters[mt_rand(0,strlen($characters)-1)];
+            for ($p = 0; $p < 8; $p++) {
+                $user["password"] .= $this->characters[mt_rand(0, strlen($this->characters) - 1)];
+            }
+        } else {
+            $user["password"] = $pword;
         }
-
         //Generate user salt
         $user["user_salt"] = $this->randomString();
 
