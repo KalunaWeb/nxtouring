@@ -511,11 +511,11 @@ $(document).ready(function () {
                     maxlength: 100
                 },
                 "primary_address[city]": {
-                    minlength: 8,
+                    minlength: 2,
                     maxlength: 100
                 },
                 "primary_address[county]": {
-                    minlength: 4,
+                    minlength: 2,
                     maxlength: 100
                 },
                 "primary_address[postcode]": {
