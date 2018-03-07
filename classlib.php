@@ -410,17 +410,26 @@ class current {
 		{
 			$type = "work_email_address_or_identity_email_cont";
 			$contact = $this->getContact($email, $type);
-
+			$index = 0;
+			$i = 0;
+			if (count($contact['members']) > 1) {
+			    foreach ($contact['members'] as $key) {
+			        if ($key['membership_type'] == "Organisation") {
+			        $index = $i;
+			        }
+                $i++;
+			    }
+			}
 			//Salt and hash password for checking
 
-			$password = $contact['members'][0]['custom_fields']['user_salt'] . $password;
+			$password = $contact['members'][$index]['custom_fields']['user_salt'] . $password;
 			$password = $this->hashData($password);
 
 			//Check email and password hash match
 
 			$match = false;
 
-			if ($password == $contact['members'][0]['custom_fields']['web_login_password']) {
+			if ($password == $contact['members'][$index]['custom_fields']['web_login_password']) {
 				$match = true;
 			}
 
@@ -437,7 +446,7 @@ class current {
 			//Setup sessions vars
 				//session_start();
 				$_SESSION['token'] = $token;
-				$_SESSION['user_id'] = $contact['members'][0]['id'];
+				$_SESSION['user_id'] = $contact['members'][$index]['id'];
                 session_write_close();
 				return "ok";
 				die();

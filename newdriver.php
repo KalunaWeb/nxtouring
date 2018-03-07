@@ -333,8 +333,8 @@ var driverForm = $('form#newDriver');
                 },
                 "emails[0][address]": {
                     required: true,
-                    email: true,
-                    remote: {
+                    email: true
+                    /*remote: {
                         url: "check-email.php",
                         type: "post",
                         data: {
@@ -342,7 +342,7 @@ var driverForm = $('form#newDriver');
                                 return $("#name").val();
                             }
                         }
-                    }
+                    }*/
                 },
                 "phones[0][number]": {
                     phoneUK: true,
@@ -384,10 +384,10 @@ var driverForm = $('form#newDriver');
                     postcodeUK: true
                 },
                 "custom_fields[national_insurance_number]": {
-                    require_from_group: [1, ".code-group"]
+                    //require_from_group: [1, ".code-group"]
                 },
                 "custom_fields[dvla_code]": {
-                    require_from_group: [1, ".code-group"]
+                    //require_from_group: [1, ".code-group"]
                 }
 
             },

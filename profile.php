@@ -374,8 +374,10 @@ $(document).ready(function () {
                             
                                 </div>
                             </div>
-                    <div class="section row"></div>';}?>
+                    <div class="section row"></div>';}
 
+                    if ($driver == 0 ){
+                        echo '
                     <div class="update-address">
                         <div class="col-md-3 profile_main">Password</div>
                         <div class="col-md-4">
@@ -394,18 +396,22 @@ $(document).ready(function () {
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    </div>';}?>
+                    <input type="hidden" id="profile_id" name="profile_id" value="<?php echo $contact['member']['id'];?>"/>
                     <input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_SESSION['user_id'];?>"/>
                     <input type="hidden" id="store_ids" name="store_ids" value="<?php if(isset($contact['member']['membership']['owned_by'])){echo $contact['member']['membership']['owned_by'];}?>"/>
                 </fieldset>
             <fieldset>
                 <div class="row">
-            <div class="col-md-2 col-md-push-7 col-xs-12">
-                <div class="form-group">
-                    <button class="btn-default updateBtn value="submit">Update</button>
-                </div>
-            </div>
+                    <div class="col-md-3 col-md-push-7 col-xs-12">
+                        <div class="form-group-inline">
+                            <button class="btn-default updateBtn" value="submit" id="updtBtn">Update</button>
+                        </div>
+                        <?php
+                        if ($driver == 1) {
+                            echo '<div class="form-group-inline"><button class="btn-default updateBtn" id="backBtn">Back</button></div>';
+                        }?>
+                    </div>
                 </div>
         </fieldset>
 
@@ -413,11 +419,16 @@ $(document).ready(function () {
     </div>
     </div>
 </div>
-</div>
+
 <div id="loading"><img src="images/loading2.gif"></div>
 <script>
 
     $(document).ready(function () {
+
+        $('#backBtn').click(function(){
+            window.history.go(-1)
+        });
+
         var dateNow = new Date();
         $('#dob').daterangepicker({
             "autoApply": true,

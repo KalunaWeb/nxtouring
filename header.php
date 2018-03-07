@@ -1,6 +1,6 @@
 <?php
 session_start();
-//$_SESSION['user_id']=362;//330; //22; // 330
+$_SESSION['user_id']=330; //22; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $main_url = "http://www.darkelf.darktech.org/";
@@ -14,12 +14,17 @@ if(!isset($_SESSION['user_id']))
   $user = "Guest";
 
 } else {
-
- $contact = $current -> getContactById($_SESSION['user_id']);
-
-  $user = $contact['member']['name'];
-
+    if (isset($_GET['id']) && $_GET['id'] !="") {
+        $contact = $current -> getContactById($_GET['id']);
+        $user = $_GET['name'];
+        $driver = 1;
+    } else {
+        $contact = $current -> getContactById($_SESSION['user_id']);
+        $user = $contact['member']['name'];
+        $driver = 0;
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
