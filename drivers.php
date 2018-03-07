@@ -40,14 +40,17 @@ $driver = $current->getMultipleContactsById($query);
                         <div class="col-md-12">
                                 <legend>Drivers</legend>
                                 <ul id="driversList">
+
                                 <?php
                                 if (isset($driver)){
 
                                 foreach($driver['members'] as $key=>$value){
-                                    echo '<li>
+
+                                    echo '<a href="profile.php?id='.$value["id"].'&name='.$contact['member']['name'].'">
+                                            <li>
                                             <div class="col-md-2 profile_main">'.$value["name"].'</div>
                                             <div class="col-md-4 address">
-                                            <div class="row">
+                                            <div class="row mobile-hidden">
                                                 <div class="col-xs-4">
                                                     <div class="address_label first">Address</div>
                                                 </div>
@@ -68,7 +71,7 @@ $driver = $current->getMultipleContactsById($query);
                                         echo '</address>
                                                 </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row mobile-hidden">
                                                 <div class="col-xs-4">
                                                     <div class="address_label">Phone</div>
                                                 </div>
@@ -92,7 +95,7 @@ $driver = $current->getMultipleContactsById($query);
                                                 </div>
                                                 </div>
                                                 <div class="col-md-4 address">
-                                                <div class="row">
+                                                <div class="row mobile-hidden">
                                                 <div class="col-xs-4">
                                                     <div class="address_label">Licence Number</div>
                                                 </div>
@@ -104,7 +107,7 @@ $driver = $current->getMultipleContactsById($query);
                                                 </div>
                                                 </div>
                                                 <div class="clearfix"></div>
-                                                <div class="row">
+                                                <div class="row mobile-hidden">
                                                    <div class="col-xs-4">
                                                     <div class="address_label">Date of Birth</div>
                                                 </div>
@@ -115,7 +118,7 @@ $driver = $current->getMultipleContactsById($query);
                                         echo '</address>
                                                 </div></div>
                                                 <div class="clearfix"></div>
-                                                <div class="row">
+                                                <div class="row mobile-hidden">
                                                    <div class="col-xs-4">
                                                     <div class="address_label">Date of Test</div>
                                                 </div>
@@ -141,7 +144,7 @@ $driver = $current->getMultipleContactsById($query);
                                                 </div>
                                                 
 
-                                <div class="section row"></div>
+                                <div class="section row"></div></a>
                                 </li>';
                                 }
                                 } else {

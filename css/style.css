@@ -1990,4 +1990,7 @@ ul#driversList .profile_main {
 #loading img {
     height: 150px;
 }
+#backBtn, #updtBtn {
+    float: left;
+}
 
