@@ -124,9 +124,9 @@ $client = json_encode($contact);
                     </div>
     <div class="col-md-12">
         <fieldset class="form-group">
-            <legend>Current Bookings</legend>
+            <legend>Live Orders</legend>
             <div class="form-group has-feedback upload-details">
-                <div class="col-md-3 profile_main">Live Orders</div>
+                <div class="col-md-3 profile_main"></div>
                 <div class="col-md-7 address">
                     <ul>
                         <li class="mobile-hidden">
@@ -211,14 +211,15 @@ $client = json_encode($contact);
                                 $i++;
                             }
                         } else {
-                            echo "No bookings to display";
+                            echo "<li><div class='row stripe'><div class='col-md-12'>No Bookings to Display</div></div></li>";
                         }
                         ?>
                     </ul>
                 </div>
             </div>
+            <legend>Past Orders</legend>
             <div class="form-group has-feedback upload-details">
-                <div class="col-md-3 profile_main">Archive Orders</div>
+                <div class="col-md-3 profile_main"></div>
                 <div class="col-md-7 address">
                     <ul>
                         <li class="mobile-hidden">
@@ -303,7 +304,7 @@ $client = json_encode($contact);
                                 $i++;
                             }
                         } else {
-                            echo "No bookings to display";
+                            echo "<li><div class='row stripe'><div class='col-md-12'>No Bookings to Display</div></div></li>";
                         }
                         ?>
                     </ul>

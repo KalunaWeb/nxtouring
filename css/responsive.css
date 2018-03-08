@@ -169,7 +169,7 @@
         min-width: 100px;
     }
     .col-md-3, .col-md-4, .col-md-2 {
-        padding: 0;
+        padding: 0 10px 0 0;
     }
     .container {
         padding-right: 15px;
@@ -370,8 +370,8 @@
         float: left;
     }
     .address {
-        width: 100%
-
+        width: 100%;
+        z-index: 999;
     }
 
 

@@ -68,7 +68,9 @@ include 'header.php';
                             <div class="section"></div>
                             <div class="form-group has-feedback update-address">
                                 <div class="col-md-3 profile_main">Address</div>
-                                <div class="col-md-4">
+                                <div class
+
+                                     ="col-md-4">
                                     <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon profile-label">Street</span>
@@ -197,7 +199,7 @@ include 'header.php';
                                         <span>The DVLA code can be obtained from <a target="_blank" href="https://www.gov.uk/view-driving-licence#before-you-start">here</a>.</span>
                                     </div>
                                 </div>
-                                    <div class="section"></div>
+                                    <div class="section row"></div>
                                     <div class="form-group has-feedback upload-details">
                                         <div class="col-md-3 profile_main">Images</div>
                                         <div class="col-md-4" id="preview1"><!--<img src="images/avatar.png">

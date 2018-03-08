@@ -1,19 +1,12 @@
 <?php
 
-require_once("classlib.php");
+include 'header.php';
 
-if(isset($_SESSION['user_id'])) {
+?>
 
-   $current = new current();
+<body id="background">
 
-   $contact = $current -> getContactById($_SESSION['user_id']);
-
-   $user = $contact['member']['name'];
-
-}
-
-require_once 'header.php';
-
+<?php
 
 if (isset($_POST['startDate'])){
     $start = DateTime::createFromFormat('Y-m-d H:i', $_POST['startDate']);
@@ -25,172 +18,65 @@ if (isset($_POST['endDate'])) {
 }
 
 ?>
-<style>
 
-    /*span.input-group-addon.profile-label{
-        border-top: 1px solid #eee
-    }*/
-    input.form-control {
-        border: none
-    }
-    .full {
-        padding: 0;
-    }
-    .input-group-addon {
-        background-color: #fff;
-        border: none;
-        min-width: 0;
-    }
-    .profile-label {
-        min-width: 80px;
-    }
-    .col-md-3, .col-md-4, .col-md-2, .col-xs-4, .col-xs-2, .col-md-12 {
-        padding: 0;
-    }
-    .container {
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-    .has-feedback .form-control{
-        padding-right: 0;
-    }
-    .form-control {
-        border: none;
-        -webkit-appearance: none;
-        box-shadow: none !important;
-    }
-    select, .contactSelect select{
-        background-color: #fff;
-
-
-        background-image:
-                linear-gradient(45deg, transparent 50%, gray 50%),
-                linear-gradient(135deg, gray 50%, transparent 50%);
-        background-position:
-                calc(100% - 20px) calc(1em + 2px),
-                calc(100% - 15px) calc(1em + 2px),
-                calc(100% - 2.5em) 0.5em;
-        background-size:
-                5px 5px,
-                5px 5px,
-                1px 1.5em;
-        background-repeat: no-repeat;
-    }
-
-    select.contactSelect:focus {
-        background-image:
-                linear-gradient(45deg, green 50%, transparent 50%),
-                linear-gradient(135deg, transparent 50%, green 50%),
-                linear-gradient(to right, #ccc, #ccc);
-        background-position:
-                calc(100% - 15px) 1em,
-                calc(100% - 20px) 1em,
-                calc(100% - 2.5em) 0.5em;
-        background-size:
-                5px 5px,
-                5px 5px,
-                1px 1.5em;
-        background-repeat: no-repeat;
-        border-color: green;
-        outline: 0;
-    }
-    .updateBtn {
-        margin-top: 20px;
-        width: 100%;
-    }
-
-    .addBtn {
-        width: 33%
-    }
-
-    .address_label, .address_detail, .drive {
-        background-color: #fff;
-    }
-
-    .profile_main {
-        margin-top:15px;
-        margin-bottom: 10px;
-    }
-    form.register input[type=text]{
-        border: none;
-        height: 34px;
-        font-size: 1em;
-        padding-left: 5px;
-}
-    button#newCliFormBtn.button {
-        width:100%;
-        background-image: linear-gradient(#ffffff, #fafbfb 50px);
-        background-color: #fafafa;
-        border-color: #ccc;
-        border-radius: 3px;
-        border-style: solid;
-        border-width: 1px;
-        box-shadow: rgba(255, 255, 255, 0.3) 0 0 0 1px inset;
-        box-sizing: border-box;
-        cursor: pointer;
-        font-size: 12px;
-        padding: 10px 12px;
-        text-align: center;
-        -webkit-transition: opacity .2s ease-out;
-        transition: opacity .2s ease-out;
-        white-space: nowrap;
-        -moz-user-select: -moz-none;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        user-select: none;
-        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6eaec));
-        background: -webkit-linear-gradient(#ffffff, #e6eaec);
-        background: linear-gradient(#ffffff, #e6eaec);
-        margin: auto;
-    }
-
-</style>
 <div id="newcli-container">
     <div class="container">
         <div class="newcli-form">
-        <form id="newCliForm" class="register">
+        <form id="newCliForm" class="profileForm">
             <div class="row">
                 <div class="modal-header">
                      <h1 class="modal-title">Vehicle Hire Form</h1>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-4">
-                        <fieldset class="form-group">
-                            <legend>Company Details
-                            </legend>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="artist">Artist / Job Name *</label>
-                                <input class="form-control" type="text" id="artist" name="artist"/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                    <fieldset class="form-group">
+                        <legend>Live Orders</legend>
+                            <div class="form-group has-feedback update-address">
+                                <div class="col-md-3 profile_main">Address</div>
+                                <div class="col-md-4">
+                                    <div class="form-group has-feedback details">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">Artist / Job Name *</span>
+                                            <input class="form-control" type="text" id="artist" name="artist"/>
+                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback details">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">Company Name *</span>
+                                            <input class="form-control" type="text" id="name" name="name"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['name'].'" readonly="readonly"';}?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                    </div>
+                                    <div class="form-group has-feedback details">
+                                        <div class="input-group">
+                                            <span class="input-group-addon profile-label">Email *</span>
+                                            <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"
+                                            <?php if (isset($_SESSION['user_id']) && isset($contact['member']['emails'][0]['address'])){
+                                                echo 'value="'.$contact['member']['emails'][0]['address'].'" readonly="readonly"';}?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                    </div>
+                                    <div class="form-group has-feedback details"><div class="input-group">
+                                            <span class="input-group-addon profile-label">Telephone *</span>
+                                            <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"<?php if (isset($_SESSION['user_id']) && isset($contact['member']['phones'][0]['number'])){
+                                                echo 'value="'.$contact['member']['phones'][0]['number'].'" readonly="readonly"';}?>/>
+                                            <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                    </div>
+                                    <div class="form-group has-feedback details"><div class="input-group">
+                                            <span class="input-group-addon profile-label">Website *</span>
+                                        <input class="form-control" type="text" id="links[][address]" name="links[][address]"
+                                            <?php if (isset($_SESSION['user_id']) && isset($contact['member']['links'][0]['address'])){
+                                                echo 'value="http://'.$contact['member']['links'][0]['address'].'" readonly="readonly"';}?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group has-feedback details">
-                                <label for="name" class="booking_form_main">Company Name *</label>
-                                <input class="form-control" type="text" id="name" name="name"
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        echo 'value="'.$contact['member']['name'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="emails[][address]">Email *</label>
-                                <input class="form-control" type="text" id="emails[][address]" name="emails[][address]"
-                                    <?php if (isset($_SESSION['user_id']) && isset($contact['member']['emails'][0]['address'])){
-                                        echo 'value="'.$contact['member']['emails'][0]['address'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="phones[][number]">Telephone *</label>
-                                <input class="form-control" type="text" id="phones[][number]" name="phones[][number]" maxlength="11"
-                                    <?php if (isset($_SESSION['user_id']) && isset($contact['member']['phones'][0]['number'])){
-                                        echo 'value="'.$contact['member']['phones'][0]['number'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="links[][address]">Website *</label>
-                                <input class="form-control" type="text" id="links[][address]" name="links[][address]"
-                                    <?php if (isset($_SESSION['user_id']) && isset($contact['member']['links'][0]['address'])){
-                                        echo 'value="http://'.$contact['member']['links'][0]['address'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
+
+
                         </fieldset>
                     </div>
                     <div class="col-md-4">
@@ -399,7 +285,7 @@ if (isset($_POST['endDate'])) {
         <div class="clearfix"></div>
     </div>
 </div>
-
+</body>
 
 <script>
 
