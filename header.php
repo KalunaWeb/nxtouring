@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=330; //22; // 330
+$_SESSION['user_id']=371; //22; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $main_url = "http://www.darkelf.darktech.org/";
@@ -69,7 +69,7 @@ if(!isset($_SESSION['user_id']))
 <!-- //carousel slider -->  
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/widget.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/newCliRegModal.css" type="text/css" media="all" />
+<!--<link rel="stylesheet" href="css/newCliRegModal.css" type="text/css" media="all" />-->
     <link rel="stylesheet" href="css/responsive.css" type="text/css" media="all" />
 <!--// css -->
 <!-- font-awesome icons -->

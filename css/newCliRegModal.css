@@ -74,8 +74,6 @@ form.register input[type=checkbox]{
 }
 form.register input[type=text]
 {
-    border: 1px solid #E1E1E1;
-    height: 18px;
     font-size: 0.8em;
     padding: 0;
 }
