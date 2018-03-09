@@ -28,21 +28,21 @@ if (isset($_POST['endDate'])) {
                      <h1 class="modal-title">Vehicle Hire Form</h1>
                 </div>
                 <div class="col-md-12">
-                    <fieldset class="form-group">
-                        <legend>Live Orders</legend>
-                            <div class="form-group has-feedback update-address">
-                                <div class="col-md-3 profile_main">Address</div>
+                    <fieldset>
+                        <legend>Contact Details</legend>
+                            <div class="has-feedback update-address">
+                                <div class="col-md-3 profile_main"></div>
                                 <div class="col-md-4">
                                     <div class="form-group has-feedback details">
                                         <div class="input-group">
-                                            <span class="input-group-addon profile-label">Artist / Job Name *</span>
+                                            <span class="input-group-addon profile-label">Artist Name *</span>
                                             <input class="form-control" type="text" id="artist" name="artist"/>
                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback details">
                                         <div class="input-group">
-                                            <span class="input-group-addon profile-label">Company Name *</span>
+                                            <span class="input-group-addon profile-label">Company *</span>
                                             <input class="form-control" type="text" id="name" name="name"
                                             <?php if (isset($_SESSION['user_id'])){
                                                 echo 'value="'.$contact['member']['name'].'" readonly="readonly"';}?>/>
@@ -73,166 +73,209 @@ if (isset($_POST['endDate'])) {
                                         <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                     </div>
                                     </div>
+                                    <div>
+                                        <label class="obinfo">* obligatory fields
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Company Address</legend>
+                        <div class="has-feedback update-address">
+                            <div class="col-md-3 profile_main"></div>
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback details">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">Street</span>
+                                        <input class="form-control" id="line1" name="line1"
+                                        <?php
+                                        if (isset($_SESSION['user_id'])){
+                                            echo ' readonly="readonly"';
+                                        }
+                                        if (isset($_SESSION['user_id'])){
+                                            echo ' value="'.$contact['member']['primary_address']['street'].'"';
+                                        }
+                                        ?>
+                                    </>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback details">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">City</span>
+                                        <input class="form-control" type="text" id="town" name="town"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['city'].'" readonly="readonly"';}?>/>
+                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback details">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">County</span>
+                                        <input class="form-control" type="text" id="county" name="county"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['county'].'" readonly="readonly"';}?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback details"><div class="input-group">
+                                        <span class="input-group-addon profile-label">Postcode</span>
+                                        <input class="form-control" type="text" id="postcode" name="postcode"
+                                            <?php if (isset($_SESSION['user_id'])){
+                                                echo 'value="'.$contact['member']['primary_address']['postcode'].'" readonly="readonly"';}?>/>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                </div>
+                            </div>
+                </fieldset>
+
+                    <fieldset>
+                        <legend>Hire Details</legend>
+                        <div class="has-feedback update-address">
+                            <div class="col-md-3 profile_main"></div>
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback details">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">Vehicle Type</span>
+                                        <input type="text" class="form-control" id="prod_type" name="prod_type" value="<?php echo $_POST["prod_type"];?>" readonly="readonly">
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Collection Date</span>
+                                    <input type="text" class="form-control" id="startDate" name="startDate" value="<?php echo $newStart;?>" readonly="readonly">
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Return Date</span>
+                                    <input type="text" class="form-control" id="endDate" name="endDate" value="<?php echo $newEnd;?>" readonly="readonly">
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback details">
+                                <div class="input-group">
+                                    <span class="input-group-addon profile-label">Hire Price</span>
+                                    <input type="text" class="form-control" id="hireprice" name="hireprice" value="<?php echo $_POST["hirefee"].'.00'?>" readonly="readonly">
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                </div>
+                            </div>
+                                <div class="form-group has-feedback details">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label">Deposit Scheme</span>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons" id="deposit">
+                                            <label class="btn btn-secondary active">
+                                                <input type="radio" name="options" id="option1" autocomplete="off" value="40" checked> £10 per day
+                                            </label>
+                                            <label class="btn btn-secondary">
+                                                <input type="radio" name="options" id="option2" autocomplete="off" value="41"> £600 Refundable
+                                            </label>
+                                        </div>
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback details"><div class="input-group">
+                                        <span class="input-group-addon profile-label">Hire Price</span>
+                                        <input type="text" class="form-control" id="totprice" name="totprice" value="<?php echo ($_POST["hirefee"]+($_POST["cdays"]*10)).'.00 + vat'?>" readonly="readonly">
+                                        <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
+                                    </div>
+                                </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Misc.</legend>
+                        <div class="has-feedback update-address">
+                            <div class="col-md-3 profile_main"></div>
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback details">
+                                    <div class="input-group">
+                                        <span class="input-group-addon profile-label" id="numDriver">Number of Drivers</span>
+                                        <select class="form-control" id="drivers" name="drivers">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                        </select>
+                                    <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                 </div>
                             </div>
 
-
-                        </fieldset>
-                    </div>
-                    <div class="col-md-4">
-                        <fieldset class="form-group">
-                            <legend>Company Address</legend>
-
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="line1">Address *</label>
-                                <input class="form-control" id="line1" name="line1"
-                                    <?php
-                                    if (isset($_SESSION['user_id'])){
-                                        echo ' readonly="readonly"';
-                                    }
-                                    if (isset($_SESSION['user_id'])){
-                                        echo ' value="'.$contact['member']['primary_address']['street'].'"';
-                                    }
-                                    ?>
-                                </>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="town">City *</label>
-                                <input class="form-control" type="text" id="town" name="town"
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        echo 'value="'.$contact['member']['primary_address']['city'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="county">County *</label>
-                                <input class="form-control" type="text" id="county" name="county"
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        echo 'value="'.$contact['member']['primary_address']['county'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="form-group has-feedback details">
-                                <label class="booking_form_main" for="postcode">PostCode *</label>
-                                <input class="form-control" type="text" id="postcode" name="postcode"
-                                    <?php if (isset($_SESSION['user_id'])){
-                                        echo 'value="'.$contact['member']['primary_address']['postcode'].'" readonly="readonly"';}?>/>
-                                <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <?php if (!isset($_SESSION['user_id'])) {
-                                echo '<div id="postcode_lookup" class="form-group"></div>';
-                            }?>
-
-                            <!--<div class="clearfix"></div>-->
-                        </fieldset>
-                    </div>
-                    <div class="col-md-4">
-                        <fieldset class=" form-group">
-                            <legend>Hire Details</legend>
-                            <div class="form-group details">
-                                <label class="booking_form_main control-label" for="prod_type">Vehicle Type</label>
-                                <input type="text" class="form-control" id="prod_type" name="prod_type" value="<?php echo $_POST["prod_type"];?>" readonly="readonly">
-                            </div>
-                            <div class="form-group details">
-                                <label class="booking_form_main control-label" for="startDate">Collection Date</label>
-                                <input type="text" class="form-control" id="startDate" name="startDate" value="<?php echo $newStart;?>" readonly="readonly">
-                            </div>
-                            <div class="form-group details">
-                                <label class="booking_form_main control-label" for="endDate">Return Date</label>
-                                <input type="text" class="form-control" id="endDate" name="endDate" value="<?php echo $newEnd;?>" readonly="readonly">
-                            </div>
-                            <div class="form-group details">
-                                <label class="booking_form_main control-label" for="hireprice">Hire Price</label>
-                                <input type="text" class="form-control" id="hireprice" name="hireprice" value="<?php echo $_POST["hirefee"].'.00'?>" readonly="readonly">
-                            </div>
-                            <div class="form-group details">
-                                <label class="booking_form_main control-label" for="options">Deposit Scheme</label>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary active">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" value="40" checked> £10 per day
+                                <div class="form-group">
+                                    <label for="collection" class="btn btn-default active misc">
+                                        Customer Collecting
                                     </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="options" id="option2" autocomplete="off" value="41"> £600 Refundable
+                                    <input type="checkbox" id="collection" name="collection" checked />
+                                    <div class="btn-group">
+                                        <label for="collection" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="delivery" class="btn btn-default active misc">
+                                        Customer Returning
                                     </label>
+                                    <input class="checkbox" type="checkbox" id="delivery" name="delivery" checked/>
+                                    <div class="btn-group">
+                                        <label for="delivery" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="terms" class="btn btn-default active misc">
+                                        Read the <a href="#">Terms and Conditions</a>  *
+                                    </label>
+                                    <input class="checkbox" type="checkbox" id="terms" name="terms"/>
+                                    <div class="btn-group">
+                                        <label for="terms" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="news" class="btn btn-default active misc">
+                                        Receive offers from NX Touring
+                                    </label>
+                                    <input class="checkbox" type="checkbox" id="news" name="news"/>
+                                    <div class="btn-group">
+                                        <label for="news" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group details">
-                                <label class="booking_form_main control-label" for="totprice">Total Price</label>
-                                <input type="text" class="form-control" id="totprice" name="totprice" value="<?php echo ($_POST["hirefee"]+($_POST["cdays"]*10)).'.00 + vat'?>" readonly="readonly">
-                            </div>
-                        </fieldset>
-
-                    </div>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
+
+            <input type="hidden" name="type_id" id="type_id" value="<?php echo $_POST['type_id'];?>"/>
+            <input type="hidden" name="days" id="days" value="<?php echo $_POST['days'];?>"/>
+            <input type="hidden" name="store_ids" id="store_ids" value="<?php echo $_POST['store'];?>"/>
+            <input type="hidden" name="primary_address[country_id]" id="primary_address[country_id]" value="1"/>
+            <input type="hidden" name="price" id="price" value="<?php echo $_POST['price'];?>"/>
+            <input type="hidden" name="line2" id="line2"/>
+            <input type="hidden" name="line3" id="line3"/>
+            <input type="hidden" name="child_member" id="child_member"/>
+            <input type="hidden" name="child_name" id="child_name"/>
+
             <div class="row">
                 <div class="col-md-12">
+                    <div class="col-md-3"></div>
                     <div class="col-md-4">
-                        <fieldset class="">
-                            <legend>Misc.
-                            </legend>
-                        <div class="form-group details drivers">
-                            <label class="booking_form_main" for="drivers">Number of Drivers</label>
-                            <select class="form-control" id="drivers" name="drivers">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                            </select>
-                        </div>
-                            <div class="misc">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="collection" name="collection" checked/>Customer Collecting
-                                </label>
-                            </div>
-                            <div class="misc">
-                                <label class="checkbox-inline">
-                                    <input class="checkbox" type="checkbox" id="delivery" name="delivery" checked/>Customer Returning
-                                </label>
-
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="col-md-4">
-                        <fieldset class="row4">
-                            <legend>Terms and Mailing
-                            </legend>
-                            <div class="agreement">
-                                <label class="checkbox-inline">
-                                    <input class="checkbox" type="checkbox" id="terms" name="terms"/>
-                                    I accept the <a href="#">Terms and Conditions</a>  *
-                                </label>
-                                <span class="feedback2 form-control-feedback glyphicon glyphicon-ok"></span>
-                            </div>
-                            <div class="agreement">
-                                <label class="checkbox-inline">
-                                    <input class="checkbox" type="checkbox" id="news" name="news"/>
-                                    I want to receive collection and offers from NX Touring
-                                </label>
-
-                            </div>
-                            <input type="hidden" name="type_id" id="type_id" value="<?php echo $_POST['type_id'];?>"/>
-                            <input type="hidden" name="days" id="days" value="<?php echo $_POST['days'];?>"/>
-                            <input type="hidden" name="store_ids" id="store_ids" value="<?php echo $_POST['store'];?>"/>
-                            <input type="hidden" name="primary_address[country_id]" id="primary_address[country_id]" value="1"/>
-                            <input type="hidden" name="price" id="price" value="<?php echo $_POST['price'];?>"/>
-                            <input type="hidden" name="line2" id="line2"/>
-                            <input type="hidden" name="line3" id="line3"/>
-                            <input type="hidden" name="child_member" id="child_member"/>
-                            <input type="hidden" name="child_name" id="child_name"/>
-                        </fieldset>
-                    </div>
-                    <div class="col-md-4">
-
-                        <div>
-                            <label class="obinfo">* obligatory fields
-                            </label>
-                        </div>
                         <div><button id="newCliFormBtn" class="button">Book Now &raquo;</button></div>
                     </div>
                 </div>
@@ -301,28 +344,6 @@ if (isset($_POST['endDate'])) {
 
     $(document).ready(function () {
 
-        $('#postcode_lookup').getAddress({
-            api_key: 'yn2CSzTYFUmrb5KshUq0EA12157',
-            output_fields: {
-                line_1: '#line1',
-                line_2: '#line2',
-                line_3: '#line3',
-                post_town: '#town',
-                county: '#county',
-                postcode: '#postcode'
-            },
-            onLookupSuccess: function(){
-                $('#getaddress_dropdown').addClass("selectpicker").addClass("form-control");
-                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-                    $('.selectpicker').selectpicker('mobile');
-                }
-
-            },
-            onAddressSelected: function () {
-                $('#getaddress_dropdown').hide();
-            }
-
-    });
 
         $("#newCliForm").submit(function(e){
             e.preventDefault();
@@ -383,7 +404,7 @@ if (isset($_POST['endDate'])) {
                     required: true,
                     phoneUK: true,
                     minlength: 10,
-                    maxlength: 12
+                    maxlength: 13
                 },
                 "links[][address]": {
                     required: true,
@@ -459,6 +480,9 @@ if (isset($_POST['endDate'])) {
                 terms:{
                     required: "Please read and agree to our terms and conditions"
                 }
+            },
+            errorPlacement: function(error, element) {
+                $(element).parents('.form-group').append(error)
             },
             highlight: function(element, errorClass, validClass) {
                 $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');

@@ -125,7 +125,7 @@ $client = json_encode($contact);
     <div class="col-md-12">
         <fieldset class="form-group">
             <legend>Live Orders</legend>
-            <div class="form-group has-feedback upload-details">
+            <div class="fhas-feedback upload-details">
                 <div class="col-md-3 profile_main"></div>
                 <div class="col-md-7 address">
                     <ul>
@@ -218,7 +218,7 @@ $client = json_encode($contact);
                 </div>
             </div>
             <legend>Past Orders</legend>
-            <div class="form-group has-feedback upload-details">
+            <div class="has-feedback upload-details">
                 <div class="col-md-3 profile_main"></div>
                 <div class="col-md-7 address">
                     <ul>

@@ -176,7 +176,7 @@ $(document).ready(function () {
                                             $number = "phones[" . $p . "][number]"; // Phone Number
                                             $id = "phones[" . $p . "][id]"; // ID of individual record for editing
                                             $type = "phones[".$p."][type_id]"; // id of the type of number
-                                            echo '<li id="phone'.$p.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
+                                            echo '<li id="phone'.$p.'"><div class="form-group contactSelect row"><div class="col-xs-4 typeSelect">
                                                             <div class="form-group">
                                                             <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                             <option value="6001"';
@@ -198,7 +198,7 @@ $(document).ready(function () {
                                                              </div>
                                                              </div>
                                                              <div class="col-xs-8 typeSelect">
-                                                             <div class="form-group has-feedback input-group">
+                                                             <div class="has-feedback input-group">
                                                              <input class="form-control phonesNew" type="text" id="'.$number.'" name="'.$number.'" maxlength="12" ';
                                             if (isset($_SESSION['user_id'])) {
                                                 echo 'value="' . $value['number'] . '"';
@@ -222,7 +222,7 @@ $(document).ready(function () {
                                             $email = "emails[" . $e . "][address]"; // Email Address
                                             $id = "emails[" . $e . "][id]"; // ID of individual record for editing
                                             $type = "emails[".$e."][type_id]"; // ID number of the email type
-                                            echo '<li id="email'.$e.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
+                                            echo '<li id="email'.$e.'"><div class="form-group contactSelect row"><div class="col-xs-4 typeSelect">
                                                           <div class="form-group">
                                                           <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                           <option value="4001"';
@@ -235,7 +235,7 @@ $(document).ready(function () {
                                                           </div>
                                                           </div>
                                                           <div class="col-xs-8 typeSelect">
-                                                          <div class="form-group has-feedback input-group">
+                                                          <div class="has-feedback input-group">
                                                           <input class="form-control emailsNew" type="text" id="'.$email.'" name="'.$email.'" ';
                                             if (isset($_SESSION['user_id'])) {
                                                 echo 'value="' .$value['address']. '"';
@@ -258,7 +258,7 @@ $(document).ready(function () {
                                             $link = "links[" . $l . "][address]"; // Link Address
                                             $id = "links[" . $l . "][id]"; // ID of individual record for editing
                                             $type = "links[".$l."][type_id]"; // ID number of the Link type
-                                            echo '<li id="link'.$l.'"><div class="form-group contactSelect"><div class="col-xs-4 typeSelect">
+                                            echo '<li id="link'.$l.'"><div class="form-group contactSelect row"><div class="col-xs-4 typeSelect">
                                                          <div class="form-group">
                                                          <select class="form-control" id="'.$type.'" name="'.$type.'">
                                                          <option value="5001"';
@@ -280,7 +280,7 @@ $(document).ready(function () {
                                                          </div>
                                                          </div>
                                                          <div class="col-xs-8 typeSelect">
-                                                         <div class="form-group has-feedback input-group">
+                                                         <div class="has-feedback input-group">
                                                             <input class="form-control linksNew" type="text" id="'.$link.'" name="'.$link.'" ';
                                             if (isset($_SESSION['user_id'])) {
                                                 echo 'value="' .$value['address']. '"';
@@ -500,7 +500,7 @@ $(document).ready(function () {
                     required: true,
                     phoneUK: true,
                     minlength: 10,
-                    maxlength: 12
+                    maxlength: 14
                 },
                 "links[0][address]": {
                     required: true,
@@ -627,7 +627,7 @@ $(document).ready(function () {
                     '<option value="5004">Linkedin</option>' +
                     '<option value="5005">IM</option>'+
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
-                    '<div class="for-group has-feedback input-group">' +
+                    '<div class="has-feedback input-group">' +
                     '<input class="form-control linksNew" type="text" id="links['+linksIndex+'][address]" name="links['+linksIndex+'][address]" maxlength="12" placeholder="Web / Social Media"/>'+
                     '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="link'+ linksIndex +'"> X </span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
@@ -667,7 +667,7 @@ $(document).ready(function () {
                     '<option value="4001">Work</option>' +
                     '<option value="4002">Home</option>' +
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
-                    '<div class="for-group has-feedback input-group">' +
+                    '<div class="has-feedback input-group">' +
                     '<input class="form-control emailsNew" type="text" id="emails['+emailIndex+'][address]" name="emails['+emailIndex+'][address]" maxlength="12" placeholder="Email"/>'+
                     '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="email'+emailIndex+'"> X </span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
@@ -701,7 +701,7 @@ $(document).ready(function () {
                     '<option value="6004">Skype</option>' +
                     '<option value="6005">Home</option>'+
                     '</select></div></div><div class="col-xs-8 typeSelect">' +
-                    '<div class="for-group has-feedback input-group">' +
+                    '<div class="has-feedback input-group">' +
                     '<input class="form-control phonesNew" type="text" id="phones['+phoneIndex+'][number]" name="phones['+phoneIndex+'][number]" maxlength="12" placeholder="Phone"/>'+
                     '<span class="input-group-addon contact-addon"><a href="javascript:void(0);" class="remove" id="phone'+phoneIndex+'">X</a></span>' +
                     '</div></div></div></li><div class="clearfix"></div>';
@@ -712,7 +712,7 @@ $(document).ready(function () {
                         required: true,
                         phoneUK: true,
                         minlength: 10,
-                        maxlength: 12
+                        maxlength: 14
                     })
                 });
             }

@@ -27,7 +27,7 @@ include 'header.php';
                                 All details will be required before a driver can be approved.
                             </legend>
 
-                            <div class="form-group has-feedback name-details">
+                            <div class="has-feedback name-details">
                                 <div class="col-md-3 profile_main">Name</div>
                                 <div class="col-md-4">
                                     <div class="form-group has-feedback">
@@ -50,7 +50,7 @@ include 'header.php';
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-8 typeSelect">
-                                                        <div class="form-group has-feedback input-group">
+                                                        <div class="has-feedback input-group">
                                                             <input class="form-control" type="text" id="emails[0][address]" name="emails[0][address]" placeholder="Email"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                                         </div>
@@ -66,7 +66,7 @@ include 'header.php';
                             </div>
 
                             <div class="section"></div>
-                            <div class="form-group has-feedback update-address">
+                            <div class="has-feedback update-address">
                                 <div class="col-md-3 profile_main">Address</div>
                                 <div class
 
@@ -74,41 +74,41 @@ include 'header.php';
                                     <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon profile-label">Street</span>
-                                        <input class="form-control" id="primary_address[street]" name="primary_address[street]"/>
+                                        <input type="text" class="form-control" id="primary_address[street]" name="primary_address[street]"/>
                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon profile-label">Town</span>
-                                            <input class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
+                                            <input type="text" class="form-control" type="text" id="primary_address[city]" name="primary_address[city]"/>
                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon profile-label">County</span>
-                                            <input class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
+                                            <input type="text" class="form-control" type="text" id="primary_address[county]" name="primary_address[county]"/>
                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <div class="input-group">
                                             <span class="input-group-addon profile-label">Postcode</span>
-                                            <input class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
+                                            <input type="text" class="form-control" type="text" id="primary_address[postcode]" name="primary_address[postcode]"/>
                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="section row"></div>
-                            <div class="form-group has-feedback">
+                            <div class="has-feedback">
                                 <div class="col-md-3 profile_main">Contact Details</div>
                                 <div class="col-md-4 left">
                                     <div id="phonesWrapper">
                                         <ul id="phones">
                                             <li id="phone0">
-                                                <div class="form-group contactSelect">
+                                                <div class="form-group contactSelect row">
                                                     <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
                                                             <select class="form-control" id="phones[0][type_id]" name="phones[0][type_id]">
@@ -121,7 +121,7 @@ include 'header.php';
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-8 typeSelect">
-                                                        <div class="form-group has-feedback input-group">
+                                                        <div class="has-feedback input-group">
                                                             <input class="form-control" type="text" id="phones[0][number]" name="phones[0][number]" maxlength="12" placeholder="Telephone"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                                         </div>
@@ -134,7 +134,7 @@ include 'header.php';
                                     <div id="linksWrapper">
                                         <ul id="links">
                                             <li id="link0">
-                                                <div class="form-group contactSelect">
+                                                <div class="form-group contactSelect row">
                                                     <div class="col-xs-4 typeSelect">
                                                         <div class="form-group">
                                                             <select class="form-control" id="links[0][type_id]" name="links[0][type_id]">
@@ -147,7 +147,7 @@ include 'header.php';
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-8 typeSelect">
-                                                        <div class="form-group has-feedback input-group">
+                                                        <div class="has-feedback input-group">
                                                             <input class="form-control" type="text" id="links[0][address]" name="links[0][address]" placeholder="Weblink / Social Media"/>
                                                             <span class="feedback form-control-feedback glyphicon glyphicon-ok"></span>
                                                         </div>
@@ -159,7 +159,7 @@ include 'header.php';
                                 </div>
                             </div>
                             <div class="section row"></div>
-                            <div class="form-group has-feedback update-address">
+                            <div class="has-feedback update-address">
                                 <div class="col-md-3 profile_main">Licence Details</div>
                                 <div class="col-md-4">
                                     <div class="form-group has-feedback">
@@ -200,7 +200,7 @@ include 'header.php';
                                     </div>
                                 </div>
                                     <div class="section row"></div>
-                                    <div class="form-group has-feedback upload-details">
+                                    <div class="has-feedback upload-details">
                                         <div class="col-md-3 profile_main">Images</div>
                                         <div class="col-md-4" id="preview1"><!--<img src="images/avatar.png">
                                     <input type="hidden" id="icon" name="icon"/>
@@ -292,23 +292,30 @@ include 'header.php';
 
 
     $(document).ready(function () {
+        var dateNow = new Date();
 
         $('#dob').daterangepicker({
             "autoApply": true,
-            "autoUpdateInput": true,
+            "autoUpdateInput": false,
             "singleDatePicker": true,
             "showDropdowns": true,
+            startDate: moment(dateNow).subtract(23, 'years'),
+            maxDate: moment(dateNow).subtract(23, 'years'),
             locale: {
+                cancelLabel: 'Clear',
                 format: "DD MMMM YYYY",
                 firstDay: 1
             }
         });
         $('#dot').daterangepicker({
             "autoApply": false,
-            "autoUpdateInput": true,
+            "autoUpdateInput": false,
             "singleDatePicker": true,
             "showDropdowns": true,
+            startDate: moment(dateNow).subtract(2, 'years'),
+            maxDate: moment(dateNow).subtract(2, 'years'),
             locale: {
+                cancelLabel: 'Clear',
                 format: "DD MMMM YYYY",
                 firstDay: 1
             }
@@ -411,6 +418,9 @@ var driverForm = $('form#newDriver');
                     url: "Please enter a valid URL (include the http:// part)"
                 },
                 "profileUp": "File must be JPG, GIF or PNG, less than 1MB"
+            },
+            errorPlacement: function(error, element) {
+                $(element).parents('.form-group').append(error)
             },
             highlight: function (element, errorClass, validClass) {
                 $(element).nextAll('.form-control-feedback').show().removeClass('glyphicon-ok').addClass('glyphicon-remove');

@@ -161,12 +161,12 @@
         padding: 0;
     }
     .input-group-addon {
-        background-color: #fff;
+        background-color: #e6e6e6;
         border: none;
         min-width: 0;
     }
     .profile-label {
-        min-width: 100px;
+        min-width: 105px;
     }
     .col-md-3, .col-md-4, .col-md-2 {
         padding: 0 10px 0 0;
@@ -180,11 +180,10 @@
     }
     .form-control {
         border: none;
-        -webkit-appearance: none;
         box-shadow: none !important;
     }
     select, .contactSelect select{
-        background-color: #fff;
+        background-color: #e6e6e6;
 
 
         background-image:
@@ -607,9 +606,7 @@
         padding: 1em 0;
         font-size: 0.6em;
     }
-    .details {
-        margin-left: 0.5em;
-    }
+
     form.register input
     {
         width: 100%;
@@ -814,6 +811,9 @@
     .nx_agileits-footer .navbar-header.page-scroll {
         margin: 0 3em;
     }
+    .misc {
+        width: 250px;
+    }
 
 }
 @media screen and (max-width: 320px){
@@ -864,6 +864,18 @@
     .addBtn {
         width: 31%;
     }
+    .misc {
+        width: 191px;
+        margin-left: 5px;
+    }
+    .profile-label {
+        min-width: 90px;
+    }
+
+    #numDriver {
+        min-width: 180px;
+    }
+
 }
 /* -- //Responsive code -- */
 
