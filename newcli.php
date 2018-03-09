@@ -284,7 +284,7 @@ if (isset($_POST['endDate'])) {
         </div>
     </div>
 </div>
-
+<div id="loading"><img src="images/loading2.gif"></div>
 <div id="error"></div>
 
 <!-- footer -->

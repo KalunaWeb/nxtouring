@@ -518,15 +518,15 @@ $(document).ready(function () {
                     }
                 },
                 "primary_address[street]": {
-                    minlength: 8,
+                    minlength: 3,
                     maxlength: 100
                 },
                 "primary_address[city]": {
-                    minlength: 2,
+                    minlength: 3,
                     maxlength: 100
                 },
                 "primary_address[county]": {
-                    minlength: 2,
+                    minlength: 3,
                     maxlength: 100
                 },
                 "primary_address[postcode]": {

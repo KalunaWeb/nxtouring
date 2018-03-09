@@ -65,7 +65,7 @@ include 'header.php';
                                 </div>
                             </div>
 
-                            <div class="section"></div>
+                            <div class="section row"></div>
                             <div class="has-feedback update-address">
                                 <div class="col-md-3 profile_main">Address</div>
                                 <div class
@@ -236,7 +236,7 @@ include 'header.php';
     </div>
 
 <div id="error"></div>
-
+    <div id="loading"><img src="images/loading2.gif"></div>
 <!-- footer -->
 <div class="nx_agileits-footer">
     <div class="container">
@@ -337,21 +337,12 @@ var driverForm = $('form#newDriver');
                     minlength: 3
                 },
                 "profileUP": {
-                    accept: "jpg|jpe?g|gif",
+                    accept: "jpg|jpe?g",
                     filesize: 1048576
                 },
                 "emails[0][address]": {
                     required: true,
                     email: true
-                    /*remote: {
-                        url: "check-email.php",
-                        type: "post",
-                        data: {
-                            name: function () {
-                                return $("#name").val();
-                            }
-                        }
-                    }*/
                 },
                 "phones[0][number]": {
                     phoneUK: true,
@@ -439,10 +430,13 @@ var driverForm = $('form#newDriver');
                     $.ajax({
                         url: 'newdriver-process.php',
                         type: 'POST',
-                        //dataType: 'json',
                         data: formData,
+                        beforeSend: function(){
+                            $("#loading").show();
+                        },
                         success: function (data) {
-                            alert(data)
+                            $("#loading").hide();
+                            alert("Driver Added.");
                             window.history.go(-1)
                         },
                         cache: false,

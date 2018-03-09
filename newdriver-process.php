@@ -156,6 +156,8 @@ if ($flag != 0) {
 
     $result = $current->creatediscussion($query);
 
+    echo json_encode($result);
+
     // Add licences to the New drivers profile
         if(isset($_FILES['front']))
         {
@@ -189,7 +191,7 @@ if ($flag != 0) {
             $data = '{"attachment":' . $term . '}';
             $attach = $current->createAttachment($data);
 
-            print_r($attach);
+            echo json_encode($attach);
 
         }
     }
