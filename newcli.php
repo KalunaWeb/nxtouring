@@ -212,28 +212,28 @@ if (isset($_POST['endDate'])) {
                                     <label for="collection" class="btn btn-default active misc">
                                         Customer Collecting
                                     </label>
-                                    <input class="switch" type="checkbox" id="collection" name="collection" checked />
+                                    <input class="switch checkbox" type="checkbox" id="collection" name="collection" checked />
 
                                 </div>
                                 <div class="form-group">
                                     <label for="delivery" class="btn btn-default active misc">
                                         Customer Returning
                                     </label>
-                                    <input class="switch" class="checkbox" type="checkbox" id="delivery" name="delivery" checked/>
+                                    <input class="switch checkbox" type="checkbox" id="delivery" name="delivery" checked/>
 
                                 </div>
                                 <div class="form-group">
                                     <label for="terms" class="btn btn-default active misc">
                                         Read the <a href="#">Terms and Conditions</a>  *
                                     </label>
-                                    <input class="switch" class="checkbox" type="checkbox" id="terms" name="terms"/>
+                                    <input class="switch" checkbox" type="checkbox" id="terms" name="terms"/>
 
                                 </div>
                                 <div class="form-group">
                                     <label for="news" class="btn btn-default active misc">
                                         Receive offers from NX Touring
                                     </label>
-                                    <input class="switch" class="checkbox" type="checkbox" id="news" name="news"/>
+                                    <input class="switch checkbox" type="checkbox" id="news" name="news"/>
 
                                 </div>
                             </div>
