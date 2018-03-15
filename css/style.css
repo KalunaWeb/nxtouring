@@ -1994,6 +1994,7 @@ ul#driversList .profile_main {
 #deposit .btn.active {
     background-color: #dbf2ff;
 }
+/*
 input[type="checkbox"] {
     display: inline-block;
     padding: 6px 12px;
@@ -2036,10 +2037,10 @@ input[type="checkbox"] {
 }
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
     display: none;
-}
+}*/
 .misc {
     border: none;
-    width: 85%;
+    width: 82%;
     padding-right: 0;
     background-color: #e6e6e6;
     font-size: 0.8em;
@@ -2051,3 +2052,31 @@ input[type="checkbox"] {
 #numDriver {
     min-width: 250px;
 }
+input.switch {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    position: relative;
+    height: 25px;
+    width: 45px;
+    border-radius: 10px;
+    box-shadow: inset -20px 0px 0px 1px rgba(192, 192, 192, 0.5);
+    background-color: white;
+    border: 1px solid rgba(192, 192, 192, 1);
+    outline: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    top: 8px;
+}
+
+input.switch:checked {
+    box-shadow: inset 20px 0px 0px 1px rgba(33, 150, 243, 0.5);
+    border: 1px solid rgba(33, 150, 243, 1);
+}
+
+input.switch::-ms-check {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
+    filter: alpha(opacity=0); /* IE 5-7 */
+    opacity: 0;
+}
+

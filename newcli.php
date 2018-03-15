@@ -212,49 +212,29 @@ if (isset($_POST['endDate'])) {
                                     <label for="collection" class="btn btn-default active misc">
                                         Customer Collecting
                                     </label>
-                                    <input type="checkbox" id="collection" name="collection" checked />
-                                    <div class="btn-group">
-                                        <label for="collection" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                    </div>
+                                    <input class="switch" type="checkbox" id="collection" name="collection" checked />
+
                                 </div>
                                 <div class="form-group">
                                     <label for="delivery" class="btn btn-default active misc">
                                         Customer Returning
                                     </label>
-                                    <input class="checkbox" type="checkbox" id="delivery" name="delivery" checked/>
-                                    <div class="btn-group">
-                                        <label for="delivery" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                    </div>
+                                    <input class="switch" class="checkbox" type="checkbox" id="delivery" name="delivery" checked/>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="terms" class="btn btn-default active misc">
                                         Read the <a href="#">Terms and Conditions</a>  *
                                     </label>
-                                    <input class="checkbox" type="checkbox" id="terms" name="terms"/>
-                                    <div class="btn-group">
-                                        <label for="terms" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                    </div>
+                                    <input class="switch" class="checkbox" type="checkbox" id="terms" name="terms"/>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="news" class="btn btn-default active misc">
                                         Receive offers from NX Touring
                                     </label>
-                                    <input class="checkbox" type="checkbox" id="news" name="news"/>
-                                    <div class="btn-group">
-                                        <label for="news" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                    </div>
+                                    <input class="switch" class="checkbox" type="checkbox" id="news" name="news"/>
+
                                 </div>
                             </div>
                         </div>

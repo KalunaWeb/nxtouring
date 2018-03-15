@@ -15,7 +15,7 @@
         margin-left: 25px;
     }
     #news, #terms {
-        left: 185px;
+        /*left: 185px;*/
     }
     .wthree-footer-left h5 {
         font-size: 1.32em;
@@ -124,7 +124,7 @@
         margin-top: 1em;
     }
     #news, #terms {
-        left: 254px;
+        /*left: 254px;*/
         z-index: 10;
     }
     .agreement label {
@@ -639,7 +639,7 @@
         padding-left: 4px !important;
     }
     #news {
-        left: 143px;
+        /*left: 143px;*/
     }
     #location {
 
@@ -701,11 +701,11 @@
         padding-left: 4px !important;
     }
     #news {
-        left: 175px;
+        /*left: 175px;*/
         z-index: 5;
     }
     #terms {
-        left: 184px;
+        /*left: 184px;*/
         z-index: 5;
     }
     #location {
@@ -799,7 +799,7 @@
     }
 
     #news, #terms {
-        left: 142px;
+        /*left: 142px;*/
         z-index: 10;
     }
 
@@ -851,7 +851,7 @@
         width: 100%;
     }
     #news, #terms {
-        left: 131px;
+        /*left: 131px;*/
         z-index: 5;
     }
     #uploadBtn {
