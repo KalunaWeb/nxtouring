@@ -105,7 +105,38 @@ class current {
 
 		return $result;
 	}
-	
+
+    public function getVehiclesList() {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.current-rms.com/api/v1/product_inventories?page=1&per_page=20&filtermode=all&q[name_or_product_group_name_or_tags_name_cont]=Vehicles");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+
+        $result = (json_decode($server_output, true));
+
+        return $result;
+    }
+
+    public function getStock($id) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.current-rms.com/api/v1/products/".$id."/stock_levels");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+
+        $result = (json_decode($server_output, true));
+
+        return $result;
+    }
 
 	public function getService($id) {
 		$ch = curl_init();
@@ -245,7 +276,7 @@ class current {
 	public function getOpportunity($name, $type) {
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,"https://api.current-rms.com/api/v1/opportunities?page=1&per_page=20&filtermode=".$type."&view_id=1&q[member_name_cont]=".$name);
+		curl_setopt($ch, CURLOPT_URL,"https://api.current-rms.com/api/v1/opportunities?page=1&per_page=200&filtermode=".$type."&view_id=1&q[member_name_cont]=".$name);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -258,6 +289,24 @@ class current {
 
 		return $result;
 	}
+
+    public function getOpportunityListItems($id) {
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,"https://api.current-rms.com/api/v1/opportunities/".$id."/opportunity_items?include[]=item_assets");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+
+        $result = (json_decode($server_output, true));
+
+        return $result;
+    }
+
 
     public function getOpportunityItems($opp) {
 

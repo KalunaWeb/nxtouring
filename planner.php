@@ -165,3 +165,40 @@ if(!isset($_SESSION['user_id']))
     </div>
 
     <body id="background">
+   <?php
+    /*$vehicles = $current->getVehiclesList();
+
+    foreach ($vehicles['product_inventories'] as $key=>$value) {
+        print_r($value['id']);
+    }
+$stock = $current->getStock();
+    print_r ($stock);*/
+
+   $live = $current->getOpportunity("", "live");
+   $start = strtotime('2018/05/01');
+   $end = strtotime('2018/06/01');
+   $newStart = date('Y-m-d', $start);
+   $newEnd = date('Y-m-d', $end);
+
+
+   foreach ($live['opportunities'] as $key=>$value) {
+
+       $time = strtotime($value['starts_at']);
+       $time2 = strtotime($value['ends_at']);
+
+       $newformat = date('Y-m-d', $time);
+       $newformat2 = date('Y-m-d', $time2);
+
+
+       if ($newformat > $newStart && $newformat < $newEnd) {
+           $opp = $current->getOpportunityListItems($value['id']);
+           print_r($opp);
+           echo "<br>";
+       }
+
+       //echo $newformat . "  " . $new . "<br>";
+//if ($newformat > $new) {echo $newformat."<br>";}
+
+   }
+
+    ?>

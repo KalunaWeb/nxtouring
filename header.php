@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=371; //22; // 330
+$_SESSION['user_id']=330;//371; //22; // 330
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $main_url = "http://www.darkelf.darktech.org/";
