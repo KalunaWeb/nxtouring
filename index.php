@@ -35,11 +35,19 @@ require_once 'modals.php';
                     <li>
                         <div class="nxlayouts-banner-top" style="background: url('.$url[$i].') no-repeat center; background-size: cover;">
                             <div class="container">
-                                <div class="nxl-price"><p></p><span class="sicon">£'.$price[$i].'</span><p>+ vat / day</p></div>
 
-                            <div class="agileits-banner-info jarallax">
-                                <h3 class="agile-title">'.$name[$i].'</h3>
-                            </div>
+                                <div class="agileits-banner-info jarallax">
+
+                                    <div class="agile-title">
+
+                                        <div class="nxl-price"><p></p><span class="sicon">£'.$price[$i].'</span><p>+ vat / day</p></div>
+
+                                        <h3>'.$name[$i].'</h3>
+
+                                    </div>
+
+                                </div>
+
                             </div>
                             
                         </div>

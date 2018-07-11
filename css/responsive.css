@@ -20,11 +20,11 @@
     .wthree-footer-left h5 {
         font-size: 1.32em;
     }
-    .nxl-price {
+/*    .nxl-price {
         position: absolute;
         left: 4%;
         top: 28%;
-    }
+    }*/
     .nxl-button {
         position: absolute;
         left:74%;
@@ -39,10 +39,10 @@
     .wthreelocationsaits figure.effect-zoe h4 {
         margin-top: 3.3em;
     }
-    .nxl-price {
+/*    .nxl-price {
         left: 5%;
         top: 28%;
-    }
+    }*/
     .nxl-button {
         position: absolute;
         left:73%;
@@ -391,11 +391,11 @@
     .agileits-banner-info, .agileits-banner-info1, .agileits-banner-info2, .agileits-banner-info3, .agileits-banner-info4 {
         padding: 13em 0;
     }
-    .nxl-price {
+/*    .nxl-price {
         left: 4%;
         top: 28%;
         z-index: 0;
-    }
+    }*/
     .nxl-button {
         position: absolute;
         left:74%;
@@ -503,10 +503,10 @@
     span.sicon {
         font-size: 1.5em;
     }
-    .nxl-price {
+/*    .nxl-price {
         width: 90px;
         height: 90px;
-    }
+    }*/
     .nxl-price p {
         font-size: 0.85em;
     }
@@ -540,14 +540,14 @@
     .callbacks_tabs {
         left: 40%;
     }
-    .nxl-price {
+/*    .nxl-price {
         width: 100px;
         height: 100px;
         left: 37%;
         top: 30%;
         padding: 1em;
         z-index: 0;
-    }
+    }*/
     .nxl-button {
         position: absolute;
         left:28%;

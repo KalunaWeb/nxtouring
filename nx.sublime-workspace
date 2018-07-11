@@ -1,0 +1,676 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"video",
+				"videoHeight"
+			],
+			[
+				"sec",
+				"sections"
+			],
+			[
+				"plus",
+				"plus--item"
+			],
+			[
+				"mob",
+				"mobile_override"
+			],
+			[
+				"gtbutt",
+				"get_buttons"
+			],
+			[
+				"campgi",
+				"campaign_logo"
+			],
+			[
+				"scro",
+				"scroll"
+			],
+			[
+				"scroll",
+				"scroll_pos"
+			],
+			[
+				"ca",
+				"calendar"
+			],
+			[
+				"data",
+				"dataLayer"
+			],
+			[
+				"img",
+				"img_src"
+			],
+			[
+				"fash",
+				"fashionBeauty--wrapper"
+			],
+			[
+				"items",
+				"item_size"
+			],
+			[
+				"max",
+				"max_move"
+			],
+			[
+				"social",
+				"social--column"
+			],
+			[
+				"post",
+				"post_message"
+			],
+			[
+				"lef",
+				"left_val"
+			],
+			[
+				"textbox",
+				"textbox_content"
+			],
+			[
+				"fah",
+				"fashion"
+			],
+			[
+				"fahsio",
+				"fashionBeauty--actions"
+			],
+			[
+				"cl",
+				"closest"
+			],
+			[
+				"fashion",
+				"fashionBeauty"
+			],
+			[
+				"til",
+				"title_text"
+			],
+			[
+				"style-",
+				"style--seeker__items"
+			],
+			[
+				"styt",
+				"style--seeker__item"
+			],
+			[
+				"text",
+				"textbox_content"
+			],
+			[
+				"_",
+				"__FILE__"
+			],
+			[
+				"id",
+				"page_id"
+			],
+			[
+				"in",
+				"inactive"
+			],
+			[
+				"banner",
+				"banner--item"
+			],
+			[
+				"plu",
+				"plus_offer_image"
+			],
+			[
+				"abs",
+				"ABSPATH"
+			],
+			[
+				"viddesk",
+				"video_desk_poster"
+			],
+			[
+				"vimo",
+				"video_mob_poster"
+			],
+			[
+				"af",
+				"afterload"
+			],
+			[
+				"we",
+				"webfont-section"
+			],
+			[
+				"natu",
+				"natural_height_diff"
+			],
+			[
+				"N",
+				"Number"
+			],
+			[
+				"land",
+				"landlane_number"
+			],
+			[
+				"nu",
+				"mobile_number"
+			],
+			[
+				"exp",
+				"export_bookings"
+			],
+			[
+				"hero",
+				"hero_image"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 239.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"gist",
+				"Gist: Insert Gist"
+			],
+			[
+				"bp",
+				"Snippet: bp"
+			],
+			[
+				"acf",
+				"Snippet: acf-rep"
+			],
+			[
+				"svg",
+				"Snippet: svg"
+			],
+			[
+				"acfre",
+				"Snippet: acf-rep"
+			],
+			[
+				"acfp",
+				"Snippet: acf-rep"
+			],
+			[
+				"acrep",
+				"Snippet: acf-rep"
+			],
+			[
+				"scs",
+				"Set Syntax: SCSS"
+			],
+			[
+				"syntax",
+				"Set Syntax: Sass"
+			],
+			[
+				"hh",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"acr",
+				"Snippet: acf-rep"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"sel",
+				"Snippet: sel"
+			],
+			[
+				"php\t",
+				"Set Syntax: PHP"
+			],
+			[
+				"gis",
+				"Gist: Insert Gist"
+			],
+			[
+				"gits",
+				"Gist: Insert Gist"
+			],
+			[
+				"html",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"gitst",
+				"Gist: Insert Gist"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mattwilliamson/Desktop/Matt Projects/NX Touring/Development"
+	],
+	"file_history":
+	[
+		"/Users/mattwilliamson/Downloads/jQuery-Plugin-To-Add-Custom-Events-To-Online-Calendar-Apps-AddCalEvent/src/AddCalEventZones.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-clean.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/add-to-cal.js",
+		"/Users/mattwilliamson/Downloads/jQuery-Plugin-To-Add-Custom-Events-To-Online-Calendar-Apps-AddCalEvent/src/AddCalEvent.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/js/tracking.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/js/addToCal.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/js/video.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/template-parts/your5/video.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/functions/lewis-modules.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/functions/lewis-enqueue.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/core/_button.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/style.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/components/_textbox.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/functions/lewis-fields.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/template-parts/your5/polaroid.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/components/_polaroid.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/components/_calendar.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/core/_video.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/vars/_breakpoints.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/flex/_sizes.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/core/_title.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/vars/_font.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/template-parts/your5/offers.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/components/_offers.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/core/_reset.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/src/vars/_colors.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/functions.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/assets/js/autoHeight.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/style.css",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-your5/page-your5.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_social.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/plugins/hh-social-wall/function.post.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/plugins/hh-social-wall/status.instagram.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/modules/banner.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/page-sodd.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-enqueue.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/food.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-modules.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/page.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/modules/textbox.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/parts/_parts.style-seeker.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/sodd/single.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-fields.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/_overrides.flex.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/parts/_parts.social.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/style.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/plugins/hh-social-wall/function.fetch.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/social.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-images.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-modules.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/functions/_keyframes.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/helpers/_wrapper.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_food.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_plus.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/plus_section.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/.gitignore",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/header.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/core/_reset.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/helpers/_padding.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/core/_button.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/images.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/helpers/_blocks.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_textbox.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/core/_font.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_offers.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/helpers/_margin.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/carousel.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/carousel.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_carousel.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-icons.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/core/_title.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/core/_img.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/vars/_font.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/autoHeight.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/autoHeight-content.js",
+		"/Users/mattwilliamson/Downloads/unionsquare.wordpress.2018-06-26.xml",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/images/svg/sodd-arrow.svg",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/images/svg.svg",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/single.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/textbox.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/logos.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-buttons.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/flex/_default.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/offers.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/components/_logos.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/bg.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/vars/_breakpoints.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/banner.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/src/vars/_colors.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/assets/js/textbox.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/template-parts/modules/banner.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-enqueue.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/style.css",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/functions/lewis-template.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2-child/style.css",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-safari-fields.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/safari/events.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/layouts/_layout.safari.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-campaign-logo.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/modules/offers.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/safari/textbox.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-fields.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/images/ui.svg",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/safari/banner.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/_settings.type.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/paws.js",
+		"/Users/mattwilliamson/Downloads/dundrum.wordpress.2018-06-06.xml",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/safari/quad.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/background-color.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/events.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-config.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/page-safari.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/functions/lewis-aos-fields.php",
+		"/Users/mattwilliamson/Downloads/webfontkit-20180601-031125/stylesheet.css",
+		"/Users/mattwilliamson/Downloads/webfontkit-20180601-031125/hitchcock-demo.html",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/style.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/parts/_parts.addtocal.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/page-blank.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/textbox.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/template-parts/modules/popup.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/_settings.normalize.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/tracking.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/src/_vars.type.scss",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/themes/hammerson-v2/assets/js/aos-form.js",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/plugins/hh-social-wall/function.save.php",
+		"/Users/mattwilliamson/Desktop/Projects/Development/hammersonhosting-v2/httpdocs/wp-content/plugins/hh-social-wall/hh-social-wall.php"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "nx.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "le",
+		"selected_items":
+		[
+			[
+				"le",
+				"~/Desktop/Last Edition/Web Design/2017/le17.sublime-project"
+			],
+			[
+				"ifl",
+				"~/Desktop/Projects/Development/ideasforliving-p2/iflp2.sublime-project"
+			],
+			[
+				"hhv",
+				"~/Desktop/Projects/Development/hammersonhosting-v2/hhv2.sublime-project"
+			],
+			[
+				"lth",
+				"~/Desktop/Matt Projects/LTH/Development/lth.sublime-project"
+			],
+			[
+				"iflp",
+				"~/Desktop/Projects/Development/ideasforliving-p2/iflp2.sublime-project"
+			],
+			[
+				"master",
+				"~/Desktop/Master/master.sublime-project"
+			],
+			[
+				"bhb",
+				"~/Desktop/Matt Projects/Bridge House Barn/Development/bhb.sublime-project"
+			],
+			[
+				"mak",
+				"~/Desktop/Makalu/Website/2017/Development/mak17.sublime-project"
+			],
+			[
+				"mast",
+				"~/Desktop/Master/master.sublime-project"
+			],
+			[
+				"iflp2",
+				"~/Desktop/Projects/Development/ideasforliving-p2/iflp2.sublime-project"
+			],
+			[
+				"pdg",
+				"~/Desktop/Matt Projects/PDG/Development/pdg.sublime-project"
+			],
+			[
+				"ck",
+				"~/Desktop/Matt Projects/Clean Kings/Development/ck.sublime-project"
+			],
+			[
+				"fl",
+				"~/Desktop/Projects/Development/ideasforliving-p2/iflp2.sublime-project"
+			],
+			[
+				"russ",
+				"~/Desktop/Projects/Development/russell-europe/russell-imprint.sublime-project"
+			],
+			[
+				"md",
+				"~/Desktop/Projects/Development/merrydown/md.sublime-project"
+			],
+			[
+				"re",
+				"~/Desktop/Projects/Development/russell-europe/russell-imprint.sublime-project"
+			],
+			[
+				"hamm",
+				"~/Desktop/Projects/Development/hammerson/hammersonhosting.sublime-project"
+			],
+			[
+				"le\\",
+				"~/Desktop/Last Edition/Web Design/2017/le17.sublime-project"
+			],
+			[
+				"lesem",
+				"~/Desktop/Matt Projects/Lesley Emery/Development/lesem.sublime-project"
+			],
+			[
+				"iv",
+				"~/Desktop/Projects/Development/ideasforliving-p2/iflp2.sublime-project"
+			],
+			[
+				"hma",
+				"~/Desktop/Projects/Development/hammerson/hammersonhosting.sublime-project"
+			],
+			[
+				"hh",
+				"~/Desktop/Projects/Development/hammerson/hammersonhosting.sublime-project"
+			],
+			[
+				"if",
+				"~/Desktop/Projects/Development/ideasforliving-p2/iflp2.sublime-project"
+			],
+			[
+				"pmb",
+				"~/Desktop/Projects/Research & Development/pmb.sublime-project"
+			],
+			[
+				"clean",
+				"~/Desktop/Matt Projects/Clean Kings/Development/ck.sublime-project"
+			],
+			[
+				"w",
+				"~/Desktop/Matt Projects/Matt Williamson/mw.sublime-project"
+			],
+			[
+				"vk",
+				"~/Desktop/Matt Projects/Clean Kings/Development/ck.sublime-project"
+			],
+			[
+				"tts",
+				"~/Desktop/Projects/Development/the-training-shed/tts.sublime-project"
+			],
+			[
+				"",
+				"~/Desktop/Matt Projects/Clean Kings/Development/ck.sublime-project"
+			],
+			[
+				"maka",
+				"~/Desktop/Makalu/Website/2017/Development/mak17.sublime-project"
+			],
+			[
+				"mm",
+				"~/Desktop/Matt Projects/Matt Williamson/mw.sublime-project"
+			],
+			[
+				"ruim",
+				"~/Desktop/Projects/Development/russell-europe/russell-imprint.sublime-project"
+			],
+			[
+				"rim",
+				"~/Desktop/Projects/Development/russell-europe/russell-imprint.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 280.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
