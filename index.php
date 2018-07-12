@@ -668,8 +668,7 @@ var b = <?php echo $b;?>;
 	<div class="container">
 		<div class="col-md-9 col-sm-12 wthree-footer-left">
 			<div class="navbar-header page-scroll">
-				<h2><a class="navbar-brand" href="index.php">NX Touring</a></h2>
-				<P id="footer-line">Luxury Vehicle Hire</P>
+                <a href="/"><svg class="nx-logo nx-logo-footer" viewBox="0 0 171.5 48.9"><use xlink:href="#nx-logo" /></use></svg></a>
 			</div> 
 			<div class="list-footer">
 				  <ul class="footer-nav">

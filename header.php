@@ -101,7 +101,17 @@ if(!isset($_SESSION['user_id']))
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head> 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="90"> 
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="90">
+
+    <?php 
+
+        echo '<div class="hidden">';
+        
+        include("images/svgs/sprites.svg");
+        
+        echo '</div>';
+
+    ?> 
 
 	<!-- banner -->
 	<div id="home" class="nxls-banner"> 
@@ -117,8 +127,15 @@ if(!isset($_SESSION['user_id']))
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h2><a class="navbar-brand nx-logo" href="index.php">NX Touring</a></h2>
-						<P>Luxury Vehicle Hire</P>
+
+						<!-- <h2><a class="navbar-brand nx-logo" href="index.php">NX Touring</a></h2>
+						<P>Luxury Vehicle Hire</P> -->
+
+                        <div class="nx-logoHolder">
+                            <a href="/"><svg class="nx-logo" viewBox="0 0 171.5 48.9"><use xlink:href="#nx-logo" /></use></svg></a>
+                            <a href="/"><svg class="nx-logo-mob" viewBox="0 0 159.3 31.9"><use xlink:href="#nx-logo-mob" /></use></svg></a>
+                        </div>
+
 					</div> 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse navbar-ex1-collapse">

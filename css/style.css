@@ -54,6 +54,30 @@ p{
 	line-height:1.5;
 	color:#fff;
 }
+/*-- svgs --*/ 
+svg {
+    width: 100%;
+    height: auto;    
+    fill: #ffffff;
+}
+/*-- nx-logoHolder --*/ 
+.nx-logoHolder {
+    max-width: 200px;
+}
+/* -- nx-logo --*/
+.nx-logo {
+    display: block;
+    margin-left: 10px;    
+}
+/* -- nx-logo-footer --*/
+.nx-logo-footer {
+    max-width: 140px;
+    margin-right: 20px;
+}
+/* -- nx-logo-mob --*/
+.nx-logo-mob {
+    display: none;
+}
 /*-- header --*/ 
 .navbar-header.page-scroll h2 {
     font-size: 2.5em;

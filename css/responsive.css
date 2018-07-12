@@ -528,6 +528,14 @@
 
 }
 @media screen and (max-width: 480px){
+    .nx-logo-mob {
+        display: block;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .nx-logo {
+        display: none;
+    }
     .nxlayouts-about, .wthreelocationsaits, .vans, .team, .testimonials, .blog, .contact {
         padding: 3em 0;
     }
